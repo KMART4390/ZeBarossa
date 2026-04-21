@@ -9,22 +9,113 @@
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta name="theme-color" content="#f9f5ee"/>
 <title>Ze Barossa</title>
-<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjQ0IiBmaWxsPSIjZjlmNWVlIi8+CiAgPGcgc3Ryb2tlPSIjNWE0MDMwIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPHBhdGggZD0iTSA2OCwzOCBRIDYwLDgwIDY2LDExMCBRIDc0LDEzNiAxMDAsMTQyIFEgMTI2LDEzNiAxMzQsMTEwIFEgMTQwLDgwIDEzMiwzOCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgICA8bGluZSB4MT0iNjgiIHkxPSIzOCIgeDI9IjEzMiIgeTI9IjM4IiBzdHJva2Utd2lkdGg9IjMiLz4KICAgIDxwYXRoIGQ9Ik0gNzAsNzAgUSAxMDAsNjQgMTMwLDcwIFEgMTM2LDkwIDEzMCwxMDggUSAxMjIsMTMwIDEwMCwxMzYgUSA3OCwxMzAgNzAsMTA4IFEgNjQsOTAgNzAsNzAgWiIgZmlsbD0iIzdhMjAzMCIgb3BhY2l0eT0iMC4xOCIgc3Ryb2tlPSJub25lIi8+CiAgICA8cGF0aCBkPSJNIDcxLDcwIFEgMTAwLDY0IDEyOSw3MCIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjU1Ii8+CiAgICA8bGluZSB4MT0iMTAwIiB5MT0iMTQyIiB4Mj0iMTAwIiB5Mj0iMTcwIiBzdHJva2Utd2lkdGg9IjMiLz4KICAgIDxwYXRoIGQ9Ik0gNzQsMTcwIFEgMTAwLDE3NiAxMjYsMTcwIiBzdHJva2Utd2lkdGg9IjMiLz4KICAgIDxwYXRoIGQ9Ik0gNzgsNTAgUSA3Niw2NCA3OCw3NiIgc3Ryb2tlLXdpZHRoPSIxLjgiIG9wYWNpdHk9IjAuMyIvPgogIDwvZz4KICA8dGV4dCB4PSIxMDAiIHk9IjE5NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzdhNWEzYSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGxldHRlci1zcGFjaW5nPSIwLjUiPlplIEJhcm9zc2E8L3RleHQ+Cjwvc3ZnPg=="/>
-<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjQ0IiBmaWxsPSIjZjlmNWVlIi8+CiAgPGcgc3Ryb2tlPSIjNWE0MDMwIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPHBhdGggZD0iTSA2OCwzOCBRIDYwLDgwIDY2LDExMCBRIDc0LDEzNiAxMDAsMTQyIFEgMTI2LDEzNiAxMzQsMTEwIFEgMTQwLDgwIDEzMiwzOCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgICA8bGluZSB4MT0iNjgiIHkxPSIzOCIgeDI9IjEzMiIgeTI9IjM4IiBzdHJva2Utd2lkdGg9IjMiLz4KICAgIDxwYXRoIGQ9Ik0gNzAsNzAgUSAxMDAsNjQgMTMwLDcwIFEgMTM2LDkwIDEzMCwxMDggUSAxMjIsMTMwIDEwMCwxMzYgUSA3OCwxMzAgNzAsMTA4IFEgNjQsOTAgNzAsNzAgWiIgZmlsbD0iIzdhMjAzMCIgb3BhY2l0eT0iMC4xOCIgc3Ryb2tlPSJub25lIi8+CiAgICA8cGF0aCBkPSJNIDcxLDcwIFEgMTAwLDY0IDEyOSw3MCIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjU1Ii8+CiAgICA8bGluZSB4MT0iMTAwIiB5MT0iMTQyIiB4Mj0iMTAwIiB5Mj0iMTcwIiBzdHJva2Utd2lkdGg9IjMiLz4KICAgIDxwYXRoIGQ9Ik0gNzQsMTcwIFEgMTAwLDE3NiAxMjYsMTcwIiBzdHJva2Utd2lkdGg9IjMiLz4KICAgIDxwYXRoIGQ9Ik0gNzgsNTAgUSA3Niw2NCA3OCw3NiIgc3Ryb2tlLXdpZHRoPSIxLjgiIG9wYWNpdHk9IjAuMyIvPgogIDwvZz4KICA8dGV4dCB4PSIxMDAiIHk9IjE5NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzdhNWEzYSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGxldHRlci1zcGFjaW5nPSIwLjUiPlplIEJhcm9zc2E8L3RleHQ+Cjwvc3ZnPg=="/>
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0id2luZUJsb3QiIGN4PSI0MCUiIGN5PSIzNSUiIHI9IjcwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNjNDMwNTAiIHN0b3Atb3BhY2l0eT0iMC45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTUlIiBzdG9wLWNvbG9yPSIjOGExZjJhIiBzdG9wLW9wYWNpdHk9IjAuOTUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNWEwZjFhIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8Y2xpcFBhdGggaWQ9ImJvd2xDbGlwIj4KICAgICAgPHBhdGggZD0iTSA1NiwyOCBRIDQ4LDgwIDU4LDExOCBRIDcyLDE1MCAxMDAsMTU0IFEgMTI4LDE1MCAxNDIsMTE4IFEgMTUyLDgwIDE0NCwyOCBaIi8+CiAgICA8L2NsaXBQYXRoPgogICAgPGZpbHRlciBpZD0id2NCbHVyIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMS41Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CgogIDwhLS0gY3JlYW0gcm91bmRlZCBiYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiByeD0iNDQiIGZpbGw9IiNmOWY1ZWUiLz4KCiAgPCEtLSBXYXRlcmNvbG9yIHdpbmUgd2FzaCAoY2xpcHBlZCB0byBib3dsLCB1bmV2ZW4gcGlnbWVudCBwb29saW5nKSAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjYm93bENsaXApIj4KICAgIDxwYXRoIGQ9Ik0gNTYsNTggUSA3NSw1MyAxMDAsNTYgUSAxMzAsNjAgMTQ0LDU2IEwgMTQ0LDE1NCBMIDU2LDE1NCBaIgogICAgICAgICAgZmlsbD0idXJsKCN3aW5lQmxvdCkiIGZpbHRlcj0idXJsKCN3Y0JsdXIpIi8+CiAgICA8IS0tIHVuZXZlbiBibGVlZCBlZGdlIGF0IHdpbmUgc3VyZmFjZSAtLT4KICAgIDxwYXRoIGQ9Ik0gNTYsNTYgUSA3MCw1MSAxMDAsNTQgUSAxMzAsNTYgMTQ0LDUzIEwgMTQ0LDYyIEwgNTYsNjUgWiIKICAgICAgICAgIGZpbGw9IiM3YTFmMmEiIG9wYWNpdHk9IjAuNSIvPgogICAgPCEtLSBwaWdtZW50IHBvb2xpbmcgLS0+CiAgICA8ZWxsaXBzZSBjeD0iODIiIGN5PSIxMDgiIHJ4PSIyMCIgcnk9IjI2IiBmaWxsPSIjNGEwZjFhIiBvcGFjaXR5PSIwLjMyIiBmaWx0ZXI9InVybCgjd2NCbHVyKSIvPgogICAgPGVsbGlwc2UgY3g9IjEyMiIgY3k9Ijk0IiByeD0iMTYiIHJ5PSIyMiIgZmlsbD0iIzRhMGYxYSIgb3BhY2l0eT0iMC4yOCIgZmlsdGVyPSJ1cmwoI3djQmx1cikiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxNDAiIHJ4PSIyOCIgcnk9IjEyIiBmaWxsPSIjM2EwYTE0IiBvcGFjaXR5PSIwLjM1IiBmaWx0ZXI9InVybCgjd2NCbHVyKSIvPgogIDwvZz4KCiAgPCEtLSBGaW5lLWxpbmUgZ3JhcGUgY2x1c3RlciDigJQgZHJhd24gSU5TSURFIHRoZSBib3dsIG92ZXIgdGhlIHdpbmUgd2FzaCAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjYm93bENsaXApIiBmaWxsPSJub25lIiBzdHJva2U9IiMyYTE4MTAiCiAgICAgc3Ryb2tlLXdpZHRoPSIxLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgb3BhY2l0eT0iMC45NSI+CiAgICA8IS0tIHN0ZW0gZnJvbSByaW0gYXJlYSAtLT4KICAgIDxwYXRoIGQ9Ik0gMTAwLDY2IFEgMTAwLDU2IDEwMiw0OCIvPgogICAgPCEtLSB2aW5lIGxlYWYgKHRvIHJpZ2h0IG9mIHN0ZW0pIC0tPgogICAgPHBhdGggZD0iTSAxMDIsNDggUSAxMTgsNDQgMTI0LDU0IFEgMTIyLDY0IDExMiw2NiBRIDEwNSw2NCAxMDIsNDggWiIvPgogICAgPCEtLSBsZWFmIHZlaW5zIC0tPgogICAgPHBhdGggZD0iTSAxMDgsNTEgUSAxMTEsNTcgMTE0LDY0IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNyIvPgogICAgPHBhdGggZD0iTSAxMTUsNDkgUSAxMTcsNTUgMTIwLDYwIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNyIvPgogICAgPCEtLSB0ZW5kcmlsIGN1cmwgKHRvIGxlZnQgb2Ygc3RlbSkgLS0+CiAgICA8cGF0aCBkPSJNIDEwMCw1OCBRIDg4LDU0IDg0LDYwIFEgODYsNjYgODAsNjYgUSA3Niw3MCA4Miw3MiIgc3Ryb2tlLXdpZHRoPSIxLjMiLz4KCiAgICA8IS0tIEdyYXBlIGNsdXN0ZXI6IFYtc2hhcGUgYnVuY2gsIGZpbmUtbGluZSBjaXJjbGVzIG9ubHkgKG5vIGZpbGwpIC0tPgogICAgPCEtLSByb3cgMSAoNCBncmFwZXMsIHdpZGVzdCkgLS0+CiAgICA8Y2lyY2xlIGN4PSI3OCIgY3k9Ijc4IiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSI5NCIgY3k9Ijc4IiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSI3OCIgcj0iOCIvPgogICAgPGNpcmNsZSBjeD0iMTI2IiBjeT0iNzgiIHI9IjgiLz4KICAgIDwhLS0gcm93IDIgKDMpIC0tPgogICAgPGNpcmNsZSBjeD0iODYiIGN5PSI5NCIgcj0iOCIvPgogICAgPGNpcmNsZSBjeD0iMTAyIiBjeT0iOTQiIHI9IjgiLz4KICAgIDxjaXJjbGUgY3g9IjExOCIgY3k9Ijk0IiByPSI4Ii8+CiAgICA8IS0tIHJvdyAzICgyKSAtLT4KICAgIDxjaXJjbGUgY3g9Ijk0IiBjeT0iMTEwIiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxMTAiIHI9IjgiLz4KICAgIDwhLS0gdGlwIGdyYXBlIC0tPgogICAgPGNpcmNsZSBjeD0iMTAyIiBjeT0iMTI2IiByPSI4Ii8+CgogICAgPCEtLSB0aW55IHNpbmdsZS1saW5lIGhpZ2hsaWdodCBvbiBhIGNvdXBsZSBvZiBncmFwZXMgdG8gc3VnZ2VzdCBsaWdodCAtLT4KICAgIDxwYXRoIGQ9Ik0gNzUsNzQgUSA3Niw3NiA3OCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gOTEsNzQgUSA5Miw3NiA5NCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gMTA3LDc0IFEgMTA4LDc2IDExMCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gODMsOTAgUSA4NCw5MiA4Niw5MiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gOTksOTAgUSAxMDAsOTIgMTAyLDkyIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNiIvPgogICAgPHBhdGggZD0iTSA5MSwxMDYgUSA5MiwxMDggOTQsMTA4IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNiIvPgogICAgPHBhdGggZD0iTSA5OSwxMjIgUSAxMDAsMTI0IDEwMiwxMjQiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC42Ii8+CiAgPC9nPgoKICA8IS0tIEdsYXNzIG91dGxpbmUg4oCUIGxvb3NlciB3YXRlcmNvbG9yIGluayBvbiB0b3AgLS0+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMmExODEwIiBzdHJva2Utd2lkdGg9IjIuOCIKICAgICBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG9wYWNpdHk9IjAuOTUiPgogICAgPHBhdGggZD0iTSA1NiwyOCBRIDQ4LDgwIDU4LDExOCBRIDcyLDE1MCAxMDAsMTU0IFEgMTI4LDE1MCAxNDIsMTE4IFEgMTUyLDgwIDE0NCwyOCIvPgogICAgPHBhdGggZD0iTSA1NCwyOCBRIDEwMCwyMiAxNDYsMjgiIHN0cm9rZS13aWR0aD0iMi4zIi8+CiAgICA8bGluZSB4MT0iMTAwIiB5MT0iMTU0IiB4Mj0iMTAwIiB5Mj0iMTgwIi8+CiAgICA8cGF0aCBkPSJNIDc2LDE4MCBRIDEwMCwxODYgMTI0LDE4MCIvPgogIDwvZz4KPC9zdmc+"/>
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0id2luZUJsb3QiIGN4PSI0MCUiIGN5PSIzNSUiIHI9IjcwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNjNDMwNTAiIHN0b3Atb3BhY2l0eT0iMC45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTUlIiBzdG9wLWNvbG9yPSIjOGExZjJhIiBzdG9wLW9wYWNpdHk9IjAuOTUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNWEwZjFhIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8Y2xpcFBhdGggaWQ9ImJvd2xDbGlwIj4KICAgICAgPHBhdGggZD0iTSA1NiwyOCBRIDQ4LDgwIDU4LDExOCBRIDcyLDE1MCAxMDAsMTU0IFEgMTI4LDE1MCAxNDIsMTE4IFEgMTUyLDgwIDE0NCwyOCBaIi8+CiAgICA8L2NsaXBQYXRoPgogICAgPGZpbHRlciBpZD0id2NCbHVyIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMS41Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CgogIDwhLS0gY3JlYW0gcm91bmRlZCBiYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiByeD0iNDQiIGZpbGw9IiNmOWY1ZWUiLz4KCiAgPCEtLSBXYXRlcmNvbG9yIHdpbmUgd2FzaCAoY2xpcHBlZCB0byBib3dsLCB1bmV2ZW4gcGlnbWVudCBwb29saW5nKSAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjYm93bENsaXApIj4KICAgIDxwYXRoIGQ9Ik0gNTYsNTggUSA3NSw1MyAxMDAsNTYgUSAxMzAsNjAgMTQ0LDU2IEwgMTQ0LDE1NCBMIDU2LDE1NCBaIgogICAgICAgICAgZmlsbD0idXJsKCN3aW5lQmxvdCkiIGZpbHRlcj0idXJsKCN3Y0JsdXIpIi8+CiAgICA8IS0tIHVuZXZlbiBibGVlZCBlZGdlIGF0IHdpbmUgc3VyZmFjZSAtLT4KICAgIDxwYXRoIGQ9Ik0gNTYsNTYgUSA3MCw1MSAxMDAsNTQgUSAxMzAsNTYgMTQ0LDUzIEwgMTQ0LDYyIEwgNTYsNjUgWiIKICAgICAgICAgIGZpbGw9IiM3YTFmMmEiIG9wYWNpdHk9IjAuNSIvPgogICAgPCEtLSBwaWdtZW50IHBvb2xpbmcgLS0+CiAgICA8ZWxsaXBzZSBjeD0iODIiIGN5PSIxMDgiIHJ4PSIyMCIgcnk9IjI2IiBmaWxsPSIjNGEwZjFhIiBvcGFjaXR5PSIwLjMyIiBmaWx0ZXI9InVybCgjd2NCbHVyKSIvPgogICAgPGVsbGlwc2UgY3g9IjEyMiIgY3k9Ijk0IiByeD0iMTYiIHJ5PSIyMiIgZmlsbD0iIzRhMGYxYSIgb3BhY2l0eT0iMC4yOCIgZmlsdGVyPSJ1cmwoI3djQmx1cikiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxNDAiIHJ4PSIyOCIgcnk9IjEyIiBmaWxsPSIjM2EwYTE0IiBvcGFjaXR5PSIwLjM1IiBmaWx0ZXI9InVybCgjd2NCbHVyKSIvPgogIDwvZz4KCiAgPCEtLSBGaW5lLWxpbmUgZ3JhcGUgY2x1c3RlciDigJQgZHJhd24gSU5TSURFIHRoZSBib3dsIG92ZXIgdGhlIHdpbmUgd2FzaCAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjYm93bENsaXApIiBmaWxsPSJub25lIiBzdHJva2U9IiMyYTE4MTAiCiAgICAgc3Ryb2tlLXdpZHRoPSIxLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgb3BhY2l0eT0iMC45NSI+CiAgICA8IS0tIHN0ZW0gZnJvbSByaW0gYXJlYSAtLT4KICAgIDxwYXRoIGQ9Ik0gMTAwLDY2IFEgMTAwLDU2IDEwMiw0OCIvPgogICAgPCEtLSB2aW5lIGxlYWYgKHRvIHJpZ2h0IG9mIHN0ZW0pIC0tPgogICAgPHBhdGggZD0iTSAxMDIsNDggUSAxMTgsNDQgMTI0LDU0IFEgMTIyLDY0IDExMiw2NiBRIDEwNSw2NCAxMDIsNDggWiIvPgogICAgPCEtLSBsZWFmIHZlaW5zIC0tPgogICAgPHBhdGggZD0iTSAxMDgsNTEgUSAxMTEsNTcgMTE0LDY0IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNyIvPgogICAgPHBhdGggZD0iTSAxMTUsNDkgUSAxMTcsNTUgMTIwLDYwIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNyIvPgogICAgPCEtLSB0ZW5kcmlsIGN1cmwgKHRvIGxlZnQgb2Ygc3RlbSkgLS0+CiAgICA8cGF0aCBkPSJNIDEwMCw1OCBRIDg4LDU0IDg0LDYwIFEgODYsNjYgODAsNjYgUSA3Niw3MCA4Miw3MiIgc3Ryb2tlLXdpZHRoPSIxLjMiLz4KCiAgICA8IS0tIEdyYXBlIGNsdXN0ZXI6IFYtc2hhcGUgYnVuY2gsIGZpbmUtbGluZSBjaXJjbGVzIG9ubHkgKG5vIGZpbGwpIC0tPgogICAgPCEtLSByb3cgMSAoNCBncmFwZXMsIHdpZGVzdCkgLS0+CiAgICA8Y2lyY2xlIGN4PSI3OCIgY3k9Ijc4IiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSI5NCIgY3k9Ijc4IiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSI3OCIgcj0iOCIvPgogICAgPGNpcmNsZSBjeD0iMTI2IiBjeT0iNzgiIHI9IjgiLz4KICAgIDwhLS0gcm93IDIgKDMpIC0tPgogICAgPGNpcmNsZSBjeD0iODYiIGN5PSI5NCIgcj0iOCIvPgogICAgPGNpcmNsZSBjeD0iMTAyIiBjeT0iOTQiIHI9IjgiLz4KICAgIDxjaXJjbGUgY3g9IjExOCIgY3k9Ijk0IiByPSI4Ii8+CiAgICA8IS0tIHJvdyAzICgyKSAtLT4KICAgIDxjaXJjbGUgY3g9Ijk0IiBjeT0iMTEwIiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxMTAiIHI9IjgiLz4KICAgIDwhLS0gdGlwIGdyYXBlIC0tPgogICAgPGNpcmNsZSBjeD0iMTAyIiBjeT0iMTI2IiByPSI4Ii8+CgogICAgPCEtLSB0aW55IHNpbmdsZS1saW5lIGhpZ2hsaWdodCBvbiBhIGNvdXBsZSBvZiBncmFwZXMgdG8gc3VnZ2VzdCBsaWdodCAtLT4KICAgIDxwYXRoIGQ9Ik0gNzUsNzQgUSA3Niw3NiA3OCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gOTEsNzQgUSA5Miw3NiA5NCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gMTA3LDc0IFEgMTA4LDc2IDExMCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gODMsOTAgUSA4NCw5MiA4Niw5MiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gOTksOTAgUSAxMDAsOTIgMTAyLDkyIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNiIvPgogICAgPHBhdGggZD0iTSA5MSwxMDYgUSA5MiwxMDggOTQsMTA4IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNiIvPgogICAgPHBhdGggZD0iTSA5OSwxMjIgUSAxMDAsMTI0IDEwMiwxMjQiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC42Ii8+CiAgPC9nPgoKICA8IS0tIEdsYXNzIG91dGxpbmUg4oCUIGxvb3NlciB3YXRlcmNvbG9yIGluayBvbiB0b3AgLS0+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMmExODEwIiBzdHJva2Utd2lkdGg9IjIuOCIKICAgICBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG9wYWNpdHk9IjAuOTUiPgogICAgPHBhdGggZD0iTSA1NiwyOCBRIDQ4LDgwIDU4LDExOCBRIDcyLDE1MCAxMDAsMTU0IFEgMTI4LDE1MCAxNDIsMTE4IFEgMTUyLDgwIDE0NCwyOCIvPgogICAgPHBhdGggZD0iTSA1NCwyOCBRIDEwMCwyMiAxNDYsMjgiIHN0cm9rZS13aWR0aD0iMi4zIi8+CiAgICA8bGluZSB4MT0iMTAwIiB5MT0iMTU0IiB4Mj0iMTAwIiB5Mj0iMTgwIi8+CiAgICA8cGF0aCBkPSJNIDc2LDE4MCBRIDEwMCwxODYgMTI0LDE4MCIvPgogIDwvZz4KPC9zdmc+"/>
 <style>
+  /* ── Apple HIG × Barossa — semantic tokens, light mode defaults ─────────── */
+  :root {
+    /* Barossa surface tokens */
+    --zb-bg:            #f9f5ee;   /* body / primary background (cream) */
+    --zb-bg-2:          #fdfaf3;   /* card / modal surface */
+    --zb-bg-grouped:    #f4ede1;   /* grouped list container */
+    --zb-separator:     #e8ddc8;
+    --zb-hairline:      rgba(90, 64, 48, 0.08);
+    --zb-shadow:        0 1px 2px rgba(60, 40, 20, 0.04), 0 3px 10px rgba(60, 40, 20, 0.06);
+    --zb-shadow-raised: 0 1px 2px rgba(60, 40, 20, 0.06), 0 8px 24px rgba(60, 40, 20, 0.10);
+    /* HIG semantic labels */
+    --zb-label:         #2d1f0f;
+    --zb-label-2:       #6a5040;
+    --zb-label-3:       #9a8070;
+    --zb-label-4:       #b9a794;
+    /* Accent — Barossa warm */
+    --zb-earth:         #9c7a54;
+    --zb-earth-light:   #f0e8dc;
+    --zb-earth-mid:     #d4b896;
+    --zb-sage:          #8aab7a;
+    --zb-sage-light:    #eaf3e4;
+    --zb-sage-mid:      #c5dbb8;
+    --zb-blue:          #7a9bb5;
+    --zb-blue-light:    #deeaf4;
+    --zb-blue-mid:      #b5cfe0;
+    --zb-pink:          #c4889a;
+    --zb-pink-light:    #f5e0e6;
+    --zb-pink-mid:      #e8bbc8;
+    --zb-gold:          #c4a842;
+    --zb-cream:         #f9f5ee;  /* explicit alias for legacy uses */
+    --zb-white:         #ffffff;
+    --zb-border:        #e0d4c8;
+    /* Status */
+    --zb-success:       #2e7d5b;
+    --zb-warn:          #b8892d;
+    --zb-danger:        #b03a48;
+    /* Type — system & serif (Apple HIG stacks) */
+    --zb-font-sans:     -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --zb-font-serif:    "New York", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    /* Radii — HIG-tuned */
+    --zb-radius-sm:     8px;
+    --zb-radius:        12px;
+    --zb-radius-lg:     18px;
+    --zb-radius-xl:     26px;
+    /* Motion */
+    --zb-ease:          cubic-bezier(0.22, 1, 0.36, 1);
+    --zb-ease-snap:     cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ── Dark mode (auto, follows OS setting) — HIG expectation ──────────────── */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --zb-bg:            #1a1613;
+      --zb-bg-2:          #221d17;
+      --zb-bg-grouped:    #2b2419;
+      --zb-separator:     #3a3128;
+      --zb-hairline:      rgba(244, 237, 225, 0.08);
+      --zb-shadow:        0 1px 3px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.30);
+      --zb-shadow-raised: 0 2px 6px rgba(0,0,0,0.4), 0 12px 28px rgba(0,0,0,0.45);
+      --zb-label:         #f2ead8;
+      --zb-label-2:       #cdbba0;
+      --zb-label-3:       #9a886e;
+      --zb-label-4:       #6a5c48;
+      --zb-earth:         #c49c72;
+      --zb-earth-light:   #3a2e22;
+      --zb-earth-mid:     #6a4e36;
+      --zb-sage:          #a8c898;
+      --zb-sage-light:    #273024;
+      --zb-sage-mid:      #4c6848;
+      --zb-blue:          #a0c2d8;
+      --zb-blue-light:    #1e2c36;
+      --zb-blue-mid:      #3e5a6c;
+      --zb-pink:          #dba3b3;
+      --zb-pink-light:    #36242a;
+      --zb-pink-mid:      #6c4650;
+      --zb-gold:          #d8be5c;
+      --zb-cream:         #1a1613;
+      --zb-white:         #272017;
+      --zb-border:        #3a3128;
+    }
+    img { filter: brightness(0.92); }
+  }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
   html {
     height: 100%; height: -webkit-fill-available; height: 100dvh;
     overflow: hidden;
+    background: var(--zb-bg);
+    color-scheme: light dark;
   }
   body {
     height: 100%; height: -webkit-fill-available; height: 100dvh;
-    background: #f9f5ee;
-    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background: var(--zb-bg);
+    color: var(--zb-label);
+    font-family: var(--zb-font-sans);
+    font-size: 15px;
+    line-height: 1.35;
     overflow: hidden; position: fixed;
     width: 100%; left: 0; top: 0;
     overscroll-behavior: none;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   #root {
     height: 100%; height: -webkit-fill-available; height: 100dvh;
@@ -32,21 +123,33 @@
     display: flex; flex-direction: column; overflow: hidden;
     width: 100%;
   }
+
+  /* ── HIG button interactions ─ subtle press, standard timing ────────────── */
+  button {
+    font-family: inherit;
+    transition: transform 160ms var(--zb-ease-snap), opacity 160ms var(--zb-ease-snap), background-color 160ms var(--zb-ease), box-shadow 200ms var(--zb-ease);
+  }
+  button:active:not(:disabled) {
+    transform: scale(0.97);
+    opacity: 0.86;
+  }
+
+  /* Range sliders retain Barossa thumb */
   input[type=range] {
     -webkit-appearance: none; appearance: none;
     width: 100%; height: 4px; border-radius: 2px;
-    background: #e0d4c8; outline: none; cursor: pointer;
+    background: var(--zb-border); outline: none; cursor: pointer;
   }
   input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none; appearance: none;
-    width: 20px; height: 20px; border-radius: 50%;
-    background: #9c7a54; border: 2px solid white;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--zb-earth); border: 2px solid var(--zb-white);
     box-shadow: 0 1px 4px rgba(0,0,0,0.25); cursor: pointer;
   }
-  input, textarea, select { font-family: inherit; outline: none; }
+  input, textarea, select { font-family: inherit; outline: none; color: var(--zb-label); background-color: transparent; }
   input[type=number]:focus, input[type=text]:focus, textarea:focus, select:focus {
-    border-color: #9c7a54 !important;
-    box-shadow: 0 0 0 3px rgba(156,122,84,0.12);
+    border-color: var(--zb-earth) !important;
+    box-shadow: 0 0 0 3px rgba(156,122,84,0.18);
   }
   select {
     -webkit-appearance: none; appearance: none;
@@ -57,8 +160,27 @@
   ::-webkit-scrollbar { display: none; }
   * { scrollbar-width: none; }
   button, input, select, textarea { touch-action: manipulation; font-family: inherit; }
-  @supports (padding-bottom: env(safe-area-inset-bottom)) {
-    #root { padding-bottom: env(safe-area-inset-bottom); }
+
+  /* ── Safe-area insets for fixed chrome (notch / home indicator) ─────────── */
+  @supports (padding-top: env(safe-area-inset-top)) {
+    .zb-header { padding-top: calc(12px + env(safe-area-inset-top)); }
+    .zb-bottom { padding-bottom: calc(4px + env(safe-area-inset-bottom)); }
+  }
+
+  /* Serif accent class (uses New York on iOS, Palatino fallback elsewhere) */
+  .zb-serif { font-family: var(--zb-font-serif); letter-spacing: 0.1px; }
+
+  /* A11y focus ring — visible keyboard, hidden on touch */
+  button:focus-visible, a:focus-visible {
+    outline: 2px solid var(--zb-earth);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* Modal-sheet backdrop blur to match iOS look */
+  .zb-modal-backdrop {
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
   }
 </style>
 </head>
@@ -71,7 +193,7 @@ if('serviceWorker' in navigator){
     navigator.serviceWorker.register(URL.createObjectURL(blob),{scope:'.'});
   });
 }
-const manifest={"name":"Ze Barossa","short_name":"Ze Barossa","display":"standalone","background_color":"#f9f5ee","theme_color":"#f9f5ee","orientation":"portrait","icons":[{"src":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjQ0IiBmaWxsPSIjZjlmNWVlIi8+CiAgPGcgc3Ryb2tlPSIjNWE0MDMwIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPHBhdGggZD0iTSA2OCwzOCBRIDYwLDgwIDY2LDExMCBRIDc0LDEzNiAxMDAsMTQyIFEgMTI2LDEzNiAxMzQsMTEwIFEgMTQwLDgwIDEzMiwzOCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgICA8bGluZSB4MT0iNjgiIHkxPSIzOCIgeDI9IjEzMiIgeTI9IjM4IiBzdHJva2Utd2lkdGg9IjMiLz4KICAgIDxwYXRoIGQ9Ik0gNzAsNzAgUSAxMDAsNjQgMTMwLDcwIFEgMTM2LDkwIDEzMCwxMDggUSAxMjIsMTMwIDEwMCwxMzYgUSA3OCwxMzAgNzAsMTA4IFEgNjQsOTAgNzAsNzAgWiIgZmlsbD0iIzdhMjAzMCIgb3BhY2l0eT0iMC4xOCIgc3Ryb2tlPSJub25lIi8+CiAgICA8cGF0aCBkPSJNIDcxLDcwIFEgMTAwLDY0IDEyOSw3MCIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjU1Ii8+CiAgICA8bGluZSB4MT0iMTAwIiB5MT0iMTQyIiB4Mj0iMTAwIiB5Mj0iMTcwIiBzdHJva2Utd2lkdGg9IjMiLz4KICAgIDxwYXRoIGQ9Ik0gNzQsMTcwIFEgMTAwLDE3NiAxMjYsMTcwIiBzdHJva2Utd2lkdGg9IjMiLz4KICAgIDxwYXRoIGQ9Ik0gNzgsNTAgUSA3Niw2NCA3OCw3NiIgc3Ryb2tlLXdpZHRoPSIxLjgiIG9wYWNpdHk9IjAuMyIvPgogIDwvZz4KICA8dGV4dCB4PSIxMDAiIHk9IjE5NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzdhNWEzYSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGxldHRlci1zcGFjaW5nPSIwLjUiPlplIEJhcm9zc2E8L3RleHQ+Cjwvc3ZnPg==","sizes":"512x512","type":"image/svg+xml","purpose":"any maskable"}]};
+const manifest={"name":"Ze Barossa","short_name":"Ze Barossa","display":"standalone","background_color":"#f9f5ee","theme_color":"#f9f5ee","orientation":"portrait","icons":[{"src":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0id2luZUJsb3QiIGN4PSI0MCUiIGN5PSIzNSUiIHI9IjcwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNjNDMwNTAiIHN0b3Atb3BhY2l0eT0iMC45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTUlIiBzdG9wLWNvbG9yPSIjOGExZjJhIiBzdG9wLW9wYWNpdHk9IjAuOTUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNWEwZjFhIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8Y2xpcFBhdGggaWQ9ImJvd2xDbGlwIj4KICAgICAgPHBhdGggZD0iTSA1NiwyOCBRIDQ4LDgwIDU4LDExOCBRIDcyLDE1MCAxMDAsMTU0IFEgMTI4LDE1MCAxNDIsMTE4IFEgMTUyLDgwIDE0NCwyOCBaIi8+CiAgICA8L2NsaXBQYXRoPgogICAgPGZpbHRlciBpZD0id2NCbHVyIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMS41Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CgogIDwhLS0gY3JlYW0gcm91bmRlZCBiYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiByeD0iNDQiIGZpbGw9IiNmOWY1ZWUiLz4KCiAgPCEtLSBXYXRlcmNvbG9yIHdpbmUgd2FzaCAoY2xpcHBlZCB0byBib3dsLCB1bmV2ZW4gcGlnbWVudCBwb29saW5nKSAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjYm93bENsaXApIj4KICAgIDxwYXRoIGQ9Ik0gNTYsNTggUSA3NSw1MyAxMDAsNTYgUSAxMzAsNjAgMTQ0LDU2IEwgMTQ0LDE1NCBMIDU2LDE1NCBaIgogICAgICAgICAgZmlsbD0idXJsKCN3aW5lQmxvdCkiIGZpbHRlcj0idXJsKCN3Y0JsdXIpIi8+CiAgICA8IS0tIHVuZXZlbiBibGVlZCBlZGdlIGF0IHdpbmUgc3VyZmFjZSAtLT4KICAgIDxwYXRoIGQ9Ik0gNTYsNTYgUSA3MCw1MSAxMDAsNTQgUSAxMzAsNTYgMTQ0LDUzIEwgMTQ0LDYyIEwgNTYsNjUgWiIKICAgICAgICAgIGZpbGw9IiM3YTFmMmEiIG9wYWNpdHk9IjAuNSIvPgogICAgPCEtLSBwaWdtZW50IHBvb2xpbmcgLS0+CiAgICA8ZWxsaXBzZSBjeD0iODIiIGN5PSIxMDgiIHJ4PSIyMCIgcnk9IjI2IiBmaWxsPSIjNGEwZjFhIiBvcGFjaXR5PSIwLjMyIiBmaWx0ZXI9InVybCgjd2NCbHVyKSIvPgogICAgPGVsbGlwc2UgY3g9IjEyMiIgY3k9Ijk0IiByeD0iMTYiIHJ5PSIyMiIgZmlsbD0iIzRhMGYxYSIgb3BhY2l0eT0iMC4yOCIgZmlsdGVyPSJ1cmwoI3djQmx1cikiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxNDAiIHJ4PSIyOCIgcnk9IjEyIiBmaWxsPSIjM2EwYTE0IiBvcGFjaXR5PSIwLjM1IiBmaWx0ZXI9InVybCgjd2NCbHVyKSIvPgogIDwvZz4KCiAgPCEtLSBGaW5lLWxpbmUgZ3JhcGUgY2x1c3RlciDigJQgZHJhd24gSU5TSURFIHRoZSBib3dsIG92ZXIgdGhlIHdpbmUgd2FzaCAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjYm93bENsaXApIiBmaWxsPSJub25lIiBzdHJva2U9IiMyYTE4MTAiCiAgICAgc3Ryb2tlLXdpZHRoPSIxLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgb3BhY2l0eT0iMC45NSI+CiAgICA8IS0tIHN0ZW0gZnJvbSByaW0gYXJlYSAtLT4KICAgIDxwYXRoIGQ9Ik0gMTAwLDY2IFEgMTAwLDU2IDEwMiw0OCIvPgogICAgPCEtLSB2aW5lIGxlYWYgKHRvIHJpZ2h0IG9mIHN0ZW0pIC0tPgogICAgPHBhdGggZD0iTSAxMDIsNDggUSAxMTgsNDQgMTI0LDU0IFEgMTIyLDY0IDExMiw2NiBRIDEwNSw2NCAxMDIsNDggWiIvPgogICAgPCEtLSBsZWFmIHZlaW5zIC0tPgogICAgPHBhdGggZD0iTSAxMDgsNTEgUSAxMTEsNTcgMTE0LDY0IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNyIvPgogICAgPHBhdGggZD0iTSAxMTUsNDkgUSAxMTcsNTUgMTIwLDYwIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNyIvPgogICAgPCEtLSB0ZW5kcmlsIGN1cmwgKHRvIGxlZnQgb2Ygc3RlbSkgLS0+CiAgICA8cGF0aCBkPSJNIDEwMCw1OCBRIDg4LDU0IDg0LDYwIFEgODYsNjYgODAsNjYgUSA3Niw3MCA4Miw3MiIgc3Ryb2tlLXdpZHRoPSIxLjMiLz4KCiAgICA8IS0tIEdyYXBlIGNsdXN0ZXI6IFYtc2hhcGUgYnVuY2gsIGZpbmUtbGluZSBjaXJjbGVzIG9ubHkgKG5vIGZpbGwpIC0tPgogICAgPCEtLSByb3cgMSAoNCBncmFwZXMsIHdpZGVzdCkgLS0+CiAgICA8Y2lyY2xlIGN4PSI3OCIgY3k9Ijc4IiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSI5NCIgY3k9Ijc4IiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSI3OCIgcj0iOCIvPgogICAgPGNpcmNsZSBjeD0iMTI2IiBjeT0iNzgiIHI9IjgiLz4KICAgIDwhLS0gcm93IDIgKDMpIC0tPgogICAgPGNpcmNsZSBjeD0iODYiIGN5PSI5NCIgcj0iOCIvPgogICAgPGNpcmNsZSBjeD0iMTAyIiBjeT0iOTQiIHI9IjgiLz4KICAgIDxjaXJjbGUgY3g9IjExOCIgY3k9Ijk0IiByPSI4Ii8+CiAgICA8IS0tIHJvdyAzICgyKSAtLT4KICAgIDxjaXJjbGUgY3g9Ijk0IiBjeT0iMTEwIiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxMTAiIHI9IjgiLz4KICAgIDwhLS0gdGlwIGdyYXBlIC0tPgogICAgPGNpcmNsZSBjeD0iMTAyIiBjeT0iMTI2IiByPSI4Ii8+CgogICAgPCEtLSB0aW55IHNpbmdsZS1saW5lIGhpZ2hsaWdodCBvbiBhIGNvdXBsZSBvZiBncmFwZXMgdG8gc3VnZ2VzdCBsaWdodCAtLT4KICAgIDxwYXRoIGQ9Ik0gNzUsNzQgUSA3Niw3NiA3OCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gOTEsNzQgUSA5Miw3NiA5NCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gMTA3LDc0IFEgMTA4LDc2IDExMCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gODMsOTAgUSA4NCw5MiA4Niw5MiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gOTksOTAgUSAxMDAsOTIgMTAyLDkyIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNiIvPgogICAgPHBhdGggZD0iTSA5MSwxMDYgUSA5MiwxMDggOTQsMTA4IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNiIvPgogICAgPHBhdGggZD0iTSA5OSwxMjIgUSAxMDAsMTI0IDEwMiwxMjQiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC42Ii8+CiAgPC9nPgoKICA8IS0tIEdsYXNzIG91dGxpbmUg4oCUIGxvb3NlciB3YXRlcmNvbG9yIGluayBvbiB0b3AgLS0+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMmExODEwIiBzdHJva2Utd2lkdGg9IjIuOCIKICAgICBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG9wYWNpdHk9IjAuOTUiPgogICAgPHBhdGggZD0iTSA1NiwyOCBRIDQ4LDgwIDU4LDExOCBRIDcyLDE1MCAxMDAsMTU0IFEgMTI4LDE1MCAxNDIsMTE4IFEgMTUyLDgwIDE0NCwyOCIvPgogICAgPHBhdGggZD0iTSA1NCwyOCBRIDEwMCwyMiAxNDYsMjgiIHN0cm9rZS13aWR0aD0iMi4zIi8+CiAgICA8bGluZSB4MT0iMTAwIiB5MT0iMTU0IiB4Mj0iMTAwIiB5Mj0iMTgwIi8+CiAgICA8cGF0aCBkPSJNIDc2LDE4MCBRIDEwMCwxODYgMTI0LDE4MCIvPgogIDwvZz4KPC9zdmc+","sizes":"512x512","type":"image/svg+xml","purpose":"any maskable"}]};
 const mblob=new Blob([JSON.stringify(manifest)],{type:"application/manifest+json"});
 const ml=document.createElement("link");ml.rel="manifest";ml.href=URL.createObjectURL(mblob);document.head.appendChild(ml);
 </script>
@@ -253,15 +375,62 @@ const WineGlassFilter = ({ size = 28, fillPct = 0, active = false }) => {
   );
 };
 
+// ─── WINE GLASS (bare, fills with wine) ─ for inline use in rating sliders ───
+const WineGlassFill = ({ size = 22, fillPct = 0, color = "#a01f2f", outline = "#5a4030" }) => {
+  const bowlTop = 8, bowlBottom = 16;
+  const wineY = bowlBottom - ((bowlBottom - bowlTop) * Math.max(0, Math.min(100, fillPct)) / 100);
+  const clipId = `wfClip-${Math.random().toString(36).slice(2,9)}`;
+  return (
+    <svg width={size} height={size} viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" style={{flexShrink:0}}>
+      <defs>
+        <clipPath id={clipId}>
+          <path d="M 9,5 Q 8.3,10.5 9,13.5 Q 9.8,16.3 14,16.5 Q 18.2,16.3 19,13.5 Q 19.7,10.5 19,5 Z"/>
+        </clipPath>
+      </defs>
+      {fillPct > 0 && (
+        <rect x="7" y={wineY} width="14" height={bowlBottom - wineY + 0.5} fill={color} clipPath={`url(#${clipId})`} opacity="0.92"/>
+      )}
+      {fillPct > 3 && fillPct < 100 && (
+        <ellipse cx="14" cy={wineY + 0.3} rx="4.5" ry="0.5" fill="#c44050" clipPath={`url(#${clipId})`} opacity="0.55"/>
+      )}
+      <g fill="none" stroke={outline} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M 9,5 Q 8.3,10.5 9,13.5 Q 9.8,16.3 14,16.5 Q 18.2,16.3 19,13.5 Q 19.7,10.5 19,5 Z"/>
+        <line x1="9" y1="5" x2="19" y2="5"/>
+        <line x1="14" y1="16.5" x2="14" y2="22"/>
+        <path d="M 10.5,22 Q 14,23 17.5,22"/>
+      </g>
+    </svg>
+  );
+};
+
 // ─── PALETTE ─────────────────────────────────────────────────────────────────
+// Semantic colour palette — each value is a CSS var that flips in dark mode.
+// Keep the same keys so every inline style in the app continues to work.
 const C = {
-  cream: "#f9f5ee", sage: "#8aab7a", sageMid: "#c5dbb8", sageLight: "#eaf3e4",
-  earth: "#9c7a54", earthLight: "#f0e8dc", earthMid: "#d4b896",
-  dustyBlue: "#7a9bb5", blueLight: "#deeaf4", blueMid: "#b5cfe0",
-  dustyPink: "#c4889a", pinkLight: "#f5e0e6", pinkMid: "#e8bbc8",
-  text: "#2d1f0f", textMid: "#6a5040", textLight: "#9a8070",
-  border: "#e0d4c8", white: "#ffffff",
-  gold: "#c4a842",
+  cream:      "var(--zb-cream)",
+  sage:       "var(--zb-sage)",
+  sageMid:    "var(--zb-sage-mid)",
+  sageLight:  "var(--zb-sage-light)",
+  earth:      "var(--zb-earth)",
+  earthLight: "var(--zb-earth-light)",
+  earthMid:   "var(--zb-earth-mid)",
+  dustyBlue:  "var(--zb-blue)",
+  blueLight:  "var(--zb-blue-light)",
+  blueMid:    "var(--zb-blue-mid)",
+  dustyPink:  "var(--zb-pink)",
+  pinkLight:  "var(--zb-pink-light)",
+  pinkMid:    "var(--zb-pink-mid)",
+  text:       "var(--zb-label)",
+  textMid:    "var(--zb-label-2)",
+  textLight:  "var(--zb-label-3)",
+  border:     "var(--zb-border)",
+  white:      "var(--zb-white)",
+  gold:       "var(--zb-gold)",
+  bgGrouped:  "var(--zb-bg-grouped)",
+  bg2:        "var(--zb-bg-2)",
+  success:    "var(--zb-success)",
+  warn:       "var(--zb-warn)",
+  danger:     "var(--zb-danger)",
 };
 
 // ─── WINERY DATA ─────────────────────────────────────────────────────────────
@@ -510,18 +679,33 @@ const BottleViz = ({ count }) => {
   );
 };
 
-// ─── RATING INPUT ─────────────────────────────────────────────────────────────
-const RatingSlider = ({ label, value, onChange }) => (
-  <div style={{marginBottom:12}}>
-    <div style={{display:"flex",justifyContent:"space-between",marginBottom:4}}>
-      <span style={{fontSize:12,color:C.textMid,fontWeight:600}}>{label}</span>
-      <span style={{fontSize:12,color:C.earth,background:C.earthLight,padding:"1px 8px",borderRadius:10,fontWeight:700}}>{value!=null?Number(value).toFixed(1):"—"}/10</span>
+// ─── RATING INPUT — wine glass row that fills up as you slide ────────────────
+const RatingSlider = ({ label, value, onChange }) => {
+  const v = value == null ? 0 : value;
+  return (
+    <div style={{marginBottom:14}}>
+      <div style={{display:"flex",justifyContent:"space-between",marginBottom:6,alignItems:"center"}}>
+        <span style={{fontSize:12,color:C.textMid,fontWeight:600}}>{label}</span>
+        <span style={{fontSize:12,color:C.earth,background:C.earthLight,padding:"1px 8px",borderRadius:10,fontWeight:700}}>{value!=null?Number(value).toFixed(1):"—"}/10</span>
+      </div>
+      <div style={{position:"relative",height:34,display:"flex",alignItems:"center",background:C.cream,borderRadius:10,padding:"3px 6px",border:`1px solid ${C.border}`}}>
+        {/* 10 glasses — each fills proportionally as value passes its slot */}
+        <div style={{display:"flex",flex:1,gap:1,alignItems:"center",justifyContent:"space-between",pointerEvents:"none"}}>
+          {Array.from({length:10}).map((_,i) => {
+            const start = i, end = i + 1;
+            const glassFill = v <= start ? 0 : v >= end ? 100 : (v - start) * 100;
+            return <WineGlassFill key={i} size={24} fillPct={glassFill}/>;
+          })}
+        </div>
+        {/* invisible range overlay — captures drag/touch */}
+        <input type="range" min="0" max="10" step="0.5" value={v}
+          onChange={e=>onChange(parseFloat(e.target.value))}
+          aria-label={label}
+          style={{position:"absolute",left:0,right:0,top:0,bottom:0,width:"100%",height:"100%",opacity:0,margin:0,padding:0,cursor:"pointer",WebkitAppearance:"none"}}/>
+      </div>
     </div>
-    <input type="range" min="0" max="10" step="0.5" value={value??5}
-      onChange={e=>onChange(parseFloat(e.target.value))}
-      style={{width:"100%",accentColor:C.earth,height:4}}/>
-  </div>
-);
+  );
+};
 
 // ─── PHOTO SECTION ────────────────────────────────────────────────────────────
 const PhotoSection = ({ photos, onAdd, onDelete, editable }) => {
@@ -1014,7 +1198,7 @@ const AddModal = ({ onClose, onAdd }) => {
 };
 
 // ─── LEADERBOARD ─────────────────────────────────────────────────────────────
-const Leaderboard = ({ wineries }) => {
+const Stats = ({ wineries, onSelect }) => {
   const visited = wineries.filter(w=>w.visited);
   const rated = visited.filter(w=>getOverall(w)!=null);
   const totalBottles = visited.reduce((s,w)=>s+(w.bottles||0),0);
@@ -1046,24 +1230,36 @@ const Leaderboard = ({ wineries }) => {
         [<Icons.Handshake size={15} color={C.earth}/>, "Best Service", topService, avgRatingField(topService,"service")?.toFixed(1)],
         [<Icons.Bottle size={15} color={C.dustyBlue}/>, "Most Bottles", bigSpender, bigSpender?`${bigSpender.bottles} btl`:null],
       ].map(([icon, label, winner, score], i) => winner && score && (
-        <div key={i} style={{background:"white",border:`1px solid ${C.border}`,borderRadius:12,padding:"10px 14px",marginBottom:8,display:"flex",alignItems:"center",gap:10}}>
+        <button key={i} onClick={()=>onSelect && onSelect(winner)}
+          style={{width:"100%",textAlign:"left",background:"white",border:`1px solid ${C.border}`,borderRadius:12,padding:"10px 14px",marginBottom:8,display:"flex",alignItems:"center",gap:10,cursor:"pointer",fontFamily:"inherit",transition:"transform 0.08s, box-shadow 0.15s"}}
+          onMouseEnter={e=>e.currentTarget.style.boxShadow=`0 3px 12px rgba(100,70,30,0.12)`}
+          onMouseLeave={e=>e.currentTarget.style.boxShadow=""}
+          onMouseDown={e=>e.currentTarget.style.transform="scale(0.99)"}
+          onMouseUp={e=>e.currentTarget.style.transform=""}>
           <div style={{width:32,height:32,borderRadius:10,background:C.earthLight,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>{icon}</div>
           <div style={{flex:1,minWidth:0}}>
             <div style={{fontSize:10,color:C.textLight,fontWeight:600,letterSpacing:0.3,marginBottom:1}}>{label}</div>
             <div style={{fontSize:13,fontWeight:700,color:C.text,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{winner?.name}</div>
           </div>
           <div style={{background:C.sageLight,borderRadius:10,padding:"4px 10px",fontSize:13,fontWeight:700,color:C.sage,flexShrink:0}}>{score}</div>
-        </div>
+          <span style={{fontSize:16,color:C.textLight,marginLeft:2}}>›</span>
+        </button>
       ))}
 
       {/* Top 10 list */}
       <div style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:15,fontWeight:700,color:C.text,marginTop:16,marginBottom:10}}>Top 10 Overall</div>
       {sorted.slice(0,10).map((w,i)=>(
-        <div key={w.id} style={{display:"flex",alignItems:"center",gap:10,padding:"8px 12px",background:"white",border:`1px solid ${C.border}`,borderRadius:10,marginBottom:6}}>
+        <button key={w.id} onClick={()=>onSelect && onSelect(w)}
+          style={{width:"100%",textAlign:"left",display:"flex",alignItems:"center",gap:10,padding:"8px 12px",background:"white",border:`1px solid ${C.border}`,borderRadius:10,marginBottom:6,cursor:"pointer",fontFamily:"inherit",transition:"transform 0.08s, box-shadow 0.15s"}}
+          onMouseEnter={e=>e.currentTarget.style.boxShadow=`0 3px 10px rgba(100,70,30,0.10)`}
+          onMouseLeave={e=>e.currentTarget.style.boxShadow=""}
+          onMouseDown={e=>e.currentTarget.style.transform="scale(0.99)"}
+          onMouseUp={e=>e.currentTarget.style.transform=""}>
           <div style={{width:24,height:24,borderRadius:"50%",background:i===0?"#ffd700":i===1?"#c0c0c0":i===2?"#cd7f32":C.earthLight,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:i<3?"#3a2a1a":C.textMid,flexShrink:0}}>{i+1}</div>
           <div style={{flex:1,fontSize:13,fontWeight:600,color:C.text,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{w.name}</div>
           <div style={{fontSize:13,fontWeight:700,color:C.sage}}>{getOverall(w).toFixed(1)}</div>
-        </div>
+          <span style={{fontSize:14,color:C.textLight}}>›</span>
+        </button>
       ))}
     </div>
   );
@@ -1256,12 +1452,33 @@ const MapView = ({ wineries, onSelect }) => {
             <filter id="pinShadow" x="-50%" y="-50%" width="200%" height="200%">
               <feDropShadow dx="0.5" dy="1" stdDeviation="0.6" floodColor="#3a2a1a" floodOpacity="0.3"/>
             </filter>
+            {/* Warm sun gradient — subtle NW→SE gold wash */}
+            <linearGradient id="goldenHour" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#fff0c8" stopOpacity="0.7"/>
+              <stop offset="50%" stopColor="#f9e8c0" stopOpacity="0.25"/>
+              <stop offset="100%" stopColor="#e8c488" stopOpacity="0.15"/>
+            </linearGradient>
+            {/* Harvest-field pattern — tan ochre hatch */}
+            <pattern id="harvestRows" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(10)">
+              <rect width="4" height="4" fill="#e8cc96" opacity="0.55"/>
+              <line x1="0" y1="0" x2="0" y2="4" stroke="#b89856" strokeWidth="0.4" opacity="0.45"/>
+            </pattern>
+            {/* Olive grove — grey-green dot pattern */}
+            <pattern id="oliveGrove" width="6" height="6" patternUnits="userSpaceOnUse">
+              <circle cx="3" cy="3" r="1.2" fill="#8a9078" opacity="0.6"/>
+            </pattern>
+            {/* Young vines — lighter green */}
+            <pattern id="youngVines" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+              <line x1="0" y1="0" x2="0" y2="3" stroke="#a8c498" strokeWidth="0.3" opacity="0.5"/>
+            </pattern>
           </defs>
 
           <g transform={`translate(${pan.x},${pan.y}) scale(${zoom})`} style={{transformOrigin:"50% 50%"}}>
             {/* Paper base */}
             <rect width={W} height={H} fill={bg}/>
             <rect width={W} height={H} fill="url(#mapGlow)"/>
+            {/* Golden hour gradient — warm light falling from NW */}
+            <rect width={W} height={H} fill="url(#goldenHour)" opacity="0.45"/>
 
             {/* ── TERRAIN — soft watercolor hills ── */}
             {/* Eden Valley — eastern range, layered washes */}
@@ -1292,6 +1509,17 @@ const MapView = ({ wineries, onSelect }) => {
             {/* Northern vineyard strip */}
             <path d="M 125,75 Q 150,70 178,72 Q 200,80 205,100 Q 188,115 165,115 Q 140,112 125,100 Q 118,85 125,75 Z" fill={vineyard} opacity="0.55"/>
             <path d="M 125,75 Q 150,70 178,72 Q 200,80 205,100 Q 188,115 165,115 Q 140,112 125,100 Q 118,85 125,75 Z" fill="url(#vineRows2)"/>
+            {/* Young-vine block north-east of Nuriootpa */}
+            <path d="M 170,130 Q 190,125 210,130 Q 218,142 212,155 Q 200,160 185,158 Q 170,152 170,130 Z" fill="#c8dbae" opacity="0.55"/>
+            <path d="M 170,130 Q 190,125 210,130 Q 218,142 212,155 Q 200,160 185,158 Q 170,152 170,130 Z" fill="url(#youngVines)"/>
+            {/* Harvest ochre field — east of Tanunda */}
+            <path d="M 238,238 Q 258,232 275,236 Q 280,252 272,264 Q 255,268 240,262 Q 232,250 238,238 Z" fill="url(#harvestRows)" opacity="0.85"/>
+            {/* Small olive grove — south */}
+            <ellipse cx="135" cy="352" rx="15" ry="9" fill="url(#oliveGrove)"/>
+            <ellipse cx="135" cy="352" rx="15" ry="9" fill="#8aa078" opacity="0.2"/>
+            {/* Eden slope vines — western flank of hills */}
+            <path d="M 260,155 Q 278,150 294,155 Q 298,170 290,182 Q 275,186 262,180 Q 255,170 260,155 Z" fill={vineyardDeep} opacity="0.5"/>
+            <path d="M 260,155 Q 278,150 294,155 Q 298,170 290,182 Q 275,186 262,180 Q 255,170 260,155 Z" fill="url(#vineRows3)"/>
 
             {/* ── FOREST PATCHES — rounded dots cluster ── */}
             {[[40,250,12],[52,276,9],[260,120,10],[275,140,13],[290,175,8],[330,200,11],[35,310,10],[55,330,8],[50,220,7]].map(([cx,cy,r],i)=>(
@@ -1300,6 +1528,13 @@ const MapView = ({ wineries, onSelect }) => {
                 <circle cx={cx-2} cy={cy-2} r={r*0.7} fill={forest} opacity="0.4"/>
               </g>
             ))}
+
+            {/* ── FARM DAMS — small ponds dotted around ── */}
+            <ellipse cx="90" cy="215" rx="4" ry="2.5" fill={waterDeep} opacity="0.55"/>
+            <ellipse cx="90" cy="215" rx="4" ry="2.5" fill={water} opacity="0.5"/>
+            <ellipse cx="228" cy="260" rx="3.5" ry="2" fill={waterDeep} opacity="0.55"/>
+            <ellipse cx="228" cy="260" rx="3.5" ry="2" fill={water} opacity="0.5"/>
+            <ellipse cx="172" cy="345" rx="3" ry="1.7" fill={waterDeep} opacity="0.5"/>
 
             {/* ── WATER — North Para River with soft fill ── */}
             <path d="M 152,14 C 150,45 147,78 144,112 C 141,145 138,175 135,205 C 132,230 129,255 126,278 C 123,300 121,320 119,345 C 117,362 115,380 113,406"
@@ -1314,7 +1549,7 @@ const MapView = ({ wineries, onSelect }) => {
 
             {/* ── ROADS — warm parchment with ink stroke ── */}
             {/* Main highway */}
-            <path d="M 158,14 C 156,50 154,88 152,126 C 150,165 149,198 148,232 C 147,265 146,295 145,320 C 144,345 143,368 142,406"
+            <path id="mainHwy" d="M 158,14 C 156,50 154,88 152,126 C 150,165 149,198 148,232 C 147,265 146,295 145,320 C 144,345 143,368 142,406"
               fill="none" stroke={road} strokeWidth="5"/>
             <path d="M 158,14 C 156,50 154,88 152,126 C 150,165 149,198 148,232 C 147,265 146,295 145,320 C 144,345 143,368 142,406"
               fill="none" stroke={roadStroke} strokeWidth="1.4" strokeDasharray="0" opacity="0.85"/>
@@ -1332,8 +1567,63 @@ const MapView = ({ wineries, onSelect }) => {
             <path d="M 102,168 C 124,166 145,165 162,166 C 178,167 192,169 208,172"
               fill="none" stroke={roadStroke} strokeWidth="0.75" opacity="0.65"/>
             {/* Eden Valley Rd — dashed scenic */}
-            <path d="M 218,290 C 238,268 258,244 275,218 C 292,192 308,165 322,140 C 335,118 348,96 360,75"
+            <path id="edenValleyRd" d="M 218,290 C 238,268 258,244 275,218 C 292,192 308,165 322,140 C 335,118 348,96 360,75"
               fill="none" stroke={roadStroke} strokeWidth="0.9" strokeDasharray="5,3" opacity="0.75"/>
+            <text fontSize="5.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
+              <textPath href="#edenValleyRd" startOffset="20%">Menglers Hill Rd → Eden Valley</textPath>
+            </text>
+
+            {/* Seppeltsfield Rd — famous palm-lined road, NW to Tanunda */}
+            <path id="seppeltsRd" d="M 40,135 C 70,142 100,155 135,180 C 165,205 185,225 205,244" fill="none" stroke={road} strokeWidth="2.8"/>
+            <path d="M 40,135 C 70,142 100,155 135,180 C 165,205 185,225 205,244" fill="none" stroke={roadStroke} strokeWidth="0.85" opacity="0.75"/>
+            <text fontSize="5.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
+              <textPath href="#seppeltsRd" startOffset="18%">Seppeltsfield Rd</textPath>
+            </text>
+
+            {/* Stockwell Rd — north from Nuriootpa */}
+            <path id="stockwellRd" d="M 148,162 C 158,140 170,110 180,80" fill="none" stroke={road} strokeWidth="2.3"/>
+            <path d="M 148,162 C 158,140 170,110 180,80" fill="none" stroke={roadStroke} strokeWidth="0.75" opacity="0.7"/>
+            <text fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
+              <textPath href="#stockwellRd" startOffset="30%">Stockwell Rd</textPath>
+            </text>
+
+            {/* Nuriootpa–Angaston Rd — diagonal */}
+            <path id="nurioAngRd" d="M 148,162 C 180,200 220,250 258,297" fill="none" stroke={road} strokeWidth="2.3"/>
+            <path d="M 148,162 C 180,200 220,250 258,297" fill="none" stroke={roadStroke} strokeWidth="0.75" opacity="0.7"/>
+            <text fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
+              <textPath href="#nurioAngRd" startOffset="35%">Angaston Rd</textPath>
+            </text>
+
+            {/* Gomersal Rd — SW from Tanunda to Lyndoch */}
+            <path id="gomersalRd" d="M 205,244 C 188,275 172,315 165,360" fill="none" stroke={road} strokeWidth="2.3"/>
+            <path d="M 205,244 C 188,275 172,315 165,360" fill="none" stroke={roadStroke} strokeWidth="0.75" opacity="0.7"/>
+            <text fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
+              <textPath href="#gomersalRd" startOffset="25%">Gomersal Rd</textPath>
+            </text>
+
+            {/* Langmeil Rd — short connector north of Tanunda */}
+            <path d="M 205,244 C 200,225 195,205 192,185" fill="none" stroke={road} strokeWidth="1.9"/>
+            <path d="M 205,244 C 200,225 195,205 192,185" fill="none" stroke={roadStroke} strokeWidth="0.6" opacity="0.65"/>
+
+            {/* Bethany Rd — short connector */}
+            <path d="M 205,244 C 200,270 195,300 190,318" fill="none" stroke={road} strokeWidth="1.7"/>
+            <path d="M 205,244 C 200,270 195,300 190,318" fill="none" stroke={roadStroke} strokeWidth="0.55" opacity="0.6"/>
+
+            {/* Krondorf Rd — SE from Tanunda */}
+            <path id="krondorfRd" d="M 205,244 C 225,252 248,260 270,272" fill="none" stroke={road} strokeWidth="2.0"/>
+            <path d="M 205,244 C 225,252 248,260 270,272" fill="none" stroke={roadStroke} strokeWidth="0.65" opacity="0.65"/>
+            <text fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
+              <textPath href="#krondorfRd" startOffset="25%">Krondorf Rd</textPath>
+            </text>
+
+            {/* Research Rd — near Nuriootpa */}
+            <path id="researchRd" d="M 95,155 C 115,158 135,160 148,162" fill="none" stroke={road} strokeWidth="1.8"/>
+            <path d="M 95,155 C 115,158 135,160 148,162" fill="none" stroke={roadStroke} strokeWidth="0.6" opacity="0.6"/>
+
+            {/* Main Murray St label on the highway */}
+            <text fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic" fontWeight="500">
+              <textPath href="#mainHwy" startOffset="45%">Barossa Valley Way</textPath>
+            </text>
 
             {/* ── ILLUSTRATED LANDMARKS — small decorative clusters ── */}
             {/* Grape cluster — northwest */}
@@ -1358,6 +1648,78 @@ const MapView = ({ wineries, onSelect }) => {
               <circle cx="-3" cy="-2" r="1" fill={burgundy}/>
               <circle cx="3" cy="-2" r="1" fill={burgundy}/>
               <circle cx="0" cy="-6" r="1" fill={burgundy}/>
+            </g>
+
+            {/* Langmeil Lutheran church (illustrated) — east of Tanunda */}
+            <g transform="translate(220,226)" opacity="0.75">
+              <rect x="-3" y="-3" width="6" height="6" fill="#f5ede0" stroke={ink} strokeWidth="0.5"/>
+              <polygon points="-3.5,-3 3.5,-3 0,-7" fill={burgundy} stroke={ink} strokeWidth="0.4"/>
+              <rect x="-0.4" y="0" width="0.8" height="3" fill={ink} opacity="0.7"/>
+              {/* Cross on steeple */}
+              <line x1="0" y1="-7" x2="0" y2="-10" stroke={ink} strokeWidth="0.4"/>
+              <line x1="-1" y1="-9" x2="1" y2="-9" stroke={ink} strokeWidth="0.4"/>
+            </g>
+
+            {/* Small oak tree cluster — NE */}
+            <g transform="translate(268,80)" opacity="0.65">
+              <line x1="0" y1="0" x2="0" y2="-4" stroke={ink} strokeWidth="0.5"/>
+              <circle cx="0" cy="-7" r="4.5" fill={forest} opacity="0.7"/>
+              <circle cx="-2" cy="-8" r="3" fill={vineyardDeep} opacity="0.55"/>
+              <circle cx="2.5" cy="-6" r="2.8" fill={forest} opacity="0.6"/>
+            </g>
+
+            {/* Cellar-door barn — between Tanunda and Angaston */}
+            <g transform="translate(238,285)" opacity="0.75">
+              <rect x="-4" y="-1" width="8" height="5" fill="#e8d4b0" stroke={ink} strokeWidth="0.5"/>
+              <polygon points="-4.5,-1 4.5,-1 0,-5.5" fill="#a86848" stroke={ink} strokeWidth="0.4"/>
+              <rect x="-0.8" y="1" width="1.6" height="3" fill={ink} opacity="0.6"/>
+              <line x1="-2.5" y1="2" x2="-2.5" y2="4" stroke={ink} strokeWidth="0.3"/>
+              <line x1="2.5" y1="2" x2="2.5" y2="4" stroke={ink} strokeWidth="0.3"/>
+            </g>
+
+            {/* Extra grape clusters sprinkled through the valley */}
+            <g transform="translate(180,105)" opacity="0.55">
+              {[[0,0],[2.2,0],[-2.2,0],[1.1,2],[-1.1,2],[0,4]].map(([x,y],i)=>(
+                <circle key={i} cx={x} cy={y} r="1.3" fill={burgundy}/>
+              ))}
+              <path d="M 0,-1 Q -1,-3 -2.5,-3.5" stroke={forest} strokeWidth="0.4" fill="none"/>
+            </g>
+            <g transform="translate(262,218)" opacity="0.55">
+              {[[0,0],[2,0],[-2,0],[1,1.8],[-1,1.8]].map(([x,y],i)=>(
+                <circle key={i} cx={x} cy={y} r="1.2" fill={burgundy}/>
+              ))}
+            </g>
+            <g transform="translate(118,298)" opacity="0.55">
+              {[[0,0],[2,-0.5],[-2,-0.5],[1,1.5],[-1,1.5],[0,3]].map(([x,y],i)=>(
+                <circle key={i} cx={x} cy={y} r="1.3" fill={burgundy}/>
+              ))}
+              <path d="M 0,-1 Q 1,-3 3,-3.5" stroke={forest} strokeWidth="0.4" fill="none"/>
+            </g>
+
+            {/* Wheat stalks — near Greenock */}
+            <g transform="translate(82,155)" opacity="0.7">
+              {[-3,0,3].map((dx,i)=>(
+                <g key={i} transform={`translate(${dx},0)`}>
+                  <line x1="0" y1="2" x2="0" y2="-5" stroke="#c49e5a" strokeWidth="0.45"/>
+                  <line x1="0" y1="-5" x2="-1" y2="-7" stroke="#c49e5a" strokeWidth="0.4"/>
+                  <line x1="0" y1="-5" x2="1" y2="-7" stroke="#c49e5a" strokeWidth="0.4"/>
+                  <line x1="0" y1="-3" x2="-1.2" y2="-5" stroke="#c49e5a" strokeWidth="0.3"/>
+                  <line x1="0" y1="-3" x2="1.2" y2="-5" stroke="#c49e5a" strokeWidth="0.3"/>
+                </g>
+              ))}
+            </g>
+
+            {/* Second wine barrel — near the harvest field */}
+            <g transform="translate(260,255)" opacity="0.55">
+              <ellipse cx="0" cy="0" rx="5" ry="7" fill={hill2} stroke={ink} strokeWidth="0.55"/>
+              <line x1="-4.3" y1="-3.5" x2="4.3" y2="-3.5" stroke={ink} strokeWidth="0.4"/>
+              <line x1="-4.3" y1="3.5" x2="4.3" y2="3.5" stroke={ink} strokeWidth="0.4"/>
+            </g>
+
+            {/* Olive tree — near the olive grove */}
+            <g transform="translate(152,348)" opacity="0.65">
+              <line x1="0" y1="0" x2="0" y2="-3" stroke={ink} strokeWidth="0.4"/>
+              <ellipse cx="0" cy="-5" rx="3" ry="2.2" fill="#8a9078" opacity="0.75"/>
             </g>
 
             {/* ── TOWN MARKERS — warm typography with subtle dot ── */}
@@ -1686,7 +2048,7 @@ const HomePage = ({ wineries, onNavigate }) => {
       {/* Nav buttons */}
       <div style={{display:"flex",flexDirection:"column",gap:10}}>
         {[
-          ["leaderboard","Leaderboard","Stats & rankings",<Icons.Trophy size={20} color={C.gold}/>,`#fff9e6`,C.gold],
+          ["leaderboard","Stats","Rankings & leaderboard",<Icons.Trophy size={20} color={C.gold}/>,`#fff9e6`,C.gold],
           ["all","All Wineries","The complete Barossa list",<Icons.Map size={20} color={C.earth}/>,C.earthLight,C.earth],
           ["visited","Visited","Wineries you've been to",<Icons.Check size={20} color={C.sage}/>,C.sageLight,C.sage],
           ["notyet","Not Yet Visited","Your hit list",<Icons.WineGlass size={20} color={C.dustyBlue}/>,C.blueLight,C.dustyBlue],
@@ -1736,12 +2098,12 @@ function App() {
 
   const tabs = [
     {id:"home",label:"Home",icon:<Icons.Home size={16}/>},
-    {id:"leaderboard",label:"Leaderboard",icon:<Icons.Trophy size={16}/>},
-    {id:"map",label:"Map",icon:<Icons.Pin size={16}/>},
+    {id:"leaderboard",label:"Stats",icon:<Icons.Trophy size={16}/>},
     {id:"all",label:"All",icon:<Icons.Map size={16}/>},
     {id:"visited",label:"Visited",icon:<Icons.Check size={16}/>},
     {id:"notyet",label:"Not Yet",icon:<Icons.WineGlass size={16}/>},
     {id:"shortlist",label:"Shortlist",icon:<Icons.Star size={16}/>},
+    {id:"map",label:"Map",icon:<Icons.Pin size={16}/>},
   ];
 
   const getRatingValue = (w, field) => field === "overall" ? getOverall(w) : avgRatingField(w, field);
@@ -1780,7 +2142,7 @@ function App() {
   return (
     <div style={{height:"100%",background:C.cream,width:"100%",maxWidth:"100%",fontFamily:"'Helvetica Neue',Arial,sans-serif",display:"flex",flexDirection:"column",overflow:"hidden"}}>
       {/* Header */}
-      <div style={{background:C.cream,borderBottom:`1px solid ${C.border}`,padding:"14px 16px 0",position:"sticky",top:0,zIndex:50}}>
+      <div className="zb-header" style={{background:C.cream,borderBottom:`1px solid ${C.border}`,padding:"14px 16px 0",position:"sticky",top:0,zIndex:50}}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
           <div style={{display:"flex",alignItems:"center",gap:8}}>
             <Icons.Grape size={26} color={C.sage}/>
@@ -1790,10 +2152,10 @@ function App() {
             </div>
           </div>
           <div style={{display:"flex",gap:8}}>
-            <button onClick={()=>exportCSV(wineries)} title="Export CSV" style={{background:"white",border:`1px solid ${C.border}`,borderRadius:10,padding:"7px 10px",cursor:"pointer",display:"flex",alignItems:"center",gap:4,fontSize:12,color:C.textMid,fontWeight:600}}>
+            <button onClick={()=>exportCSV(wineries)} title="Export CSV" style={{background:"white",border:`1px solid ${C.border}`,borderRadius:10,padding:"8px 12px",minHeight:36,cursor:"pointer",display:"flex",alignItems:"center",gap:4,fontSize:12,color:C.textMid,fontWeight:600}}>
               <Icons.Download size={14} color={C.textMid}/>Export
             </button>
-            <button onClick={()=>document.getElementById("zb-csv-input").click()} title="Import CSV (merge by ID or Name)" style={{background:"white",border:`1px solid ${C.border}`,borderRadius:10,padding:"7px 10px",cursor:"pointer",display:"flex",alignItems:"center",gap:4,fontSize:12,color:C.textMid,fontWeight:600}}>
+            <button onClick={()=>document.getElementById("zb-csv-input").click()} title="Import CSV (merge by ID or Name)" style={{background:"white",border:`1px solid ${C.border}`,borderRadius:10,padding:"8px 12px",minHeight:36,cursor:"pointer",display:"flex",alignItems:"center",gap:4,fontSize:12,color:C.textMid,fontWeight:600}}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Import
             </button>
             <input id="zb-csv-input" type="file" accept=".csv,text/csv" style={{display:"none"}} onChange={e=>{
@@ -1809,7 +2171,7 @@ function App() {
               reader.readAsText(file);
               e.target.value = ""; // allow re-import of same file
             }}/>
-            <button onClick={()=>setShowAdd(true)} style={{background:C.earth,color:"white",border:"none",borderRadius:10,padding:"7px 12px",fontSize:13,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",gap:4}}>
+            <button onClick={()=>setShowAdd(true)} style={{background:C.earth,color:"white",border:"none",borderRadius:10,padding:"8px 14px",minHeight:36,fontSize:13,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",gap:4}}>
               <Icons.Plus size={15} color="white"/>Add
             </button>
           </div>
@@ -1852,9 +2214,19 @@ function App() {
                   ))}
                 </div>
                 <div style={{fontSize:11,color:C.textMid,fontWeight:700,marginBottom:6,letterSpacing:0.3}}>MINIMUM SCORE: <span style={{color:C.earth}}>{minRating===0?"Any":minRating+"/10"}</span></div>
-                <input type="range" min="0" max="9" step="0.5" value={minRating} onChange={e=>setMinRating(parseFloat(e.target.value))}
-                  style={{width:"100%",accentColor:C.earth}}/>
-                <div style={{display:"flex",justifyContent:"space-between",fontSize:10,color:C.textLight,marginTop:2}}>
+                <div style={{position:"relative",height:38,display:"flex",alignItems:"center",background:"white",borderRadius:10,padding:"3px 6px",border:`1px solid ${C.border}`}}>
+                  <div style={{display:"flex",flex:1,gap:1,alignItems:"center",justifyContent:"space-between",pointerEvents:"none"}}>
+                    {Array.from({length:9}).map((_,i) => {
+                      const start = i, end = i + 1;
+                      const fill = minRating <= start ? 0 : minRating >= end ? 100 : (minRating - start) * 100;
+                      return <WineGlassFill key={i} size={26} fillPct={fill}/>;
+                    })}
+                  </div>
+                  <input type="range" min="0" max="9" step="0.5" value={minRating} onChange={e=>setMinRating(parseFloat(e.target.value))}
+                    aria-label="Minimum rating"
+                    style={{position:"absolute",left:0,right:0,top:0,bottom:0,width:"100%",height:"100%",opacity:0,margin:0,padding:0,cursor:"pointer",WebkitAppearance:"none"}}/>
+                </div>
+                <div style={{display:"flex",justifyContent:"space-between",fontSize:10,color:C.textLight,marginTop:4,padding:"0 6px"}}>
                   <span>Any</span><span>5</span><span>9/10</span>
                 </div>
                 {minRating>0&&<button onClick={()=>{setMinRating(0);setRatingFilter("overall");}} style={{marginTop:8,fontSize:11,color:C.dustyPink,background:"none",border:"none",cursor:"pointer",padding:0,fontWeight:600}}>✕ Clear filter</button>}
@@ -1867,7 +2239,7 @@ function App() {
       {/* Content */}
       <div ref={listRef} onScroll={handleScroll} style={{flex:1,minHeight:0,overflowY:"auto",WebkitOverflowScrolling:"touch",overscrollBehavior:"contain",width:"100%",padding:showList?"12px 16px 80px":0}}>
         {view==="home" && <HomePage wineries={wineries} onNavigate={setView}/>}
-        {view==="leaderboard" && <div style={{padding:"16px 16px 80px",overflowY:"auto",WebkitOverflowScrolling:"touch",flex:1,minHeight:0}}><Leaderboard wineries={wineries}/></div>}
+        {view==="leaderboard" && <div style={{padding:"16px 16px 80px",overflowY:"auto",WebkitOverflowScrolling:"touch",flex:1,minHeight:0}}><Stats wineries={wineries} onSelect={setSelected}/></div>}
         {view==="map" && <MapView wineries={wineries} onSelect={setSelected}/>}
         {showList && (
           filtered.length===0?(

@@ -1370,27 +1370,30 @@ const MapView = ({ wineries, onSelect }) => {
 
   const visitedCount = wineries.filter(w=>w.visited).length;
 
-  // Aged parchment palette (Jeffrey Ward cartographic tones)
-  const bg = "#f5e8c8";
-  const bgDeep = "#e6d4a8";
-  const vineyard = "#b8c89c";
-  const vineyardDeep = "#8aab7a";
-  const hill1 = "#d4c09c";
-  const hill2 = "#c2a878";
-  const forest = "#7a9070";
-  const water = "#9ab8c8";
-  const waterDeep = "#6d94a8";
-  const road = "#e8d8b8";
-  const roadStroke = "#9a7850";
-  const ink = "#4a3826";
-  const inkLight = "#7a5c38";
-  const burgundy = "#7a1f2a";
+  // Boutique pastel palette — soft parchment with warm earthy tones
+  const bg = "#fbf5e6";          // soft cream parchment
+  const bgDeep = "#f2e6c8";      // pale sand
+  const vineyard = "#d0dcb2";    // pale sage
+  const vineyardDeep = "#b0c898";// soft sage green
+  const hill1 = "#f0dcbc";       // pale peach
+  const hill2 = "#e8c8a4";       // soft terracotta pastel
+  const forest = "#b6cba4";      // pale forest sage
+  const water = "#cbe0ec";       // pastel blue
+  const waterDeep = "#a8c8dc";   // soft blue
+  const road = "#f4e8cc";        // pale cream road
+  const roadStroke = "#bca088";  // soft taupe
+  const ink = "#6a5238";         // warm brown ink
+  const inkLight = "#9a8068";    // soft taupe for secondary labels
+  const burgundy = "#b25870";    // dusty rose (replaces deep burgundy)
+  const terracotta = "#d28c70";  // soft terracotta
+  const ochre = "#d8bb82";       // pale ochre
+  const dustyPink = "#e8b8c4";   // pastel pink
 
   return (
     <div style={{display:"flex",flexDirection:"column",flex:1,minHeight:0,background:bg}}>
       {/* Filter chips — warm rounded pills */}
       <div style={{padding:"10px 14px 8px",display:"flex",gap:8,background:bg,borderBottom:`1px solid ${bgDeep}`,flexShrink:0,overflowX:"auto"}}>
-        {[["all","All",null],["visited","Visited","#9c5030"],["notyet","Not yet","#8aab7a"],["shortlist","Shortlist","#d4a848"]].map(([id,lbl,col])=>{
+        {[["all","All",null],["visited","Visited","#c08870"],["notyet","Not yet","#a8c090"],["shortlist","Shortlist","#e0c080"]].map(([id,lbl,col])=>{
           const active = mapFilter===id;
           return (
             <button key={id} onClick={()=>setMapFilter(id)} style={{
@@ -1419,656 +1422,462 @@ const MapView = ({ wineries, onSelect }) => {
         onTouchStart={onTS} onTouchMove={onTM} onTouchEnd={onTE}>
         <svg viewBox={`0 0 ${W} ${H}`} style={{width:"100%",height:"100%",display:"block"}} xmlns="http://www.w3.org/2000/svg">
           <defs>
-            {/* Soft watercolor wash */}
-            <radialGradient id="mapGlow" cx="50%" cy="50%" r="70%">
-              <stop offset="0%" stopColor="#fffaed" stopOpacity="0.9"/>
+            {/* Soft parchment wash */}
+            <radialGradient id="mapGlow" cx="50%" cy="45%" r="75%">
+              <stop offset="0%" stopColor="#fffbf0" stopOpacity="1"/>
               <stop offset="100%" stopColor={bg} stopOpacity="1"/>
             </radialGradient>
-            {/* Vineyard row pattern — tight parallel stripes */}
-            <pattern id="vineRows" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(28)">
-              <line x1="0" y1="0" x2="0" y2="3" stroke={vineyardDeep} strokeWidth="0.35" opacity="0.55"/>
+            {/* Warm hillshade — light coming from NW */}
+            <linearGradient id="hillshade" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#fff4d4" stopOpacity="0.55"/>
+              <stop offset="55%" stopColor="#f4e4c0" stopOpacity="0.12"/>
+              <stop offset="100%" stopColor="#c8a878" stopOpacity="0.22"/>
+            </linearGradient>
+            {/* Soft edge vignette */}
+            <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+              <stop offset="70%" stopColor="#fff" stopOpacity="0"/>
+              <stop offset="100%" stopColor="#b8986a" stopOpacity="0.15"/>
+            </radialGradient>
+            {/* Vineyard rows — three directional patterns, pastel */}
+            <pattern id="vineRows" width="3.2" height="3.2" patternUnits="userSpaceOnUse" patternTransform="rotate(28)">
+              <line x1="0" y1="0" x2="0" y2="3.2" stroke={vineyardDeep} strokeWidth="0.35" opacity="0.5"/>
             </pattern>
             <pattern id="vineRows2" width="3.5" height="3.5" patternUnits="userSpaceOnUse" patternTransform="rotate(-20)">
-              <line x1="0" y1="0" x2="0" y2="3.5" stroke={vineyardDeep} strokeWidth="0.3" opacity="0.45"/>
+              <line x1="0" y1="0" x2="0" y2="3.5" stroke={vineyardDeep} strokeWidth="0.28" opacity="0.4"/>
             </pattern>
-            <pattern id="vineRows3" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(62)">
-              <line x1="0" y1="0" x2="0" y2="3" stroke={forest} strokeWidth="0.35" opacity="0.5"/>
+            <pattern id="vineRows3" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(55)">
+              <line x1="0" y1="0" x2="0" y2="3" stroke={forest} strokeWidth="0.32" opacity="0.45"/>
             </pattern>
-            {/* Hill hatch */}
-            <pattern id="hillHatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <line x1="0" y1="0" x2="0" y2="4" stroke={hill2} strokeWidth="0.3" opacity="0.4"/>
+            {/* Young-vine lighter */}
+            <pattern id="youngVines" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+              <line x1="0" y1="0" x2="0" y2="3" stroke="#b4ce9c" strokeWidth="0.28" opacity="0.5"/>
             </pattern>
+            {/* Harvest ochre rows */}
+            <pattern id="harvestRows" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(10)">
+              <rect width="4" height="4" fill={ochre} opacity="0.35"/>
+              <line x1="0" y1="0" x2="0" y2="4" stroke="#c4a868" strokeWidth="0.4" opacity="0.45"/>
+            </pattern>
+            {/* Soft forest stipple */}
+            <pattern id="forestStipple" width="6" height="6" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="0.9" fill={forest} opacity="0.7"/>
+              <circle cx="4.5" cy="4" r="0.7" fill={vineyardDeep} opacity="0.55"/>
+            </pattern>
+            {/* Mountain hatch — pastel */}
+            <pattern id="mountainHatch" width="2.2" height="2.2" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+              <line x1="0" y1="0" x2="0" y2="2.2" stroke="#a88458" strokeWidth="0.2" opacity="0.4"/>
+            </pattern>
+            {/* Subtle paper texture */}
+            <pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse">
+              <circle cx="14" cy="20" r="0.3" fill={ink} opacity="0.04"/>
+              <circle cx="62" cy="42" r="0.25" fill={ink} opacity="0.035"/>
+              <circle cx="32" cy="78" r="0.3" fill={ink} opacity="0.04"/>
+              <circle cx="82" cy="12" r="0.2" fill={ink} opacity="0.03"/>
+              <circle cx="94" cy="68" r="0.3" fill={ink} opacity="0.035"/>
+            </pattern>
+            {/* Shortlist gold glow */}
+            <radialGradient id="glowGold" cx="50%" cy="50%" r="55%">
+              <stop offset="0%" stopColor="#fff0c4" stopOpacity="0.95"/>
+              <stop offset="55%" stopColor="#e8c070" stopOpacity="0.45"/>
+              <stop offset="100%" stopColor="#e8c070" stopOpacity="0"/>
+            </radialGradient>
+            {/* Pin drop-shadow */}
+            <filter id="pinShadow" x="-50%" y="-50%" width="200%" height="200%">
+              <feDropShadow dx="0.4" dy="0.9" stdDeviation="0.55" floodColor="#5a4028" floodOpacity="0.28"/>
+            </filter>
             {/* Watercolor edge blur */}
             <filter id="wc" x="-10%" y="-10%" width="120%" height="120%">
-              <feGaussianBlur stdDeviation="0.6"/>
+              <feGaussianBlur stdDeviation="0.5"/>
             </filter>
-            {/* Paper grain */}
-            <pattern id="grain" width="90" height="90" patternUnits="userSpaceOnUse">
-              <circle cx="12" cy="24" r="0.3" fill={ink} opacity="0.05"/>
-              <circle cx="67" cy="45" r="0.3" fill={ink} opacity="0.04"/>
-              <circle cx="33" cy="78" r="0.3" fill={ink} opacity="0.05"/>
-              <circle cx="80" cy="12" r="0.2" fill={ink} opacity="0.04"/>
-            </pattern>
-            {/* Soft shadow for pins */}
-            <filter id="pinShadow" x="-50%" y="-50%" width="200%" height="200%">
-              <feDropShadow dx="0.5" dy="1" stdDeviation="0.6" floodColor="#3a2a1a" floodOpacity="0.3"/>
-            </filter>
-            {/* Parchment vignette — darker edges, lighter middle */}
-            <radialGradient id="parchmentVig" cx="50%" cy="50%" r="70%">
-              <stop offset="0%" stopColor="#f9eed0" stopOpacity="0"/>
-              <stop offset="80%" stopColor="#c8a872" stopOpacity="0.08"/>
-              <stop offset="100%" stopColor="#8a6838" stopOpacity="0.22"/>
-            </radialGradient>
-            {/* Ink stipple for mountain hatching */}
-            <pattern id="mountainHatch" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
-              <line x1="0" y1="0" x2="0" y2="2" stroke="#6a4a28" strokeWidth="0.22" opacity="0.45"/>
-            </pattern>
-            {/* Parchment foxing spots for aged feel */}
-            <pattern id="foxing" width="110" height="110" patternUnits="userSpaceOnUse">
-              <circle cx="14" cy="22" r="0.7" fill="#a8864a" opacity="0.12"/>
-              <circle cx="82" cy="68" r="0.5" fill="#b8965a" opacity="0.10"/>
-              <circle cx="48" cy="95" r="0.6" fill="#a07838" opacity="0.11"/>
-              <circle cx="96" cy="18" r="0.4" fill="#986830" opacity="0.10"/>
-              <circle cx="28" cy="52" r="0.5" fill="#a8864a" opacity="0.09"/>
-            </pattern>
-            {/* Shortlist gold glow — radial warm halo behind empty glass */}
-            <radialGradient id="glowGold" cx="50%" cy="50%" r="55%">
-              <stop offset="0%" stopColor="#ffe4a0" stopOpacity="0.95"/>
-              <stop offset="55%" stopColor="#d4a848" stopOpacity="0.5"/>
-              <stop offset="100%" stopColor="#d4a848" stopOpacity="0"/>
-            </radialGradient>
-            {/* Warm sun gradient — subtle NW→SE gold wash */}
-            <linearGradient id="goldenHour" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#fff0c8" stopOpacity="0.7"/>
-              <stop offset="50%" stopColor="#f9e8c0" stopOpacity="0.25"/>
-              <stop offset="100%" stopColor="#e8c488" stopOpacity="0.15"/>
-            </linearGradient>
-            {/* Harvest-field pattern — tan ochre hatch */}
-            <pattern id="harvestRows" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(10)">
-              <rect width="4" height="4" fill="#e8cc96" opacity="0.55"/>
-              <line x1="0" y1="0" x2="0" y2="4" stroke="#b89856" strokeWidth="0.4" opacity="0.45"/>
-            </pattern>
-            {/* Olive grove — grey-green dot pattern */}
-            <pattern id="oliveGrove" width="6" height="6" patternUnits="userSpaceOnUse">
-              <circle cx="3" cy="3" r="1.2" fill="#8a9078" opacity="0.6"/>
-            </pattern>
-            {/* Young vines — lighter green */}
-            <pattern id="youngVines" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
-              <line x1="0" y1="0" x2="0" y2="3" stroke="#a8c498" strokeWidth="0.3" opacity="0.5"/>
-            </pattern>
           </defs>
 
-          <g transform={`translate(${pan.x},${pan.y}) scale(${zoom})`} style={{transformOrigin:"50% 50%"}}>
-            {/* Paper base */}
+          <g transform={`translate(${pan.x},${pan.y}) scale(${zoom})`}>
+
+            {/* ─── Base parchment ─── */}
             <rect width={W} height={H} fill={bg}/>
             <rect width={W} height={H} fill="url(#mapGlow)"/>
-            {/* Golden hour gradient — warm light falling from NW */}
-            <rect width={W} height={H} fill="url(#goldenHour)" opacity="0.45"/>
+            {/* Hillshade from NW */}
+            <rect width={W} height={H} fill="url(#hillshade)" opacity="0.6"/>
 
-            {/* ── TERRAIN — soft watercolor hills ── */}
-            {/* Eden Valley — eastern range, layered washes */}
-            <path d="M 285,0 L 380,0 L 380,200 Q 355,180 330,155 Q 308,128 293,85 Z" fill={hill1} opacity="0.55" filter="url(#wc)"/>
-            <path d="M 300,0 L 380,0 L 380,140 Q 360,120 342,95 Q 326,68 312,35 Z" fill={hill2} opacity="0.6" filter="url(#wc)"/>
-            <path d="M 310,0 L 380,0 L 380,90 Q 362,72 348,50 Q 334,28 322,10 Z" fill="url(#hillHatch)" opacity="0.7"/>
-
-            {/* Western range */}
-            <path d="M 0,0 L 82,0 L 72,110 Q 58,150 42,185 L 0,190 Z" fill={hill1} opacity="0.5" filter="url(#wc)"/>
-            <path d="M 0,0 L 65,0 L 55,70 Q 40,105 22,135 L 0,140 Z" fill={hill2} opacity="0.55" filter="url(#wc)"/>
-
-            {/* Southern low hills */}
-            <path d="M 0,360 Q 60,355 120,358 Q 180,362 240,360 Q 300,358 380,362 L 380,420 L 0,420 Z" fill={hill1} opacity="0.4" filter="url(#wc)"/>
-
-            {/* ── VINEYARD BLOCKS — rich layered patches ── */}
-            {/* Big central vineyard (Tanunda/Nuriootpa area) */}
-            <path d="M 80,155 Q 110,150 140,148 Q 175,147 205,150 Q 235,154 255,162 Q 258,195 250,230 Q 240,265 215,280 Q 180,290 145,285 Q 110,278 85,260 Q 70,230 72,195 Q 74,170 80,155 Z" fill={vineyard} opacity="0.7"/>
-            <path d="M 80,155 Q 110,150 140,148 Q 175,147 205,150 Q 235,154 255,162 Q 258,195 250,230 Q 240,265 215,280 Q 180,290 145,285 Q 110,278 85,260 Q 70,230 72,195 Q 74,170 80,155 Z" fill="url(#vineRows)"/>
-            {/* Southern vineyard (Lyndoch) */}
-            <path d="M 100,320 Q 130,315 160,318 Q 195,322 220,330 Q 215,355 195,368 Q 165,375 135,370 Q 105,362 95,345 Q 95,330 100,320 Z" fill={vineyard} opacity="0.65"/>
-            <path d="M 100,320 Q 130,315 160,318 Q 195,322 220,330 Q 215,355 195,368 Q 165,375 135,370 Q 105,362 95,345 Q 95,330 100,320 Z" fill="url(#vineRows2)"/>
-            {/* Eastern vineyard patch (Angaston) */}
-            <path d="M 215,275 Q 245,270 275,275 Q 295,285 298,305 Q 290,320 270,325 Q 240,325 220,315 Q 212,295 215,275 Z" fill={vineyardDeep} opacity="0.55"/>
-            <path d="M 215,275 Q 245,270 275,275 Q 295,285 298,305 Q 290,320 270,325 Q 240,325 220,315 Q 212,295 215,275 Z" fill="url(#vineRows3)"/>
-            {/* Western vineyard (Greenock) */}
-            <path d="M 55,100 Q 80,95 105,100 Q 115,120 110,140 Q 90,148 70,145 Q 55,130 55,100 Z" fill={vineyard} opacity="0.6"/>
-            <path d="M 55,100 Q 80,95 105,100 Q 115,120 110,140 Q 90,148 70,145 Q 55,130 55,100 Z" fill="url(#vineRows)"/>
-            {/* Northern vineyard strip */}
-            <path d="M 125,75 Q 150,70 178,72 Q 200,80 205,100 Q 188,115 165,115 Q 140,112 125,100 Q 118,85 125,75 Z" fill={vineyard} opacity="0.55"/>
-            <path d="M 125,75 Q 150,70 178,72 Q 200,80 205,100 Q 188,115 165,115 Q 140,112 125,100 Q 118,85 125,75 Z" fill="url(#vineRows2)"/>
-            {/* Young-vine block north-east of Nuriootpa */}
-            <path d="M 170,130 Q 190,125 210,130 Q 218,142 212,155 Q 200,160 185,158 Q 170,152 170,130 Z" fill="#c8dbae" opacity="0.55"/>
-            <path d="M 170,130 Q 190,125 210,130 Q 218,142 212,155 Q 200,160 185,158 Q 170,152 170,130 Z" fill="url(#youngVines)"/>
-            {/* Harvest ochre field — east of Tanunda */}
-            <path d="M 238,238 Q 258,232 275,236 Q 280,252 272,264 Q 255,268 240,262 Q 232,250 238,238 Z" fill="url(#harvestRows)" opacity="0.85"/>
-            {/* Small olive grove — south */}
-            <ellipse cx="135" cy="352" rx="15" ry="9" fill="url(#oliveGrove)"/>
-            <ellipse cx="135" cy="352" rx="15" ry="9" fill="#8aa078" opacity="0.2"/>
-            {/* Eden slope vines — western flank of hills */}
-            <path d="M 260,155 Q 278,150 294,155 Q 298,170 290,182 Q 275,186 262,180 Q 255,170 260,155 Z" fill={vineyardDeep} opacity="0.5"/>
-            <path d="M 260,155 Q 278,150 294,155 Q 298,170 290,182 Q 275,186 262,180 Q 255,170 260,155 Z" fill="url(#vineRows3)"/>
-
-            {/* ── FOREST PATCHES — rounded dots cluster ── */}
-            {[[40,250,12],[52,276,9],[260,120,10],[275,140,13],[290,175,8],[330,200,11],[35,310,10],[55,330,8],[50,220,7]].map(([cx,cy,r],i)=>(
-              <g key={`f${i}`}>
-                <circle cx={cx} cy={cy} r={r} fill={forest} opacity="0.55" filter="url(#wc)"/>
-                <circle cx={cx-2} cy={cy-2} r={r*0.7} fill={forest} opacity="0.4"/>
-              </g>
-            ))}
-
-            {/* ── FARM DAMS — small ponds dotted around ── */}
-            <ellipse cx="90" cy="215" rx="4" ry="2.5" fill={waterDeep} opacity="0.55"/>
-            <ellipse cx="90" cy="215" rx="4" ry="2.5" fill={water} opacity="0.5"/>
-            <ellipse cx="228" cy="260" rx="3.5" ry="2" fill={waterDeep} opacity="0.55"/>
-            <ellipse cx="228" cy="260" rx="3.5" ry="2" fill={water} opacity="0.5"/>
-            <ellipse cx="172" cy="345" rx="3" ry="1.7" fill={waterDeep} opacity="0.5"/>
-
-            {/* ── WATER — North Para River with soft fill ── */}
-            <path d="M 152,14 C 150,45 147,78 144,112 C 141,145 138,175 135,205 C 132,230 129,255 126,278 C 123,300 121,320 119,345 C 117,362 115,380 113,406"
-              fill="none" stroke={waterDeep} strokeWidth="2.6" strokeLinecap="round" opacity="0.75"/>
-            <path d="M 150,14 C 148,45 145,78 142,112 C 139,145 136,175 133,205 C 130,230 127,255 124,278 C 121,300 119,320 117,345 C 115,362 113,380 111,406"
-              fill="none" stroke={water} strokeWidth="1.2" strokeLinecap="round" opacity="0.7"/>
-            {/* River label */}
-            <text fontSize="8" fill={waterDeep} fontStyle="italic" fontFamily="'Palatino Linotype',Georgia,serif" fontWeight="500">
-              <textPath href="#rp" startOffset="12%">~ North Para River ~</textPath>
-            </text>
-            <path id="rp" d="M 152,60 C 148,110 143,165 136,220 C 130,265 123,310 116,360" fill="none"/>
-
-            {/* ── ROADS — warm parchment with ink stroke ── */}
-            {/* Main highway */}
-            <path id="mainHwy" d="M 158,14 C 156,50 154,88 152,126 C 150,165 149,198 148,232 C 147,265 146,295 145,320 C 144,345 143,368 142,406"
-              fill="none" stroke={road} strokeWidth="5"/>
-            <path d="M 158,14 C 156,50 154,88 152,126 C 150,165 149,198 148,232 C 147,265 146,295 145,320 C 144,345 143,368 142,406"
-              fill="none" stroke={roadStroke} strokeWidth="1.4" strokeDasharray="0" opacity="0.85"/>
-            {/* Secondary roads */}
-            <path d="M 55,195 C 78,192 104,189 128,187 C 152,185 174,185 196,187 C 210,188 222,190 232,192"
-              fill="none" stroke={road} strokeWidth="3"/>
-            <path d="M 55,195 C 78,192 104,189 128,187 C 152,185 174,185 196,187 C 210,188 222,190 232,192"
-              fill="none" stroke={roadStroke} strokeWidth="0.9" opacity="0.75"/>
-            <path d="M 90,258 C 112,255 134,253 155,252 C 172,252 188,253 204,255"
-              fill="none" stroke={road} strokeWidth="2.5"/>
-            <path d="M 90,258 C 112,255 134,253 155,252 C 172,252 188,253 204,255"
-              fill="none" stroke={roadStroke} strokeWidth="0.8" opacity="0.7"/>
-            <path d="M 102,168 C 124,166 145,165 162,166 C 178,167 192,169 208,172"
-              fill="none" stroke={road} strokeWidth="2.5"/>
-            <path d="M 102,168 C 124,166 145,165 162,166 C 178,167 192,169 208,172"
-              fill="none" stroke={roadStroke} strokeWidth="0.75" opacity="0.65"/>
-            {/* Eden Valley Rd — dashed scenic */}
-            <path id="edenValleyRd" d="M 218,290 C 238,268 258,244 275,218 C 292,192 308,165 322,140 C 335,118 348,96 360,75"
-              fill="none" stroke={roadStroke} strokeWidth="0.9" strokeDasharray="5,3" opacity="0.75"/>
-            <text fontSize="5.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
-              <textPath href="#edenValleyRd" startOffset="20%">Menglers Hill Rd → Eden Valley</textPath>
-            </text>
-
-            {/* Seppeltsfield Rd — famous palm-lined road, NW to Tanunda */}
-            <path id="seppeltsRd" d="M 40,135 C 70,142 100,155 135,180 C 165,205 185,225 205,244" fill="none" stroke={road} strokeWidth="2.8"/>
-            <path d="M 40,135 C 70,142 100,155 135,180 C 165,205 185,225 205,244" fill="none" stroke={roadStroke} strokeWidth="0.85" opacity="0.75"/>
-            <text fontSize="5.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
-              <textPath href="#seppeltsRd" startOffset="18%">Seppeltsfield Rd</textPath>
-            </text>
-
-            {/* Stockwell Rd — north from Nuriootpa */}
-            <path id="stockwellRd" d="M 148,162 C 158,140 170,110 180,80" fill="none" stroke={road} strokeWidth="2.3"/>
-            <path d="M 148,162 C 158,140 170,110 180,80" fill="none" stroke={roadStroke} strokeWidth="0.75" opacity="0.7"/>
-            <text fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
-              <textPath href="#stockwellRd" startOffset="30%">Stockwell Rd</textPath>
-            </text>
-
-            {/* Nuriootpa–Angaston Rd — diagonal */}
-            <path id="nurioAngRd" d="M 148,162 C 180,200 220,250 258,297" fill="none" stroke={road} strokeWidth="2.3"/>
-            <path d="M 148,162 C 180,200 220,250 258,297" fill="none" stroke={roadStroke} strokeWidth="0.75" opacity="0.7"/>
-            <text fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
-              <textPath href="#nurioAngRd" startOffset="35%">Angaston Rd</textPath>
-            </text>
-
-            {/* Gomersal Rd — SW from Tanunda to Lyndoch */}
-            <path id="gomersalRd" d="M 205,244 C 188,275 172,315 165,360" fill="none" stroke={road} strokeWidth="2.3"/>
-            <path d="M 205,244 C 188,275 172,315 165,360" fill="none" stroke={roadStroke} strokeWidth="0.75" opacity="0.7"/>
-            <text fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
-              <textPath href="#gomersalRd" startOffset="25%">Gomersal Rd</textPath>
-            </text>
-
-            {/* Langmeil Rd — short connector north of Tanunda */}
-            <path d="M 205,244 C 200,225 195,205 192,185" fill="none" stroke={road} strokeWidth="1.9"/>
-            <path d="M 205,244 C 200,225 195,205 192,185" fill="none" stroke={roadStroke} strokeWidth="0.6" opacity="0.65"/>
-
-            {/* Bethany Rd — short connector */}
-            <path d="M 205,244 C 200,270 195,300 190,318" fill="none" stroke={road} strokeWidth="1.7"/>
-            <path d="M 205,244 C 200,270 195,300 190,318" fill="none" stroke={roadStroke} strokeWidth="0.55" opacity="0.6"/>
-
-            {/* Krondorf Rd — SE from Tanunda */}
-            <path id="krondorfRd" d="M 205,244 C 225,252 248,260 270,272" fill="none" stroke={road} strokeWidth="2.0"/>
-            <path d="M 205,244 C 225,252 248,260 270,272" fill="none" stroke={roadStroke} strokeWidth="0.65" opacity="0.65"/>
-            <text fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
-              <textPath href="#krondorfRd" startOffset="25%">Krondorf Rd</textPath>
-            </text>
-
-            {/* Research Rd — near Nuriootpa */}
-            <path id="researchRd" d="M 95,155 C 115,158 135,160 148,162" fill="none" stroke={road} strokeWidth="1.8"/>
-            <path d="M 95,155 C 115,158 135,160 148,162" fill="none" stroke={roadStroke} strokeWidth="0.6" opacity="0.6"/>
-
-            {/* Main Murray St label on the highway */}
-            <text fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic" fontWeight="500">
-              <textPath href="#mainHwy" startOffset="45%">Barossa Valley Way</textPath>
-            </text>
-
-            {/* ── ILLUSTRATED LANDMARKS — small decorative clusters ── */}
-            {/* Grape cluster — northwest */}
-            <g transform="translate(38,58)" opacity="0.6">
-              {[[0,0],[3,-1],[-3,-1],[1.5,3],[-1.5,3],[0,6]].map(([x,y],i)=>(
-                <circle key={i} cx={x} cy={y} r="1.8" fill={burgundy}/>
-              ))}
-              <path d="M 0,-2 Q -1,-5 -3,-6" stroke={forest} strokeWidth="0.6" fill="none"/>
-              <path d="M -3,-6 Q -5,-7 -7,-6" stroke={forest} strokeWidth="0.6" fill="none"/>
-            </g>
-            {/* Wine barrel — southeast */}
-            <g transform="translate(320,345)" opacity="0.55">
-              <ellipse cx="0" cy="0" rx="7" ry="10" fill={hill2} stroke={ink} strokeWidth="0.7"/>
-              <line x1="-6" y1="-5" x2="6" y2="-5" stroke={ink} strokeWidth="0.5"/>
-              <line x1="-6" y1="5" x2="6" y2="5" stroke={ink} strokeWidth="0.5"/>
-              <line x1="0" y1="-10" x2="0" y2="10" stroke={ink} strokeWidth="0.4" opacity="0.5"/>
-            </g>
-            {/* Little vine trellis — top middle */}
-            <g transform="translate(175,35)" opacity="0.5">
-              <line x1="0" y1="0" x2="0" y2="-8" stroke={ink} strokeWidth="0.5"/>
-              <line x1="-5" y1="-4" x2="5" y2="-4" stroke={ink} strokeWidth="0.4"/>
-              <circle cx="-3" cy="-2" r="1" fill={burgundy}/>
-              <circle cx="3" cy="-2" r="1" fill={burgundy}/>
-              <circle cx="0" cy="-6" r="1" fill={burgundy}/>
+            {/* ─── ROLLING HILLS (soft hillshaded blobs) ─── */}
+            <g opacity="0.85">
+              {/* Western plains — very soft peach wash */}
+              <path d="M 20,120 Q 60,105 110,115 Q 160,130 200,140 Q 240,155 270,180 Q 280,210 260,240 Q 220,260 170,255 Q 110,245 60,225 Q 20,200 20,160 Z"
+                    fill={hill1} opacity="0.55" filter="url(#wc)"/>
+              {/* Central lowland (Tanunda basin) — pale sand */}
+              <ellipse cx="185" cy="230" rx="75" ry="38" fill={bgDeep} opacity="0.55" filter="url(#wc)"/>
+              {/* Eden Valley uplift — soft terracotta */}
+              <path d="M 270,75 Q 310,85 340,120 Q 360,165 355,215 Q 345,270 325,310 Q 305,350 280,370 Q 265,350 275,310 Q 290,260 295,210 Q 295,165 285,125 Q 275,95 270,75 Z"
+                    fill={hill2} opacity="0.5" filter="url(#wc)"/>
+              {/* Southern rise near Lyndoch */}
+              <path d="M 90,340 Q 130,330 175,335 Q 215,345 240,365 Q 230,395 195,405 Q 150,410 110,395 Q 85,375 90,340 Z"
+                    fill={hill1} opacity="0.5" filter="url(#wc)"/>
+              {/* Northern knolls */}
+              <path d="M 80,50 Q 130,45 170,55 Q 210,65 220,90 Q 200,110 155,108 Q 110,105 80,90 Q 70,70 80,50 Z"
+                    fill={hill1} opacity="0.45" filter="url(#wc)"/>
             </g>
 
-            {/* Langmeil Lutheran church (illustrated) — east of Tanunda */}
-            <g transform="translate(220,226)" opacity="0.75">
-              <rect x="-3" y="-3" width="6" height="6" fill="#f5ede0" stroke={ink} strokeWidth="0.5"/>
-              <polygon points="-3.5,-3 3.5,-3 0,-7" fill={burgundy} stroke={ink} strokeWidth="0.4"/>
-              <rect x="-0.4" y="0" width="0.8" height="3" fill={ink} opacity="0.7"/>
-              {/* Cross on steeple */}
-              <line x1="0" y1="-7" x2="0" y2="-10" stroke={ink} strokeWidth="0.4"/>
-              <line x1="-1" y1="-9" x2="1" y2="-9" stroke={ink} strokeWidth="0.4"/>
+            {/* ─── CONTOUR LINES (topographic feel, very subtle) ─── */}
+            <g fill="none" stroke={roadStroke} strokeWidth="0.25" opacity="0.28" pointerEvents="none">
+              <path d="M 285,100 Q 320,115 340,145 Q 352,185 350,225 Q 345,270 325,310"/>
+              <path d="M 292,115 Q 322,128 340,155 Q 348,190 346,225 Q 340,265 322,300"/>
+              <path d="M 298,130 Q 322,142 336,165 Q 342,195 340,225 Q 336,260 318,290"/>
+              <path d="M 305,150 Q 322,160 332,180 Q 336,205 335,225 Q 330,255 312,280"/>
+              <path d="M 100,348 Q 140,340 180,345 Q 215,355 232,375"/>
+              <path d="M 105,355 Q 142,350 180,355 Q 212,365 225,380"/>
+              <path d="M 90,60 Q 130,55 170,65 Q 205,75 215,92"/>
+              <path d="M 95,72 Q 132,67 170,77 Q 202,86 210,100"/>
             </g>
 
-            {/* Small oak tree cluster — NE */}
-            <g transform="translate(268,80)" opacity="0.65">
-              <line x1="0" y1="0" x2="0" y2="-4" stroke={ink} strokeWidth="0.5"/>
-              <circle cx="0" cy="-7" r="4.5" fill={forest} opacity="0.7"/>
-              <circle cx="-2" cy="-8" r="3" fill={vineyardDeep} opacity="0.55"/>
-              <circle cx="2.5" cy="-6" r="2.8" fill={forest} opacity="0.6"/>
-            </g>
-
-            {/* Cellar-door barn — between Tanunda and Angaston */}
-            <g transform="translate(238,285)" opacity="0.75">
-              <rect x="-4" y="-1" width="8" height="5" fill="#e8d4b0" stroke={ink} strokeWidth="0.5"/>
-              <polygon points="-4.5,-1 4.5,-1 0,-5.5" fill="#a86848" stroke={ink} strokeWidth="0.4"/>
-              <rect x="-0.8" y="1" width="1.6" height="3" fill={ink} opacity="0.6"/>
-              <line x1="-2.5" y1="2" x2="-2.5" y2="4" stroke={ink} strokeWidth="0.3"/>
-              <line x1="2.5" y1="2" x2="2.5" y2="4" stroke={ink} strokeWidth="0.3"/>
-            </g>
-
-            {/* Extra grape clusters sprinkled through the valley */}
-            <g transform="translate(180,105)" opacity="0.55">
-              {[[0,0],[2.2,0],[-2.2,0],[1.1,2],[-1.1,2],[0,4]].map(([x,y],i)=>(
-                <circle key={i} cx={x} cy={y} r="1.3" fill={burgundy}/>
-              ))}
-              <path d="M 0,-1 Q -1,-3 -2.5,-3.5" stroke={forest} strokeWidth="0.4" fill="none"/>
-            </g>
-            <g transform="translate(262,218)" opacity="0.55">
-              {[[0,0],[2,0],[-2,0],[1,1.8],[-1,1.8]].map(([x,y],i)=>(
-                <circle key={i} cx={x} cy={y} r="1.2" fill={burgundy}/>
-              ))}
-            </g>
-            <g transform="translate(118,298)" opacity="0.55">
-              {[[0,0],[2,-0.5],[-2,-0.5],[1,1.5],[-1,1.5],[0,3]].map(([x,y],i)=>(
-                <circle key={i} cx={x} cy={y} r="1.3" fill={burgundy}/>
-              ))}
-              <path d="M 0,-1 Q 1,-3 3,-3.5" stroke={forest} strokeWidth="0.4" fill="none"/>
-            </g>
-
-            {/* Wheat stalks — near Greenock */}
-            <g transform="translate(82,155)" opacity="0.7">
-              {[-3,0,3].map((dx,i)=>(
-                <g key={i} transform={`translate(${dx},0)`}>
-                  <line x1="0" y1="2" x2="0" y2="-5" stroke="#c49e5a" strokeWidth="0.45"/>
-                  <line x1="0" y1="-5" x2="-1" y2="-7" stroke="#c49e5a" strokeWidth="0.4"/>
-                  <line x1="0" y1="-5" x2="1" y2="-7" stroke="#c49e5a" strokeWidth="0.4"/>
-                  <line x1="0" y1="-3" x2="-1.2" y2="-5" stroke="#c49e5a" strokeWidth="0.3"/>
-                  <line x1="0" y1="-3" x2="1.2" y2="-5" stroke="#c49e5a" strokeWidth="0.3"/>
-                </g>
-              ))}
-            </g>
-
-            {/* Second wine barrel — near the harvest field */}
-            <g transform="translate(260,255)" opacity="0.55">
-              <ellipse cx="0" cy="0" rx="5" ry="7" fill={hill2} stroke={ink} strokeWidth="0.55"/>
-              <line x1="-4.3" y1="-3.5" x2="4.3" y2="-3.5" stroke={ink} strokeWidth="0.4"/>
-              <line x1="-4.3" y1="3.5" x2="4.3" y2="3.5" stroke={ink} strokeWidth="0.4"/>
-            </g>
-
-            {/* Olive tree — near the olive grove */}
-            <g transform="translate(152,348)" opacity="0.65">
-              <line x1="0" y1="0" x2="0" y2="-3" stroke={ink} strokeWidth="0.4"/>
-              <ellipse cx="0" cy="-5" rx="3" ry="2.2" fill="#8a9078" opacity="0.75"/>
-            </g>
-
-            {/* ── TOWN MARKERS — warm typography with subtle dot ── */}
-            {/* Tanunda — main town */}
-            <g transform="translate(205,244)">
-              <circle r="3.5" fill="#ffffff" stroke={ink} strokeWidth="1"/>
-              <circle r="1.5" fill={burgundy}/>
-              <text textAnchor="middle" y="-6" fontSize="9.5" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" fontWeight="700" letterSpacing="1.2">TANUNDA</text>
-            </g>
-            {/* Nuriootpa */}
-            <g transform="translate(148,162)">
-              <circle r="3" fill="#ffffff" stroke={ink} strokeWidth="0.9"/>
-              <circle r="1.2" fill={burgundy}/>
-              <text textAnchor="middle" y="-5" fontSize="8.5" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" fontWeight="700" letterSpacing="0.8">NURIOOTPA</text>
-            </g>
-            {/* Angaston */}
-            <g transform="translate(258,297)">
-              <circle r="2.5" fill="#ffffff" stroke={ink} strokeWidth="0.8"/>
-              <circle r="1" fill={burgundy}/>
-              <text textAnchor="middle" y="-4" fontSize="8" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" fontWeight="700" letterSpacing="0.5">ANGASTON</text>
-            </g>
-            {/* Lyndoch */}
-            <g transform="translate(165,385)">
-              <circle r="2" fill="#ffffff" stroke={inkLight} strokeWidth="0.7"/>
-              <circle r="0.8" fill={burgundy}/>
-              <text textAnchor="middle" y="-3.5" fontSize="7" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic" fontWeight="600">Lyndoch</text>
-            </g>
-            {/* Greenock */}
-            <g transform="translate(74,118)">
-              <circle r="2" fill="#ffffff" stroke={inkLight} strokeWidth="0.7"/>
-              <circle r="0.8" fill={burgundy}/>
-              <text textAnchor="middle" y="-3.5" fontSize="7" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic" fontWeight="600">Greenock</text>
-            </g>
-            {/* Bethany */}
-            <g transform="translate(190,318)">
-              <circle r="1.8" fill="#ffffff" stroke={inkLight} strokeWidth="0.6"/>
-              <circle r="0.7" fill={burgundy}/>
-              <text textAnchor="middle" y="-3" fontSize="6.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Bethany</text>
-            </g>
-            {/* Eden Valley region label */}
-            <g transform="translate(332,55)">
-              <text textAnchor="middle" fontSize="8" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" letterSpacing="2.5" fontWeight="500">EDEN</text>
-              <text x="0" y="11" textAnchor="middle" fontSize="8" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" letterSpacing="2.5" fontWeight="500">VALLEY</text>
-            </g>
-            {/* Barossa Valley header */}
-            <g transform="translate(190,22)">
-              <text textAnchor="middle" fontSize="10" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" letterSpacing="3.5" fontWeight="700">BAROSSA VALLEY</text>
-              <line x1="-56" y1="5" x2="-12" y2="5" stroke={inkLight} strokeWidth="0.5"/>
-              <line x1="12" y1="5" x2="56" y2="5" stroke={inkLight} strokeWidth="0.5"/>
-              <circle cx="0" cy="5" r="1" fill={burgundy}/>
-            </g>
-
-            {/* ── COMPASS ROSE ── */}
-            <g transform="translate(30,385)" opacity="0.85">
-              <circle r="15" fill="#fffaed" stroke={ink} strokeWidth="0.8" opacity="0.9"/>
-              <circle r="11" fill="none" stroke={inkLight} strokeWidth="0.5"/>
-              <polygon points="0,-14 2,-5 0,-8 -2,-5" fill={burgundy}/>
-              <polygon points="0,14 2,5 0,8 -2,5" fill={inkLight}/>
-              <polygon points="-14,0 -5,-2 -8,0 -5,2" fill={inkLight}/>
-              <polygon points="14,0 5,-2 8,0 5,2" fill={inkLight}/>
-              <text x="0" y="-16" textAnchor="middle" fontSize="6" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" fontWeight="700">N</text>
-              {[45,135,225,315].map(a=>(
-                <line key={a} x1={Math.cos(a*Math.PI/180)*11} y1={Math.sin(a*Math.PI/180)*11}
-                  x2={Math.cos(a*Math.PI/180)*14} y2={Math.sin(a*Math.PI/180)*14}
-                  stroke={inkLight} strokeWidth="0.5"/>
-              ))}
-              <circle r="2.5" fill={burgundy}/>
-              <circle r="1" fill="#fffaed"/>
-            </g>
-
-            {/* ── SCALE BAR ── */}
-            <g transform="translate(290,403)">
-              <rect x="0" y="-4" width="60" height="10" fill="#fffaed" stroke="none" opacity="0.7"/>
-              <line x1="0" y1="0" x2="60" y2="0" stroke={ink} strokeWidth="0.9"/>
-              <line x1="0" y1="-3" x2="0" y2="3" stroke={ink} strokeWidth="0.9"/>
-              <line x1="30" y1="-2" x2="30" y2="2" stroke={ink} strokeWidth="0.6"/>
-              <line x1="60" y1="-3" x2="60" y2="3" stroke={ink} strokeWidth="0.9"/>
-              <text x="0" y="-5" fontSize="6" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif">0</text>
-              <text x="26" y="-5" fontSize="6" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif">5</text>
-              <text x="50" y="-5" fontSize="6" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif">10 km</text>
-            </g>
-
-            {/* Paper grain overlay for texture */}
-            <rect width={W} height={H} fill="url(#grain)" pointerEvents="none"/>
-            {/* Aged foxing spots (parchment stains) */}
-            <rect width={W} height={H} fill="url(#foxing)" pointerEvents="none"/>
-            {/* Parchment vignette — dims edges, warms middle */}
-            <rect width={W} height={H} fill="url(#parchmentVig)" pointerEvents="none"/>
-
-            {/* ─────────── TOPOGRAPHIC MOUNTAIN RIDGE — Barossa Ranges (east) ─────────── */}
-            <g opacity="0.88" pointerEvents="none">
-              {/* ridge line with multiple peaks */}
+            {/* ─── MOUNTAIN RIDGE (east — Barossa Ranges, soft pastel) ─── */}
+            <g opacity="0.82">
               {[
-                [295,92,14,18],[308,88,11,15],[320,94,13,17],
-                [332,100,10,14],[344,108,12,16],[352,118,9,13],
-                [306,140,13,16],[320,146,11,15],[336,152,14,18],
-                [348,162,10,14],[302,180,12,15],[316,186,10,14],
-                [330,194,13,17],[342,204,11,15],
-                [310,232,14,18],[324,240,11,15],[338,250,12,16],
-                [348,262,10,14],[318,280,12,15],[334,288,13,17],
-                [344,300,10,14],[320,332,12,16],[334,340,11,15]
+                [302,88,12,16],[316,84,10,14],[328,92,11,15],[340,100,10,14],
+                [350,115,9,13],[312,138,11,15],[326,144,10,14],[340,152,12,17],
+                [348,164,9,13],[308,184,11,15],[322,190,10,14],[336,200,12,16],
+                [346,212,9,13],[314,238,12,16],[328,246,10,14],[342,256,11,15],
+                [318,282,11,15],[334,292,12,16],[324,330,11,15],[338,340,10,14]
               ].map(([cx,cy,w,h],i)=>(
                 <g key={`mtn-${i}`}>
-                  {/* peak shape */}
                   <polygon points={`${cx-w},${cy+2} ${cx},${cy-h} ${cx+w},${cy+2}`}
-                    fill="#b89050" stroke="#5a3a18" strokeWidth="0.45" opacity="0.55"/>
-                  {/* hatch shading on right face */}
+                    fill={hill2} stroke="#a8865a" strokeWidth="0.4" opacity="0.6"/>
                   <polygon points={`${cx},${cy-h} ${cx+w},${cy+2} ${cx},${cy+2}`}
-                    fill="url(#mountainHatch)" opacity="0.8"/>
-                  {/* snowcap highlight on top */}
+                    fill="url(#mountainHatch)" opacity="0.75"/>
                   <polygon points={`${cx-w*0.3},${cy-h*0.55} ${cx},${cy-h} ${cx+w*0.3},${cy-h*0.55}`}
-                    fill="#f4e4bc" opacity="0.75"/>
+                    fill="#fff4dc" opacity="0.75"/>
                 </g>
               ))}
             </g>
 
-            {/* ─────────── DENSE FOREST CLUSTERS (tiny tree icons, GoT style) ─────────── */}
-            <g opacity="0.78" pointerEvents="none">
-              {/* Forest 1 — north hills */}
-              {Array.from({length:22}).map((_,i)=>{
-                const seed = (i*37)%11;
-                const x = 240 + (i%6)*6 + seed*0.4;
-                const y = 30 + Math.floor(i/6)*7 + (i%3)*1.5;
+            {/* ─── VINEYARD REGIONS (painterly, pastel) ─── */}
+            {/* Northern plains vineyards */}
+            <path d="M 110,80 Q 150,72 195,78 Q 232,88 240,110 Q 228,128 195,130 Q 150,128 115,118 Q 100,100 110,80 Z"
+                  fill={vineyard} opacity="0.6" filter="url(#wc)"/>
+            <path d="M 110,80 Q 150,72 195,78 Q 232,88 240,110 Q 228,128 195,130 Q 150,128 115,118 Q 100,100 110,80 Z"
+                  fill="url(#vineRows)"/>
+            {/* Central vineyards (Tanunda–Rowland) */}
+            <path d="M 110,195 Q 155,188 200,195 Q 235,205 240,230 Q 225,252 185,255 Q 140,252 112,238 Q 95,220 110,195 Z"
+                  fill={vineyard} opacity="0.55" filter="url(#wc)"/>
+            <path d="M 110,195 Q 155,188 200,195 Q 235,205 240,230 Q 225,252 185,255 Q 140,252 112,238 Q 95,220 110,195 Z"
+                  fill="url(#vineRows2)"/>
+            {/* Eden slope vines */}
+            <path d="M 255,155 Q 282,150 298,160 Q 305,178 296,192 Q 275,198 260,188 Q 250,170 255,155 Z"
+                  fill={vineyardDeep} opacity="0.48" filter="url(#wc)"/>
+            <path d="M 255,155 Q 282,150 298,160 Q 305,178 296,192 Q 275,198 260,188 Q 250,170 255,155 Z"
+                  fill="url(#vineRows3)"/>
+            {/* Young vines NE of Nuriootpa */}
+            <path d="M 175,130 Q 200,125 222,132 Q 230,148 220,160 Q 198,164 180,156 Q 170,144 175,130 Z"
+                  fill="#c8dbae" opacity="0.55" filter="url(#wc)"/>
+            <path d="M 175,130 Q 200,125 222,132 Q 230,148 220,160 Q 198,164 180,156 Q 170,144 175,130 Z"
+                  fill="url(#youngVines)"/>
+            {/* Harvest ochre field east of Tanunda */}
+            <path d="M 232,242 Q 252,238 268,244 Q 272,258 262,268 Q 246,272 234,264 Q 226,252 232,242 Z"
+                  fill="url(#harvestRows)" opacity="0.75"/>
+            {/* Krondorf/Bethany vines */}
+            <path d="M 115,265 Q 150,260 190,268 Q 215,278 218,298 Q 200,315 160,315 Q 125,310 108,295 Q 100,278 115,265 Z"
+                  fill={vineyard} opacity="0.55" filter="url(#wc)"/>
+            <path d="M 115,265 Q 150,260 190,268 Q 215,278 218,298 Q 200,315 160,315 Q 125,310 108,295 Q 100,278 115,265 Z"
+                  fill="url(#vineRows)"/>
+
+            {/* ─── WATER — North Para River and tributaries (soft pastel blue) ─── */}
+            <g opacity="0.8">
+              <path d="M 155,18 C 150,60 146,105 143,150 C 140,195 138,240 136,285 C 134,325 132,365 130,410"
+                    fill="none" stroke={waterDeep} strokeWidth="1.8" strokeLinecap="round" opacity="0.85"/>
+              <path d="M 158,18 C 153,60 149,105 146,150 C 143,195 141,240 139,285 C 137,325 135,365 133,410"
+                    fill="none" stroke={water} strokeWidth="0.9" opacity="0.7"/>
+              {/* Tributary (Jacob's Creek-ish) */}
+              <path d="M 138,320 Q 105,330 70,350" fill="none" stroke={waterDeep} strokeWidth="1.1" opacity="0.7"/>
+              <path d="M 138,320 Q 105,330 70,350" fill="none" stroke={water} strokeWidth="0.55" opacity="0.6"/>
+              {/* Eden creek */}
+              <path d="M 146,195 Q 180,198 218,200" fill="none" stroke={waterDeep} strokeWidth="0.9" opacity="0.65"/>
+            </g>
+            {/* River label */}
+            <g fontFamily="'Palatino Linotype','Book Antiqua',Georgia,serif" fontStyle="italic" fill={waterDeep} opacity="0.85">
+              <text transform="translate(130,145) rotate(85)" fontSize="6" letterSpacing="1.2">North Para River</text>
+            </g>
+
+            {/* Farm dams */}
+            <g opacity="0.75">
+              <ellipse cx="92" cy="212" rx="3.8" ry="2.2" fill={waterDeep}/>
+              <ellipse cx="92" cy="212" rx="3" ry="1.7" fill={water}/>
+              <ellipse cx="230" cy="256" rx="3.2" ry="1.9" fill={waterDeep}/>
+              <ellipse cx="230" cy="256" rx="2.6" ry="1.4" fill={water}/>
+              <ellipse cx="168" cy="342" rx="2.8" ry="1.6" fill={waterDeep}/>
+              <ellipse cx="168" cy="342" rx="2.2" ry="1.2" fill={water}/>
+            </g>
+
+            {/* ─── ROADS (curved with italic labels) ─── */}
+            <g>
+              {/* Barossa Valley Way — main highway */}
+              <path id="mainHwy" d="M 158,14 C 156,50 154,88 152,126 C 150,165 149,198 148,232 C 147,265 146,295 145,320 C 144,345 143,368 142,406"
+                fill="none" stroke={road} strokeWidth="4.5" strokeLinecap="round"/>
+              <path d="M 158,14 C 156,50 154,88 152,126 C 150,165 149,198 148,232 C 147,265 146,295 145,320 C 144,345 143,368 142,406"
+                fill="none" stroke={roadStroke} strokeWidth="1.1" opacity="0.7"/>
+              <text fontSize="5.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic" letterSpacing="0.4">
+                <textPath href="#mainHwy" startOffset="45%">Barossa Valley Way</textPath>
+              </text>
+
+              {/* Seppeltsfield Rd */}
+              <path id="seppeltsRd" d="M 28,145 C 60,150 95,160 130,178 C 158,195 180,215 198,240" fill="none" stroke={road} strokeWidth="2.5"/>
+              <path d="M 28,145 C 60,150 95,160 130,178 C 158,195 180,215 198,240" fill="none" stroke={roadStroke} strokeWidth="0.75" opacity="0.65"/>
+              <text fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic" letterSpacing="0.3">
+                <textPath href="#seppeltsRd" startOffset="20%">Seppeltsfield Rd</textPath>
+              </text>
+
+              {/* Menglers Hill / Eden Valley Rd (dashed scenic) */}
+              <path id="edenValleyRd" d="M 218,290 C 238,268 260,244 278,218 C 294,192 308,165 322,140 C 334,118 346,96 358,75"
+                fill="none" stroke={roadStroke} strokeWidth="0.85" strokeDasharray="4,2.5" opacity="0.72"/>
+              <text fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
+                <textPath href="#edenValleyRd" startOffset="22%">Menglers Hill Rd · Eden Valley</textPath>
+              </text>
+
+              {/* Stockwell Rd — N from Nuriootpa */}
+              <path id="stockwellRd" d="M 148,162 C 158,140 170,112 180,82" fill="none" stroke={road} strokeWidth="2.1"/>
+              <path d="M 148,162 C 158,140 170,112 180,82" fill="none" stroke={roadStroke} strokeWidth="0.65" opacity="0.6"/>
+              <text fontSize="4.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
+                <textPath href="#stockwellRd" startOffset="30%">Stockwell Rd</textPath>
+              </text>
+
+              {/* Angaston Rd — diagonal */}
+              <path id="nurioAngRd" d="M 148,162 C 180,200 220,248 258,292" fill="none" stroke={road} strokeWidth="2.1"/>
+              <path d="M 148,162 C 180,200 220,248 258,292" fill="none" stroke={roadStroke} strokeWidth="0.65" opacity="0.6"/>
+              <text fontSize="4.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
+                <textPath href="#nurioAngRd" startOffset="40%">Angaston Rd</textPath>
+              </text>
+
+              {/* Gomersal Rd */}
+              <path id="gomersalRd" d="M 145,250 C 128,278 115,312 108,358" fill="none" stroke={road} strokeWidth="2"/>
+              <path d="M 145,250 C 128,278 115,312 108,358" fill="none" stroke={roadStroke} strokeWidth="0.6" opacity="0.6"/>
+              <text fontSize="4.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
+                <textPath href="#gomersalRd" startOffset="30%">Gomersal Rd</textPath>
+              </text>
+
+              {/* Krondorf Rd */}
+              <path id="krondorfRd" d="M 148,250 C 170,260 195,268 222,278" fill="none" stroke={road} strokeWidth="1.9"/>
+              <path d="M 148,250 C 170,260 195,268 222,278" fill="none" stroke={roadStroke} strokeWidth="0.55" opacity="0.6"/>
+              <text fontSize="4.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
+                <textPath href="#krondorfRd" startOffset="25%">Krondorf Rd</textPath>
+              </text>
+
+              {/* Research Rd */}
+              <path d="M 85,158 C 110,160 130,161 148,162" fill="none" stroke={road} strokeWidth="1.7"/>
+              <path d="M 85,158 C 110,160 130,161 148,162" fill="none" stroke={roadStroke} strokeWidth="0.5" opacity="0.55"/>
+
+              {/* Langmeil / Bethany connectors */}
+              <path d="M 148,232 C 152,215 156,200 160,185" fill="none" stroke={road} strokeWidth="1.5"/>
+              <path d="M 148,232 C 152,215 156,200 160,185" fill="none" stroke={roadStroke} strokeWidth="0.45" opacity="0.5"/>
+              <path d="M 148,232 C 156,252 164,272 168,296" fill="none" stroke={road} strokeWidth="1.5"/>
+              <path d="M 148,232 C 156,252 164,272 168,296" fill="none" stroke={roadStroke} strokeWidth="0.45" opacity="0.5"/>
+            </g>
+
+            {/* ─── TOWN MARKERS (elegant, labelled) ─── */}
+            <g fontFamily="'Palatino Linotype','Book Antiqua',Georgia,serif">
+              {[
+                ["Nuriootpa",148,162,7],
+                ["Tanunda",147,232,8],
+                ["Angaston",262,295,7],
+                ["Lyndoch",138,395,7],
+                ["Greenock",68,172,6],
+                ["Seppeltsfield",78,186,5.5],
+                ["Stockwell",182,82,5.5],
+                ["Bethany",172,282,5.5],
+                ["Rowland Flat",140,315,5.5],
+                ["Eden Valley",358,72,6],
+              ].map(([name,x,y,fontSize],i)=>{
+                const isMajor = fontSize>=7;
                 return (
-                  <g key={`f1-${i}`} transform={`translate(${x},${y})`}>
-                    <line x1="0" y1="0" x2="0" y2="-1.5" stroke="#4a3018" strokeWidth="0.3"/>
-                    <polygon points="-2,-1 2,-1 0,-5" fill="#6a8050" stroke="#3a4a28" strokeWidth="0.3"/>
-                  </g>
-                );
-              })}
-              {/* Forest 2 — south of Eden hills */}
-              {Array.from({length:28}).map((_,i)=>{
-                const x = 270 + (i%7)*6 + (i*13)%5;
-                const y = 315 + Math.floor(i/7)*6 + (i%3)*1.3;
-                return (
-                  <g key={`f2-${i}`} transform={`translate(${x},${y})`}>
-                    <line x1="0" y1="0" x2="0" y2="-1.5" stroke="#4a3018" strokeWidth="0.3"/>
-                    <polygon points="-2,-1 2,-1 0,-5" fill="#6a8050" stroke="#3a4a28" strokeWidth="0.3"/>
-                  </g>
-                );
-              })}
-              {/* Forest 3 — west strip near Greenock */}
-              {Array.from({length:18}).map((_,i)=>{
-                const x = 40 + (i%5)*6 + (i*11)%4;
-                const y = 250 + Math.floor(i/5)*6 + (i%2)*1.5;
-                return (
-                  <g key={`f3-${i}`} transform={`translate(${x},${y})`}>
-                    <line x1="0" y1="0" x2="0" y2="-1.5" stroke="#4a3018" strokeWidth="0.3"/>
-                    <polygon points="-2,-1 2,-1 0,-5" fill="#6a8050" stroke="#3a4a28" strokeWidth="0.3"/>
-                  </g>
-                );
-              })}
-              {/* Forest 4 — scattered NE cluster */}
-              {Array.from({length:14}).map((_,i)=>{
-                const x = 265 + (i%4)*5 + (i*17)%5;
-                const y = 200 + Math.floor(i/4)*5;
-                return (
-                  <g key={`f4-${i}`} transform={`translate(${x},${y})`}>
-                    <line x1="0" y1="0" x2="0" y2="-1.5" stroke="#4a3018" strokeWidth="0.3"/>
-                    <polygon points="-2,-1 2,-1 0,-5" fill="#6a8050" stroke="#3a4a28" strokeWidth="0.3"/>
-                  </g>
-                );
-              })}
-              {/* Forest 5 — small southern grove */}
-              {Array.from({length:10}).map((_,i)=>{
-                const x = 200 + (i%4)*5;
-                const y = 385 + Math.floor(i/4)*5;
-                return (
-                  <g key={`f5-${i}`} transform={`translate(${x},${y})`}>
-                    <line x1="0" y1="0" x2="0" y2="-1.5" stroke="#4a3018" strokeWidth="0.3"/>
-                    <polygon points="-2,-1 2,-1 0,-5" fill="#6a8050" stroke="#3a4a28" strokeWidth="0.3"/>
+                  <g key={`town-${i}`}>
+                    {isMajor && (
+                      <>
+                        <circle cx={x} cy={y} r="2.2" fill="#fffbf0" stroke={ink} strokeWidth="0.55"/>
+                        <circle cx={x} cy={y} r="0.9" fill={ink}/>
+                      </>
+                    )}
+                    {!isMajor && (
+                      <circle cx={x} cy={y} r="1.3" fill={ink} opacity="0.8"/>
+                    )}
+                    <text x={x+3.5} y={y+1.3} fontSize={fontSize} fill={ink}
+                          fontWeight={isMajor?600:400} fontStyle={isMajor?"normal":"italic"}
+                          letterSpacing="0.4">{name}</text>
                   </g>
                 );
               })}
             </g>
 
-            {/* ─────────── ORNATE BORDER FRAME ─────────── */}
-            <g pointerEvents="none">
-              {/* Outer thick ink border */}
-              <rect x="3" y="3" width={W-6} height={H-6} fill="none" stroke="#3a2410" strokeWidth="1.4"/>
-              {/* Inner hairline border (classic double-rule) */}
-              <rect x="7" y="7" width={W-14} height={H-14} fill="none" stroke="#3a2410" strokeWidth="0.45"/>
-              {/* Inner decorative zigzag between them */}
-              <rect x="10" y="10" width={W-20} height={H-20} fill="none" stroke="#6a4a28" strokeWidth="0.3" strokeDasharray="2,1"/>
-
-              {/* Corner motifs: grape-vine spirals — TL */}
-              <g transform="translate(14,14)" opacity="0.85">
-                <path d="M 0,12 Q 2,6 8,4 Q 14,2 14,-2" fill="none" stroke="#3a2410" strokeWidth="0.6"/>
-                <circle cx="4" cy="7" r="1.3" fill="#7a1f2a"/>
-                <circle cx="7" cy="5" r="1.3" fill="#7a1f2a"/>
-                <circle cx="10" cy="3" r="1.3" fill="#7a1f2a"/>
-                <circle cx="6" cy="9" r="1.2" fill="#7a1f2a"/>
-                <path d="M 14,-2 Q 18,0 16,4 Q 14,6 12,4" fill="none" stroke="#3a2410" strokeWidth="0.5"/>
-                <path d="M 0,12 Q -2,6 -2,0" fill="none" stroke="#6a8050" strokeWidth="0.5"/>
-              </g>
-              {/* TR */}
-              <g transform={`translate(${W-14},14)`} opacity="0.85">
-                <path d="M 0,12 Q -2,6 -8,4 Q -14,2 -14,-2" fill="none" stroke="#3a2410" strokeWidth="0.6"/>
-                <circle cx="-4" cy="7" r="1.3" fill="#7a1f2a"/>
-                <circle cx="-7" cy="5" r="1.3" fill="#7a1f2a"/>
-                <circle cx="-10" cy="3" r="1.3" fill="#7a1f2a"/>
-                <circle cx="-6" cy="9" r="1.2" fill="#7a1f2a"/>
-                <path d="M -14,-2 Q -18,0 -16,4 Q -14,6 -12,4" fill="none" stroke="#3a2410" strokeWidth="0.5"/>
-              </g>
-              {/* BL */}
-              <g transform={`translate(14,${H-14})`} opacity="0.85">
-                <path d="M 0,-12 Q 2,-6 8,-4 Q 14,-2 14,2" fill="none" stroke="#3a2410" strokeWidth="0.6"/>
-                <circle cx="4" cy="-7" r="1.3" fill="#7a1f2a"/>
-                <circle cx="7" cy="-5" r="1.3" fill="#7a1f2a"/>
-                <circle cx="10" cy="-3" r="1.3" fill="#7a1f2a"/>
-                <circle cx="6" cy="-9" r="1.2" fill="#7a1f2a"/>
-                <path d="M 14,2 Q 18,0 16,-4 Q 14,-6 12,-4" fill="none" stroke="#3a2410" strokeWidth="0.5"/>
-              </g>
-              {/* BR */}
-              <g transform={`translate(${W-14},${H-14})`} opacity="0.85">
-                <path d="M 0,-12 Q -2,-6 -8,-4 Q -14,-2 -14,2" fill="none" stroke="#3a2410" strokeWidth="0.6"/>
-                <circle cx="-4" cy="-7" r="1.3" fill="#7a1f2a"/>
-                <circle cx="-7" cy="-5" r="1.3" fill="#7a1f2a"/>
-                <circle cx="-10" cy="-3" r="1.3" fill="#7a1f2a"/>
-                <circle cx="-6" cy="-9" r="1.2" fill="#7a1f2a"/>
-                <path d="M -14,2 Q -18,0 -16,-4 Q -14,-6 -12,-4" fill="none" stroke="#3a2410" strokeWidth="0.5"/>
-              </g>
+            {/* ─── Decorative FOREST stipple zones ─── */}
+            <g opacity="0.72">
+              {/* North forest */}
+              <ellipse cx="262" cy="55" rx="30" ry="14" fill="url(#forestStipple)"/>
+              <ellipse cx="262" cy="55" rx="30" ry="14" fill={forest} opacity="0.08"/>
+              {/* Eden eastern forest */}
+              <ellipse cx="338" cy="280" rx="18" ry="22" fill="url(#forestStipple)"/>
+              {/* Western copse */}
+              <ellipse cx="52" cy="238" rx="16" ry="11" fill="url(#forestStipple)"/>
+              {/* Southern small grove */}
+              <ellipse cx="210" cy="395" rx="14" ry="8" fill="url(#forestStipple)"/>
             </g>
 
-            {/* ─────────── TITLE BANNER (cartouche) ─────────── */}
+            {/* Tiny tree icon scatters (fine-line charm) */}
+            <g opacity="0.75" pointerEvents="none">
+              {[
+                [245,45],[254,52],[263,48],[273,55],[280,50],[258,62],[270,65],
+                [50,232],[58,238],[46,245],[64,244],
+                [332,272],[340,282],[338,294],[345,286],[330,290],
+                [204,390],[214,398],[196,394],
+                [320,335],[330,342]
+              ].map(([x,y],i)=>(
+                <g key={`tree-${i}`} transform={`translate(${x},${y})`}>
+                  <line x1="0" y1="0" x2="0" y2="-1.8" stroke={ink} strokeWidth="0.28" opacity="0.7"/>
+                  <polygon points="-2,-1.2 2,-1.2 0,-5" fill={forest} stroke="#6a8058" strokeWidth="0.25"/>
+                </g>
+              ))}
+            </g>
+
+            {/* Decorative illustrations — small landmarks */}
+            {/* Langmeil Lutheran church */}
+            <g transform="translate(186,258)" opacity="0.75">
+              <rect x="-3" y="-3" width="6" height="6" fill="#fff8e8" stroke={ink} strokeWidth="0.45"/>
+              <polygon points="-3.5,-3 3.5,-3 0,-7" fill={dustyPink} stroke={ink} strokeWidth="0.4"/>
+              <rect x="-0.4" y="0" width="0.8" height="3" fill={ink} opacity="0.7"/>
+              <line x1="0" y1="-7" x2="0" y2="-10" stroke={ink} strokeWidth="0.35"/>
+              <line x1="-1" y1="-9" x2="1" y2="-9" stroke={ink} strokeWidth="0.35"/>
+            </g>
+            {/* Wine barrel near harvest field */}
+            <g transform="translate(254,258)" opacity="0.6">
+              <ellipse cx="0" cy="0" rx="4" ry="5.5" fill={ochre} stroke={ink} strokeWidth="0.5"/>
+              <line x1="-3.6" y1="-2.8" x2="3.6" y2="-2.8" stroke={ink} strokeWidth="0.35"/>
+              <line x1="-3.6" y1="2.8" x2="3.6" y2="2.8" stroke={ink} strokeWidth="0.35"/>
+            </g>
+            {/* Grape decoration NE */}
+            <g transform="translate(208,108)" opacity="0.6">
+              {[[0,0],[2,0],[-2,0],[1,1.8],[-1,1.8],[0,3.6]].map(([x,y],i)=>(
+                <circle key={i} cx={x} cy={y} r="1.2" fill={burgundy}/>
+              ))}
+              <path d="M 0,-1 Q -1.5,-2.5 -2.8,-3" stroke={forest} strokeWidth="0.35" fill="none"/>
+            </g>
+            {/* Wheat stalks near Greenock */}
+            <g transform="translate(72,195)" opacity="0.65">
+              {[-3,0,3].map((dx,i)=>(
+                <g key={i} transform={`translate(${dx},0)`}>
+                  <line x1="0" y1="2" x2="0" y2="-5" stroke={ochre} strokeWidth="0.4"/>
+                  <line x1="0" y1="-5" x2="-1" y2="-7" stroke={ochre} strokeWidth="0.35"/>
+                  <line x1="0" y1="-5" x2="1" y2="-7" stroke={ochre} strokeWidth="0.35"/>
+                  <line x1="0" y1="-3" x2="-1.1" y2="-5" stroke={ochre} strokeWidth="0.28"/>
+                  <line x1="0" y1="-3" x2="1.1" y2="-5" stroke={ochre} strokeWidth="0.28"/>
+                </g>
+              ))}
+            </g>
+
+            {/* ─── SCALE BAR (bottom right) ─── */}
+            <g transform="translate(260,392)" pointerEvents="none" opacity="0.85">
+              <rect x="0" y="0" width="20" height="3" fill={ink}/>
+              <rect x="20" y="0" width="20" height="3" fill="#fff8e8" stroke={ink} strokeWidth="0.3"/>
+              <rect x="40" y="0" width="20" height="3" fill={ink}/>
+              <line x1="0" y1="-3" x2="0" y2="3" stroke={ink} strokeWidth="0.9"/>
+              <line x1="60" y1="-3" x2="60" y2="3" stroke={ink} strokeWidth="0.9"/>
+              <text x="0" y="-5" fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif">0</text>
+              <text x="58" y="-5" fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif">10 km</text>
+            </g>
+
+            {/* ─── Paper grain overlay ─── */}
+            <rect width={W} height={H} fill="url(#grain)" pointerEvents="none"/>
+            {/* Soft edge vignette */}
+            <rect width={W} height={H} fill="url(#vignette)" pointerEvents="none"/>
+
+            {/* ─── ORNATE BORDER FRAME (double rule + grape corners, pastel) ─── */}
             <g pointerEvents="none">
-              {/* Banner scroll */}
+              <rect x="4" y="4" width={W-8} height={H-8} fill="none" stroke={ink} strokeWidth="1"/>
+              <rect x="8" y="8" width={W-16} height={H-16} fill="none" stroke={ink} strokeWidth="0.35"/>
+              <rect x="11" y="11" width={W-22} height={H-22} fill="none" stroke={inkLight} strokeWidth="0.25" strokeDasharray="2,1.2"/>
+              {[[14,14,1,1],[W-14,14,-1,1],[14,H-14,1,-1],[W-14,H-14,-1,-1]].map(([cx,cy,sx,sy],i)=>(
+                <g key={`cor-${i}`} transform={`translate(${cx},${cy}) scale(${sx},${sy})`} opacity="0.82">
+                  <path d="M 0,12 Q 2,6 8,4 Q 14,2 14,-2" fill="none" stroke={ink} strokeWidth="0.55"/>
+                  <circle cx="4" cy="7" r="1.2" fill={burgundy}/>
+                  <circle cx="7" cy="5" r="1.2" fill={burgundy}/>
+                  <circle cx="10" cy="3" r="1.2" fill={burgundy}/>
+                  <circle cx="6" cy="9" r="1.1" fill={burgundy}/>
+                  <path d="M 14,-2 Q 18,0 16,4 Q 14,6 12,4" fill="none" stroke={ink} strokeWidth="0.45"/>
+                  <path d="M 0,12 Q -2,6 -2,0" fill="none" stroke={forest} strokeWidth="0.45"/>
+                </g>
+              ))}
+            </g>
+
+            {/* ─── TITLE BANNER (cream cartouche scroll) ─── */}
+            <g pointerEvents="none">
               <path d="M 100,20 Q 96,28 100,36 L 280,36 Q 284,28 280,20 Z"
-                    fill="#fff8e4" stroke="#3a2410" strokeWidth="0.7"/>
-              {/* Banner curl ends */}
-              <path d="M 100,20 Q 94,20 92,26 Q 94,32 100,32" fill="#e8d4a0" stroke="#3a2410" strokeWidth="0.5"/>
-              <path d="M 100,36 Q 94,36 92,30 Q 94,24 100,24" fill="none" stroke="#3a2410" strokeWidth="0.4" opacity="0.6"/>
-              <path d="M 280,20 Q 286,20 288,26 Q 286,32 280,32" fill="#e8d4a0" stroke="#3a2410" strokeWidth="0.5"/>
-              <path d="M 280,36 Q 286,36 288,30 Q 286,24 280,24" fill="none" stroke="#3a2410" strokeWidth="0.4" opacity="0.6"/>
-              {/* Banner text */}
+                    fill="#fffbf0" stroke={ink} strokeWidth="0.55"/>
+              <path d="M 100,20 Q 94,20 92,26 Q 94,32 100,32" fill={bgDeep} stroke={ink} strokeWidth="0.4"/>
+              <path d="M 280,20 Q 286,20 288,26 Q 286,32 280,32" fill={bgDeep} stroke={ink} strokeWidth="0.4"/>
               <text x={W/2} y="32" textAnchor="middle" fontSize="14"
-                    fill="#3a2410" fontFamily="'Palatino Linotype','Book Antiqua',Georgia,serif"
-                    fontStyle="italic" fontWeight="700" letterSpacing="1.5">Barossa Valley</text>
-              {/* Flourishes on each side of banner text */}
-              <path d="M 108,28 Q 115,24 118,28" fill="none" stroke="#3a2410" strokeWidth="0.4"/>
-              <circle cx="107" cy="28" r="0.5" fill="#3a2410"/>
-              <path d="M 272,28 Q 265,24 262,28" fill="none" stroke="#3a2410" strokeWidth="0.4"/>
-              <circle cx="273" cy="28" r="0.5" fill="#3a2410"/>
+                    fill={ink} fontFamily="'Palatino Linotype','Book Antiqua',Georgia,serif"
+                    fontStyle="italic" fontWeight="700" letterSpacing="1.4">Barossa Valley</text>
+              <path d="M 108,28 Q 115,24 118,28" fill="none" stroke={ink} strokeWidth="0.35"/>
+              <circle cx="107" cy="28" r="0.4" fill={ink}/>
+              <path d="M 272,28 Q 265,24 262,28" fill="none" stroke={ink} strokeWidth="0.35"/>
+              <circle cx="273" cy="28" r="0.4" fill={ink}/>
             </g>
 
-            {/* ─────────── COMPASS ROSE (top right) ─────────── */}
-            <g transform="translate(42,60)" pointerEvents="none" opacity="0.9">
-              {/* Outer ring */}
-              <circle r="17" fill="#fff8e4" stroke="#3a2410" strokeWidth="0.55"/>
-              <circle r="13" fill="none" stroke="#3a2410" strokeWidth="0.3"/>
-              {/* 8-point star */}
-              <polygon points="0,-14 2,-2 14,0 2,2 0,14 -2,2 -14,0 -2,-2" fill="#3a2410" opacity="0.85"/>
-              {/* secondary points (diagonals) */}
-              <polygon points="0,-10 1.5,-1.5 10,0 1.5,1.5 0,10 -1.5,1.5 -10,0 -1.5,-1.5"
-                       fill="#7a1f2a" opacity="0.7" transform="rotate(45)"/>
-              {/* Center dot */}
-              <circle r="1.3" fill="#d4a848" stroke="#3a2410" strokeWidth="0.3"/>
-              {/* NESW labels */}
-              <text y="-19" textAnchor="middle" fontSize="5.5" fontWeight="700"
-                    fill="#3a2410" fontFamily="'Palatino Linotype',Georgia,serif">N</text>
-              <text y="23" textAnchor="middle" fontSize="4.5"
-                    fill="#6a4a28" fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">S</text>
-              <text x="21" y="1.6" textAnchor="middle" fontSize="4.5"
-                    fill="#6a4a28" fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">E</text>
-              <text x="-21" y="1.6" textAnchor="middle" fontSize="4.5"
-                    fill="#6a4a28" fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">W</text>
+            {/* ─── COMPASS ROSE (top left) ─── */}
+            <g transform="translate(42,62)" pointerEvents="none" opacity="0.92">
+              <circle r="16" fill="#fffbf0" stroke={ink} strokeWidth="0.5"/>
+              <circle r="12" fill="none" stroke={ink} strokeWidth="0.28"/>
+              <polygon points="0,-13 1.8,-1.8 13,0 1.8,1.8 0,13 -1.8,1.8 -13,0 -1.8,-1.8" fill={ink} opacity="0.78"/>
+              <polygon points="0,-9 1.4,-1.4 9,0 1.4,1.4 0,9 -1.4,1.4 -9,0 -1.4,-1.4"
+                       fill={burgundy} opacity="0.62" transform="rotate(45)"/>
+              <circle r="1.2" fill={ochre} stroke={ink} strokeWidth="0.28"/>
+              <text y="-18" textAnchor="middle" fontSize="5" fontWeight="700" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif">N</text>
+              <text y="22" textAnchor="middle" fontSize="4.2" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">S</text>
+              <text x="20" y="1.5" textAnchor="middle" fontSize="4.2" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">E</text>
+              <text x="-20" y="1.5" textAnchor="middle" fontSize="4.2" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">W</text>
             </g>
 
-            {/* ─────────── LEGEND / KEY BOX (bottom left) ─────────── */}
-            <g transform="translate(14,340)" pointerEvents="none" opacity="0.93">
-              {/* Box */}
-              <rect width="108" height="62" fill="#fff8e4" stroke="#3a2410" strokeWidth="0.6"/>
-              <rect x="2" y="2" width="104" height="58" fill="none" stroke="#3a2410" strokeWidth="0.25"/>
-              {/* Title */}
-              <text x="54" y="10" textAnchor="middle" fontSize="6"
-                    fill="#3a2410" fontFamily="'Palatino Linotype',Georgia,serif"
-                    fontWeight="700" letterSpacing="1.5">KEY</text>
-              <line x1="8" y1="12" x2="100" y2="12" stroke="#3a2410" strokeWidth="0.25"/>
+            {/* ─── LEGEND / KEY BOX (bottom left) ─── */}
+            <g transform="translate(14,332)" pointerEvents="none" opacity="0.95">
+              <rect width="112" height="70" fill="#fffbf0" stroke={ink} strokeWidth="0.55"/>
+              <rect x="2" y="2" width="108" height="66" fill="none" stroke={ink} strokeWidth="0.25"/>
+              <text x="56" y="10" textAnchor="middle" fontSize="6" fill={ink}
+                    fontFamily="'Palatino Linotype',Georgia,serif" fontWeight="700" letterSpacing="1.4">KEY</text>
+              <line x1="8" y1="12" x2="104" y2="12" stroke={ink} strokeWidth="0.25"/>
               {/* Bottle = Visited */}
               <g transform="translate(12,22)">
                 <rect x="-1.6" y="-10" width="3.2" height="3" fill="#3a2618"/>
-                <rect x="-1.4" y="-7.5" width="2.8" height="3" fill="#7a1f2a"/>
+                <rect x="-1.4" y="-7.5" width="2.8" height="3" fill={burgundy}/>
                 <path d="M -1.4,-4.5 Q -3.5,-3.5 -3.5,-1 L -3.5,6 Q -3.5,7 -2.5,7 L 2.5,7 Q 3.5,7 3.5,6 L 3.5,-1 Q 3.5,-3.5 1.4,-4.5 Z"
-                      fill="#7a1f2a" stroke="#2a1810" strokeWidth="0.4"/>
-                <rect x="-2.6" y="-0.5" width="5.2" height="4.5" fill="#f4e8cc" stroke="#2a1810" strokeWidth="0.25"/>
+                      fill={burgundy} stroke="#2a1810" strokeWidth="0.35"/>
+                <rect x="-2.6" y="-0.5" width="5.2" height="4.5" fill="#f4e8cc" stroke="#2a1810" strokeWidth="0.22"/>
               </g>
-              <text x="22" y="24" fontSize="5.5" fill="#3a2410"
-                    fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Visited</text>
+              <text x="22" y="24" fontSize="5.3" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Visited</text>
               {/* Empty glass = Not yet */}
               <g transform="translate(12,39)">
                 <path d="M -3,-6 Q -3.4,-2.8 -2.6,-1 Q -2,0.4 0,0.6 Q 2,0.4 2.6,-1 Q 3.4,-2.8 3,-6 Z"
-                      fill="#fffaed" stroke="#8aab7a" strokeWidth="0.7"/>
-                <line x1="-3" y1="-6" x2="3" y2="-6" stroke="#8aab7a" strokeWidth="0.7"/>
-                <line x1="0" y1="0.6" x2="0" y2="4.5" stroke="#8aab7a" strokeWidth="0.7"/>
-                <path d="M -2.2,4.5 Q 0,5.3 2.2,4.5" stroke="#8aab7a" fill="none" strokeWidth="0.7"/>
+                      fill="#fffaed" stroke={vineyardDeep} strokeWidth="0.65"/>
+                <line x1="-3" y1="-6" x2="3" y2="-6" stroke={vineyardDeep} strokeWidth="0.65"/>
+                <line x1="0" y1="0.6" x2="0" y2="4.5" stroke={vineyardDeep} strokeWidth="0.65"/>
+                <path d="M -2.2,4.5 Q 0,5.3 2.2,4.5" stroke={vineyardDeep} fill="none" strokeWidth="0.65"/>
               </g>
-              <text x="22" y="41" fontSize="5.5" fill="#3a2410"
-                    fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Not yet</text>
+              <text x="22" y="41" fontSize="5.3" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Not yet</text>
               {/* Glowing glass = Shortlist */}
               <g transform="translate(62,22)">
                 <circle r="7" fill="url(#glowGold)"/>
                 <path d="M -3,-6 Q -3.4,-2.8 -2.6,-1 Q -2,0.4 0,0.6 Q 2,0.4 2.6,-1 Q 3.4,-2.8 3,-6 Z"
-                      fill="#fffaed" stroke="#8a5a20" strokeWidth="0.7"/>
-                <line x1="-3" y1="-6" x2="3" y2="-6" stroke="#8a5a20" strokeWidth="0.7"/>
-                <line x1="0" y1="0.6" x2="0" y2="4.5" stroke="#8a5a20" strokeWidth="0.7"/>
-                <path d="M -2.2,4.5 Q 0,5.3 2.2,4.5" stroke="#8a5a20" fill="none" strokeWidth="0.7"/>
+                      fill="#fffaed" stroke="#a07838" strokeWidth="0.65"/>
+                <line x1="-3" y1="-6" x2="3" y2="-6" stroke="#a07838" strokeWidth="0.65"/>
+                <line x1="0" y1="0.6" x2="0" y2="4.5" stroke="#a07838" strokeWidth="0.65"/>
+                <path d="M -2.2,4.5 Q 0,5.3 2.2,4.5" stroke="#a07838" fill="none" strokeWidth="0.65"/>
               </g>
-              <text x="72" y="24" fontSize="5.5" fill="#3a2410"
-                    fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Shortlist</text>
+              <text x="72" y="24" fontSize="5.3" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Shortlist</text>
               {/* House = Riebe St */}
               <g transform="translate(62,39)">
-                <path d="M -5,-2 L 0,-6 L 5,-2 Z" fill="#8a4030" stroke="#2a1810" strokeWidth="0.35"/>
-                <rect x="-4" y="-2" width="8" height="6" fill="#f4e4cc" stroke="#2a1810" strokeWidth="0.35"/>
-                <rect x="-1" y="0.6" width="2" height="3.4" fill="#f8c8d4" stroke="#2a1810" strokeWidth="0.25"/>
+                <path d="M -5,-2 L 0,-6 L 5,-2 Z" fill="#b06858" stroke="#2a1810" strokeWidth="0.3"/>
+                <rect x="-4" y="-2" width="8" height="6" fill="#f4e4cc" stroke="#2a1810" strokeWidth="0.3"/>
+                <rect x="-1" y="0.6" width="2" height="3.4" fill={dustyPink} stroke="#2a1810" strokeWidth="0.2"/>
               </g>
-              <text x="72" y="41" fontSize="5.5" fill="#3a2410"
-                    fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Riebe St</text>
-              {/* Mountain symbol */}
-              <g transform="translate(12,54)">
-                <polygon points="-3,2 0,-3 3,2" fill="#b89050" stroke="#5a3a18" strokeWidth="0.35"/>
+              <text x="72" y="41" fontSize="5.3" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Riebe St</text>
+              {/* Mountain row */}
+              <g transform="translate(12,57)">
+                <polygon points="-3,2 0,-3 3,2" fill={hill2} stroke="#8a6a38" strokeWidth="0.3"/>
                 <polygon points="0,-3 3,2 0,2" fill="url(#mountainHatch)"/>
               </g>
-              <text x="22" y="55" fontSize="5.5" fill="#3a2410"
-                    fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Barossa Ranges</text>
+              <text x="22" y="58" fontSize="5.3" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Barossa Ranges</text>
             </g>
 
             {/* ── WINERY PINS — crafted, not generic ── */}

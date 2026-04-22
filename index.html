@@ -679,25 +679,26 @@ const BottleViz = ({ count }) => {
   );
 };
 
-// ─── RATING INPUT — wine glass row that fills up as you slide ────────────────
+// ─── RATING INPUT — slider with wine-glass thumb that fills up ────────────────
 const RatingSlider = ({ label, value, onChange }) => {
   const v = value == null ? 0 : value;
+  const pct = (v / 10) * 100;
   return (
     <div style={{marginBottom:14}}>
       <div style={{display:"flex",justifyContent:"space-between",marginBottom:6,alignItems:"center"}}>
         <span style={{fontSize:12,color:C.textMid,fontWeight:600}}>{label}</span>
-        <span style={{fontSize:12,color:C.earth,background:C.earthLight,padding:"1px 8px",borderRadius:10,fontWeight:700}}>{value!=null?Number(value).toFixed(1):"—"}/10</span>
+        <span style={{fontSize:12,color:C.earth,background:C.earthLight,padding:"2px 10px",borderRadius:10,fontWeight:700}}>{value!=null?Number(value).toFixed(1):"—"}/10</span>
       </div>
-      <div style={{position:"relative",height:34,display:"flex",alignItems:"center",background:C.cream,borderRadius:10,padding:"3px 6px",border:`1px solid ${C.border}`}}>
-        {/* 10 glasses — each fills proportionally as value passes its slot */}
-        <div style={{display:"flex",flex:1,gap:1,alignItems:"center",justifyContent:"space-between",pointerEvents:"none"}}>
-          {Array.from({length:10}).map((_,i) => {
-            const start = i, end = i + 1;
-            const glassFill = v <= start ? 0 : v >= end ? 100 : (v - start) * 100;
-            return <WineGlassFill key={i} size={24} fillPct={glassFill}/>;
-          })}
+      <div style={{position:"relative",height:36}}>
+        {/* background track */}
+        <div style={{position:"absolute",left:14,right:14,top:"50%",marginTop:-3,height:6,background:C.cream,borderRadius:3,border:`1px solid ${C.border}`}}/>
+        {/* filled track */}
+        <div style={{position:"absolute",left:14,top:"50%",marginTop:-3,width:`calc((100% - 28px) * ${pct/100})`,height:6,background:C.earth,borderRadius:3,transition:"width 0.08s linear"}}/>
+        {/* wine-glass thumb — fills proportionally to pct */}
+        <div style={{position:"absolute",left:`calc((100% - 28px) * ${pct/100})`,top:"50%",marginTop:-14,width:28,height:28,pointerEvents:"none",filter:"drop-shadow(0 1px 2px rgba(90,60,30,0.35))",transition:"left 0.08s linear"}}>
+          <WineGlassFill size={28} fillPct={pct}/>
         </div>
-        {/* invisible range overlay — captures drag/touch */}
+        {/* invisible range overlay */}
         <input type="range" min="0" max="10" step="0.5" value={v}
           onChange={e=>onChange(parseFloat(e.target.value))}
           aria-label={label}
@@ -1369,9 +1370,9 @@ const MapView = ({ wineries, onSelect }) => {
 
   const visitedCount = wineries.filter(w=>w.visited).length;
 
-  // Warm watercolor palette
-  const bg = "#faf3e3";
-  const bgDeep = "#f0e4cc";
+  // Aged parchment palette (Jeffrey Ward cartographic tones)
+  const bg = "#f5e8c8";
+  const bgDeep = "#e6d4a8";
   const vineyard = "#b8c89c";
   const vineyardDeep = "#8aab7a";
   const hill1 = "#d4c09c";
@@ -1452,6 +1453,30 @@ const MapView = ({ wineries, onSelect }) => {
             <filter id="pinShadow" x="-50%" y="-50%" width="200%" height="200%">
               <feDropShadow dx="0.5" dy="1" stdDeviation="0.6" floodColor="#3a2a1a" floodOpacity="0.3"/>
             </filter>
+            {/* Parchment vignette — darker edges, lighter middle */}
+            <radialGradient id="parchmentVig" cx="50%" cy="50%" r="70%">
+              <stop offset="0%" stopColor="#f9eed0" stopOpacity="0"/>
+              <stop offset="80%" stopColor="#c8a872" stopOpacity="0.08"/>
+              <stop offset="100%" stopColor="#8a6838" stopOpacity="0.22"/>
+            </radialGradient>
+            {/* Ink stipple for mountain hatching */}
+            <pattern id="mountainHatch" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
+              <line x1="0" y1="0" x2="0" y2="2" stroke="#6a4a28" strokeWidth="0.22" opacity="0.45"/>
+            </pattern>
+            {/* Parchment foxing spots for aged feel */}
+            <pattern id="foxing" width="110" height="110" patternUnits="userSpaceOnUse">
+              <circle cx="14" cy="22" r="0.7" fill="#a8864a" opacity="0.12"/>
+              <circle cx="82" cy="68" r="0.5" fill="#b8965a" opacity="0.10"/>
+              <circle cx="48" cy="95" r="0.6" fill="#a07838" opacity="0.11"/>
+              <circle cx="96" cy="18" r="0.4" fill="#986830" opacity="0.10"/>
+              <circle cx="28" cy="52" r="0.5" fill="#a8864a" opacity="0.09"/>
+            </pattern>
+            {/* Shortlist gold glow — radial warm halo behind empty glass */}
+            <radialGradient id="glowGold" cx="50%" cy="50%" r="55%">
+              <stop offset="0%" stopColor="#ffe4a0" stopOpacity="0.95"/>
+              <stop offset="55%" stopColor="#d4a848" stopOpacity="0.5"/>
+              <stop offset="100%" stopColor="#d4a848" stopOpacity="0"/>
+            </radialGradient>
             {/* Warm sun gradient — subtle NW→SE gold wash */}
             <linearGradient id="goldenHour" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#fff0c8" stopOpacity="0.7"/>
@@ -1804,6 +1829,247 @@ const MapView = ({ wineries, onSelect }) => {
 
             {/* Paper grain overlay for texture */}
             <rect width={W} height={H} fill="url(#grain)" pointerEvents="none"/>
+            {/* Aged foxing spots (parchment stains) */}
+            <rect width={W} height={H} fill="url(#foxing)" pointerEvents="none"/>
+            {/* Parchment vignette — dims edges, warms middle */}
+            <rect width={W} height={H} fill="url(#parchmentVig)" pointerEvents="none"/>
+
+            {/* ─────────── TOPOGRAPHIC MOUNTAIN RIDGE — Barossa Ranges (east) ─────────── */}
+            <g opacity="0.88" pointerEvents="none">
+              {/* ridge line with multiple peaks */}
+              {[
+                [295,92,14,18],[308,88,11,15],[320,94,13,17],
+                [332,100,10,14],[344,108,12,16],[352,118,9,13],
+                [306,140,13,16],[320,146,11,15],[336,152,14,18],
+                [348,162,10,14],[302,180,12,15],[316,186,10,14],
+                [330,194,13,17],[342,204,11,15],
+                [310,232,14,18],[324,240,11,15],[338,250,12,16],
+                [348,262,10,14],[318,280,12,15],[334,288,13,17],
+                [344,300,10,14],[320,332,12,16],[334,340,11,15]
+              ].map(([cx,cy,w,h],i)=>(
+                <g key={`mtn-${i}`}>
+                  {/* peak shape */}
+                  <polygon points={`${cx-w},${cy+2} ${cx},${cy-h} ${cx+w},${cy+2}`}
+                    fill="#b89050" stroke="#5a3a18" strokeWidth="0.45" opacity="0.55"/>
+                  {/* hatch shading on right face */}
+                  <polygon points={`${cx},${cy-h} ${cx+w},${cy+2} ${cx},${cy+2}`}
+                    fill="url(#mountainHatch)" opacity="0.8"/>
+                  {/* snowcap highlight on top */}
+                  <polygon points={`${cx-w*0.3},${cy-h*0.55} ${cx},${cy-h} ${cx+w*0.3},${cy-h*0.55}`}
+                    fill="#f4e4bc" opacity="0.75"/>
+                </g>
+              ))}
+            </g>
+
+            {/* ─────────── DENSE FOREST CLUSTERS (tiny tree icons, GoT style) ─────────── */}
+            <g opacity="0.78" pointerEvents="none">
+              {/* Forest 1 — north hills */}
+              {Array.from({length:22}).map((_,i)=>{
+                const seed = (i*37)%11;
+                const x = 240 + (i%6)*6 + seed*0.4;
+                const y = 30 + Math.floor(i/6)*7 + (i%3)*1.5;
+                return (
+                  <g key={`f1-${i}`} transform={`translate(${x},${y})`}>
+                    <line x1="0" y1="0" x2="0" y2="-1.5" stroke="#4a3018" strokeWidth="0.3"/>
+                    <polygon points="-2,-1 2,-1 0,-5" fill="#6a8050" stroke="#3a4a28" strokeWidth="0.3"/>
+                  </g>
+                );
+              })}
+              {/* Forest 2 — south of Eden hills */}
+              {Array.from({length:28}).map((_,i)=>{
+                const x = 270 + (i%7)*6 + (i*13)%5;
+                const y = 315 + Math.floor(i/7)*6 + (i%3)*1.3;
+                return (
+                  <g key={`f2-${i}`} transform={`translate(${x},${y})`}>
+                    <line x1="0" y1="0" x2="0" y2="-1.5" stroke="#4a3018" strokeWidth="0.3"/>
+                    <polygon points="-2,-1 2,-1 0,-5" fill="#6a8050" stroke="#3a4a28" strokeWidth="0.3"/>
+                  </g>
+                );
+              })}
+              {/* Forest 3 — west strip near Greenock */}
+              {Array.from({length:18}).map((_,i)=>{
+                const x = 40 + (i%5)*6 + (i*11)%4;
+                const y = 250 + Math.floor(i/5)*6 + (i%2)*1.5;
+                return (
+                  <g key={`f3-${i}`} transform={`translate(${x},${y})`}>
+                    <line x1="0" y1="0" x2="0" y2="-1.5" stroke="#4a3018" strokeWidth="0.3"/>
+                    <polygon points="-2,-1 2,-1 0,-5" fill="#6a8050" stroke="#3a4a28" strokeWidth="0.3"/>
+                  </g>
+                );
+              })}
+              {/* Forest 4 — scattered NE cluster */}
+              {Array.from({length:14}).map((_,i)=>{
+                const x = 265 + (i%4)*5 + (i*17)%5;
+                const y = 200 + Math.floor(i/4)*5;
+                return (
+                  <g key={`f4-${i}`} transform={`translate(${x},${y})`}>
+                    <line x1="0" y1="0" x2="0" y2="-1.5" stroke="#4a3018" strokeWidth="0.3"/>
+                    <polygon points="-2,-1 2,-1 0,-5" fill="#6a8050" stroke="#3a4a28" strokeWidth="0.3"/>
+                  </g>
+                );
+              })}
+              {/* Forest 5 — small southern grove */}
+              {Array.from({length:10}).map((_,i)=>{
+                const x = 200 + (i%4)*5;
+                const y = 385 + Math.floor(i/4)*5;
+                return (
+                  <g key={`f5-${i}`} transform={`translate(${x},${y})`}>
+                    <line x1="0" y1="0" x2="0" y2="-1.5" stroke="#4a3018" strokeWidth="0.3"/>
+                    <polygon points="-2,-1 2,-1 0,-5" fill="#6a8050" stroke="#3a4a28" strokeWidth="0.3"/>
+                  </g>
+                );
+              })}
+            </g>
+
+            {/* ─────────── ORNATE BORDER FRAME ─────────── */}
+            <g pointerEvents="none">
+              {/* Outer thick ink border */}
+              <rect x="3" y="3" width={W-6} height={H-6} fill="none" stroke="#3a2410" strokeWidth="1.4"/>
+              {/* Inner hairline border (classic double-rule) */}
+              <rect x="7" y="7" width={W-14} height={H-14} fill="none" stroke="#3a2410" strokeWidth="0.45"/>
+              {/* Inner decorative zigzag between them */}
+              <rect x="10" y="10" width={W-20} height={H-20} fill="none" stroke="#6a4a28" strokeWidth="0.3" strokeDasharray="2,1"/>
+
+              {/* Corner motifs: grape-vine spirals — TL */}
+              <g transform="translate(14,14)" opacity="0.85">
+                <path d="M 0,12 Q 2,6 8,4 Q 14,2 14,-2" fill="none" stroke="#3a2410" strokeWidth="0.6"/>
+                <circle cx="4" cy="7" r="1.3" fill="#7a1f2a"/>
+                <circle cx="7" cy="5" r="1.3" fill="#7a1f2a"/>
+                <circle cx="10" cy="3" r="1.3" fill="#7a1f2a"/>
+                <circle cx="6" cy="9" r="1.2" fill="#7a1f2a"/>
+                <path d="M 14,-2 Q 18,0 16,4 Q 14,6 12,4" fill="none" stroke="#3a2410" strokeWidth="0.5"/>
+                <path d="M 0,12 Q -2,6 -2,0" fill="none" stroke="#6a8050" strokeWidth="0.5"/>
+              </g>
+              {/* TR */}
+              <g transform={`translate(${W-14},14)`} opacity="0.85">
+                <path d="M 0,12 Q -2,6 -8,4 Q -14,2 -14,-2" fill="none" stroke="#3a2410" strokeWidth="0.6"/>
+                <circle cx="-4" cy="7" r="1.3" fill="#7a1f2a"/>
+                <circle cx="-7" cy="5" r="1.3" fill="#7a1f2a"/>
+                <circle cx="-10" cy="3" r="1.3" fill="#7a1f2a"/>
+                <circle cx="-6" cy="9" r="1.2" fill="#7a1f2a"/>
+                <path d="M -14,-2 Q -18,0 -16,4 Q -14,6 -12,4" fill="none" stroke="#3a2410" strokeWidth="0.5"/>
+              </g>
+              {/* BL */}
+              <g transform={`translate(14,${H-14})`} opacity="0.85">
+                <path d="M 0,-12 Q 2,-6 8,-4 Q 14,-2 14,2" fill="none" stroke="#3a2410" strokeWidth="0.6"/>
+                <circle cx="4" cy="-7" r="1.3" fill="#7a1f2a"/>
+                <circle cx="7" cy="-5" r="1.3" fill="#7a1f2a"/>
+                <circle cx="10" cy="-3" r="1.3" fill="#7a1f2a"/>
+                <circle cx="6" cy="-9" r="1.2" fill="#7a1f2a"/>
+                <path d="M 14,2 Q 18,0 16,-4 Q 14,-6 12,-4" fill="none" stroke="#3a2410" strokeWidth="0.5"/>
+              </g>
+              {/* BR */}
+              <g transform={`translate(${W-14},${H-14})`} opacity="0.85">
+                <path d="M 0,-12 Q -2,-6 -8,-4 Q -14,-2 -14,2" fill="none" stroke="#3a2410" strokeWidth="0.6"/>
+                <circle cx="-4" cy="-7" r="1.3" fill="#7a1f2a"/>
+                <circle cx="-7" cy="-5" r="1.3" fill="#7a1f2a"/>
+                <circle cx="-10" cy="-3" r="1.3" fill="#7a1f2a"/>
+                <circle cx="-6" cy="-9" r="1.2" fill="#7a1f2a"/>
+                <path d="M -14,2 Q -18,0 -16,-4 Q -14,-6 -12,-4" fill="none" stroke="#3a2410" strokeWidth="0.5"/>
+              </g>
+            </g>
+
+            {/* ─────────── TITLE BANNER (cartouche) ─────────── */}
+            <g pointerEvents="none">
+              {/* Banner scroll */}
+              <path d="M 100,20 Q 96,28 100,36 L 280,36 Q 284,28 280,20 Z"
+                    fill="#fff8e4" stroke="#3a2410" strokeWidth="0.7"/>
+              {/* Banner curl ends */}
+              <path d="M 100,20 Q 94,20 92,26 Q 94,32 100,32" fill="#e8d4a0" stroke="#3a2410" strokeWidth="0.5"/>
+              <path d="M 100,36 Q 94,36 92,30 Q 94,24 100,24" fill="none" stroke="#3a2410" strokeWidth="0.4" opacity="0.6"/>
+              <path d="M 280,20 Q 286,20 288,26 Q 286,32 280,32" fill="#e8d4a0" stroke="#3a2410" strokeWidth="0.5"/>
+              <path d="M 280,36 Q 286,36 288,30 Q 286,24 280,24" fill="none" stroke="#3a2410" strokeWidth="0.4" opacity="0.6"/>
+              {/* Banner text */}
+              <text x={W/2} y="32" textAnchor="middle" fontSize="14"
+                    fill="#3a2410" fontFamily="'Palatino Linotype','Book Antiqua',Georgia,serif"
+                    fontStyle="italic" fontWeight="700" letterSpacing="1.5">Barossa Valley</text>
+              {/* Flourishes on each side of banner text */}
+              <path d="M 108,28 Q 115,24 118,28" fill="none" stroke="#3a2410" strokeWidth="0.4"/>
+              <circle cx="107" cy="28" r="0.5" fill="#3a2410"/>
+              <path d="M 272,28 Q 265,24 262,28" fill="none" stroke="#3a2410" strokeWidth="0.4"/>
+              <circle cx="273" cy="28" r="0.5" fill="#3a2410"/>
+            </g>
+
+            {/* ─────────── COMPASS ROSE (top right) ─────────── */}
+            <g transform="translate(42,60)" pointerEvents="none" opacity="0.9">
+              {/* Outer ring */}
+              <circle r="17" fill="#fff8e4" stroke="#3a2410" strokeWidth="0.55"/>
+              <circle r="13" fill="none" stroke="#3a2410" strokeWidth="0.3"/>
+              {/* 8-point star */}
+              <polygon points="0,-14 2,-2 14,0 2,2 0,14 -2,2 -14,0 -2,-2" fill="#3a2410" opacity="0.85"/>
+              {/* secondary points (diagonals) */}
+              <polygon points="0,-10 1.5,-1.5 10,0 1.5,1.5 0,10 -1.5,1.5 -10,0 -1.5,-1.5"
+                       fill="#7a1f2a" opacity="0.7" transform="rotate(45)"/>
+              {/* Center dot */}
+              <circle r="1.3" fill="#d4a848" stroke="#3a2410" strokeWidth="0.3"/>
+              {/* NESW labels */}
+              <text y="-19" textAnchor="middle" fontSize="5.5" fontWeight="700"
+                    fill="#3a2410" fontFamily="'Palatino Linotype',Georgia,serif">N</text>
+              <text y="23" textAnchor="middle" fontSize="4.5"
+                    fill="#6a4a28" fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">S</text>
+              <text x="21" y="1.6" textAnchor="middle" fontSize="4.5"
+                    fill="#6a4a28" fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">E</text>
+              <text x="-21" y="1.6" textAnchor="middle" fontSize="4.5"
+                    fill="#6a4a28" fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">W</text>
+            </g>
+
+            {/* ─────────── LEGEND / KEY BOX (bottom left) ─────────── */}
+            <g transform="translate(14,340)" pointerEvents="none" opacity="0.93">
+              {/* Box */}
+              <rect width="108" height="62" fill="#fff8e4" stroke="#3a2410" strokeWidth="0.6"/>
+              <rect x="2" y="2" width="104" height="58" fill="none" stroke="#3a2410" strokeWidth="0.25"/>
+              {/* Title */}
+              <text x="54" y="10" textAnchor="middle" fontSize="6"
+                    fill="#3a2410" fontFamily="'Palatino Linotype',Georgia,serif"
+                    fontWeight="700" letterSpacing="1.5">KEY</text>
+              <line x1="8" y1="12" x2="100" y2="12" stroke="#3a2410" strokeWidth="0.25"/>
+              {/* Bottle = Visited */}
+              <g transform="translate(12,22)">
+                <rect x="-1.6" y="-10" width="3.2" height="3" fill="#3a2618"/>
+                <rect x="-1.4" y="-7.5" width="2.8" height="3" fill="#7a1f2a"/>
+                <path d="M -1.4,-4.5 Q -3.5,-3.5 -3.5,-1 L -3.5,6 Q -3.5,7 -2.5,7 L 2.5,7 Q 3.5,7 3.5,6 L 3.5,-1 Q 3.5,-3.5 1.4,-4.5 Z"
+                      fill="#7a1f2a" stroke="#2a1810" strokeWidth="0.4"/>
+                <rect x="-2.6" y="-0.5" width="5.2" height="4.5" fill="#f4e8cc" stroke="#2a1810" strokeWidth="0.25"/>
+              </g>
+              <text x="22" y="24" fontSize="5.5" fill="#3a2410"
+                    fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Visited</text>
+              {/* Empty glass = Not yet */}
+              <g transform="translate(12,39)">
+                <path d="M -3,-6 Q -3.4,-2.8 -2.6,-1 Q -2,0.4 0,0.6 Q 2,0.4 2.6,-1 Q 3.4,-2.8 3,-6 Z"
+                      fill="#fffaed" stroke="#8aab7a" strokeWidth="0.7"/>
+                <line x1="-3" y1="-6" x2="3" y2="-6" stroke="#8aab7a" strokeWidth="0.7"/>
+                <line x1="0" y1="0.6" x2="0" y2="4.5" stroke="#8aab7a" strokeWidth="0.7"/>
+                <path d="M -2.2,4.5 Q 0,5.3 2.2,4.5" stroke="#8aab7a" fill="none" strokeWidth="0.7"/>
+              </g>
+              <text x="22" y="41" fontSize="5.5" fill="#3a2410"
+                    fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Not yet</text>
+              {/* Glowing glass = Shortlist */}
+              <g transform="translate(62,22)">
+                <circle r="7" fill="url(#glowGold)"/>
+                <path d="M -3,-6 Q -3.4,-2.8 -2.6,-1 Q -2,0.4 0,0.6 Q 2,0.4 2.6,-1 Q 3.4,-2.8 3,-6 Z"
+                      fill="#fffaed" stroke="#8a5a20" strokeWidth="0.7"/>
+                <line x1="-3" y1="-6" x2="3" y2="-6" stroke="#8a5a20" strokeWidth="0.7"/>
+                <line x1="0" y1="0.6" x2="0" y2="4.5" stroke="#8a5a20" strokeWidth="0.7"/>
+                <path d="M -2.2,4.5 Q 0,5.3 2.2,4.5" stroke="#8a5a20" fill="none" strokeWidth="0.7"/>
+              </g>
+              <text x="72" y="24" fontSize="5.5" fill="#3a2410"
+                    fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Shortlist</text>
+              {/* House = Riebe St */}
+              <g transform="translate(62,39)">
+                <path d="M -5,-2 L 0,-6 L 5,-2 Z" fill="#8a4030" stroke="#2a1810" strokeWidth="0.35"/>
+                <rect x="-4" y="-2" width="8" height="6" fill="#f4e4cc" stroke="#2a1810" strokeWidth="0.35"/>
+                <rect x="-1" y="0.6" width="2" height="3.4" fill="#f8c8d4" stroke="#2a1810" strokeWidth="0.25"/>
+              </g>
+              <text x="72" y="41" fontSize="5.5" fill="#3a2410"
+                    fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Riebe St</text>
+              {/* Mountain symbol */}
+              <g transform="translate(12,54)">
+                <polygon points="-3,2 0,-3 3,2" fill="#b89050" stroke="#5a3a18" strokeWidth="0.35"/>
+                <polygon points="0,-3 3,2 0,2" fill="url(#mountainHatch)"/>
+              </g>
+              <text x="22" y="55" fontSize="5.5" fill="#3a2410"
+                    fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Barossa Ranges</text>
+            </g>
 
             {/* ── WINERY PINS — crafted, not generic ── */}
             {visible.map(w => {
@@ -1817,47 +2083,90 @@ const MapView = ({ wineries, onSelect }) => {
               return (
                 <g key={w.id} onClick={()=>setTip(t=>t?.id===w.id?null:{...w,px:x,py:y})} style={{cursor:"pointer"}} filter="url(#pinShadow)">
                   {w.visited ? (
-                    <>
-                      {/* Visited — teardrop pin with inner circle */}
-                      <path d={`M ${x},${y-8} C ${x-4},${y-8} ${x-5},${y-4} ${x-5},${y-1.5} C ${x-5},${y+1.5} ${x-2.5},${y+3} ${x},${y+5} C ${x+2.5},${y+3} ${x+5},${y+1.5} ${x+5},${y-1.5} C ${x+5},${y-4} ${x+4},${y-8} ${x},${y-8} Z`}
-                        fill={col} stroke="#ffffff" strokeWidth="0.8"/>
-                      <circle cx={x} cy={y-2} r="1.6" fill="#ffffff" opacity="0.85"/>
-                      {/* Star for top-rated */}
+                    /* ── VISITED — full wine bottle ── */
+                    <g transform={`translate(${x},${y})`}>
+                      {/* neck cap (foil) */}
+                      <rect x="-1.6" y="-10" width="3.2" height="3" fill="#3a2618"/>
+                      {/* neck */}
+                      <rect x="-1.4" y="-7.5" width="2.8" height="3" fill={col}/>
+                      {/* shoulders + body */}
+                      <path d="M -1.4,-4.5 Q -3.5,-3.5 -3.5,-1 L -3.5,6 Q -3.5,7 -2.5,7 L 2.5,7 Q 3.5,7 3.5,6 L 3.5,-1 Q 3.5,-3.5 1.4,-4.5 Z"
+                            fill={col} stroke="#2a1810" strokeWidth="0.45"/>
+                      {/* body highlight stripe */}
+                      <path d="M -2.6,-3 L -2.6,6" stroke="#ffffff" strokeWidth="0.5" opacity="0.35"/>
+                      {/* paper label */}
+                      <rect x="-2.6" y="-0.5" width="5.2" height="4.5" fill="#f4e8cc" stroke="#2a1810" strokeWidth="0.3"/>
+                      {/* label accent line */}
+                      <line x1="-2.2" y1="1.4" x2="2.2" y2="1.4" stroke={col} strokeWidth="0.4" opacity="0.8"/>
+                      {/* tiny star for top-rated */}
                       {isTop && (
-                        <g transform={`translate(${x+4.5},${y-7})`}>
-                          <circle r="2.8" fill="#d4a848" stroke="#ffffff" strokeWidth="0.5"/>
-                          <text textAnchor="middle" y="1.2" fontSize="3.5" fill="#ffffff" fontWeight="700">★</text>
+                        <g transform="translate(4.2,-8)">
+                          <circle r="2.6" fill="#d4a848" stroke="#ffffff" strokeWidth="0.5"/>
+                          <text textAnchor="middle" y="1" fontSize="3.2" fill="#ffffff" fontWeight="700">★</text>
                         </g>
                       )}
-                      {/* Multi-visit ring */}
-                      {multiVisit && <circle cx={x} cy={y-2} r={8} fill="none" stroke={col} strokeWidth="0.8" strokeDasharray="2,1.5" opacity="0.7"/>}
-                    </>
+                      {/* multi-visit dotted ring */}
+                      {multiVisit && <circle r="8" fill="none" stroke={col} strokeWidth="0.7" strokeDasharray="1.8,1.2" opacity="0.6"/>}
+                    </g>
+                  ) : w.shortlisted ? (
+                    /* ── SHORTLIST — empty glass with gold glow ── */
+                    <g transform={`translate(${x},${y})`}>
+                      {/* radiating gold glow */}
+                      <circle r="10" fill="url(#glowGold)"/>
+                      <circle r="6" fill="#ffe4a0" opacity="0.35"/>
+                      {/* empty wine glass (fine line, cream fill) */}
+                      <path d="M -3.2,-6.5 Q -3.6,-3 -2.8,-1 Q -2.1,0.6 0,0.8 Q 2.1,0.6 2.8,-1 Q 3.6,-3 3.2,-6.5 Z"
+                            fill="#fffaed" stroke="#8a5a20" strokeWidth="0.75"/>
+                      <line x1="-3.2" y1="-6.5" x2="3.2" y2="-6.5" stroke="#8a5a20" strokeWidth="0.75"/>
+                      <line x1="0" y1="0.8" x2="0" y2="5" stroke="#8a5a20" strokeWidth="0.75"/>
+                      <path d="M -2.4,5 Q 0,5.8 2.4,5" stroke="#8a5a20" fill="none" strokeWidth="0.75"/>
+                      {/* gold star sparkle */}
+                      <text x="3.8" y="-5.2" fontSize="4" fill="#d4a848" fontWeight="700">✦</text>
+                    </g>
                   ) : (
-                    <>
-                      {/* Not yet — open circle */}
-                      <circle cx={x} cy={y} r={4} fill="#fffaed" stroke={col} strokeWidth="1.4"/>
-                      <circle cx={x} cy={y} r={1.2} fill={col} opacity="0.7"/>
-                      {/* Shortlist — gold diamond halo */}
-                      {w.shortlisted && (
-                        <>
-                          <polygon points={`${x},${y-7} ${x+4},${y} ${x},${y+7} ${x-4},${y}`}
-                            fill="none" stroke="#d4a848" strokeWidth="1.2"/>
-                          <circle cx={x} cy={y} r={4} fill="#d4a848" opacity="0.15"/>
-                        </>
-                      )}
-                    </>
+                    /* ── NOT YET — plain empty wine glass ── */
+                    <g transform={`translate(${x},${y})`}>
+                      <path d="M -3,-6 Q -3.4,-2.8 -2.6,-1 Q -2,0.4 0,0.6 Q 2,0.4 2.6,-1 Q 3.4,-2.8 3,-6 Z"
+                            fill="#fffaed" stroke={col} strokeWidth="0.8"/>
+                      <line x1="-3" y1="-6" x2="3" y2="-6" stroke={col} strokeWidth="0.8"/>
+                      <line x1="0" y1="0.6" x2="0" y2="4.5" stroke={col} strokeWidth="0.8"/>
+                      <path d="M -2.2,4.5 Q 0,5.3 2.2,4.5" stroke={col} fill="none" strokeWidth="0.8"/>
+                    </g>
                   )}
                 </g>
               );
             })}
 
-            {/* ── HOME — illustrated house marker ── */}
+            {/* ── RIEBE ST — little cottage with pink door ── */}
             <g transform={`translate(${homePos.x},${homePos.y})`} filter="url(#pinShadow)">
-              <circle r="9" fill="#ffffff" stroke={burgundy} strokeWidth="1.2"/>
-              <circle r="6" fill="#fef0d8" stroke={burgundy} strokeWidth="0.6"/>
-              <path d="M -4,-1 L 0,-5 L 4,-1 L 4,3 L -4,3 Z" fill={burgundy} stroke="#ffffff" strokeWidth="0.5"/>
-              <rect x="-1" y="0" width="2" height="3" fill="#ffffff"/>
-              <text textAnchor="middle" y="-10" fontSize="6" fill={burgundy} fontFamily="'Palatino Linotype',Georgia,serif" fontWeight="700" letterSpacing="0.6">HOME</text>
+              {/* soft cream halo */}
+              <circle r="11" fill="#fffaed" stroke="#b8a078" strokeWidth="0.4" opacity="0.65"/>
+              {/* chimney */}
+              <rect x="2.2" y="-6.8" width="1.6" height="2.8" fill="#8a5038" stroke="#3a2618" strokeWidth="0.35"/>
+              <rect x="2.1" y="-7" width="1.8" height="0.6" fill="#3a2618"/>
+              {/* pitched roof */}
+              <path d="M -7,-2.5 L 0,-7.5 L 7,-2.5 Z" fill="#8a4030" stroke="#3a2618" strokeWidth="0.55"/>
+              {/* roof detail line */}
+              <line x1="-7" y1="-2.5" x2="7" y2="-2.5" stroke="#3a2618" strokeWidth="0.35"/>
+              {/* cottage body */}
+              <rect x="-6" y="-2.5" width="12" height="9" fill="#f4e4cc" stroke="#3a2618" strokeWidth="0.55"/>
+              {/* baby-pink front door */}
+              <rect x="-1.4" y="1.8" width="2.8" height="4.7" fill="#f8c8d4" stroke="#3a2618" strokeWidth="0.4"/>
+              {/* door panel line */}
+              <line x1="0" y1="2.4" x2="0" y2="6.2" stroke="#3a2618" strokeWidth="0.2" opacity="0.6"/>
+              {/* doorknob */}
+              <circle cx="0.85" cy="4.3" r="0.28" fill="#d4a848" stroke="#3a2618" strokeWidth="0.1"/>
+              {/* windows */}
+              <rect x="-4.8" y="-0.7" width="2.5" height="2.3" fill="#a8c8d4" stroke="#3a2618" strokeWidth="0.35"/>
+              <line x1="-3.55" y1="-0.7" x2="-3.55" y2="1.6" stroke="#3a2618" strokeWidth="0.2"/>
+              <line x1="-4.8" y1="0.45" x2="-2.3" y2="0.45" stroke="#3a2618" strokeWidth="0.2"/>
+              <rect x="2.3" y="-0.7" width="2.5" height="2.3" fill="#a8c8d4" stroke="#3a2618" strokeWidth="0.35"/>
+              <line x1="3.55" y1="-0.7" x2="3.55" y2="1.6" stroke="#3a2618" strokeWidth="0.2"/>
+              <line x1="2.3" y1="0.45" x2="4.8" y2="0.45" stroke="#3a2618" strokeWidth="0.2"/>
+              {/* smoke curl from chimney */}
+              <path d="M 3,-8 Q 3.6,-9 3,-10 Q 2.4,-11 3,-12" fill="none" stroke="#b8a090" strokeWidth="0.45" opacity="0.75"/>
+              {/* label */}
+              <text textAnchor="middle" y="-13.5" fontSize="5.5" fill="#b04878" fontFamily="'Palatino Linotype',Georgia,serif" fontWeight="700" letterSpacing="0.6">RIEBE ST</text>
             </g>
 
             {/* ── TOOLTIP — rich card style ── */}
@@ -2214,19 +2523,17 @@ function App() {
                   ))}
                 </div>
                 <div style={{fontSize:11,color:C.textMid,fontWeight:700,marginBottom:6,letterSpacing:0.3}}>MINIMUM SCORE: <span style={{color:C.earth}}>{minRating===0?"Any":minRating+"/10"}</span></div>
-                <div style={{position:"relative",height:38,display:"flex",alignItems:"center",background:"white",borderRadius:10,padding:"3px 6px",border:`1px solid ${C.border}`}}>
-                  <div style={{display:"flex",flex:1,gap:1,alignItems:"center",justifyContent:"space-between",pointerEvents:"none"}}>
-                    {Array.from({length:9}).map((_,i) => {
-                      const start = i, end = i + 1;
-                      const fill = minRating <= start ? 0 : minRating >= end ? 100 : (minRating - start) * 100;
-                      return <WineGlassFill key={i} size={26} fillPct={fill}/>;
-                    })}
+                <div style={{position:"relative",height:40}}>
+                  <div style={{position:"absolute",left:14,right:14,top:"50%",marginTop:-3,height:6,background:"white",borderRadius:3,border:`1px solid ${C.border}`}}/>
+                  <div style={{position:"absolute",left:14,top:"50%",marginTop:-3,width:`calc((100% - 28px) * ${(minRating/9)*100/100})`,height:6,background:C.earth,borderRadius:3,transition:"width 0.08s linear"}}/>
+                  <div style={{position:"absolute",left:`calc((100% - 28px) * ${(minRating/9)})`,top:"50%",marginTop:-15,width:30,height:30,pointerEvents:"none",filter:"drop-shadow(0 1px 2px rgba(90,60,30,0.35))",transition:"left 0.08s linear"}}>
+                    <WineGlassFill size={30} fillPct={(minRating/9)*100}/>
                   </div>
                   <input type="range" min="0" max="9" step="0.5" value={minRating} onChange={e=>setMinRating(parseFloat(e.target.value))}
                     aria-label="Minimum rating"
                     style={{position:"absolute",left:0,right:0,top:0,bottom:0,width:"100%",height:"100%",opacity:0,margin:0,padding:0,cursor:"pointer",WebkitAppearance:"none"}}/>
                 </div>
-                <div style={{display:"flex",justifyContent:"space-between",fontSize:10,color:C.textLight,marginTop:4,padding:"0 6px"}}>
+                <div style={{display:"flex",justifyContent:"space-between",fontSize:10,color:C.textLight,marginTop:4,padding:"0 14px"}}>
                   <span>Any</span><span>5</span><span>9/10</span>
                 </div>
                 {minRating>0&&<button onClick={()=>{setMinRating(0);setRatingFilter("overall");}} style={{marginTop:8,fontSize:11,color:C.dustyPink,background:"none",border:"none",cursor:"pointer",padding:0,fontWeight:600}}>✕ Clear filter</button>}

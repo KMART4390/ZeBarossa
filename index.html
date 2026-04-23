@@ -182,6 +182,364 @@
     backdrop-filter: saturate(180%) blur(14px);
     -webkit-backdrop-filter: saturate(180%) blur(14px);
   }
+  /* ──────────────────────────────────────────────────────────────────────────
+     Leaflet Map View  (used by <MapView/> on the "Map" tab)
+     Shares the app's --zb-* tokens so it adapts to dark mode with the rest.
+     ─────────────────────────────────────────────────────────────────────── */
+  #zb-leaflet { background: var(--zb-bg-grouped); }
+  .leaflet-tile-pane { filter: sepia(.18) saturate(.82) hue-rotate(-6deg) brightness(1.03) contrast(.95); }
+  @media (prefers-color-scheme: dark) {
+    .leaflet-tile-pane { filter: sepia(.22) saturate(.78) hue-rotate(-4deg) brightness(.76) contrast(1.02); }
+  }
+
+  .leaflet-control-attribution {
+    background: rgba(253,250,243,.82) !important;
+    color: var(--zb-label-3) !important;
+    font-family: var(--zb-font-sans);
+    font-size: 10.5px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 10px 0 0 0;
+    padding: 3px 8px !important;
+    border: 1px solid var(--zb-border);
+    border-right: 0; border-bottom: 0;
+  }
+  .leaflet-control-attribution a { color: var(--zb-earth) !important; }
+
+  .leaflet-bar {
+    border: 1px solid var(--zb-border) !important;
+    box-shadow: var(--zb-shadow-raised) !important;
+    border-radius: 14px !important;
+    overflow: hidden;
+    background: var(--zb-bg-2);
+  }
+  .leaflet-bar a {
+    background: var(--zb-bg-2) !important;
+    color: var(--zb-label) !important;
+    border-color: var(--zb-border) !important;
+    font-family: var(--zb-font-serif);
+    font-weight: 500;
+    font-size: 20px !important;
+    line-height: 30px !important;
+  }
+  .leaflet-bar a:hover { background: var(--zb-earth-light) !important; }
+  .leaflet-top.leaflet-left { top: 90px; left: 14px; }
+
+  /* Title card */
+  .zb-title {
+    position: absolute; top: 12px; left: 14px; z-index: 900;
+    padding: 10px 14px; border-radius: 14px;
+    background: linear-gradient(135deg, rgba(253,250,243,.96), rgba(244,237,225,.92));
+    backdrop-filter: saturate(170%) blur(14px);
+    -webkit-backdrop-filter: saturate(170%) blur(14px);
+    box-shadow: var(--zb-shadow);
+    border: 1px solid var(--zb-border);
+    font-family: var(--zb-font-serif);
+    color: var(--zb-label);
+    display: flex; flex-direction: column; gap: 2px;
+    user-select: none; pointer-events: none;
+    max-width: 60%;
+  }
+  @media (prefers-color-scheme: dark) {
+    .zb-title { background: linear-gradient(135deg, rgba(34,29,23,.92), rgba(43,36,25,.88)); }
+  }
+  .zb-title .k {
+    font-family: var(--zb-font-sans); font-size: 9.5px;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--zb-label-3); font-weight: 500;
+  }
+  .zb-title h1 {
+    font-size: 18px; font-weight: 500; font-style: italic;
+    letter-spacing: .3px; margin: 0;
+  }
+  .zb-title .sub {
+    font-family: var(--zb-font-sans); font-size: 11px;
+    color: var(--zb-label-2); margin-top: 2px;
+  }
+
+  /* Layers panel */
+  .zb-layers {
+    position: absolute; bottom: 14px; left: 14px; z-index: 900;
+    padding: 12px 14px; border-radius: 14px; min-width: 190px;
+    background: linear-gradient(135deg, rgba(253,250,243,.96), rgba(244,237,225,.92));
+    backdrop-filter: saturate(170%) blur(14px);
+    -webkit-backdrop-filter: saturate(170%) blur(14px);
+    box-shadow: var(--zb-shadow);
+    border: 1px solid var(--zb-border);
+  }
+  @media (prefers-color-scheme: dark) {
+    .zb-layers { background: linear-gradient(135deg, rgba(34,29,23,.92), rgba(43,36,25,.88)); }
+  }
+  .zb-layers .hdr {
+    font-family: var(--zb-font-sans); font-size: 9.5px;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--zb-label-3); font-weight: 600; margin-bottom: 8px;
+  }
+  .zb-row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 10px; padding: 5px 0;
+  }
+  .zb-row + .zb-row { border-top: 1px dashed var(--zb-separator); }
+  .zb-row .lbl {
+    font-family: var(--zb-font-serif); font-size: 13.5px;
+    color: var(--zb-label); font-weight: 500;
+  }
+  .zb-row .lbl small {
+    display: block; font-family: var(--zb-font-sans); font-size: 10px;
+    color: var(--zb-label-3); font-weight: 400; letter-spacing: .02em;
+  }
+
+  /* iOS-style toggle */
+  .zb-switch { position: relative; display: inline-block; width: 38px; height: 22px; flex: 0 0 auto; }
+  .zb-switch input { opacity: 0; width: 0; height: 0; }
+  .zb-switch .slider {
+    position: absolute; inset: 0;
+    background: var(--zb-earth-mid);
+    border-radius: 22px;
+    transition: background-color .2s var(--zb-ease-snap);
+    box-shadow: inset 0 0 0 1px rgba(60,40,20,.06);
+    cursor: pointer;
+  }
+  .zb-switch .slider::before {
+    content: ""; position: absolute;
+    height: 18px; width: 18px; left: 2px; top: 2px;
+    background: #fff; border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,.18);
+    transition: transform .22s var(--zb-ease-snap);
+  }
+  .zb-switch input:checked + .slider { background: var(--zb-sage); }
+  .zb-switch input:checked + .slider::before { transform: translateX(16px); }
+
+  /* Legend */
+  .zb-legend {
+    position: absolute; bottom: 14px; right: 14px; z-index: 900;
+    padding: 12px 14px; border-radius: 14px; min-width: 200px;
+    background: linear-gradient(135deg, rgba(253,250,243,.96), rgba(244,237,225,.92));
+    backdrop-filter: saturate(170%) blur(14px);
+    -webkit-backdrop-filter: saturate(170%) blur(14px);
+    box-shadow: var(--zb-shadow);
+    border: 1px solid var(--zb-border);
+    pointer-events: none;
+  }
+  @media (prefers-color-scheme: dark) {
+    .zb-legend { background: linear-gradient(135deg, rgba(34,29,23,.92), rgba(43,36,25,.88)); }
+  }
+  .zb-legend .hdr {
+    font-family: var(--zb-font-sans); font-size: 9.5px;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--zb-label-3); font-weight: 600; margin-bottom: 8px;
+  }
+  .zb-legend .item { display: flex; align-items: center; gap: 10px; padding: 5px 0; }
+  .zb-legend .item + .item { border-top: 1px dashed var(--zb-separator); }
+  .zb-legend .swatch {
+    width: 28px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    flex: 0 0 auto;
+  }
+  .zb-legend .swatch svg { display: block; }
+  .zb-legend .txt {
+    font-family: var(--zb-font-serif); font-size: 13px;
+    color: var(--zb-label); font-weight: 500; line-height: 1.15;
+  }
+  .zb-legend .txt small {
+    display: block; font-family: var(--zb-font-sans); font-size: 10px;
+    color: var(--zb-label-3); font-weight: 400;
+  }
+
+  /* Popups */
+  .leaflet-popup-content-wrapper {
+    background: linear-gradient(180deg, var(--zb-bg-2) 0%, var(--zb-bg-grouped) 100%) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--zb-shadow-raised) !important;
+    border: 1px solid var(--zb-border);
+    padding: 2px;
+  }
+  .leaflet-popup-tip { background: var(--zb-bg-grouped) !important; box-shadow: none !important; }
+  .leaflet-popup-content {
+    margin: 14px 16px 14px !important;
+    font-family: var(--zb-font-sans);
+    color: var(--zb-label);
+    min-width: 220px;
+  }
+  .leaflet-popup-close-button {
+    color: var(--zb-label-3) !important;
+    font-size: 20px !important;
+    padding: 6px 9px 0 0 !important;
+  }
+  .pop-name {
+    font-family: var(--zb-font-serif); font-size: 16.5px;
+    font-weight: 500; letter-spacing: .2px; line-height: 1.2;
+    margin-bottom: 8px; color: var(--zb-label);
+  }
+  .pop-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 9px; border-radius: 999px;
+    font-family: var(--zb-font-sans); font-size: 10px;
+    font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .pop-badge.visited     { background: rgba(138,31,42,.10); color: #6b1a25; border: 1px solid rgba(138,31,42,.22); }
+  .pop-badge.not_visited { background: rgba(154,128,112,.12); color: var(--zb-label-2); border: 1px solid rgba(154,128,112,.22); }
+  .pop-badge.shortlisted { background: rgba(196,168,66,.14); color: #7d6515; border: 1px solid rgba(196,168,66,.35); }
+  .pop-badge .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .pop-badge.visited .dot     { background: #8a1f2a; }
+  .pop-badge.not_visited .dot { background: #b9a794; }
+  .pop-badge.shortlisted .dot { background: #c4a842; box-shadow: 0 0 0 3px rgba(196,168,66,.25); }
+
+  .pop-overall {
+    display: flex; align-items: baseline; gap: 6px;
+    margin: 0 0 8px;
+  }
+  .pop-overall .num {
+    font-family: var(--zb-font-serif); font-size: 22px; font-weight: 600;
+    color: var(--zb-label); letter-spacing: .5px;
+  }
+  .pop-overall .denom { font-size: 11px; color: var(--zb-label-3); }
+
+  .pop-ratings {
+    font-size: 11.5px; color: var(--zb-label-2); margin-bottom: 8px;
+    line-height: 1.45;
+  }
+  .pop-ratings b { color: var(--zb-label); font-weight: 600; }
+  .pop-ratings span { color: var(--zb-label-3); }
+
+  .pop-notes {
+    font-family: var(--zb-font-serif); font-style: italic;
+    font-size: 12.5px; color: var(--zb-label-2);
+    background: rgba(156,122,84,0.06); border-left: 2px solid var(--zb-earth-mid);
+    padding: 6px 10px; border-radius: 4px; margin-bottom: 8px; line-height: 1.4;
+  }
+  .pop-bottles {
+    font-size: 11px; color: var(--zb-label-2);
+    margin-bottom: 8px;
+  }
+  .pop-meta {
+    font-size: 11.5px; color: var(--zb-label-3);
+    margin-bottom: 10px; letter-spacing: .02em;
+  }
+
+  .pop-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+  .pop-btn {
+    appearance: none; border: 0; cursor: pointer;
+    font-family: var(--zb-font-sans); font-weight: 600; font-size: 12.5px;
+    padding: 10px 12px; border-radius: 12px; letter-spacing: .02em;
+    background: linear-gradient(180deg, #ac8a62, #8d6b46);
+    color: #fff4e2;
+    box-shadow: 0 1px 2px rgba(60,40,20,.2), 0 6px 14px rgba(60,40,20,.18);
+    transition: filter .2s var(--zb-ease), transform .15s var(--zb-ease-snap);
+  }
+  .pop-btn:hover { filter: brightness(1.04); }
+  .pop-btn:active { transform: translateY(1px) scale(.985); }
+  .pop-btn.secondary {
+    background: transparent; color: var(--zb-label-2);
+    box-shadow: none; padding: 6px 10px;
+    border: 1px solid var(--zb-border); font-weight: 500;
+  }
+  .pop-btn.secondary:hover { background: var(--zb-earth-light); }
+  .pop-route-picker {
+    display: flex; gap: 6px;
+    background: var(--zb-earth-light); border-radius: 12px; padding: 3px;
+    margin-top: 2px;
+  }
+  .pop-route-picker button {
+    flex: 1; appearance: none; border: 0; cursor: pointer;
+    padding: 7px 10px; border-radius: 9px;
+    font-family: var(--zb-font-sans); font-size: 11.5px; font-weight: 600;
+    letter-spacing: .04em; color: var(--zb-label-2);
+    background: transparent; transition: all .2s var(--zb-ease);
+  }
+  .pop-route-picker button.active {
+    background: var(--zb-bg-2); color: var(--zb-label);
+    box-shadow: 0 1px 3px rgba(60,40,20,.15);
+  }
+
+  /* Town labels */
+  .zb-town-label {
+    pointer-events: none; user-select: none;
+    font-family: var(--zb-font-serif); font-style: italic; font-weight: 500;
+    font-size: 13.5px; letter-spacing: .6px;
+    color: #5a3a24;
+    text-shadow:
+      0 0 6px rgba(253,250,243,.95),
+      0 0 10px rgba(253,250,243,.95),
+      0 1px 0 rgba(253,250,243,.95),
+      0 -1px 0 rgba(253,250,243,.95),
+      1px 0 0 rgba(253,250,243,.95),
+      -1px 0 0 rgba(253,250,243,.95);
+    white-space: nowrap; transform: translate(-50%,-50%);
+  }
+  .zb-town-label.sm {
+    font-size: 11px; color: #6a5040; letter-spacing: .5px;
+    font-style: normal; font-weight: 500;
+  }
+  @media (prefers-color-scheme: dark) {
+    .zb-town-label {
+      color: #f0d9b8;
+      text-shadow:
+        0 0 6px rgba(26,22,19,.95),
+        0 0 10px rgba(26,22,19,.95),
+        0 1px 0 rgba(26,22,19,.95),
+        0 -1px 0 rgba(26,22,19,.95),
+        1px 0 0 rgba(26,22,19,.95),
+        -1px 0 0 rgba(26,22,19,.95);
+    }
+    .zb-town-label.sm { color: #d0b38c; }
+  }
+
+  /* Marker icons (divIcons) */
+  .zb-marker { background: transparent !important; border: 0 !important; }
+  .zb-marker svg { display: block; overflow: visible; }
+  .zb-marker:hover svg { filter: drop-shadow(0 3px 6px rgba(60,20,30,.28)); }
+  .pulse-halo {
+    transform-box: fill-box; transform-origin: center;
+    animation: zb-pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes zb-pulse {
+    0%   { transform: scale(.85); opacity: .55; }
+    50%  { transform: scale(1.18); opacity: .95; }
+    100% { transform: scale(.85); opacity: .55; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pulse-halo { animation: none; opacity: .6; }
+    .leaflet-fade-anim * { transition: none !important; }
+  }
+
+  /* Route status pill (top-center) */
+  .zb-route-pill {
+    position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+    z-index: 950;
+    padding: 8px 14px 8px 10px; border-radius: 999px;
+    background: linear-gradient(135deg, rgba(253,250,243,.98), rgba(244,237,225,.94));
+    border: 1px solid var(--zb-border); box-shadow: var(--zb-shadow);
+    font-family: var(--zb-font-sans); font-size: 12px; color: var(--zb-label-2);
+    display: none; align-items: center; gap: 10px;
+    backdrop-filter: blur(10px);
+    max-width: 82%;
+  }
+  @media (prefers-color-scheme: dark) {
+    .zb-route-pill { background: linear-gradient(135deg, rgba(34,29,23,.94), rgba(43,36,25,.9)); }
+  }
+  .zb-route-pill.show { display: flex; }
+  .zb-route-pill .pip {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--zb-sage);
+    box-shadow: 0 0 0 4px rgba(138,171,122,.22);
+  }
+  .zb-route-pill .close {
+    appearance: none; border: 0; background: transparent;
+    color: var(--zb-label-3); cursor: pointer;
+    font-size: 14px; padding: 2px 6px; border-radius: 8px;
+    margin-left: 4px;
+  }
+  .zb-route-pill .close:hover {
+    background: var(--zb-earth-light); color: var(--zb-label);
+  }
+  .zb-route-pill b { color: var(--zb-label); font-weight: 600; }
+
+  /* When the map tab is not visible make absolutely sure Leaflet isn't
+     intercepting pointer events on other tabs (defensive — MapView unmounts
+     when the tab is inactive, but the animation panes can briefly linger) */
+  .leaflet-container { outline: none; font-family: var(--zb-font-sans); }
 </style>
 </head>
 <body>
@@ -197,6 +555,8 @@ const manifest={"name":"Ze Barossa","short_name":"Ze Barossa","display":"standal
 const mblob=new Blob([JSON.stringify(manifest)],{type:"application/manifest+json"});
 const ml=document.createElement("link");ml.rel="manifest";ml.href=URL.createObjectURL(mblob);document.head.appendChild(ml);
 </script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -1282,32 +1642,33 @@ const toXY = (lat, lon) => ({
 
 // Winery GPS lookup for map pins (id → [lat, lon])
 const WINERY_COORDS = {
-  1:[-34.589,139.051],2:[-34.600,139.025],3:[-34.510,139.005],4:[-34.535,138.972],
-  5:[-34.522,138.930],6:[-34.490,138.898],7:[-34.602,139.027],8:[-34.525,138.934],
-  9:[-34.506,138.929],10:[-34.550,138.998],11:[-34.526,138.965],12:[-34.605,139.035],
-  13:[-34.540,138.978],14:[-34.595,139.040],15:[-34.529,138.949],16:[-34.542,138.980],
-  17:[-34.523,138.958],18:[-34.601,139.026],19:[-34.530,138.921],20:[-34.522,138.956],
-  21:[-34.420,139.100],22:[-34.525,138.931],23:[-34.524,138.950],24:[-34.438,139.078],
-  25:[-34.527,138.933],26:[-34.420,139.130],27:[-34.493,138.903],28:[-34.510,138.890],
-  29:[-34.548,138.987],30:[-34.531,138.947],31:[-34.497,138.909],32:[-34.528,138.948],
-  33:[-34.535,138.974],34:[-34.519,138.920],35:[-34.468,139.038],36:[-34.519,138.915],
-  37:[-34.529,138.946],38:[-34.530,138.945],39:[-34.551,138.993],40:[-34.534,138.970],
-  41:[-34.527,138.950],42:[-34.491,138.899],43:[-34.570,139.010],44:[-34.571,139.012],
-  45:[-34.530,138.954],46:[-34.485,139.005],47:[-34.529,138.960],48:[-34.527,138.949],
+  1:[-34.589,139.051],2:[-34.6,139.025],3:[-34.51,139.005],4:[-34.5078,138.99],
+  5:[-34.522,138.93],6:[-34.49,138.898],7:[-34.602,139.027],8:[-34.525,138.934],
+  9:[-34.4895,138.958],10:[-34.541,138.963],11:[-34.5156,138.96],12:[-34.605,139.035],
+  13:[-34.4725,138.976],14:[-34.6028,138.881],15:[-34.5398,138.96],16:[-34.5022,138.959],
+  17:[-34.5262,138.958],18:[-34.6047,138.889],19:[-34.53,138.921],20:[-34.5452,138.948],
+  21:[-34.42,139.1],22:[-34.4712,138.989],23:[-34.524,138.95],24:[-34.438,139.078],
+  25:[-34.527,138.933],26:[-34.42,139.13],27:[-34.493,138.903],28:[-34.51,138.89],
+  29:[-34.5422,138.883],30:[-34.5932,138.921],31:[-34.4765,138.893],32:[-34.528,138.948],
+  33:[-34.4855,138.933],34:[-34.519,138.92],35:[-34.6157,139.139],36:[-34.5035,138.888],
+  37:[-34.529,138.946],38:[-34.53,138.945],39:[-34.5942,138.919],40:[-34.534,138.97],
+  41:[-34.4808,138.98],42:[-34.452,138.895],43:[-34.57,139.01],44:[-34.6062,138.888],
+  45:[-34.53,138.954],46:[-34.485,139.005],47:[-34.5212,138.955],48:[-34.527,138.949],
   49:[-34.511,139.005],50:[-34.523,138.929],51:[-34.515,138.938],52:[-34.429,139.085],
-  53:[-34.527,138.962],54:[-34.572,139.009],55:[-34.543,138.988],56:[-34.518,138.919],
-  57:[-34.532,138.938],58:[-34.565,139.000],59:[-34.536,138.975],60:[-34.525,138.934],
-  61:[-34.520,138.920],62:[-34.531,138.962],63:[-34.552,138.990],64:[-34.533,138.966],
-  65:[-34.439,139.079],66:[-34.503,138.985],67:[-34.524,138.950],68:[-34.491,138.900],
-  69:[-34.538,138.976],70:[-34.530,138.948],71:[-34.519,138.951],72:[-34.520,138.926],
-  73:[-34.538,138.976],74:[-34.499,138.987],75:[-34.535,138.937],76:[-34.537,138.976],
-  77:[-34.522,138.939],78:[-34.520,138.936],79:[-34.522,138.924],80:[-34.542,138.980],
-  81:[-34.528,138.931],82:[-34.550,138.990],83:[-34.493,138.903],84:[-34.439,139.079],
-  85:[-34.472,139.045],86:[-34.572,139.010],87:[-34.532,138.942],88:[-34.525,138.952],
-  89:[-34.522,138.953],90:[-34.529,138.935],91:[-34.562,138.998],92:[-34.527,138.961],
-  93:[-34.540,138.979],94:[-34.527,138.949],95:[-34.524,138.927],96:[-34.527,138.946],
-  97:[-34.478,139.050],98:[-34.526,138.963],99:[-34.468,139.025],100:[-34.472,139.030],
-  101:[-34.497,138.904],102:[-34.470,139.035],103:[-34.452,139.065],
+  53:[-34.527,138.962],54:[-34.572,139.009],55:[-34.543,138.988],56:[-34.4503,138.896],
+  57:[-34.532,138.938],58:[-34.565,139],59:[-34.536,138.975],60:[-34.4775,138.99],
+  61:[-34.5015,139.032],62:[-34.5138,138.962],63:[-34.5358,138.848],64:[-34.533,138.966],
+  65:[-34.439,139.079],66:[-34.503,138.985],67:[-34.524,138.95],68:[-34.491,138.9],
+  69:[-34.5265,138.961],70:[-34.5382,138.95],71:[-34.518,138.969],72:[-34.52,138.926],
+  73:[-34.538,138.976],74:[-34.5028,139.034],75:[-34.535,138.937],76:[-34.537,138.976],
+  77:[-34.488,138.917],78:[-34.4973,138.905],79:[-34.522,138.924],80:[-34.5253,138.942],
+  81:[-34.592,138.917],82:[-34.55,138.99],83:[-34.493,138.903],84:[-34.439,139.079],
+  85:[-34.4938,139.04],86:[-34.572,139.01],87:[-34.484,138.912],88:[-34.4865,138.92],
+  89:[-34.5382,138.958],90:[-34.4892,138.919],91:[-34.562,138.998],92:[-34.527,138.961],
+  93:[-34.54,138.979],94:[-34.4975,138.918],95:[-34.4645,139.012],96:[-34.527,138.946],
+  97:[-34.5028,139.054],98:[-34.5175,138.952],99:[-34.468,139.025],100:[-34.472,139.03],
+  101:[-34.497,138.904],102:[-34.47,139.035],103:[-34.452,139.065],
+
 };
 
 // Barossa road/geography paths for context (approximate SVG paths)
@@ -1324,1259 +1685,612 @@ const BAROSSA_ROADS = [
   "M 95,165 C 115,163 135,162 155,162 C 170,162 185,163 198,165",
 ];
 
-const MapView = ({ wineries, onSelect }) => {
-  const [mapFilter, setMapFilter] = useState("all");
-  const [tip, setTip] = useState(null);
-  const [pan, setPan] = useState({x:0,y:0});
-  const [zoom, setZoom] = useState(1);
-  const dragRef = useRef(null);
-  const lastPinchRef = useRef(null);
-  const homePos = toXY(-34.5208, 138.9736);
+// ─── LEAFLET MAP VIEW ──────────────────────────────────────────────────────
+// Home base — 25 Riebe Street, Tanunda (new Gembrook Estate subdivision)
+const HOME_BASE = { name: '25 Riebe Street, Tanunda', lat: -34.5203, lng: 138.9728 };
 
-  const clamp = (p,z) => {
-    const mx=W*(z-1)*0.55, my=H*(z-1)*0.55;
-    return {x:Math.max(-mx,Math.min(mx,p.x)),y:Math.max(-my,Math.min(my,p.y))};
-  };
-  const onTS = (e) => {
-    if(e.touches.length===1) dragRef.current={x:e.touches[0].clientX-pan.x,y:e.touches[0].clientY-pan.y};
-    else if(e.touches.length===2) lastPinchRef.current=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
-  };
-  const onTM = (e) => {
-    e.preventDefault();
-    if(e.touches.length===1&&dragRef.current) setPan(clamp({x:e.touches[0].clientX-dragRef.current.x,y:e.touches[0].clientY-dragRef.current.y},zoom));
-    else if(e.touches.length===2&&lastPinchRef.current){
-      const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
-      const nz=Math.max(1,Math.min(3.5,zoom*(d/lastPinchRef.current)));
-      lastPinchRef.current=d; setZoom(nz); setPan(p=>clamp(p,nz));
+// Towns rendered as editorial labels over the tile map
+const MAP_TOWNS = [
+  { name:'Tanunda',       lat:-34.5271, lng:138.9619, size:'lg' },
+  { name:'Nuriootpa',     lat:-34.4720, lng:138.9961, size:'lg' },
+  { name:'Angaston',      lat:-34.4960, lng:139.0478, size:'lg' },
+  { name:'Rowland Flat',  lat:-34.5985, lng:138.9188, size:'sm' },
+  { name:'Lyndoch',       lat:-34.6077, lng:138.8866, size:'lg' },
+  { name:'Seppeltsfield', lat:-34.5120, lng:138.9156, size:'sm' },
+  { name:'Marananga',     lat:-34.4960, lng:138.9310, size:'sm' },
+  { name:'Bethany',       lat:-34.5380, lng:138.9490, size:'sm' },
+  { name:'Greenock',      lat:-34.4432, lng:138.9115, size:'sm' },
+  { name:'Stockwell',     lat:-34.4330, lng:139.0390, size:'sm' },
+  { name:'Gomersal',      lat:-34.5390, lng:138.8790, size:'sm' },
+  { name:'Vine Vale',     lat:-34.5060, lng:138.9890, size:'sm' },
+  { name:'Eden Valley',   lat:-34.6500, lng:139.1030, size:'sm' },
+];
+
+// Status → z-index + display label
+const MAP_STATUS = {
+  visited:     { label:'Visited',     z: 20 },
+  not_visited: { label:'Not yet',     z: 10 },
+  shortlisted: { label:'Shortlisted', z: 30 },
+};
+
+// Derive a winery's map status from live app state
+const deriveStatus = (w) => w.shortlisted ? 'shortlisted' : (w.visited ? 'visited' : 'not_visited');
+
+// ─── Icon-generating SVG functions (strings, injected into divIcons) ───────
+let __mapUid = 0;
+function svgHome(size){
+  size = size || 58;
+  const w = size, h = Math.round(size * 0.88), uid = 'hb' + (++__mapUid);
+  return [
+    '<svg width="',w,'" height="',h,'" viewBox="0 0 80 66" xmlns="http://www.w3.org/2000/svg">',
+      '<defs>',
+        '<filter id="',uid,'-sh" x="-20%" y="-20%" width="140%" height="140%">',
+          '<feDropShadow dx="0" dy="2.2" stdDeviation="2" flood-color="#2a1810" flood-opacity=".34"/>',
+        '</filter>',
+        '<linearGradient id="',uid,'-roof" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#868a90"/><stop offset="55%" stop-color="#6a6e74"/><stop offset="100%" stop-color="#4c4f54"/>',
+        '</linearGradient>',
+        '<linearGradient id="',uid,'-roof2" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#6e7278"/><stop offset="100%" stop-color="#474a4f"/>',
+        '</linearGradient>',
+        '<linearGradient id="',uid,'-render" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#959ba2"/><stop offset="100%" stop-color="#72777e"/>',
+        '</linearGradient>',
+        '<linearGradient id="',uid,'-shade" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#5c6066"/><stop offset="100%" stop-color="#3d4045"/>',
+        '</linearGradient>',
+        '<linearGradient id="',uid,'-garage" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#f6f4ef"/><stop offset="100%" stop-color="#e2ddd2"/>',
+        '</linearGradient>',
+        '<linearGradient id="',uid,'-door" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#f6c6d3"/><stop offset="100%" stop-color="#dca3b7"/>',
+        '</linearGradient>',
+        '<linearGradient id="',uid,'-win" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#5e7c94"/><stop offset="55%" stop-color="#3d5770"/><stop offset="100%" stop-color="#29415a"/>',
+        '</linearGradient>',
+        '<pattern id="',uid,'-brick" width="4.2" height="2.2" patternUnits="userSpaceOnUse">',
+          '<rect width="4.2" height="2.2" fill="#a76a53"/>',
+          '<rect y="1.1" width="4.2" height="1.1" fill="#965c47"/>',
+          '<line x1="0" y1="1.1" x2="4.2" y2="1.1" stroke="#6b4232" stroke-width=".25"/>',
+          '<line x1="0" y1="2.2" x2="4.2" y2="2.2" stroke="#6b4232" stroke-width=".25"/>',
+          '<line x1="2.1" y1="0" x2="2.1" y2="1.1" stroke="#6b4232" stroke-width=".25"/>',
+          '<line x1="0" y1="1.1" x2="0" y2="2.2" stroke="#6b4232" stroke-width=".25"/>',
+        '</pattern>',
+      '</defs>',
+      '<ellipse cx="40" cy="63.4" rx="32" ry="2.2" fill="#2a1810" opacity=".22"/>',
+      '<g filter="url(#',uid,'-sh)">',
+        '<rect x="4" y="56" width="72" height="2.6" fill="#d4d0c4"/>',
+        '<rect x="4" y="58.4" width="72" height=".8" fill="#b6b1a4"/>',
+        '<rect x="5" y="30" width="18" height="26" fill="url(#',uid,'-garage)"/>',
+        '<rect x="23" y="30" width="11" height="26" fill="url(#',uid,'-brick)"/>',
+        '<rect x="34" y="30" width="41" height="26" fill="url(#',uid,'-render)"/>',
+        '<rect x="38" y="33" width="16" height="23" fill="url(#',uid,'-shade)"/>',
+        '<rect x="7" y="35.5" width="14" height="20.5" rx=".4" fill="#ecebe4" stroke="#bcb6a7" stroke-width=".45"/>',
+        '<line x1="7" y1="40.5" x2="21" y2="40.5" stroke="#cac4b4" stroke-width=".3"/>',
+        '<line x1="7" y1="45.5" x2="21" y2="45.5" stroke="#cac4b4" stroke-width=".3"/>',
+        '<line x1="7" y1="50.5" x2="21" y2="50.5" stroke="#cac4b4" stroke-width=".3"/>',
+        '<rect x="43" y="37.5" width="6.2" height="18.5" rx=".4" fill="url(#',uid,'-door)" stroke="#a66377" stroke-width=".45"/>',
+        '<rect x="43.7" y="39" width="4.8" height="3.5" fill="none" stroke="#c88ba2" stroke-width=".22" rx=".3"/>',
+        '<rect x="43.7" y="43.2" width="4.8" height="3.5" fill="none" stroke="#c88ba2" stroke-width=".22" rx=".3"/>',
+        '<rect x="43.7" y="47.4" width="4.8" height="3.5" fill="none" stroke="#c88ba2" stroke-width=".22" rx=".3"/>',
+        '<rect x="43.7" y="51.6" width="4.8" height="3.5" fill="none" stroke="#c88ba2" stroke-width=".22" rx=".3"/>',
+        '<circle cx="48.1" cy="47" r=".45" fill="#2a1f18"/>',
+        '<rect x="37" y="30" width="2.6" height="26" fill="#f8f6f1"/>',
+        '<rect x="52.4" y="30" width="2.6" height="26" fill="#f8f6f1"/>',
+        '<rect x="36.6" y="54.6" width="3.4" height="1.6" fill="#e7e2d4"/>',
+        '<rect x="52" y="54.6" width="3.4" height="1.6" fill="#e7e2d4"/>',
+        '<rect x="39.1" y="30" width=".5" height="26" fill="#c9c3b3" opacity=".65"/>',
+        '<rect x="54.5" y="30" width=".5" height="26" fill="#c9c3b3" opacity=".65"/>',
+        '<rect x="58.5" y="36" width="14" height="14" rx=".35" fill="url(#',uid,'-win)" stroke="#f8f6f1" stroke-width="1.1"/>',
+        '<line x1="65.5" y1="36" x2="65.5" y2="50" stroke="#f8f6f1" stroke-width=".6"/>',
+        '<line x1="58.5" y1="43" x2="72.5" y2="43" stroke="#f8f6f1" stroke-width=".45" opacity=".7"/>',
+        '<path d="M59.2 37 L64.5 37 L59.2 42.6 Z" fill="#ffffff" opacity=".12"/>',
+        '<polygon points="2.5,30 77.5,30 70,16.5 10,16.5" fill="url(#',uid,'-roof)" stroke="#2d3034" stroke-width=".75" stroke-linejoin="round"/>',
+        '<line x1="10" y1="16.5" x2="70" y2="16.5" stroke="#2d3034" stroke-width=".5"/>',
+        '<line x1="2.5" y1="30" x2="10" y2="16.5" stroke="#b4b7bc" stroke-width=".35" opacity=".65"/>',
+        '<line x1="77.5" y1="30" x2="70" y2="16.5" stroke="#b4b7bc" stroke-width=".35" opacity=".65"/>',
+        '<g stroke="#5a5d62" stroke-width=".25" opacity=".55">',
+          '<line x1="6" y1="25" x2="74" y2="25"/>',
+          '<line x1="8" y1="22" x2="72" y2="22"/>',
+          '<line x1="10" y1="19" x2="70" y2="19"/>',
+        '</g>',
+        '<polygon points="35,30 57,30 54.2,24 37.8,24" fill="url(#',uid,'-roof2)" stroke="#2d3034" stroke-width=".55" stroke-linejoin="round"/>',
+        '<rect x="2.5" y="29.5" width="75" height="1.1" fill="#f8f6f1"/>',
+        '<rect x="35" y="29.6" width="22" height=".9" fill="#f8f6f1"/>',
+        '<rect x="38.4" y="14.2" width="2.4" height="2.3" fill="#d4d1c8"/>',
+        '<ellipse cx="39.6" cy="13.2" rx="1.3" ry=".7" fill="#7a7e84" stroke="#2d3034" stroke-width=".25"/>',
+        '<ellipse cx="39.6" cy="12.8" rx="1.1" ry=".55" fill="#b8bbc0"/>',
+      '</g>',
+    '</svg>'
+  ].join('');
+}
+
+function svgVisited(size){
+  size = size || 36;
+  const uid = 'vv' + (++__mapUid);
+  return [
+    '<svg width="',size,'" height="',Math.round(size*1.35),'" viewBox="0 0 40 54" xmlns="http://www.w3.org/2000/svg">',
+      '<defs>',
+        '<radialGradient id="',uid,'f" cx="42%" cy="28%" r="72%">',
+          '<stop offset="0%" stop-color="#c43250"/><stop offset="55%" stop-color="#8a1f2a"/><stop offset="100%" stop-color="#560d18"/>',
+        '</radialGradient>',
+        '<filter id="',uid,'s" x="-30%" y="-15%" width="160%" height="140%">',
+          '<feDropShadow dx="0" dy="1.6" stdDeviation="1.4" flood-color="#2a0f14" flood-opacity=".4"/>',
+        '</filter>',
+      '</defs>',
+      '<g filter="url(#',uid,'s)">',
+        '<path d="M 8,5 Q 6.2,21 11.6,30 Q 15.6,36 20,37 Q 24.4,36 28.4,30 Q 33.8,21 32,5 Z" fill="url(#',uid,'f)" stroke="#3a0f16" stroke-width="1.4" stroke-linejoin="round"/>',
+        '<path d="M 9.2,5 Q 20,2.2 30.8,5" fill="none" stroke="#3a0f16" stroke-width="1.25" stroke-linecap="round"/>',
+        '<path d="M 10.5,8 Q 20,6 29.5,8" fill="none" stroke="#ffc9cf" stroke-opacity=".35" stroke-width="1"/>',
+        '<path d="M 11,11 Q 10,22 13.4,28" fill="none" stroke="#ffd6d6" stroke-opacity=".28" stroke-width="1.6" stroke-linecap="round"/>',
+        '<line x1="20" y1="37" x2="20" y2="47.2" stroke="#3a0f16" stroke-width="1.9" stroke-linecap="round"/>',
+        '<path d="M 12,47.6 Q 20,51 28,47.6" fill="none" stroke="#3a0f16" stroke-width="1.9" stroke-linecap="round"/>',
+        '<path d="M 12.5,48.4 Q 20,50.8 27.5,48.4" fill="none" stroke="#3a0f16" stroke-width=".9" stroke-opacity=".55"/>',
+      '</g>',
+    '</svg>'
+  ].join('');
+}
+
+function svgEmpty(size){
+  size = size || 32;
+  const uid = 'nv' + (++__mapUid);
+  return [
+    '<svg width="',size,'" height="',Math.round(size*1.35),'" viewBox="0 0 40 54" xmlns="http://www.w3.org/2000/svg">',
+      '<defs>',
+        '<linearGradient id="',uid,'f" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#fffaf0"/><stop offset="100%" stop-color="#f2e6cf"/>',
+        '</linearGradient>',
+        '<filter id="',uid,'s" x="-30%" y="-15%" width="160%" height="140%">',
+          '<feDropShadow dx="0" dy="1.2" stdDeviation="1.1" flood-color="#3b2410" flood-opacity=".28"/>',
+        '</filter>',
+      '</defs>',
+      '<g filter="url(#',uid,'s)">',
+        '<path d="M 8,5 Q 6.2,21 11.6,30 Q 15.6,36 20,37 Q 24.4,36 28.4,30 Q 33.8,21 32,5 Z" fill="url(#',uid,'f)" stroke="#5a3a24" stroke-width="1.6" stroke-linejoin="round"/>',
+        '<path d="M 9.2,5 Q 20,2.2 30.8,5" fill="none" stroke="#5a3a24" stroke-width="1.4" stroke-linecap="round"/>',
+        '<path d="M 11.2,9 Q 10,22 13.6,28" fill="none" stroke="#5a3a24" stroke-opacity=".22" stroke-width="1"/>',
+        '<line x1="20" y1="37" x2="20" y2="47.2" stroke="#5a3a24" stroke-width="1.7" stroke-linecap="round"/>',
+        '<path d="M 12,47.6 Q 20,51 28,47.6" fill="none" stroke="#5a3a24" stroke-width="1.7" stroke-linecap="round"/>',
+      '</g>',
+    '</svg>'
+  ].join('');
+}
+
+function svgShortlisted(size){
+  size = size || 36;
+  const uid = 'sl' + (++__mapUid);
+  return [
+    '<svg width="',Math.round(size*1.35),'" height="',Math.round(size*1.55),'" viewBox="0 0 54 62" xmlns="http://www.w3.org/2000/svg">',
+      '<defs>',
+        '<radialGradient id="',uid,'h" cx="50%" cy="50%" r="50%">',
+          '<stop offset="0%" stop-color="#f6d58a" stop-opacity=".9"/><stop offset="55%" stop-color="#e2b65b" stop-opacity=".35"/><stop offset="100%" stop-color="#c4a842" stop-opacity="0"/>',
+        '</radialGradient>',
+        '<linearGradient id="',uid,'w" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#f2d58d" stop-opacity=".55"/><stop offset="100%" stop-color="#b07a2c" stop-opacity=".55"/>',
+        '</linearGradient>',
+        '<filter id="',uid,'s" x="-30%" y="-15%" width="160%" height="140%">',
+          '<feDropShadow dx="0" dy="1.2" stdDeviation="1.1" flood-color="#3b2410" flood-opacity=".3"/>',
+        '</filter>',
+      '</defs>',
+      '<circle class="pulse-halo" cx="27" cy="31" r="22" fill="url(#',uid,'h)"/>',
+      '<g filter="url(#',uid,'s)">',
+        '<path d="M 20,8 Q 19.6,22 22.2,32 Q 24.4,38 27,38 Q 29.6,38 31.8,32 Q 34.4,22 34,8 Z" fill="url(#',uid,'w)" stroke="#5a3a24" stroke-width="1.35" stroke-linejoin="round"/>',
+        '<ellipse cx="27" cy="8" rx="7.2" ry="1.3" fill="#fff6dc" stroke="#5a3a24" stroke-width="1.2"/>',
+        '<path d="M 22,12 Q 21.2,24 23.4,31" fill="none" stroke="#f6d58a" stroke-opacity=".8" stroke-width="1.1" stroke-linecap="round"/>',
+        '<line x1="27" y1="38" x2="27" y2="52" stroke="#5a3a24" stroke-width="1.6" stroke-linecap="round"/>',
+        '<path d="M 20,52.4 Q 27,56 34,52.4" fill="none" stroke="#5a3a24" stroke-width="1.6" stroke-linecap="round"/>',
+        '<path d="M 37,10 l 1.1,2.4 l 2.4,1.1 l-2.4,1.1 l-1.1,2.4 l-1.1,-2.4 l-2.4,-1.1 l 2.4,-1.1 z" fill="#f6d58a" opacity=".95"/>',
+      '</g>',
+    '</svg>'
+  ].join('');
+}
+
+// Pure utility helpers
+function mapHaversineKm(a, b){
+  const toRad = d => d * Math.PI / 180, R = 6371;
+  const dLat = toRad(b.lat - a.lat), dLng = toRad(b.lng - a.lng);
+  const la1 = toRad(a.lat), la2 = toRad(b.lat);
+  const h = Math.sin(dLat/2)**2 + Math.cos(la1) * Math.cos(la2) * Math.sin(dLng/2)**2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+function mapEscapeHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+}
+// Greedy pixel-space deconflict so overlapping pins separate gracefully
+function deconflictPoints(map, items, minPx){
+  minPx = minPx || 36;
+  const zRef = 13;
+  const pts = items.map(it => ({ it, p: map.project([it.lat, it.lng], zRef) }));
+  for (let iter = 0; iter < 24; iter++) {
+    let moved = false;
+    for (let i = 0; i < pts.length; i++) {
+      for (let j = i + 1; j < pts.length; j++) {
+        const a = pts[i], b = pts[j];
+        const dx = b.p.x - a.p.x, dy = b.p.y - a.p.y;
+        const d = Math.hypot(dx, dy) || 0.01;
+        if (d < minPx) {
+          const push = (minPx - d) / 2 + 0.1;
+          const ux = dx / d, uy = dy / d;
+          a.p.x -= ux * push; a.p.y -= uy * push;
+          b.p.x += ux * push; b.p.y += uy * push;
+          moved = true;
+        }
+      }
     }
-  };
-  const onTE = ()=>{ dragRef.current=null; lastPinchRef.current=null; };
+    if (!moved) break;
+  }
+  return pts.map(({ it, p }) => { const ll = map.unproject(p, zRef); return Object.assign({}, it, { lat: ll.lat, lng: ll.lng }); });
+}
 
-  const visible = wineries.filter(w=>
-    mapFilter==="visited"?w.visited:mapFilter==="notyet"?!w.visited:mapFilter==="shortlist"?w.shortlisted:true
-  );
+// ─── The React component ─────────────────────────────────────────────────
+const MapView = ({ wineries, onSelect }) => {
+  const mapContainerRef = useRef(null);
+  const mapRef = useRef(null);
+  const markersRef = useRef(new Map());
+  const overlaysRef = useRef({});
+  const routeRef = useRef({ line:null, glow:null, home:null, dest:null });
+  const driveCacheRef = useRef(new Map());
+  const onSelectRef = useRef(onSelect);
+  useEffect(() => { onSelectRef.current = onSelect; }, [onSelect]);
 
-  // Rich pin colour: reflects rating but stays in the app's warm palette
-  const pinColor = (w) => {
-    if(w.shortlisted&&!w.visited) return "#d4a848";  // gold
-    if(!w.visited) return "#a8b7a0";  // muted sage
-    const r=getOverall(w);
-    if(r===null) return "#8aab7a";  // sage
-    if(r>=8.5) return "#6b1f2a";  // deep burgundy — top tier
-    if(r>=7) return "#9c5030";  // rich terracotta
-    if(r>=5.5) return "#c48848";  // warm amber
-    return "#a08060";  // dusty brown
-  };
+  const [roadsOn, setRoadsOn] = useState(true);
+  const [bikeOn, setBikeOn]   = useState(false);
 
-  const visitedCount = wineries.filter(w=>w.visited).length;
+  // Popup HTML builder — closes over driveCacheRef for cached ETAs
+  const popupHtml = useCallback((w) => {
+    const status = deriveStatus(w);
+    const overall = getOverall(w);
+    const cached = driveCacheRef.current.get(w.id);
+    const metaInner = cached
+      ? etaMarkup(cached.min, cached.km, cached.estimated)
+      : '<span class="eta-loading">Calculating drive time…</span>';
+    const ratingsHtml = (w.ratings && w.ratings.length)
+      ? '<div class="pop-ratings">' + w.ratings.map(r => {
+          const parts = [
+            r.wine     != null ? 'Wine ' + r.wine        : null,
+            r.location != null ? 'Loc ' + r.location     : null,
+            r.vibes    != null ? 'Vibes ' + r.vibes      : null,
+            r.service  != null ? 'Service ' + r.service  : null,
+          ].filter(Boolean).join(' · ');
+          return '<div><b>' + mapEscapeHtml(r.who) + '</b> <span>' + parts + '</span></div>';
+        }).join('') + '</div>'
+      : '';
+    const notesHtml = (w.notes && w.notes.trim())
+      ? '<div class="pop-notes">&ldquo;' + mapEscapeHtml(w.notes) + '&rdquo;</div>'
+      : '';
+    const bottlesHtml = (w.bottles && w.bottles > 0)
+      ? '<div class="pop-bottles">' + w.bottles + ' ' + (w.bottles === 1 ? 'bottle' : 'bottles') + ' bought</div>'
+      : '';
+    const overallHtml = overall != null
+      ? '<div class="pop-overall"><span class="num">' + overall.toFixed(1) + '</span><span class="denom">/10 overall</span></div>'
+      : '';
+    const badgeLabel = MAP_STATUS[status].label;
+    return [
+      '<div class="pop-name">', mapEscapeHtml(w.name), '</div>',
+      '<span class="pop-badge ', status, '"><span class="dot"></span>', badgeLabel, '</span>',
+      overallHtml, ratingsHtml, notesHtml, bottlesHtml,
+      '<div class="pop-meta" data-eta-for="', w.id, '">', metaInner, '</div>',
+      '<div class="pop-actions">',
+        '<div class="pop-route-picker" data-id="', w.id, '">',
+          '<button class="active" data-mode="car">Drive</button>',
+          '<button data-mode="bike">Cycle</button>',
+        '</div>',
+        '<button class="pop-btn" data-directions="', w.id, '">Get directions from home</button>',
+        '<button class="pop-btn secondary" data-details="', w.id, '">Open details</button>',
+        '<button class="pop-btn secondary" data-clear="1">Clear route</button>',
+      '</div>'
+    ].join('');
+  }, []);
 
-  // Boutique pastel palette — soft parchment with warm earthy tones
-  const bg = "#fbf5e6";          // soft cream parchment
-  const bgDeep = "#f2e6c8";      // pale sand
-  const vineyard = "#d0dcb2";    // pale sage
-  const vineyardDeep = "#b0c898";// soft sage green
-  const hill1 = "#f0dcbc";       // pale peach
-  const hill2 = "#e8c8a4";       // soft terracotta pastel
-  const forest = "#b6cba4";      // pale forest sage
-  const water = "#cbe0ec";       // pastel blue
-  const waterDeep = "#a8c8dc";   // soft blue
-  const road = "#f4e8cc";        // pale cream road
-  const roadStroke = "#bca088";  // soft taupe
-  const ink = "#6a5238";         // warm brown ink
-  const inkLight = "#9a8068";    // soft taupe for secondary labels
-  const burgundy = "#b25870";    // dusty rose (replaces deep burgundy)
-  const terracotta = "#d28c70";  // soft terracotta
-  const ochre = "#d8bb82";       // pale ochre
-  const dustyPink = "#e8b8c4";   // pastel pink
+  function etaMarkup(min, km, estimated){
+    const qualifier = estimated ? ' <span style="color:var(--zb-label-3)">(est.)</span>' : '';
+    return '<strong style="color:var(--zb-label);font-weight:600">' + min + ' min</strong> drive from home · ' + km.toFixed(1) + ' km' + qualifier;
+  }
+
+  async function fetchDriveTime(w){
+    const coords = WINERY_COORDS[w.id];
+    if (!coords) return { min:0, km:0, estimated:true };
+    const lat = coords[0], lng = coords[1];
+    const urls = [
+      'https://routing.openstreetmap.de/routed-car/route/v1/driving/' + HOME_BASE.lng + ',' + HOME_BASE.lat + ';' + lng + ',' + lat + '?overview=false&alternatives=false&steps=false',
+      'https://router.project-osrm.org/route/v1/driving/' + HOME_BASE.lng + ',' + HOME_BASE.lat + ';' + lng + ',' + lat + '?overview=false&alternatives=false&steps=false',
+    ];
+    for (const u of urls) {
+      try {
+        const r = await fetch(u, { headers: { Accept:'application/json' } });
+        if (!r.ok) continue;
+        const j = await r.json();
+        const rt = j && j.routes && j.routes[0];
+        if (rt && isFinite(rt.duration)) return { min: Math.max(1, Math.round(rt.duration/60)), km: rt.distance/1000, estimated:false };
+      } catch(e) {}
+    }
+    const km = mapHaversineKm({ lat:HOME_BASE.lat, lng:HOME_BASE.lng }, { lat, lng });
+    const roadKm = km * 1.32;
+    return { min: Math.max(1, Math.round((roadKm / 55) * 60)), km: roadKm, estimated:true };
+  }
+
+  const clearRoute = useCallback(() => {
+    const m = mapRef.current; if (!m) return;
+    const R = routeRef.current;
+    if (R.line) m.removeLayer(R.line);
+    if (R.glow) m.removeLayer(R.glow);
+    if (R.home) m.removeLayer(R.home);
+    if (R.dest) m.removeLayer(R.dest);
+    routeRef.current = { line:null, glow:null, home:null, dest:null };
+    const pill = document.getElementById('zb-route-pill');
+    if (pill) pill.classList.remove('show');
+  }, []);
+
+  async function fetchAndDrawRoute(w, mode){
+    const coords = WINERY_COORDS[w.id]; if (!coords) return;
+    const lat = coords[0], lng = coords[1];
+    const map = mapRef.current; if (!map || !window.L) return;
+    const L = window.L;
+    const profile = mode === 'bike' ? 'routed-bike' : 'routed-car';
+    const urls = [
+      'https://routing.openstreetmap.de/' + profile + '/route/v1/driving/' + HOME_BASE.lng + ',' + HOME_BASE.lat + ';' + lng + ',' + lat + '?overview=full&geometries=geojson&steps=false',
+      mode === 'car' ? 'https://router.project-osrm.org/route/v1/driving/' + HOME_BASE.lng + ',' + HOME_BASE.lat + ';' + lng + ',' + lat + '?overview=full&geometries=geojson' : null,
+    ].filter(Boolean);
+
+    const pill = document.getElementById('zb-route-pill');
+    const pillText = document.getElementById('zb-route-pill-text');
+    if (pill && pillText) { pill.classList.add('show'); pillText.innerHTML = '<b>Plotting…</b> ' + (mode === 'bike' ? 'cycling' : 'driving') + ' to ' + mapEscapeHtml(w.name); }
+
+    let data = null;
+    for (const u of urls) {
+      try {
+        const r = await fetch(u, { headers: { Accept:'application/json' } });
+        if (!r.ok) continue;
+        const j = await r.json();
+        if (j && j.routes && j.routes[0]) { data = j; break; }
+      } catch(e) {}
+    }
+
+    if (!data) {
+      clearRoute();
+      const colour = mode === 'bike' ? '#6b8a4e' : '#9c3f55';
+      const line = L.polyline([[HOME_BASE.lat,HOME_BASE.lng],[lat,lng]], { color:colour, weight:3, opacity:.85, dashArray:'4 8' }).addTo(map);
+      routeRef.current = { line, glow:null, home:null, dest:null };
+      const km = mapHaversineKm({ lat:HOME_BASE.lat, lng:HOME_BASE.lng }, { lat, lng }).toFixed(1);
+      if (pill && pillText) { pillText.innerHTML = '<b>Routing offline</b> · straight-line ' + km + ' km · ' + mapEscapeHtml(w.name); }
+      return;
+    }
+
+    const rt = data.routes[0];
+    const coordsLL = rt.geometry.coordinates.map(xy => [xy[1], xy[0]]);
+    clearRoute();
+    const colour = mode === 'bike' ? '#6b8a4e' : '#9c3f55';
+    const glow = L.polyline(coordsLL, { color:colour, weight:9, opacity:.18, lineCap:'round', lineJoin:'round' }).addTo(map);
+    const line = L.polyline(coordsLL, { color:colour, weight:4.2, opacity:.95, lineCap:'round', lineJoin:'round', dashArray: mode === 'bike' ? '2 6' : null }).addTo(map);
+    const endpoint = (c, size) => L.divIcon({
+      className:'zb-marker',
+      html: '<svg width="' + size + '" height="' + size + '"><circle cx="' + (size/2) + '" cy="' + (size/2) + '" r="' + (size/2 - 1) + '" fill="#fff" stroke="' + c + '" stroke-width="2"/></svg>',
+      iconSize:[size,size], iconAnchor:[size/2, size/2],
+    });
+    const home = L.marker([HOME_BASE.lat, HOME_BASE.lng], { icon: endpoint(colour, 10), interactive:false, zIndexOffset:1200 }).addTo(map);
+    const dest = L.marker([lat, lng], { icon: endpoint(colour, 10), interactive:false, zIndexOffset:1200 }).addTo(map);
+    routeRef.current = { line, glow, home, dest };
+    map.fitBounds(L.latLngBounds(coordsLL).extend([HOME_BASE.lat, HOME_BASE.lng]), { paddingTopLeft:[40,60], paddingBottomRight:[200, 120], maxZoom:14 });
+    const km = (rt.distance/1000).toFixed(1);
+    const min = Math.round(rt.duration/60);
+    if (pill && pillText) { pillText.innerHTML = '<b>' + (mode === 'bike' ? 'Cycle' : 'Drive') + '</b> · ' + km + ' km · ' + min + ' min · <span style="color:var(--zb-label-3)">' + mapEscapeHtml(w.name) + '</span>'; }
+  }
+
+  const wirePopup = useCallback((w) => {
+    const root = document.querySelector('.leaflet-popup-content .pop-route-picker[data-id="' + w.id + '"]');
+    if (!root) return;
+    const popup = root.closest('.leaflet-popup-content');
+    let mode = 'car';
+    root.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        root.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        mode = btn.dataset.mode;
+      });
+    });
+    const dirBtn = popup.querySelector('[data-directions="' + w.id + '"]');
+    if (dirBtn) dirBtn.addEventListener('click', () => fetchAndDrawRoute(w, mode));
+    const detailBtn = popup.querySelector('[data-details="' + w.id + '"]');
+    if (detailBtn) detailBtn.addEventListener('click', () => {
+      if (onSelectRef.current) onSelectRef.current(w);
+      if (mapRef.current) mapRef.current.closePopup();
+    });
+    const clearBtn = popup.querySelector('[data-clear="1"]');
+    if (clearBtn) clearBtn.addEventListener('click', clearRoute);
+
+    if (!driveCacheRef.current.has(w.id)) {
+      fetchDriveTime(w).then(eta => {
+        driveCacheRef.current.set(w.id, eta);
+        const slot = document.querySelector('.pop-meta[data-eta-for="' + w.id + '"]');
+        if (slot) slot.innerHTML = etaMarkup(eta.min, eta.km, eta.estimated);
+      });
+    }
+  }, [clearRoute]);
+
+  // Mount Leaflet once
+  useEffect(() => {
+    if (!window.L || !mapContainerRef.current || mapRef.current) return;
+    const L = window.L;
+    const BOUNDS = L.latLngBounds([-34.70, 138.80],[-34.38, 139.14]);
+    const map = L.map(mapContainerRef.current, {
+      center:[-34.522, 138.960], zoom:12, minZoom:11, maxZoom:17,
+      maxBounds: BOUNDS.pad(0.4), maxBoundsViscosity:0.8,
+      zoomControl:true, attributionControl:true,
+      zoomAnimation:true, fadeAnimation:true, scrollWheelZoom:true,
+    });
+
+    const basemap = L.tileLayer(
+      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+      { subdomains:'abcd', maxZoom:19,
+        attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> · &copy; <a href="https://carto.com/attributions">CARTO</a>' }
+    ).addTo(map);
+    const roadsOverlay = L.tileLayer(
+      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png',
+      { subdomains:'abcd', maxZoom:19, opacity:0.9, pane:'overlayPane' }
+    ).addTo(map);
+    const bikeOverlay = L.tileLayer(
+      'https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png',
+      { subdomains:'abc', maxZoom:20, opacity:0.6,
+        attribution:'Cycle layer © <a href="https://www.cyclosm.org">CyclOSM</a>' }
+    );
+    overlaysRef.current = { basemap, roadsOverlay, bikeOverlay };
+    mapRef.current = map;
+
+    // Town labels
+    MAP_TOWNS.forEach(t => {
+      const el = L.divIcon({
+        className: 'zb-town-label' + (t.size === 'sm' ? ' sm' : ''),
+        html: t.name, iconSize:[1,1], iconAnchor:[0,0],
+      });
+      L.marker([t.lat, t.lng], { icon: el, interactive:false, keyboard:false, pane:'markerPane' }).addTo(map);
+    });
+
+    // Home marker
+    const homeSize = 58, homeH = Math.round(homeSize * 0.88);
+    const homeMarker = L.marker([HOME_BASE.lat, HOME_BASE.lng], {
+      icon: L.divIcon({
+        className:'zb-marker', html: svgHome(homeSize),
+        iconSize:[homeSize, homeH], iconAnchor:[homeSize/2, homeH-4],
+        popupAnchor:[0, -homeH+6],
+      }),
+      zIndexOffset:1000, riseOnHover:true,
+      title:'Home base · ' + HOME_BASE.name, alt:'Home base',
+    }).addTo(map);
+    homeMarker.bindPopup(
+      '<div class="pop-name">Home base</div>' +
+      '<span class="pop-badge" style="background:rgba(122,155,181,.14);color:#355370;border:1px solid rgba(122,155,181,.28)">' +
+        '<span class="dot" style="background:#7a9bb5"></span>Our place</span>' +
+      '<div class="pop-meta">' + HOME_BASE.name + '</div>',
+      { offset:[0,-4] }
+    );
+
+    // Ensure the map sizes correctly in the flex container after paint
+    setTimeout(() => { try { map.invalidateSize(); } catch(e) {} }, 60);
+
+    return () => {
+      try {
+        if (mapRef.current) { mapRef.current.remove(); mapRef.current = null; }
+      } catch(e) {}
+      markersRef.current.clear();
+      overlaysRef.current = {};
+      routeRef.current = { line:null, glow:null, home:null, dest:null };
+    };
+    // eslint-disable-next-line
+  }, []);
+
+  // Rebuild winery markers whenever the live wineries list changes
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !window.L) return;
+    const L = window.L;
+
+    // Remove previous winery markers
+    markersRef.current.forEach(m => map.removeLayer(m));
+    markersRef.current.clear();
+
+    const items = wineries
+      .map(w => {
+        const coords = WINERY_COORDS[w.id];
+        if (!coords) return null;
+        return { id:w.id, name:w.name, lat:coords[0], lng:coords[1], status:deriveStatus(w), winery:w };
+      })
+      .filter(Boolean);
+
+    const placed = deconflictPoints(map, items, 34);
+
+    placed.forEach(it => {
+      const status = it.status;
+      const svg = status === 'visited' ? svgVisited(34)
+                : status === 'shortlisted' ? svgShortlisted(32)
+                : svgEmpty(30);
+      const w = status === 'shortlisted' ? 48 : 34;
+      const h = status === 'shortlisted' ? 56 : 46;
+      const anchor = status === 'shortlisted' ? [24,54] : [17,44];
+      const icon = L.divIcon({
+        className:'zb-marker', html:svg,
+        iconSize:[w,h], iconAnchor:anchor,
+        popupAnchor:[0, -anchor[1] + 10],
+      });
+      const marker = L.marker([it.lat, it.lng], {
+        icon, riseOnHover:true,
+        zIndexOffset: MAP_STATUS[status].z * 10,
+        title:it.name, alt:it.name,
+      }).addTo(map);
+
+      marker.bindPopup(popupHtml(it.winery), {
+        offset:[0,-4], closeButton:true, autoPan:true,
+        autoPanPadding:[40,80], maxWidth:300, minWidth:240,
+      });
+      marker.on('popupopen', () => wirePopup(it.winery));
+      markersRef.current.set(it.id, marker);
+    });
+
+    // Fit to content on first build
+    if (!map.__zbFitted) {
+      map.__zbFitted = true;
+      const all = [[HOME_BASE.lat, HOME_BASE.lng]].concat(placed.map(p => [p.lat, p.lng]));
+      try {
+        map.fitBounds(L.latLngBounds(all).pad(0.12), { paddingTopLeft:[30, 90], paddingBottomRight:[30, 120] });
+      } catch(e) {}
+    }
+  }, [wineries, popupHtml, wirePopup]);
+
+  // Layer toggles
+  useEffect(() => {
+    const map = mapRef.current, o = overlaysRef.current;
+    if (!map || !o.roadsOverlay) return;
+    if (roadsOn) map.addLayer(o.roadsOverlay); else map.removeLayer(o.roadsOverlay);
+  }, [roadsOn]);
+  useEffect(() => {
+    const map = mapRef.current, o = overlaysRef.current;
+    if (!map || !o.bikeOverlay) return;
+    if (bikeOn) map.addLayer(o.bikeOverlay); else map.removeLayer(o.bikeOverlay);
+  }, [bikeOn]);
 
   return (
-    <div style={{display:"flex",flexDirection:"column",flex:1,minHeight:0,background:bg}}>
-      {/* Filter chips — warm rounded pills */}
-      <div style={{padding:"10px 14px 8px",display:"flex",gap:8,background:bg,borderBottom:`1px solid ${bgDeep}`,flexShrink:0,overflowX:"auto"}}>
-        {[["all","All",null],["visited","Visited","#c08870"],["notyet","Not yet","#a8c090"],["shortlist","Shortlist","#e0c080"]].map(([id,lbl,col])=>{
-          const active = mapFilter===id;
-          return (
-            <button key={id} onClick={()=>setMapFilter(id)} style={{
-              padding:"5px 13px",borderRadius:20,
-              border:`1.5px solid ${active?(col||ink):bgDeep}`,
-              background:active?(col?col+"22":"#ffffff"):"transparent",
-              color:active?(col||ink):inkLight,
-              fontSize:12,fontWeight:active?700:500,
-              cursor:"pointer",whiteSpace:"nowrap",flexShrink:0,
-              fontFamily:"'Palatino Linotype',Georgia,serif",
-              display:"flex",alignItems:"center",gap:5,
-              transition:"all 0.15s",
-            }}>
-              {col && <span style={{width:8,height:8,borderRadius:"50%",background:col,flexShrink:0}}/>}
-              {lbl}
-            </button>
-          );
-        })}
-        <div style={{marginLeft:"auto",display:"flex",alignItems:"center",gap:6,flexShrink:0}}>
-          <span style={{fontSize:11,color:inkLight,fontFamily:"'Palatino Linotype',Georgia,serif",fontStyle:"italic"}}>{visitedCount}/{wineries.length}</span>
+    <div style={{position:"relative",width:"100%",height:"100%",minHeight:"60vh",background:"var(--zb-bg)"}}>
+      <div ref={mapContainerRef} id="zb-leaflet" style={{position:"absolute",inset:0}}/>
+
+      <div className="zb-title">
+        <div className="k">Ze Barossa</div>
+        <h1>The Valley</h1>
+        <div className="sub">Home base · 25 Riebe Street, Tanunda</div>
+      </div>
+
+      <div className="zb-layers">
+        <div className="hdr">Layers</div>
+        <div className="zb-row">
+          <div className="lbl">Roads<small>Sealed &amp; scenic</small></div>
+          <label className="zb-switch">
+            <input type="checkbox" checked={roadsOn} onChange={e=>setRoadsOn(e.target.checked)}/>
+            <span className="slider"/>
+          </label>
+        </div>
+        <div className="zb-row">
+          <div className="lbl">Bike trails<small>Barossa Trail &amp; loops</small></div>
+          <label className="zb-switch">
+            <input type="checkbox" checked={bikeOn} onChange={e=>setBikeOn(e.target.checked)}/>
+            <span className="slider"/>
+          </label>
         </div>
       </div>
 
-      {/* Map */}
-      <div style={{flex:1,minHeight:0,overflow:"hidden",position:"relative",touchAction:"none",background:bg}}
-        onTouchStart={onTS} onTouchMove={onTM} onTouchEnd={onTE}>
-        <svg viewBox={`0 0 ${W} ${H}`} style={{width:"100%",height:"100%",display:"block"}} xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            {/* ── Soft parchment wash with warm centre glow ── */}
-            <radialGradient id="mapGlow" cx="45%" cy="40%" r="80%">
-              <stop offset="0%" stopColor="#fffbf0" stopOpacity="1"/>
-              <stop offset="55%" stopColor="#fbf2dc" stopOpacity="1"/>
-              <stop offset="100%" stopColor="#ecddb8" stopOpacity="1"/>
-            </radialGradient>
-            {/* Global NW hillshade ambient */}
-            <linearGradient id="hillshade" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#fff4d4" stopOpacity="0.5"/>
-              <stop offset="50%" stopColor="#f4e4c0" stopOpacity="0.08"/>
-              <stop offset="100%" stopColor="#ad865a" stopOpacity="0.28"/>
-            </linearGradient>
-            {/* Warm sunrise wash NW */}
-            <radialGradient id="sunriseNW" cx="18%" cy="15%" r="50%">
-              <stop offset="0%" stopColor="#ffe8c8" stopOpacity="0.55"/>
-              <stop offset="100%" stopColor="#ffe8c8" stopOpacity="0"/>
-            </radialGradient>
-            {/* Dusk glow SE */}
-            <radialGradient id="duskSE" cx="85%" cy="90%" r="45%">
-              <stop offset="0%" stopColor="#f0c090" stopOpacity="0.38"/>
-              <stop offset="100%" stopColor="#f0c090" stopOpacity="0"/>
-            </radialGradient>
-            {/* Edge vignette */}
-            <radialGradient id="vignette" cx="50%" cy="50%" r="72%">
-              <stop offset="65%" stopColor="#fff" stopOpacity="0"/>
-              <stop offset="100%" stopColor="#7a5a38" stopOpacity="0.22"/>
-            </radialGradient>
-
-            {/* ── Per-hill radial gradients (light on NW, darker SE) ── */}
-            <radialGradient id="hillWplains" cx="30%" cy="25%" r="85%">
-              <stop offset="0%" stopColor="#fae2bc" stopOpacity="0.85"/>
-              <stop offset="60%" stopColor="#e8caa0" stopOpacity="0.6"/>
-              <stop offset="100%" stopColor="#c0a078" stopOpacity="0.55"/>
-            </radialGradient>
-            <radialGradient id="hillBasin" cx="30%" cy="30%" r="75%">
-              <stop offset="0%" stopColor="#f6ecd0" stopOpacity="0.9"/>
-              <stop offset="100%" stopColor="#c8b08a" stopOpacity="0.55"/>
-            </radialGradient>
-            <radialGradient id="hillEden" cx="25%" cy="20%" r="90%">
-              <stop offset="0%" stopColor="#f2d4b0" stopOpacity="0.82"/>
-              <stop offset="55%" stopColor="#d8a880" stopOpacity="0.6"/>
-              <stop offset="100%" stopColor="#9a6840" stopOpacity="0.6"/>
-            </radialGradient>
-            <radialGradient id="hillSouth" cx="35%" cy="30%" r="80%">
-              <stop offset="0%" stopColor="#f4dab8" stopOpacity="0.8"/>
-              <stop offset="100%" stopColor="#b8885a" stopOpacity="0.5"/>
-            </radialGradient>
-            <radialGradient id="hillNorth" cx="30%" cy="25%" r="80%">
-              <stop offset="0%" stopColor="#f6ddba" stopOpacity="0.8"/>
-              <stop offset="100%" stopColor="#b8885a" stopOpacity="0.48"/>
-            </radialGradient>
-
-            {/* ── Mountain gradients (3-face shading) ── */}
-            <linearGradient id="mtnLight" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#f4d8b0"/>
-              <stop offset="100%" stopColor="#c69060"/>
-            </linearGradient>
-            <linearGradient id="mtnShadow" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#8a5a38"/>
-              <stop offset="100%" stopColor="#5a3820"/>
-            </linearGradient>
-            <linearGradient id="mtnSnow" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.95"/>
-              <stop offset="100%" stopColor="#fff4d4" stopOpacity="0.4"/>
-            </linearGradient>
-
-            {/* ── Vineyard gradients (multi-tone greens) ── */}
-            <radialGradient id="vineyardGrad" cx="35%" cy="30%" r="80%">
-              <stop offset="0%" stopColor="#e4ebc4" stopOpacity="0.9"/>
-              <stop offset="60%" stopColor="#c8d8a8" stopOpacity="0.8"/>
-              <stop offset="100%" stopColor="#96ae80" stopOpacity="0.7"/>
-            </radialGradient>
-            <radialGradient id="vineyardGradDeep" cx="35%" cy="30%" r="80%">
-              <stop offset="0%" stopColor="#c8d6a6" stopOpacity="0.85"/>
-              <stop offset="100%" stopColor="#728a5a" stopOpacity="0.6"/>
-            </radialGradient>
-            <radialGradient id="vineyardGradYoung" cx="35%" cy="30%" r="80%">
-              <stop offset="0%" stopColor="#e8f0ca" stopOpacity="0.9"/>
-              <stop offset="100%" stopColor="#a8c088" stopOpacity="0.6"/>
-            </radialGradient>
-
-            {/* ── Vineyard row patterns — varied density ── */}
-            <pattern id="vineRows" width="2.8" height="2.8" patternUnits="userSpaceOnUse" patternTransform="rotate(28)">
-              <line x1="0" y1="0" x2="0" y2="2.8" stroke="#6a8050" strokeWidth="0.38" opacity="0.55"/>
-              <line x1="1.4" y1="0" x2="1.4" y2="2.8" stroke="#8aa068" strokeWidth="0.22" opacity="0.35"/>
-            </pattern>
-            <pattern id="vineRows2" width="3.2" height="3.2" patternUnits="userSpaceOnUse" patternTransform="rotate(-20)">
-              <line x1="0" y1="0" x2="0" y2="3.2" stroke="#6a8050" strokeWidth="0.32" opacity="0.5"/>
-              <line x1="1.6" y1="0" x2="1.6" y2="3.2" stroke="#8aa068" strokeWidth="0.22" opacity="0.3"/>
-            </pattern>
-            <pattern id="vineRows3" width="2.8" height="2.8" patternUnits="userSpaceOnUse" patternTransform="rotate(55)">
-              <line x1="0" y1="0" x2="0" y2="2.8" stroke="#607845" strokeWidth="0.38" opacity="0.55"/>
-              <line x1="1.4" y1="0" x2="1.4" y2="2.8" stroke="#8aa068" strokeWidth="0.22" opacity="0.35"/>
-            </pattern>
-            <pattern id="youngVines" width="2.6" height="2.6" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
-              <line x1="0" y1="0" x2="0" y2="2.6" stroke="#9ab878" strokeWidth="0.32" opacity="0.55"/>
-              <line x1="1.3" y1="0" x2="1.3" y2="2.6" stroke="#b8d098" strokeWidth="0.22" opacity="0.4"/>
-            </pattern>
-            <pattern id="harvestRows" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(10)">
-              <rect width="4" height="4" fill="#d8b878" opacity="0.45"/>
-              <line x1="0" y1="0" x2="0" y2="4" stroke="#8a6228" strokeWidth="0.5" opacity="0.55"/>
-              <line x1="2" y1="0" x2="2" y2="4" stroke="#c09c60" strokeWidth="0.3" opacity="0.4"/>
-            </pattern>
-
-            {/* ── Multi-density forest stipple (3 layers) ── */}
-            <pattern id="forestStippleDense" width="4.5" height="4.5" patternUnits="userSpaceOnUse">
-              <circle cx="1.2" cy="1.6" r="1.05" fill="#5a7842" opacity="0.8"/>
-              <circle cx="3.3" cy="3.3" r="0.85" fill="#7a9862" opacity="0.7"/>
-              <circle cx="2.2" cy="3.8" r="0.6" fill="#3a5828" opacity="0.55"/>
-              <circle cx="4" cy="1.2" r="0.5" fill="#6a8850" opacity="0.6"/>
-            </pattern>
-            <pattern id="forestStippleMid" width="6" height="6" patternUnits="userSpaceOnUse">
-              <circle cx="1.5" cy="2" r="0.85" fill="#7a9862" opacity="0.7"/>
-              <circle cx="4.5" cy="4" r="0.7" fill="#5a7842" opacity="0.55"/>
-              <circle cx="3.5" cy="1.2" r="0.45" fill="#4a6832" opacity="0.5"/>
-            </pattern>
-            <pattern id="forestStippleLight" width="8" height="8" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="3" r="0.6" fill="#6a8850" opacity="0.55"/>
-              <circle cx="6" cy="5" r="0.45" fill="#8aa872" opacity="0.45"/>
-            </pattern>
-
-            {/* ── Relief hachures (diagonal hatch at varying densities) ── */}
-            <pattern id="reliefHatch" width="2.2" height="2.2" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
-              <line x1="0" y1="0" x2="0" y2="2.2" stroke="#8a6032" strokeWidth="0.22" opacity="0.45"/>
-            </pattern>
-            <pattern id="reliefHatchSoft" width="3.2" height="3.2" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
-              <line x1="0" y1="0" x2="0" y2="3.2" stroke="#b88858" strokeWidth="0.18" opacity="0.32"/>
-            </pattern>
-            <pattern id="mountainHatch" width="1.8" height="1.8" patternUnits="userSpaceOnUse" patternTransform="rotate(40)">
-              <line x1="0" y1="0" x2="0" y2="1.8" stroke="#6a4020" strokeWidth="0.22" opacity="0.55"/>
-            </pattern>
-
-            {/* ── Water: bathymetric gradient (darker centre-line) ── */}
-            <linearGradient id="waterBathy" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#8eb4cc" stopOpacity="0.7"/>
-              <stop offset="50%" stopColor="#6290b0" stopOpacity="0.95"/>
-              <stop offset="100%" stopColor="#8eb4cc" stopOpacity="0.7"/>
-            </linearGradient>
-            <pattern id="waterRipple" width="6" height="3" patternUnits="userSpaceOnUse">
-              <path d="M 0,1.5 Q 1.5,0.5 3,1.5 T 6,1.5" fill="none" stroke="#6da4c0" strokeWidth="0.25" opacity="0.55"/>
-            </pattern>
-
-            {/* ── PAPER TEXTURE filter — organic fibres via turbulence ── */}
-            <filter id="paperTexture" x="0%" y="0%" width="100%" height="100%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" result="noise"/>
-              <feColorMatrix in="noise" type="matrix"
-                values="0 0 0 0 0.42
-                        0 0 0 0 0.32
-                        0 0 0 0 0.18
-                        0 0 0 0.12 0"/>
-              <feComposite in2="SourceGraphic" operator="in"/>
-            </filter>
-            {/* Paper grain — heavy fibre for under-layer */}
-            <filter id="paperFibre">
-              <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" seed="3"/>
-              <feColorMatrix type="matrix"
-                values="0 0 0 0 0.7
-                        0 0 0 0 0.55
-                        0 0 0 0 0.32
-                        0 0 0 0.08 0"/>
-            </filter>
-            {/* Hand-painted watercolour bleed edge */}
-            <filter id="wcBleed" x="-20%" y="-20%" width="140%" height="140%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="5" result="t"/>
-              <feDisplacementMap in="SourceGraphic" in2="t" scale="2.6"/>
-            </filter>
-            {/* Soft ink bleed (gentler than wcBleed) */}
-            <filter id="wc" x="-10%" y="-10%" width="120%" height="120%">
-              <feGaussianBlur stdDeviation="0.55"/>
-            </filter>
-            {/* Gentle ink shadow for roads and buildings */}
-            <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
-              <feDropShadow dx="0.3" dy="0.6" stdDeviation="0.35" floodColor="#5a4028" floodOpacity="0.22"/>
-            </filter>
-
-            {/* Shortlist gold glow */}
-            <radialGradient id="glowGold" cx="50%" cy="50%" r="55%">
-              <stop offset="0%" stopColor="#fff0c4" stopOpacity="0.95"/>
-              <stop offset="55%" stopColor="#e8c070" stopOpacity="0.45"/>
-              <stop offset="100%" stopColor="#e8c070" stopOpacity="0"/>
-            </radialGradient>
-            {/* Pin drop-shadow */}
-            <filter id="pinShadow" x="-50%" y="-50%" width="200%" height="200%">
-              <feDropShadow dx="0.4" dy="0.9" stdDeviation="0.55" floodColor="#5a4028" floodOpacity="0.28"/>
-            </filter>
-          </defs>
-
-          <g transform={`translate(${pan.x},${pan.y}) scale(${zoom})`}>
-
-            {/* ─── Base parchment (layered paper with warm glow + sunrise/dusk + fibres) ─── */}
-            <rect width={W} height={H} fill={bg}/>
-            <rect width={W} height={H} filter="url(#paperFibre)" opacity="0.55"/>
-            <rect width={W} height={H} fill="url(#mapGlow)"/>
-            <rect width={W} height={H} fill="url(#sunriseNW)"/>
-            <rect width={W} height={H} fill="url(#duskSE)"/>
-            {/* Global NW hillshade wash */}
-            <rect width={W} height={H} fill="url(#hillshade)" opacity="0.5"/>
-
-            {/* ─── ROLLING HILLS — each with its own radial gradient shading + relief hachure ─── */}
-            <g>
-              {/* Western plains */}
-              <g filter="url(#wcBleed)">
-                <path d="M 20,120 Q 60,105 110,115 Q 160,130 200,140 Q 240,155 270,180 Q 280,210 260,240 Q 220,260 170,255 Q 110,245 60,225 Q 20,200 20,160 Z"
-                      fill="url(#hillWplains)" opacity="0.72"/>
-                <path d="M 20,120 Q 60,105 110,115 Q 160,130 200,140 Q 240,155 270,180 Q 280,210 260,240 Q 220,260 170,255 Q 110,245 60,225 Q 20,200 20,160 Z"
-                      fill="url(#reliefHatchSoft)" opacity="0.6"/>
-              </g>
-              {/* Central lowland (Tanunda basin) */}
-              <g filter="url(#wcBleed)">
-                <ellipse cx="185" cy="230" rx="75" ry="38" fill="url(#hillBasin)" opacity="0.65"/>
-                <ellipse cx="178" cy="222" rx="50" ry="22" fill="#fff0d0" opacity="0.3"/>
-                <ellipse cx="198" cy="245" rx="32" ry="14" fill="#a88850" opacity="0.22"/>
-              </g>
-              {/* Eden Valley uplift */}
-              <g filter="url(#wcBleed)">
-                <path d="M 270,75 Q 310,85 340,120 Q 360,165 355,215 Q 345,270 325,310 Q 305,350 280,370 Q 265,350 275,310 Q 290,260 295,210 Q 295,165 285,125 Q 275,95 270,75 Z"
-                      fill="url(#hillEden)" opacity="0.8"/>
-                <path d="M 270,75 Q 310,85 340,120 Q 360,165 355,215 Q 345,270 325,310 Q 305,350 280,370 Q 265,350 275,310 Q 290,260 295,210 Q 295,165 285,125 Q 275,95 270,75 Z"
-                      fill="url(#reliefHatch)" opacity="0.45"/>
-                {/* shadow side (SE face) */}
-                <path d="M 340,120 Q 360,165 355,215 Q 345,270 325,310 Q 310,340 292,355 Q 310,290 305,225 Q 315,170 340,120 Z"
-                      fill="#8a5a30" opacity="0.25"/>
-              </g>
-              {/* Southern rise near Lyndoch */}
-              <g filter="url(#wcBleed)">
-                <path d="M 90,340 Q 130,330 175,335 Q 215,345 240,365 Q 230,395 195,405 Q 150,410 110,395 Q 85,375 90,340 Z"
-                      fill="url(#hillSouth)" opacity="0.65"/>
-                <path d="M 90,340 Q 130,330 175,335 Q 215,345 240,365 Q 230,395 195,405 Q 150,410 110,395 Q 85,375 90,340 Z"
-                      fill="url(#reliefHatchSoft)" opacity="0.5"/>
-              </g>
-              {/* Northern knolls */}
-              <g filter="url(#wcBleed)">
-                <path d="M 80,50 Q 130,45 170,55 Q 210,65 220,90 Q 200,110 155,108 Q 110,105 80,90 Q 70,70 80,50 Z"
-                      fill="url(#hillNorth)" opacity="0.6"/>
-                <path d="M 80,50 Q 130,45 170,55 Q 210,65 220,90 Q 200,110 155,108 Q 110,105 80,90 Q 70,70 80,50 Z"
-                      fill="url(#reliefHatchSoft)" opacity="0.4"/>
-              </g>
-
-              {/* Secondary relief bumps (smaller knolls, rounded) */}
-              <g opacity="0.55" filter="url(#wcBleed)">
-                <ellipse cx="58" cy="175" rx="18" ry="11" fill="url(#hillWplains)"/>
-                <ellipse cx="208" cy="95" rx="18" ry="10" fill="url(#hillNorth)"/>
-                <ellipse cx="82" cy="285" rx="22" ry="13" fill="url(#hillWplains)"/>
-                <ellipse cx="230" cy="280" rx="14" ry="9" fill="url(#hillWplains)"/>
-                <ellipse cx="60" cy="355" rx="16" ry="10" fill="url(#hillSouth)"/>
-              </g>
-            </g>
-
-            {/* ─── CONTOUR LINES (topographic feel, very subtle) ─── */}
-            <g fill="none" stroke={roadStroke} strokeWidth="0.25" opacity="0.28" pointerEvents="none">
-              <path d="M 285,100 Q 320,115 340,145 Q 352,185 350,225 Q 345,270 325,310"/>
-              <path d="M 292,115 Q 322,128 340,155 Q 348,190 346,225 Q 340,265 322,300"/>
-              <path d="M 298,130 Q 322,142 336,165 Q 342,195 340,225 Q 336,260 318,290"/>
-              <path d="M 305,150 Q 322,160 332,180 Q 336,205 335,225 Q 330,255 312,280"/>
-              <path d="M 100,348 Q 140,340 180,345 Q 215,355 232,375"/>
-              <path d="M 105,355 Q 142,350 180,355 Q 212,365 225,380"/>
-              <path d="M 90,60 Q 130,55 170,65 Q 205,75 215,92"/>
-              <path d="M 95,72 Q 132,67 170,77 Q 202,86 210,100"/>
-            </g>
-
-            {/* ─── BAROSSA RANGES (east) — 3-face shaded peaks with snow caps ─── */}
-            <g>
-              {/* base ridge shadow (back) */}
-              <path d="M 298,340 L 302,328 L 312,318 L 320,312 L 328,305 L 336,298 L 342,288 L 348,275 L 350,260 L 352,240 L 350,215 L 348,195 L 344,175 L 340,155 L 338,140 L 336,120 L 332,105 L 326,92 L 320,85 L 312,82 L 306,84 L 302,88 L 300,95 L 302,115 L 300,140 L 298,165 L 296,185 L 292,210 L 288,235 L 290,260 L 292,285 L 294,310 L 298,340 Z"
-                    fill="#6a4828" opacity="0.28" filter="url(#wc)"/>
-              {[
-                [302,88,12,18],[316,84,10,15],[328,92,11,16],[340,100,10,15],
-                [350,115,9,14],[312,138,11,16],[326,144,10,15],[340,152,12,18],
-                [348,164,9,14],[308,184,11,16],[322,190,10,15],[336,200,12,17],
-                [346,212,9,14],[314,238,12,17],[328,246,10,15],[342,256,11,16],
-                [318,282,11,16],[334,292,12,17],[324,330,11,16],[338,340,10,15]
-              ].map(([cx,cy,w,h],i)=>(
-                <g key={`mtn-${i}`} filter="url(#wc)">
-                  {/* shadow face (SE) */}
-                  <polygon points={`${cx},${cy-h} ${cx+w},${cy+2} ${cx},${cy+2}`}
-                    fill="url(#mtnShadow)" opacity="0.72"/>
-                  {/* light face (NW) */}
-                  <polygon points={`${cx},${cy-h} ${cx-w},${cy+2} ${cx},${cy+2}`}
-                    fill="url(#mtnLight)" opacity="0.92"/>
-                  {/* overlay rocky texture */}
-                  <polygon points={`${cx-w},${cy+2} ${cx},${cy-h} ${cx+w},${cy+2}`}
-                    fill="url(#mountainHatch)" opacity="0.4"/>
-                  {/* outline */}
-                  <polygon points={`${cx-w},${cy+2} ${cx},${cy-h} ${cx+w},${cy+2}`}
-                    fill="none" stroke="#3a2210" strokeWidth="0.35" opacity="0.7"/>
-                  {/* SNOW CAP with soft edge (random variation) */}
-                  <path d={`M ${cx-w*0.32},${cy-h*0.55} Q ${cx-w*0.12},${cy-h*0.75} ${cx},${cy-h} Q ${cx+w*0.14},${cy-h*0.72} ${cx+w*0.32},${cy-h*0.55} L ${cx+w*0.18},${cy-h*0.45} Q ${cx+w*0.04},${cy-h*0.5} ${cx-w*0.1},${cy-h*0.42} Z`}
-                        fill="url(#mtnSnow)" opacity="0.9"/>
-                  {/* snow drift highlight */}
-                  <path d={`M ${cx-w*0.22},${cy-h*0.52} Q ${cx-w*0.05},${cy-h*0.68} ${cx+w*0.08},${cy-h*0.58}`}
-                        stroke="#ffffff" strokeWidth="0.35" fill="none" opacity="0.8"/>
-                  {/* scree base hint */}
-                  <ellipse cx={cx} cy={cy+2.5} rx={w*0.85} ry="1.2" fill="#8a5a32" opacity="0.35"/>
-                </g>
-              ))}
-              {/* ridge-line label */}
-              <text x="360" y="210" fontSize="5.3" fill="#6a3820" fontStyle="italic"
-                    fontFamily="'Palatino Linotype',Georgia,serif" letterSpacing="0.8"
-                    transform="rotate(90 360,210)" opacity="0.75">Barossa Ranges</text>
-            </g>
-
-            {/* ─── VINEYARD REGIONS — gradient base + row pattern + shadow pooling ─── */}
-            {/* Northern plains vineyards */}
-            <g filter="url(#wcBleed)">
-              <path d="M 110,80 Q 150,72 195,78 Q 232,88 240,110 Q 228,128 195,130 Q 150,128 115,118 Q 100,100 110,80 Z"
-                    fill="url(#vineyardGrad)"/>
-              <path d="M 110,80 Q 150,72 195,78 Q 232,88 240,110 Q 228,128 195,130 Q 150,128 115,118 Q 100,100 110,80 Z"
-                    fill="url(#vineRows)"/>
-              {/* SE shadow pool */}
-              <ellipse cx="218" cy="122" rx="26" ry="9" fill="#5a7038" opacity="0.22"/>
-              {/* NW highlight */}
-              <ellipse cx="138" cy="92" rx="24" ry="8" fill="#f4f0c8" opacity="0.3"/>
-            </g>
-            {/* Central vineyards (Tanunda–Rowland) */}
-            <g filter="url(#wcBleed)">
-              <path d="M 110,195 Q 155,188 200,195 Q 235,205 240,230 Q 225,252 185,255 Q 140,252 112,238 Q 95,220 110,195 Z"
-                    fill="url(#vineyardGrad)"/>
-              <path d="M 110,195 Q 155,188 200,195 Q 235,205 240,230 Q 225,252 185,255 Q 140,252 112,238 Q 95,220 110,195 Z"
-                    fill="url(#vineRows2)"/>
-              <ellipse cx="218" cy="244" rx="26" ry="10" fill="#4a6832" opacity="0.24"/>
-              <ellipse cx="135" cy="208" rx="24" ry="8" fill="#f4f0c8" opacity="0.28"/>
-            </g>
-            {/* Eden slope vines */}
-            <g filter="url(#wcBleed)">
-              <path d="M 255,155 Q 282,150 298,160 Q 305,178 296,192 Q 275,198 260,188 Q 250,170 255,155 Z"
-                    fill="url(#vineyardGradDeep)"/>
-              <path d="M 255,155 Q 282,150 298,160 Q 305,178 296,192 Q 275,198 260,188 Q 250,170 255,155 Z"
-                    fill="url(#vineRows3)"/>
-              <ellipse cx="290" cy="186" rx="12" ry="5" fill="#3a5420" opacity="0.28"/>
-            </g>
-            {/* Young vines NE of Nuriootpa */}
-            <g filter="url(#wcBleed)">
-              <path d="M 175,130 Q 200,125 222,132 Q 230,148 220,160 Q 198,164 180,156 Q 170,144 175,130 Z"
-                    fill="url(#vineyardGradYoung)"/>
-              <path d="M 175,130 Q 200,125 222,132 Q 230,148 220,160 Q 198,164 180,156 Q 170,144 175,130 Z"
-                    fill="url(#youngVines)"/>
-            </g>
-            {/* Harvest ochre field east of Tanunda */}
-            <g filter="url(#wcBleed)">
-              <path d="M 232,242 Q 252,238 268,244 Q 272,258 262,268 Q 246,272 234,264 Q 226,252 232,242 Z"
-                    fill="url(#harvestRows)" opacity="0.88"/>
-              <ellipse cx="262" cy="262" rx="10" ry="5" fill="#7a4820" opacity="0.25"/>
-            </g>
-            {/* Krondorf/Bethany vines */}
-            <g filter="url(#wcBleed)">
-              <path d="M 115,265 Q 150,260 190,268 Q 215,278 218,298 Q 200,315 160,315 Q 125,310 108,295 Q 100,278 115,265 Z"
-                    fill="url(#vineyardGrad)"/>
-              <path d="M 115,265 Q 150,260 190,268 Q 215,278 218,298 Q 200,315 160,315 Q 125,310 108,295 Q 100,278 115,265 Z"
-                    fill="url(#vineRows)"/>
-              <ellipse cx="198" cy="306" rx="24" ry="9" fill="#4a6832" opacity="0.24"/>
-              <ellipse cx="135" cy="280" rx="22" ry="7" fill="#f4f0c8" opacity="0.26"/>
-            </g>
-            {/* A couple of extra small paddocks for painterly patchwork */}
-            <g filter="url(#wcBleed)" opacity="0.8">
-              <path d="M 58,210 Q 78,205 95,215 Q 95,225 80,230 Q 62,228 56,220 Z"
-                    fill="url(#vineyardGradDeep)"/>
-              <path d="M 58,210 Q 78,205 95,215 Q 95,225 80,230 Q 62,228 56,220 Z"
-                    fill="url(#vineRows3)"/>
-              <path d="M 195,345 Q 220,342 238,352 Q 236,365 215,368 Q 195,365 190,355 Z"
-                    fill="url(#vineyardGrad)"/>
-              <path d="M 195,345 Q 220,342 238,352 Q 236,365 215,368 Q 195,365 190,355 Z"
-                    fill="url(#vineRows2)"/>
-            </g>
-
-            {/* ─── NORTH PARA RIVER — bathymetric gradient + wave ripples + banks ─── */}
-            <g>
-              {/* bank shadow (wider, diffused) */}
-              <path d="M 155,18 C 150,60 146,105 143,150 C 140,195 138,240 136,285 C 134,325 132,365 130,410"
-                    fill="none" stroke="#7a8fa0" strokeWidth="4.8" strokeLinecap="round" opacity="0.22" filter="url(#wc)"/>
-              {/* main shore casing */}
-              <path d="M 155,18 C 150,60 146,105 143,150 C 140,195 138,240 136,285 C 134,325 132,365 130,410"
-                    fill="none" stroke="#5a78a0" strokeWidth="3" strokeLinecap="round" opacity="0.68"/>
-              {/* deep water centre line */}
-              <path d="M 156,18 C 151,60 147,105 144,150 C 141,195 139,240 137,285 C 135,325 133,365 131,410"
-                    fill="none" stroke="#3a6090" strokeWidth="1.3" strokeLinecap="round" opacity="0.85"/>
-              {/* highlight reflection */}
-              <path d="M 157,18 C 152,60 148,105 145,150 C 142,195 140,240 138,285 C 136,325 134,365 132,410"
-                    fill="none" stroke="#d8e8f4" strokeWidth="0.4" strokeLinecap="round" opacity="0.6"/>
-              {/* ripple wavelets along the stream */}
-              {[30,55,82,108,135,165,198,228,258,288,318,350,385].map((ty,i)=>(
-                <path key={`rip-${i}`} d={`M ${152-(ty-18)*0.06-1.5},${ty} Q ${152-(ty-18)*0.06},${ty-0.8} ${152-(ty-18)*0.06+1.5},${ty}`}
-                      fill="none" stroke="#8ab0c8" strokeWidth="0.3" opacity="0.55"/>
-              ))}
-              {/* Tributary (Jacob's Creek-ish) */}
-              <path d="M 138,320 Q 105,330 70,350"
-                    fill="none" stroke="#5a78a0" strokeWidth="1.8" strokeLinecap="round" opacity="0.6"/>
-              <path d="M 138,320 Q 105,330 70,350"
-                    fill="none" stroke="#3a6090" strokeWidth="0.7" strokeLinecap="round" opacity="0.78"/>
-              {/* Eden creek (with ripples) */}
-              <path d="M 146,195 Q 180,198 218,200"
-                    fill="none" stroke="#5a78a0" strokeWidth="1.3" opacity="0.55"/>
-              <path d="M 146,195 Q 180,198 218,200"
-                    fill="none" stroke="#3a6090" strokeWidth="0.55" opacity="0.75"/>
-              {/* Second small tributary (south) */}
-              <path d="M 134,380 Q 160,388 185,398"
-                    fill="none" stroke="#5a78a0" strokeWidth="1.2" opacity="0.55"/>
-              <path d="M 134,380 Q 160,388 185,398"
-                    fill="none" stroke="#3a6090" strokeWidth="0.5" opacity="0.7"/>
-            </g>
-            {/* River label */}
-            <g fontFamily="'Palatino Linotype','Book Antiqua',Georgia,serif" fontStyle="italic" fill="#3a6090" opacity="0.85">
-              <text transform="translate(128,145) rotate(85)" fontSize="6" letterSpacing="1.2">North Para River</text>
-            </g>
-
-            {/* ── FARM DAMS — with highlight reflections ── */}
-            <g>
-              {[[92,212,3.8,2.2],[230,256,3.2,1.9],[168,342,2.8,1.6],[58,302,2.6,1.5],[260,322,3,1.7]].map(([cx,cy,rx,ry],i)=>(
-                <g key={`dam-${i}`} filter="url(#wc)">
-                  <ellipse cx={cx} cy={cy} rx={rx+0.4} ry={ry+0.3} fill="#7a8fa0" opacity="0.35"/>
-                  <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="url(#waterBathy)"/>
-                  <ellipse cx={cx-rx*0.35} cy={cy-ry*0.45} rx={rx*0.45} ry={ry*0.25} fill="#ffffff" opacity="0.55"/>
-                  {/* dam wall (earthen berm) */}
-                  <path d={`M ${cx-rx-0.3},${cy+ry*0.3} Q ${cx},${cy+ry+0.5} ${cx+rx+0.3},${cy+ry*0.3}`}
-                        fill="none" stroke="#8a6238" strokeWidth="0.35" opacity="0.7"/>
-                </g>
-              ))}
-            </g>
-
-            {/* ─── ROADS (curved with italic labels) ─── */}
-            <g>
-              {/* Barossa Valley Way — main highway */}
-              <path id="mainHwy" d="M 158,14 C 156,50 154,88 152,126 C 150,165 149,198 148,232 C 147,265 146,295 145,320 C 144,345 143,368 142,406"
-                fill="none" stroke={road} strokeWidth="4.5" strokeLinecap="round"/>
-              <path d="M 158,14 C 156,50 154,88 152,126 C 150,165 149,198 148,232 C 147,265 146,295 145,320 C 144,345 143,368 142,406"
-                fill="none" stroke={roadStroke} strokeWidth="1.1" opacity="0.7"/>
-              <text fontSize="5.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic" letterSpacing="0.4">
-                <textPath href="#mainHwy" startOffset="45%">Barossa Valley Way</textPath>
-              </text>
-
-              {/* Seppeltsfield Rd */}
-              <path id="seppeltsRd" d="M 28,145 C 60,150 95,160 130,178 C 158,195 180,215 198,240" fill="none" stroke={road} strokeWidth="2.5"/>
-              <path d="M 28,145 C 60,150 95,160 130,178 C 158,195 180,215 198,240" fill="none" stroke={roadStroke} strokeWidth="0.75" opacity="0.65"/>
-              <text fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic" letterSpacing="0.3">
-                <textPath href="#seppeltsRd" startOffset="20%">Seppeltsfield Rd</textPath>
-              </text>
-
-              {/* Menglers Hill / Eden Valley Rd (dashed scenic) */}
-              <path id="edenValleyRd" d="M 218,290 C 238,268 260,244 278,218 C 294,192 308,165 322,140 C 334,118 346,96 358,75"
-                fill="none" stroke={roadStroke} strokeWidth="0.85" strokeDasharray="4,2.5" opacity="0.72"/>
-              <text fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
-                <textPath href="#edenValleyRd" startOffset="22%">Menglers Hill Rd · Eden Valley</textPath>
-              </text>
-
-              {/* Stockwell Rd — N from Nuriootpa */}
-              <path id="stockwellRd" d="M 148,162 C 158,140 170,112 180,82" fill="none" stroke={road} strokeWidth="2.1"/>
-              <path d="M 148,162 C 158,140 170,112 180,82" fill="none" stroke={roadStroke} strokeWidth="0.65" opacity="0.6"/>
-              <text fontSize="4.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
-                <textPath href="#stockwellRd" startOffset="30%">Stockwell Rd</textPath>
-              </text>
-
-              {/* Angaston Rd — diagonal */}
-              <path id="nurioAngRd" d="M 148,162 C 180,200 220,248 258,292" fill="none" stroke={road} strokeWidth="2.1"/>
-              <path d="M 148,162 C 180,200 220,248 258,292" fill="none" stroke={roadStroke} strokeWidth="0.65" opacity="0.6"/>
-              <text fontSize="4.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
-                <textPath href="#nurioAngRd" startOffset="40%">Angaston Rd</textPath>
-              </text>
-
-              {/* Gomersal Rd */}
-              <path id="gomersalRd" d="M 145,250 C 128,278 115,312 108,358" fill="none" stroke={road} strokeWidth="2"/>
-              <path d="M 145,250 C 128,278 115,312 108,358" fill="none" stroke={roadStroke} strokeWidth="0.6" opacity="0.6"/>
-              <text fontSize="4.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
-                <textPath href="#gomersalRd" startOffset="30%">Gomersal Rd</textPath>
-              </text>
-
-              {/* Krondorf Rd */}
-              <path id="krondorfRd" d="M 148,250 C 170,260 195,268 222,278" fill="none" stroke={road} strokeWidth="1.9"/>
-              <path d="M 148,250 C 170,260 195,268 222,278" fill="none" stroke={roadStroke} strokeWidth="0.55" opacity="0.6"/>
-              <text fontSize="4.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
-                <textPath href="#krondorfRd" startOffset="25%">Krondorf Rd</textPath>
-              </text>
-
-              {/* Research Rd */}
-              <path d="M 85,158 C 110,160 130,161 148,162" fill="none" stroke={road} strokeWidth="1.7"/>
-              <path d="M 85,158 C 110,160 130,161 148,162" fill="none" stroke={roadStroke} strokeWidth="0.5" opacity="0.55"/>
-
-              {/* Langmeil / Bethany connectors */}
-              <path d="M 148,232 C 152,215 156,200 160,185" fill="none" stroke={road} strokeWidth="1.5"/>
-              <path d="M 148,232 C 152,215 156,200 160,185" fill="none" stroke={roadStroke} strokeWidth="0.45" opacity="0.5"/>
-              <path d="M 148,232 C 156,252 164,272 168,296" fill="none" stroke={road} strokeWidth="1.5"/>
-              <path d="M 148,232 C 156,252 164,272 168,296" fill="none" stroke={roadStroke} strokeWidth="0.45" opacity="0.5"/>
-
-              {/* ── Research Rd (Nuriootpa) ── */}
-              <path id="researchRd" d="M 148,162 C 170,158 195,155 222,152" fill="none" stroke={road} strokeWidth="1.6"/>
-              <path d="M 148,162 C 170,158 195,155 222,152" fill="none" stroke={roadStroke} strokeWidth="0.5" opacity="0.55"/>
-              <text fontSize="4" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic" letterSpacing="0.2">
-                <textPath href="#researchRd" startOffset="35%">Research Rd</textPath>
-              </text>
-
-              {/* ── Light Pass Rd ── */}
-              <path id="lightPassRd" d="M 148,162 C 185,172 220,188 258,210" fill="none" stroke={road} strokeWidth="1.6"/>
-              <path d="M 148,162 C 185,172 220,188 258,210" fill="none" stroke={roadStroke} strokeWidth="0.5" opacity="0.55"/>
-              <text fontSize="4" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic" letterSpacing="0.2">
-                <textPath href="#lightPassRd" startOffset="40%">Light Pass Rd</textPath>
-              </text>
-
-              {/* ── Greenock Rd ── */}
-              <path id="greenockRd" d="M 70,172 C 95,168 118,166 148,162" fill="none" stroke={road} strokeWidth="1.5"/>
-              <path d="M 70,172 C 95,168 118,166 148,162" fill="none" stroke={roadStroke} strokeWidth="0.45" opacity="0.55"/>
-              <text fontSize="4" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic" letterSpacing="0.2">
-                <textPath href="#greenockRd" startOffset="25%">Greenock Rd</textPath>
-              </text>
-
-              {/* ── Kalimna Rd ── */}
-              <path d="M 148,175 C 162,182 180,195 200,215" fill="none" stroke={road} strokeWidth="1.4"/>
-              <path d="M 148,175 C 162,182 180,195 200,215" fill="none" stroke={roadStroke} strokeWidth="0.42" opacity="0.5"/>
-
-              {/* ── Jenke Rd ── */}
-              <path d="M 108,245 C 95,248 80,250 62,252" fill="none" stroke={road} strokeWidth="1.3"/>
-              <path d="M 108,245 C 95,248 80,250 62,252" fill="none" stroke={roadStroke} strokeWidth="0.4" opacity="0.5"/>
-
-              {/* ── Bethany Rd ── */}
-              <path d="M 147,232 C 158,258 168,278 172,296" fill="none" stroke={road} strokeWidth="1.3"/>
-              <path d="M 147,232 C 158,258 168,278 172,296" fill="none" stroke={roadStroke} strokeWidth="0.4" opacity="0.5"/>
-
-              {/* ── Rifle Range Rd (south) ── */}
-              <path d="M 142,330 C 135,355 128,375 138,395" fill="none" stroke={road} strokeWidth="1.2"/>
-              <path d="M 142,330 C 135,355 128,375 138,395" fill="none" stroke={roadStroke} strokeWidth="0.38" opacity="0.5"/>
-
-              {/* ── Sturt Highway (top E-W cross, A20) ── */}
-              <path id="sturtHwy" d="M 10,105 C 45,108 85,112 128,118 C 170,122 210,126 258,132 C 300,138 340,144 372,148"
-                    fill="none" stroke={road} strokeWidth="3.6" strokeLinecap="round"/>
-              <path d="M 10,105 C 45,108 85,112 128,118 C 170,122 210,126 258,132 C 300,138 340,144 372,148"
-                    fill="none" stroke={roadStroke} strokeWidth="0.9" opacity="0.68"/>
-              <text fontSize="4.5" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic" letterSpacing="0.4" fontWeight="600">
-                <textPath href="#sturtHwy" startOffset="18%">Sturt Highway · A20</textPath>
-              </text>
-
-              {/* ── TOWN STREET GRIDS — thin local streets for Tanunda / Nuriootpa / Angaston ── */}
-              <g opacity="0.6" fill="none" stroke={roadStroke} strokeWidth="0.32">
-                {/* Tanunda grid (centred 147,232) */}
-                <line x1="138" y1="222" x2="160" y2="222"/>
-                <line x1="138" y1="228" x2="162" y2="228"/>
-                <line x1="136" y1="236" x2="162" y2="236"/>
-                <line x1="138" y1="242" x2="160" y2="242"/>
-                <line x1="140" y1="218" x2="140" y2="246"/>
-                <line x1="147" y1="216" x2="147" y2="248"/>
-                <line x1="154" y1="218" x2="154" y2="246"/>
-                <line x1="158" y1="220" x2="158" y2="244"/>
-
-                {/* Nuriootpa grid (centred 148,162) */}
-                <line x1="138" y1="155" x2="160" y2="155"/>
-                <line x1="138" y1="160" x2="162" y2="160"/>
-                <line x1="138" y1="166" x2="162" y2="166"/>
-                <line x1="140" y1="170" x2="160" y2="170"/>
-                <line x1="140" y1="150" x2="140" y2="172"/>
-                <line x1="146" y1="148" x2="146" y2="174"/>
-                <line x1="152" y1="150" x2="152" y2="172"/>
-                <line x1="158" y1="152" x2="158" y2="170"/>
-
-                {/* Angaston grid (centred 262,295) */}
-                <line x1="254" y1="289" x2="272" y2="289"/>
-                <line x1="252" y1="295" x2="274" y2="295"/>
-                <line x1="254" y1="301" x2="272" y2="301"/>
-                <line x1="256" y1="285" x2="256" y2="305"/>
-                <line x1="262" y1="283" x2="262" y2="307"/>
-                <line x1="268" y1="285" x2="268" y2="305"/>
-
-                {/* Lyndoch hint grid */}
-                <line x1="132" y1="390" x2="146" y2="390"/>
-                <line x1="132" y1="396" x2="148" y2="396"/>
-                <line x1="134" y1="402" x2="146" y2="402"/>
-                <line x1="136" y1="386" x2="136" y2="406"/>
-                <line x1="142" y1="386" x2="142" y2="406"/>
-              </g>
-
-              {/* ── BAROSSA TRAIL (bike/walk path) — dashed green line ── */}
-              <g>
-                <path id="barossaTrail" d="M 178,80 C 172,120 162,160 155,200 C 150,238 148,272 146,305 C 144,340 142,370 140,400"
-                      fill="none" stroke="#7a9868" strokeWidth="1.1" strokeDasharray="3,1.8" strokeLinecap="round" opacity="0.85"/>
-                {/* bike icons (tiny) along trail */}
-                <g fill="#5a7a48" opacity="0.75">
-                  <circle cx="162" cy="160" r="0.9"/>
-                  <text x="164" y="162" fontSize="3.5" fontFamily="sans-serif">🚲</text>
-                </g>
-                <text fontSize="3.8" fill="#5a7848" fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic" letterSpacing="0.3" fontWeight="600">
-                  <textPath href="#barossaTrail" startOffset="50%">Barossa Trail · rail-to-trail</textPath>
-                </text>
-              </g>
-
-              {/* ── Farm lanes — extra hairlines for depth ── */}
-              <g fill="none" stroke={roadStroke} strokeWidth="0.28" opacity="0.45">
-                <path d="M 85,190 Q 95,205 92,220"/>
-                <path d="M 218,195 Q 235,200 248,215"/>
-                <path d="M 85,275 Q 105,285 125,288"/>
-                <path d="M 185,175 Q 195,182 200,192"/>
-                <path d="M 118,208 Q 128,215 135,222"/>
-                <path d="M 165,265 Q 180,275 195,282"/>
-                <path d="M 218,328 Q 232,335 240,346"/>
-                <path d="M 62,305 Q 78,315 90,318"/>
-              </g>
-            </g>
-
-            {/* ─── WATERCOLOUR WASH LAYERS — painterly pigment pooling + foxing ─── */}
-            <g pointerEvents="none" opacity="0.55">
-              <ellipse cx="155" cy="220" rx="22" ry="14" fill="#8aa078" opacity="0.14" filter="url(#wc)"/>
-              <ellipse cx="240" cy="200" rx="18" ry="12" fill="#8aa078" opacity="0.12" filter="url(#wc)"/>
-              {/* paper foxing specks */}
-              <circle cx="58" cy="88" r="1.2" fill="#b8906a" opacity="0.25"/>
-              <circle cx="305" cy="250" r="0.9" fill="#b8906a" opacity="0.22"/>
-              <circle cx="212" cy="88" r="1" fill="#b8906a" opacity="0.2"/>
-              <circle cx="85" cy="365" r="1.1" fill="#b8906a" opacity="0.22"/>
-              <circle cx="330" cy="115" r="0.8" fill="#b8906a" opacity="0.18"/>
-              <circle cx="168" cy="48" r="0.7" fill="#b8906a" opacity="0.18"/>
-              <circle cx="255" cy="115" r="0.9" fill="#b8906a" opacity="0.2"/>
-              <circle cx="42" cy="160" r="0.8" fill="#b8906a" opacity="0.18"/>
-            </g>
-
-            {/* ─── PAPER TEXTURE OVERLAY (organic fibre grain) ─── */}
-            <rect width={W} height={H} filter="url(#paperTexture)" opacity="0.32" pointerEvents="none"/>
-
-            {/* ─── TOWN MARKERS (elegant, labelled) ─── */}
-            <g fontFamily="'Palatino Linotype','Book Antiqua',Georgia,serif">
-              {[
-                ["Nuriootpa",148,162,7],
-                ["Tanunda",147,232,8],
-                ["Angaston",262,295,7],
-                ["Lyndoch",138,395,7],
-                ["Greenock",68,172,6],
-                ["Seppeltsfield",78,186,5.5],
-                ["Stockwell",182,82,5.5],
-                ["Bethany",172,282,5.5],
-                ["Rowland Flat",140,315,5.5],
-                ["Eden Valley",358,72,6],
-              ].map(([name,x,y,fontSize],i)=>{
-                const isMajor = fontSize>=7;
-                return (
-                  <g key={`town-${i}`}>
-                    {isMajor && (
-                      <>
-                        <circle cx={x} cy={y} r="2.2" fill="#fffbf0" stroke={ink} strokeWidth="0.55"/>
-                        <circle cx={x} cy={y} r="0.9" fill={ink}/>
-                      </>
-                    )}
-                    {!isMajor && (
-                      <circle cx={x} cy={y} r="1.3" fill={ink} opacity="0.8"/>
-                    )}
-                    <text x={x+3.5} y={y+1.3} fontSize={fontSize} fill={ink}
-                          fontWeight={isMajor?600:400} fontStyle={isMajor?"normal":"italic"}
-                          letterSpacing="0.4">{name}</text>
-                  </g>
-                );
-              })}
-            </g>
-
-            {/* ─── FORESTS — 3-layer density stipple + cast shadow + canopy highlight ─── */}
-            <g>
-              {[
-                {cx:262,cy:55,rx:32,ry:14},
-                {cx:338,cy:280,rx:19,ry:23},
-                {cx:52,cy:238,rx:17,ry:11},
-                {cx:210,cy:395,rx:15,ry:8},
-                {cx:88,cy:135,rx:18,ry:10},
-                {cx:322,cy:355,rx:14,ry:9},
-              ].map((f,i)=>(
-                <g key={`forest-${i}`} filter="url(#wc)">
-                  {/* canopy SE shadow */}
-                  <ellipse cx={f.cx+1.2} cy={f.cy+2} rx={f.rx} ry={f.ry} fill="#3a5828" opacity="0.28"/>
-                  {/* dense base stipple */}
-                  <ellipse cx={f.cx} cy={f.cy} rx={f.rx} ry={f.ry} fill="url(#forestStippleDense)" opacity="0.85"/>
-                  {/* mid-density overlay */}
-                  <ellipse cx={f.cx} cy={f.cy} rx={f.rx*0.9} ry={f.ry*0.9} fill="url(#forestStippleMid)" opacity="0.75"/>
-                  {/* light canopy highlight (NW) */}
-                  <ellipse cx={f.cx-f.rx*0.3} cy={f.cy-f.ry*0.4} rx={f.rx*0.5} ry={f.ry*0.4} fill="url(#forestStippleLight)" opacity="0.6"/>
-                  {/* soft green tint overlay */}
-                  <ellipse cx={f.cx} cy={f.cy} rx={f.rx} ry={f.ry} fill="#6a8850" opacity="0.1"/>
-                </g>
-              ))}
-            </g>
-
-            {/* Tiny tree icon scatters (fine-line charm) */}
-            <g opacity="0.75" pointerEvents="none">
-              {[
-                [245,45],[254,52],[263,48],[273,55],[280,50],[258,62],[270,65],
-                [50,232],[58,238],[46,245],[64,244],
-                [332,272],[340,282],[338,294],[345,286],[330,290],
-                [204,390],[214,398],[196,394],
-                [320,335],[330,342]
-              ].map(([x,y],i)=>(
-                <g key={`tree-${i}`} transform={`translate(${x},${y})`}>
-                  <line x1="0" y1="0" x2="0" y2="-1.8" stroke={ink} strokeWidth="0.28" opacity="0.7"/>
-                  <polygon points="-2,-1.2 2,-1.2 0,-5" fill={forest} stroke="#6a8058" strokeWidth="0.25"/>
-                </g>
-              ))}
-            </g>
-
-            {/* Decorative illustrations — small landmarks */}
-            {/* Langmeil Lutheran church */}
-            <g transform="translate(186,258)" opacity="0.75">
-              <rect x="-3" y="-3" width="6" height="6" fill="#fff8e8" stroke={ink} strokeWidth="0.45"/>
-              <polygon points="-3.5,-3 3.5,-3 0,-7" fill={dustyPink} stroke={ink} strokeWidth="0.4"/>
-              <rect x="-0.4" y="0" width="0.8" height="3" fill={ink} opacity="0.7"/>
-              <line x1="0" y1="-7" x2="0" y2="-10" stroke={ink} strokeWidth="0.35"/>
-              <line x1="-1" y1="-9" x2="1" y2="-9" stroke={ink} strokeWidth="0.35"/>
-            </g>
-            {/* Wine barrel near harvest field */}
-            <g transform="translate(254,258)" opacity="0.6">
-              <ellipse cx="0" cy="0" rx="4" ry="5.5" fill={ochre} stroke={ink} strokeWidth="0.5"/>
-              <line x1="-3.6" y1="-2.8" x2="3.6" y2="-2.8" stroke={ink} strokeWidth="0.35"/>
-              <line x1="-3.6" y1="2.8" x2="3.6" y2="2.8" stroke={ink} strokeWidth="0.35"/>
-            </g>
-            {/* Grape decoration NE */}
-            <g transform="translate(208,108)" opacity="0.6">
-              {[[0,0],[2,0],[-2,0],[1,1.8],[-1,1.8],[0,3.6]].map(([x,y],i)=>(
-                <circle key={i} cx={x} cy={y} r="1.2" fill={burgundy}/>
-              ))}
-              <path d="M 0,-1 Q -1.5,-2.5 -2.8,-3" stroke={forest} strokeWidth="0.35" fill="none"/>
-            </g>
-            {/* Wheat stalks near Greenock */}
-            <g transform="translate(72,195)" opacity="0.65">
-              {[-3,0,3].map((dx,i)=>(
-                <g key={i} transform={`translate(${dx},0)`}>
-                  <line x1="0" y1="2" x2="0" y2="-5" stroke={ochre} strokeWidth="0.4"/>
-                  <line x1="0" y1="-5" x2="-1" y2="-7" stroke={ochre} strokeWidth="0.35"/>
-                  <line x1="0" y1="-5" x2="1" y2="-7" stroke={ochre} strokeWidth="0.35"/>
-                  <line x1="0" y1="-3" x2="-1.1" y2="-5" stroke={ochre} strokeWidth="0.28"/>
-                  <line x1="0" y1="-3" x2="1.1" y2="-5" stroke={ochre} strokeWidth="0.28"/>
-                </g>
-              ))}
-            </g>
-
-            {/* ─── SCALE BAR (bottom right) ─── */}
-            <g transform="translate(260,392)" pointerEvents="none" opacity="0.85">
-              <rect x="0" y="0" width="20" height="3" fill={ink}/>
-              <rect x="20" y="0" width="20" height="3" fill="#fff8e8" stroke={ink} strokeWidth="0.3"/>
-              <rect x="40" y="0" width="20" height="3" fill={ink}/>
-              <line x1="0" y1="-3" x2="0" y2="3" stroke={ink} strokeWidth="0.9"/>
-              <line x1="60" y1="-3" x2="60" y2="3" stroke={ink} strokeWidth="0.9"/>
-              <text x="0" y="-5" fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif">0</text>
-              <text x="58" y="-5" fontSize="5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif">10 km</text>
-            </g>
-
-            {/* ─── Paper grain overlay ─── */}
-            <rect width={W} height={H} fill="url(#grain)" pointerEvents="none"/>
-            {/* Soft edge vignette */}
-            <rect width={W} height={H} fill="url(#vignette)" pointerEvents="none"/>
-
-            {/* ─── ORNATE BORDER FRAME (double rule + grape corners, pastel) ─── */}
-            <g pointerEvents="none">
-              <rect x="4" y="4" width={W-8} height={H-8} fill="none" stroke={ink} strokeWidth="1"/>
-              <rect x="8" y="8" width={W-16} height={H-16} fill="none" stroke={ink} strokeWidth="0.35"/>
-              <rect x="11" y="11" width={W-22} height={H-22} fill="none" stroke={inkLight} strokeWidth="0.25" strokeDasharray="2,1.2"/>
-              {[[14,14,1,1],[W-14,14,-1,1],[14,H-14,1,-1],[W-14,H-14,-1,-1]].map(([cx,cy,sx,sy],i)=>(
-                <g key={`cor-${i}`} transform={`translate(${cx},${cy}) scale(${sx},${sy})`} opacity="0.82">
-                  <path d="M 0,12 Q 2,6 8,4 Q 14,2 14,-2" fill="none" stroke={ink} strokeWidth="0.55"/>
-                  <circle cx="4" cy="7" r="1.2" fill={burgundy}/>
-                  <circle cx="7" cy="5" r="1.2" fill={burgundy}/>
-                  <circle cx="10" cy="3" r="1.2" fill={burgundy}/>
-                  <circle cx="6" cy="9" r="1.1" fill={burgundy}/>
-                  <path d="M 14,-2 Q 18,0 16,4 Q 14,6 12,4" fill="none" stroke={ink} strokeWidth="0.45"/>
-                  <path d="M 0,12 Q -2,6 -2,0" fill="none" stroke={forest} strokeWidth="0.45"/>
-                </g>
-              ))}
-            </g>
-
-            {/* ─── TITLE BANNER (cream cartouche scroll) ─── */}
-            <g pointerEvents="none">
-              <path d="M 100,20 Q 96,28 100,36 L 280,36 Q 284,28 280,20 Z"
-                    fill="#fffbf0" stroke={ink} strokeWidth="0.55"/>
-              <path d="M 100,20 Q 94,20 92,26 Q 94,32 100,32" fill={bgDeep} stroke={ink} strokeWidth="0.4"/>
-              <path d="M 280,20 Q 286,20 288,26 Q 286,32 280,32" fill={bgDeep} stroke={ink} strokeWidth="0.4"/>
-              <text x={W/2} y="32" textAnchor="middle" fontSize="14"
-                    fill={ink} fontFamily="'Palatino Linotype','Book Antiqua',Georgia,serif"
-                    fontStyle="italic" fontWeight="700" letterSpacing="1.4">Barossa Valley</text>
-              <path d="M 108,28 Q 115,24 118,28" fill="none" stroke={ink} strokeWidth="0.35"/>
-              <circle cx="107" cy="28" r="0.4" fill={ink}/>
-              <path d="M 272,28 Q 265,24 262,28" fill="none" stroke={ink} strokeWidth="0.35"/>
-              <circle cx="273" cy="28" r="0.4" fill={ink}/>
-            </g>
-
-            {/* ─── COMPASS ROSE (top left) ─── */}
-            <g transform="translate(42,62)" pointerEvents="none" opacity="0.92">
-              <circle r="16" fill="#fffbf0" stroke={ink} strokeWidth="0.5"/>
-              <circle r="12" fill="none" stroke={ink} strokeWidth="0.28"/>
-              <polygon points="0,-13 1.8,-1.8 13,0 1.8,1.8 0,13 -1.8,1.8 -13,0 -1.8,-1.8" fill={ink} opacity="0.78"/>
-              <polygon points="0,-9 1.4,-1.4 9,0 1.4,1.4 0,9 -1.4,1.4 -9,0 -1.4,-1.4"
-                       fill={burgundy} opacity="0.62" transform="rotate(45)"/>
-              <circle r="1.2" fill={ochre} stroke={ink} strokeWidth="0.28"/>
-              <text y="-18" textAnchor="middle" fontSize="5" fontWeight="700" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif">N</text>
-              <text y="22" textAnchor="middle" fontSize="4.2" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">S</text>
-              <text x="20" y="1.5" textAnchor="middle" fontSize="4.2" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">E</text>
-              <text x="-20" y="1.5" textAnchor="middle" fontSize="4.2" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">W</text>
-            </g>
-
-            {/* ─── LEGEND / KEY BOX (bottom left) ─── */}
-            <g transform="translate(14,332)" pointerEvents="none" opacity="0.95">
-              <rect width="112" height="70" fill="#fffbf0" stroke={ink} strokeWidth="0.55"/>
-              <rect x="2" y="2" width="108" height="66" fill="none" stroke={ink} strokeWidth="0.25"/>
-              <text x="56" y="10" textAnchor="middle" fontSize="6" fill={ink}
-                    fontFamily="'Palatino Linotype',Georgia,serif" fontWeight="700" letterSpacing="1.4">KEY</text>
-              <line x1="8" y1="12" x2="104" y2="12" stroke={ink} strokeWidth="0.25"/>
-              {/* Bottle = Visited */}
-              <g transform="translate(12,22)">
-                <rect x="-1.6" y="-10" width="3.2" height="3" fill="#3a2618"/>
-                <rect x="-1.4" y="-7.5" width="2.8" height="3" fill={burgundy}/>
-                <path d="M -1.4,-4.5 Q -3.5,-3.5 -3.5,-1 L -3.5,6 Q -3.5,7 -2.5,7 L 2.5,7 Q 3.5,7 3.5,6 L 3.5,-1 Q 3.5,-3.5 1.4,-4.5 Z"
-                      fill={burgundy} stroke="#2a1810" strokeWidth="0.35"/>
-                <rect x="-2.6" y="-0.5" width="5.2" height="4.5" fill="#f4e8cc" stroke="#2a1810" strokeWidth="0.22"/>
-              </g>
-              <text x="22" y="24" fontSize="5.3" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Visited</text>
-              {/* Empty glass = Not yet */}
-              <g transform="translate(12,39)">
-                <path d="M -3,-6 Q -3.4,-2.8 -2.6,-1 Q -2,0.4 0,0.6 Q 2,0.4 2.6,-1 Q 3.4,-2.8 3,-6 Z"
-                      fill="#fffaed" stroke={vineyardDeep} strokeWidth="0.65"/>
-                <line x1="-3" y1="-6" x2="3" y2="-6" stroke={vineyardDeep} strokeWidth="0.65"/>
-                <line x1="0" y1="0.6" x2="0" y2="4.5" stroke={vineyardDeep} strokeWidth="0.65"/>
-                <path d="M -2.2,4.5 Q 0,5.3 2.2,4.5" stroke={vineyardDeep} fill="none" strokeWidth="0.65"/>
-              </g>
-              <text x="22" y="41" fontSize="5.3" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Not yet</text>
-              {/* Glowing glass = Shortlist */}
-              <g transform="translate(62,22)">
-                <circle r="7" fill="url(#glowGold)"/>
-                <path d="M -3,-6 Q -3.4,-2.8 -2.6,-1 Q -2,0.4 0,0.6 Q 2,0.4 2.6,-1 Q 3.4,-2.8 3,-6 Z"
-                      fill="#fffaed" stroke="#a07838" strokeWidth="0.65"/>
-                <line x1="-3" y1="-6" x2="3" y2="-6" stroke="#a07838" strokeWidth="0.65"/>
-                <line x1="0" y1="0.6" x2="0" y2="4.5" stroke="#a07838" strokeWidth="0.65"/>
-                <path d="M -2.2,4.5 Q 0,5.3 2.2,4.5" stroke="#a07838" fill="none" strokeWidth="0.65"/>
-              </g>
-              <text x="72" y="24" fontSize="5.3" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Shortlist</text>
-              {/* House = Riebe St */}
-              <g transform="translate(62,39)">
-                <path d="M -5,-2 L 0,-6 L 5,-2 Z" fill="#b06858" stroke="#2a1810" strokeWidth="0.3"/>
-                <rect x="-4" y="-2" width="8" height="6" fill="#f4e4cc" stroke="#2a1810" strokeWidth="0.3"/>
-                <rect x="-1" y="0.6" width="2" height="3.4" fill={dustyPink} stroke="#2a1810" strokeWidth="0.2"/>
-              </g>
-              <text x="72" y="41" fontSize="5.3" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Riebe St</text>
-              {/* Mountain row */}
-              <g transform="translate(12,57)">
-                <polygon points="-3,2 0,-3 3,2" fill={hill2} stroke="#8a6a38" strokeWidth="0.3"/>
-                <polygon points="0,-3 3,2 0,2" fill="url(#mountainHatch)"/>
-              </g>
-              <text x="22" y="58" fontSize="5.3" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">Barossa Ranges</text>
-            </g>
-
-            {/* ── ROUTES FROM RIEBE ST — drawn when a winery is selected ── */}
-            {tip && (() => {
-              const dx = tip.px - homePos.x;
-              const dy = tip.py - homePos.y;
-              const straight = Math.hypot(dx, dy);
-              if (straight < 2) return null;
-              // SVG units → km (map spans ~25km over ~380 units)
-              const kmPerUnit = 0.066;
-              const driveKm = (straight * kmPerUnit * 1.42);
-              const bikeKm  = (straight * kmPerUnit * 1.28);
-              const walkKm  = (straight * kmPerUnit * 1.18);
-              const driveMin = Math.max(3, Math.round((driveKm / 50) * 60));
-              const bikeMin  = Math.max(5, Math.round((bikeKm / 16) * 60));
-              const walkMin  = Math.max(10, Math.round((walkKm / 5) * 60));
-              const showWalk = walkKm <= 3.5;
-
-              const nx = -dy / straight, ny = dx / straight; // perpendicular unit
-              const mx = (homePos.x + tip.px) / 2, my = (homePos.y + tip.py) / 2;
-              // waypoints for each route (offset so they don't overlap)
-              const drivePath = `M ${homePos.x},${homePos.y} Q ${mx + nx*7},${my + ny*7} ${tip.px},${tip.py}`;
-              const bikePath  = `M ${homePos.x},${homePos.y} Q ${mx - nx*6},${my - ny*6} ${tip.px},${tip.py}`;
-              const walkPath  = `M ${homePos.x},${homePos.y} Q ${mx + nx*1.5},${my + ny*1.5} ${tip.px},${tip.py}`;
-
-              return (
-                <g pointerEvents="none">
-                  {/* driving — solid burgundy, wider, white centre stripe */}
-                  <path d={drivePath} stroke="#6a1f2a" strokeWidth="2.4" strokeLinecap="round" fill="none" opacity="0.85"/>
-                  <path d={drivePath} stroke="#b25870" strokeWidth="1.6" strokeLinecap="round" fill="none"/>
-                  <path d={drivePath} stroke="#ffffff" strokeWidth="0.35" strokeDasharray="2.5,1.8" strokeLinecap="round" fill="none" opacity="0.9"/>
-
-                  {/* biking — dashed forest green */}
-                  <path d={bikePath} stroke="#4a6838" strokeWidth="1.6" fill="none" opacity="0.4"/>
-                  <path d={bikePath} stroke="#7aa868" strokeWidth="1.2" strokeDasharray="3.2,1.8" strokeLinecap="round" fill="none" opacity="0.95"/>
-
-                  {/* walking — dotted ochre (only if close enough) */}
-                  {showWalk && (
-                    <path d={walkPath} stroke="#8a6238" strokeWidth="1.1" strokeDasharray="0.5,1.3" strokeLinecap="round" fill="none" opacity="0.9"/>
-                  )}
-
-                  {/* ETA chips along each route */}
-                  <g fontFamily="'Palatino Linotype',Georgia,serif">
-                    {/* drive chip */}
-                    <g transform={`translate(${mx + nx*10},${my + ny*10})`}>
-                      <rect x="-17" y="-6" width="34" height="12" rx="2.5" fill="#fffaed" stroke="#6a1f2a" strokeWidth="0.5" opacity="0.97"/>
-                      <text textAnchor="middle" y="-0.7" fontSize="5.2" fill="#6a1f2a" fontWeight="700">🚗 {driveMin} min</text>
-                      <text textAnchor="middle" y="4" fontSize="3.8" fill="#8a6238" fontStyle="italic">{driveKm.toFixed(1)} km</text>
-                    </g>
-                    {/* bike chip */}
-                    <g transform={`translate(${mx - nx*10},${my - ny*10})`}>
-                      <rect x="-17" y="-6" width="34" height="12" rx="2.5" fill="#fffaed" stroke="#4a6838" strokeWidth="0.5" opacity="0.97"/>
-                      <text textAnchor="middle" y="-0.7" fontSize="5.2" fill="#4a6838" fontWeight="700">🚲 {bikeMin} min</text>
-                      <text textAnchor="middle" y="4" fontSize="3.8" fill="#8a6238" fontStyle="italic">{bikeKm.toFixed(1)} km</text>
-                    </g>
-                    {/* walk chip */}
-                    {showWalk && (
-                      <g transform={`translate(${mx + nx*1.5 + 18},${my + ny*1.5 + 14})`}>
-                        <rect x="-17" y="-6" width="34" height="12" rx="2.5" fill="#fffaed" stroke="#8a6238" strokeWidth="0.5" opacity="0.97"/>
-                        <text textAnchor="middle" y="-0.7" fontSize="5.2" fill="#8a6238" fontWeight="700">🚶 {walkMin} min</text>
-                        <text textAnchor="middle" y="4" fontSize="3.8" fill="#8a6238" fontStyle="italic">{walkKm.toFixed(1)} km</text>
-                      </g>
-                    )}
-                  </g>
-
-                  {/* little pulse at Riebe St origin */}
-                  <circle cx={homePos.x} cy={homePos.y} r="3" fill="none" stroke="#b25870" strokeWidth="0.7" opacity="0.7">
-                    <animate attributeName="r" values="3;9;3" dur="2s" repeatCount="indefinite"/>
-                    <animate attributeName="opacity" values="0.7;0;0.7" dur="2s" repeatCount="indefinite"/>
-                  </circle>
-                </g>
-              );
-            })()}
-
-            {/* ── WINERY PINS — crafted, not generic ── */}
-            {visible.map(w => {
-              const coords = WINERY_COORDS[w.id];
-              if(!coords) return null;
-              const {x,y} = toXY(coords[0],coords[1]);
-              const col = pinColor(w);
-              const r = getOverall(w);
-              const isTop = r!==null && r>=8.5;
-              const multiVisit = (w.visitCount||1) > 1;
-              return (
-                <g key={w.id} onClick={()=>setTip(t=>t?.id===w.id?null:{...w,px:x,py:y})} style={{cursor:"pointer"}} filter="url(#pinShadow)">
-                  {w.visited ? (
-                    /* ── VISITED — full wine bottle ── */
-                    <g transform={`translate(${x},${y})`}>
-                      {/* neck cap (foil) */}
-                      <rect x="-1.6" y="-10" width="3.2" height="3" fill="#3a2618"/>
-                      {/* neck */}
-                      <rect x="-1.4" y="-7.5" width="2.8" height="3" fill={col}/>
-                      {/* shoulders + body */}
-                      <path d="M -1.4,-4.5 Q -3.5,-3.5 -3.5,-1 L -3.5,6 Q -3.5,7 -2.5,7 L 2.5,7 Q 3.5,7 3.5,6 L 3.5,-1 Q 3.5,-3.5 1.4,-4.5 Z"
-                            fill={col} stroke="#2a1810" strokeWidth="0.45"/>
-                      {/* body highlight stripe */}
-                      <path d="M -2.6,-3 L -2.6,6" stroke="#ffffff" strokeWidth="0.5" opacity="0.35"/>
-                      {/* paper label */}
-                      <rect x="-2.6" y="-0.5" width="5.2" height="4.5" fill="#f4e8cc" stroke="#2a1810" strokeWidth="0.3"/>
-                      {/* label accent line */}
-                      <line x1="-2.2" y1="1.4" x2="2.2" y2="1.4" stroke={col} strokeWidth="0.4" opacity="0.8"/>
-                      {/* tiny star for top-rated */}
-                      {isTop && (
-                        <g transform="translate(4.2,-8)">
-                          <circle r="2.6" fill="#d4a848" stroke="#ffffff" strokeWidth="0.5"/>
-                          <text textAnchor="middle" y="1" fontSize="3.2" fill="#ffffff" fontWeight="700">★</text>
-                        </g>
-                      )}
-                      {/* multi-visit dotted ring */}
-                      {multiVisit && <circle r="8" fill="none" stroke={col} strokeWidth="0.7" strokeDasharray="1.8,1.2" opacity="0.6"/>}
-                    </g>
-                  ) : w.shortlisted ? (
-                    /* ── SHORTLIST — empty glass with gold glow ── */
-                    <g transform={`translate(${x},${y})`}>
-                      {/* radiating gold glow */}
-                      <circle r="10" fill="url(#glowGold)"/>
-                      <circle r="6" fill="#ffe4a0" opacity="0.35"/>
-                      {/* empty wine glass (fine line, cream fill) */}
-                      <path d="M -3.2,-6.5 Q -3.6,-3 -2.8,-1 Q -2.1,0.6 0,0.8 Q 2.1,0.6 2.8,-1 Q 3.6,-3 3.2,-6.5 Z"
-                            fill="#fffaed" stroke="#8a5a20" strokeWidth="0.75"/>
-                      <line x1="-3.2" y1="-6.5" x2="3.2" y2="-6.5" stroke="#8a5a20" strokeWidth="0.75"/>
-                      <line x1="0" y1="0.8" x2="0" y2="5" stroke="#8a5a20" strokeWidth="0.75"/>
-                      <path d="M -2.4,5 Q 0,5.8 2.4,5" stroke="#8a5a20" fill="none" strokeWidth="0.75"/>
-                      {/* gold star sparkle */}
-                      <text x="3.8" y="-5.2" fontSize="4" fill="#d4a848" fontWeight="700">✦</text>
-                    </g>
-                  ) : (
-                    /* ── NOT YET — plain empty wine glass ── */
-                    <g transform={`translate(${x},${y})`}>
-                      <path d="M -3,-6 Q -3.4,-2.8 -2.6,-1 Q -2,0.4 0,0.6 Q 2,0.4 2.6,-1 Q 3.4,-2.8 3,-6 Z"
-                            fill="#fffaed" stroke={col} strokeWidth="0.8"/>
-                      <line x1="-3" y1="-6" x2="3" y2="-6" stroke={col} strokeWidth="0.8"/>
-                      <line x1="0" y1="0.6" x2="0" y2="4.5" stroke={col} strokeWidth="0.8"/>
-                      <path d="M -2.2,4.5 Q 0,5.3 2.2,4.5" stroke={col} fill="none" strokeWidth="0.8"/>
-                    </g>
-                  )}
-                </g>
-              );
-            })}
-
-            {/* ── 25 RIEBE ST — modern home matching reference photo ── */}
-            <g transform={`translate(${homePos.x},${homePos.y})`} filter="url(#pinShadow)">
-              {/* soft cream halo — slightly larger to frame the home */}
-              <circle r="14" fill="#fffaed" stroke="#b8a078" strokeWidth="0.5" opacity="0.55"/>
-
-              {/* ── ROOF (hipped grey corrugated metal) ── */}
-              {/* roof vent */}
-              <rect x="1.2" y="-8.4" width="0.7" height="1.1" fill="#8a9098"/>
-              <ellipse cx="1.55" cy="-8.5" rx="0.5" ry="0.22" fill="#aab0b8"/>
-              {/* main hipped roof trapezoid */}
-              <path d="M -9,-4 L -6.4,-7.6 L 6.4,-7.6 L 9,-4 Z"
-                    fill="#8a9098" stroke="#2a2e36" strokeWidth="0.45"/>
-              {/* ridge line */}
-              <line x1="-6.4" y1="-7.6" x2="6.4" y2="-7.6" stroke="#2a2e36" strokeWidth="0.3"/>
-              {/* subtle corrugation stripes */}
-              <line x1="-6.8" y1="-7.3" x2="-7.2" y2="-4" stroke="#6a7078" strokeWidth="0.15" opacity="0.65"/>
-              <line x1="-4" y1="-7.6" x2="-4.3" y2="-4" stroke="#6a7078" strokeWidth="0.15" opacity="0.65"/>
-              <line x1="-1.5" y1="-7.6" x2="-1.5" y2="-4" stroke="#6a7078" strokeWidth="0.15" opacity="0.65"/>
-              <line x1="1.5" y1="-7.6" x2="1.5" y2="-4" stroke="#6a7078" strokeWidth="0.15" opacity="0.65"/>
-              <line x1="4" y1="-7.6" x2="4.3" y2="-4" stroke="#6a7078" strokeWidth="0.15" opacity="0.65"/>
-              <line x1="6.8" y1="-7.3" x2="7.2" y2="-4" stroke="#6a7078" strokeWidth="0.15" opacity="0.65"/>
-              {/* light roof highlight */}
-              <path d="M -9,-4 L -6.4,-7.6 L -5.8,-7.6 L -8.4,-4 Z" fill="#a8aeb6" opacity="0.6"/>
-              {/* white gutter/fascia strip */}
-              <rect x="-9" y="-4" width="18" height="0.45" fill="#f8f4e8"/>
-
-              {/* ── WALLS / FACADE ── */}
-              {/* garage — white render (leftmost) */}
-              <rect x="-9" y="-3.55" width="3.2" height="7" fill="#f5f1e8" stroke="#2a2e36" strokeWidth="0.3"/>
-              {/* garage panel lines */}
-              <line x1="-8.7" y1="-2.2" x2="-6.1" y2="-2.2" stroke="#c8c0b0" strokeWidth="0.18"/>
-              <line x1="-8.7" y1="-0.7" x2="-6.1" y2="-0.7" stroke="#c8c0b0" strokeWidth="0.18"/>
-              <line x1="-8.7" y1="0.8" x2="-6.1" y2="0.8" stroke="#c8c0b0" strokeWidth="0.18"/>
-              <line x1="-8.7" y1="2.3" x2="-6.1" y2="2.3" stroke="#c8c0b0" strokeWidth="0.18"/>
-
-              {/* red brick facade (middle-left) */}
-              <rect x="-5.8" y="-3.55" width="4.1" height="7" fill="#b07a5a" stroke="#2a2e36" strokeWidth="0.3"/>
-              {/* brick texture — offset rows */}
-              <line x1="-5.8" y1="-2.5" x2="-1.7" y2="-2.5" stroke="#8a5a3a" strokeWidth="0.12" opacity="0.85"/>
-              <line x1="-5.8" y1="-1.55" x2="-1.7" y2="-1.55" stroke="#8a5a3a" strokeWidth="0.12" opacity="0.85"/>
-              <line x1="-5.8" y1="-0.6" x2="-1.7" y2="-0.6" stroke="#8a5a3a" strokeWidth="0.12" opacity="0.85"/>
-              <line x1="-5.8" y1="0.35" x2="-1.7" y2="0.35" stroke="#8a5a3a" strokeWidth="0.12" opacity="0.85"/>
-              <line x1="-5.8" y1="1.3" x2="-1.7" y2="1.3" stroke="#8a5a3a" strokeWidth="0.12" opacity="0.85"/>
-              <line x1="-5.8" y1="2.25" x2="-1.7" y2="2.25" stroke="#8a5a3a" strokeWidth="0.12" opacity="0.85"/>
-              {/* vertical mortar (staggered) */}
-              <line x1="-4.8" y1="-2.5" x2="-4.8" y2="-1.55" stroke="#8a5a3a" strokeWidth="0.1" opacity="0.7"/>
-              <line x1="-3.2" y1="-2.5" x2="-3.2" y2="-1.55" stroke="#8a5a3a" strokeWidth="0.1" opacity="0.7"/>
-              <line x1="-4" y1="-1.55" x2="-4" y2="-0.6" stroke="#8a5a3a" strokeWidth="0.1" opacity="0.7"/>
-              <line x1="-2.4" y1="-1.55" x2="-2.4" y2="-0.6" stroke="#8a5a3a" strokeWidth="0.1" opacity="0.7"/>
-              <line x1="-4.8" y1="-0.6" x2="-4.8" y2="0.35" stroke="#8a5a3a" strokeWidth="0.1" opacity="0.7"/>
-              <line x1="-3.2" y1="-0.6" x2="-3.2" y2="0.35" stroke="#8a5a3a" strokeWidth="0.1" opacity="0.7"/>
-              <line x1="-4" y1="0.35" x2="-4" y2="1.3" stroke="#8a5a3a" strokeWidth="0.1" opacity="0.7"/>
-              <line x1="-2.4" y1="0.35" x2="-2.4" y2="1.3" stroke="#8a5a3a" strokeWidth="0.1" opacity="0.7"/>
-              <line x1="-4.8" y1="1.3" x2="-4.8" y2="2.25" stroke="#8a5a3a" strokeWidth="0.1" opacity="0.7"/>
-              <line x1="-3.2" y1="1.3" x2="-3.2" y2="2.25" stroke="#8a5a3a" strokeWidth="0.1" opacity="0.7"/>
-
-              {/* recessed porch (cream render behind pink door) */}
-              <rect x="-1.7" y="-3.55" width="3.4" height="7" fill="#efe6d4" stroke="#2a2e36" strokeWidth="0.3"/>
-              {/* porch shadow gradient (subtle) */}
-              <rect x="-1.7" y="-3.55" width="0.6" height="7" fill="#000" opacity="0.08"/>
-              <rect x="1.1" y="-3.55" width="0.6" height="7" fill="#000" opacity="0.08"/>
-
-              {/* ── PASTEL PINK 4-PANEL FRONT DOOR ── */}
-              <rect x="-1.1" y="-2.2" width="2.2" height="5.65" fill="#f8c8d4" stroke="#2a2e36" strokeWidth="0.3"/>
-              {/* door vertical split */}
-              <line x1="0" y1="-2" x2="0" y2="3.25" stroke="#c898a8" strokeWidth="0.12" opacity="0.8"/>
-              {/* door horizontal split */}
-              <line x1="-1.1" y1="0.55" x2="1.1" y2="0.55" stroke="#c898a8" strokeWidth="0.12" opacity="0.8"/>
-              {/* 4 inset panels */}
-              <rect x="-0.88" y="-1.8" width="0.72" height="1.85" fill="none" stroke="#dca8b8" strokeWidth="0.1"/>
-              <rect x="0.16" y="-1.8" width="0.72" height="1.85" fill="none" stroke="#dca8b8" strokeWidth="0.1"/>
-              <rect x="-0.88" y="0.85" width="0.72" height="2.15" fill="none" stroke="#dca8b8" strokeWidth="0.1"/>
-              <rect x="0.16" y="0.85" width="0.72" height="2.15" fill="none" stroke="#dca8b8" strokeWidth="0.1"/>
-              {/* doorknob */}
-              <circle cx="0.72" cy="0.85" r="0.18" fill="#2a2e36"/>
-
-              {/* white porch column (right side of door) */}
-              <rect x="1.7" y="-3.55" width="0.55" height="7" fill="#f8f4e8" stroke="#2a2e36" strokeWidth="0.2"/>
-
-              {/* grey rendered facade (right) */}
-              <rect x="2.25" y="-3.55" width="6.75" height="7" fill="#6a7078" stroke="#2a2e36" strokeWidth="0.3"/>
-
-              {/* large picture window (right) */}
-              <rect x="3" y="-2.5" width="5.3" height="4.7" fill="#3a4048" stroke="#f8f4e8" strokeWidth="0.4"/>
-              {/* window sky reflection */}
-              <rect x="3.1" y="-2.4" width="5.1" height="2" fill="#b8c8d4" opacity="0.85"/>
-              <rect x="3.1" y="-0.4" width="5.1" height="2.55" fill="#4a5058" opacity="0.75"/>
-              {/* window mullion */}
-              <line x1="5.65" y1="-2.5" x2="5.65" y2="2.2" stroke="#f8f4e8" strokeWidth="0.25"/>
-              {/* window sill */}
-              <rect x="2.9" y="2.2" width="5.5" height="0.3" fill="#f8f4e8"/>
-
-              {/* ── PORCH PAD + DRIVEWAY (concrete) ── */}
-              <rect x="-1.7" y="3.45" width="3.4" height="0.5" fill="#d8d2c4" stroke="#2a2e36" strokeWidth="0.2"/>
-              <rect x="-9" y="3.45" width="4.4" height="0.85" fill="#e0dace" stroke="#2a2e36" strokeWidth="0.2" opacity="0.9"/>
-              {/* control joint in driveway */}
-              <line x1="-7" y1="3.45" x2="-7" y2="4.3" stroke="#b8b0a0" strokeWidth="0.15" opacity="0.7"/>
-
-              {/* grass base (dirt/grass tone along base) */}
-              <rect x="-9" y="4.3" width="18" height="0.4" fill="#d0c090" opacity="0.65"/>
-
-              {/* ── LABEL ── */}
-              <text textAnchor="middle" y="-9.8" fontSize="5.3" fill="#b04878"
-                    fontFamily="'Palatino Linotype',Georgia,serif" fontWeight="700" letterSpacing="0.5">25 RIEBE ST</text>
-              <text textAnchor="middle" y="-5.8" fontSize="2.8" fill="#6a5238"
-                    fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic" opacity="0.7">home base</text>
-            </g>
-
-            {/* ── TOOLTIP — rich card style ── */}
-            {tip && (() => {
-              const {px,py} = tip;
-              const cardW = 140, cardH = 58;
-              const tx = Math.min(Math.max(px-cardW/2, 10), W-cardW-10);
-              const ty = py < 80 ? py+12 : py-cardH-10;
-              const r2 = getOverall(tip);
-              const statusColor = tip.visited ? (r2 && r2>=8.5 ? "#6b1f2a" : "#9c5030") : (tip.shortlisted ? "#d4a848" : "#8aab7a");
-              return (
-                <g>
-                  {/* Shadow */}
-                  <rect x={tx+1} y={ty+2} width={cardW} height={cardH} rx="5" fill="#3a2a1a" opacity="0.15"/>
-                  {/* Card */}
-                  <rect x={tx} y={ty} width={cardW} height={cardH} rx="5" fill="#fffaed" stroke={ink} strokeWidth="0.8"/>
-                  {/* Top band */}
-                  <rect x={tx} y={ty} width={cardW} height={11} rx="5" fill={statusColor} opacity="0.9"/>
-                  <rect x={tx} y={ty+6} width={cardW} height={5} fill={statusColor} opacity="0.9"/>
-                  <text x={tx+7} y={ty+8} fontSize="6" fill="#ffffff" fontFamily="'Palatino Linotype',Georgia,serif" fontWeight="700" letterSpacing="0.8">
-                    {tip.visited?"VISITED":(tip.shortlisted?"SHORTLIST":"NOT YET")}
-                  </text>
-                  {r2 && <text x={tx+cardW-7} y={ty+8} textAnchor="end" fontSize="6.5" fill="#ffffff" fontWeight="700">{r2.toFixed(1)}/10</text>}
-                  {/* Name */}
-                  <text x={tx+7} y={ty+25} fontSize="9" fontWeight="700" fill={ink} fontFamily="'Palatino Linotype',Georgia,serif">
-                    {tip.name.length>24?tip.name.slice(0,22)+"…":tip.name}
-                  </text>
-                  {/* Distances */}
-                  <text x={tx+7} y={ty+38} fontSize="7" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif">
-                    {tip.distRiebe} min (Riebe) · {tip.distJohn} min (John)
-                  </text>
-                  {/* Bottles / visits */}
-                  <text x={tx+7} y={ty+50} fontSize="6.5" fill={inkLight} fontFamily="'Palatino Linotype',Georgia,serif" fontStyle="italic">
-                    {tip.visited && tip.bottles ? `🍷 ${tip.bottles} bottle${tip.bottles!==1?"s":""}` : ""}
-                    {tip.visitCount>1 ? `  · visited ×${tip.visitCount}` : ""}
-                    {!tip.visited && tip.shortlisted ? "On your shortlist" : ""}
-                    {!tip.visited && !tip.shortlisted ? "Still to visit" : ""}
-                  </text>
-                </g>
-              );
-            })()}
-          </g>
-        </svg>
-        {/* Close (×) button when a winery is selected */}
-        {tip && (
-          <button onClick={()=>setTip(null)} aria-label="Close winery"
-            style={{position:"absolute",top:12,right:12,background:"#fffaed",color:ink,border:`1.5px solid ${ink}`,borderRadius:"50%",width:34,height:34,fontSize:18,lineHeight:1,fontWeight:700,cursor:"pointer",boxShadow:"0 2px 10px rgba(90,60,30,0.25)",zIndex:11,display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Palatino Linotype',Georgia,serif",padding:0}}>
-            ×
-          </button>
-        )}
-        {/* Floating "open winery" button when tooltip is shown */}
-        {tip && (
-          <button onClick={()=>{onSelect&&onSelect(wineries.find(w=>w.id===tip.id));setTip(null);}}
-            style={{position:"absolute",bottom:14,left:"50%",transform:"translateX(-50%)",background:burgundy,color:"#ffffff",border:"none",borderRadius:22,padding:"9px 20px",fontSize:13,fontWeight:700,cursor:"pointer",boxShadow:"0 4px 14px rgba(100,30,40,0.35)",zIndex:10,display:"flex",alignItems:"center",gap:6,fontFamily:"'Palatino Linotype',Georgia,serif"}}>
-            Open {tip.name.length>18?tip.name.slice(0,16)+"…":tip.name} ›
-          </button>
-        )}
+      <div className="zb-legend">
+        <div className="hdr">Wineries</div>
+        <div className="item"><div className="swatch" dangerouslySetInnerHTML={{__html:svgHome(26)}}/><div className="txt">Home base<small>Where we stay</small></div></div>
+        <div className="item"><div className="swatch" dangerouslySetInnerHTML={{__html:svgVisited(20)}}/><div className="txt">Visited<small>Tasted &amp; reviewed</small></div></div>
+        <div className="item"><div className="swatch" dangerouslySetInnerHTML={{__html:svgEmpty(18)}}/><div className="txt">Not yet<small>On the longlist</small></div></div>
+        <div className="item"><div className="swatch" dangerouslySetInnerHTML={{__html:svgShortlisted(18)}}/><div className="txt">Shortlisted<small>Priority pours</small></div></div>
       </div>
 
-      {/* Legend */}
-      <div style={{padding:"10px 16px",background:bgDeep,borderTop:`1px solid ${hill2}`,display:"flex",gap:14,alignItems:"center",flexWrap:"wrap",flexShrink:0}}>
-        {[
-          [<><path d="M 0,-4 C -2,-4 -2.5,-2 -2.5,-0.75 C -2.5,0.75 -1.25,1.5 0,2.5 C 1.25,1.5 2.5,0.75 2.5,-0.75 C 2.5,-2 2,-4 0,-4 Z" fill="#6b1f2a"/><circle r="0.8" fill="#fff" cy="-1"/></>, "Top rated"],
-          [<path d="M 0,-4 C -2,-4 -2.5,-2 -2.5,-0.75 C -2.5,0.75 -1.25,1.5 0,2.5 C 1.25,1.5 2.5,0.75 2.5,-0.75 C 2.5,-2 2,-4 0,-4 Z" fill="#9c5030"/>, "Visited"],
-          [<><circle r="3" fill="#fffaed" stroke="#a8b7a0" strokeWidth="1.4"/><circle r="1" fill="#a8b7a0"/></>, "Not yet"],
-          [<polygon points="0,-4 3,0 0,4 -3,0" fill="none" stroke="#d4a848" strokeWidth="1.2"/>, "Shortlist"],
-          [<><circle r="5" fill="#fff" stroke="#7a1f2a" strokeWidth="1"/><path d="M -2,0 L 0,-2 L 2,0 L 2,1.5 L -2,1.5 Z" fill="#7a1f2a"/></>, "Home"],
-        ].map(([icon,lbl],i)=>(
-          <div key={i} style={{display:"flex",alignItems:"center",gap:5}}>
-            <svg width="14" height="14" viewBox="-7 -7 14 14">{icon}</svg>
-            <span style={{fontSize:10,color:inkLight,fontFamily:"'Palatino Linotype',Georgia,serif",fontStyle:"italic"}}>{lbl}</span>
-          </div>
-        ))}
-        <span style={{fontSize:9.5,color:inkLight,marginLeft:"auto",fontFamily:"'Palatino Linotype',Georgia,serif",fontStyle:"italic"}}>pinch · drag · tap</span>
+      <div className="zb-route-pill" id="zb-route-pill" role="status" aria-live="polite">
+        <span className="pip"/>
+        <span id="zb-route-pill-text"><b>Route ready</b> · — km · — min</span>
+        <button className="close" onClick={clearRoute} aria-label="Clear route">✕</button>
       </div>
     </div>
   );
 };
+
 
 // ─── MINI MAP — simplified preview for the home page ─────────────────────────
 const MiniMap = ({ wineries, onNavigate }) => {

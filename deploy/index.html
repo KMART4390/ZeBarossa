@@ -1,0 +1,2636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="apple-mobile-web-app-title" content="Ze Barossa"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="theme-color" content="#f9f5ee"/>
+<title>Ze Barossa</title>
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0id2luZUJsb3QiIGN4PSI0MCUiIGN5PSIzNSUiIHI9IjcwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNjNDMwNTAiIHN0b3Atb3BhY2l0eT0iMC45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTUlIiBzdG9wLWNvbG9yPSIjOGExZjJhIiBzdG9wLW9wYWNpdHk9IjAuOTUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNWEwZjFhIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8Y2xpcFBhdGggaWQ9ImJvd2xDbGlwIj4KICAgICAgPHBhdGggZD0iTSA1NiwyOCBRIDQ4LDgwIDU4LDExOCBRIDcyLDE1MCAxMDAsMTU0IFEgMTI4LDE1MCAxNDIsMTE4IFEgMTUyLDgwIDE0NCwyOCBaIi8+CiAgICA8L2NsaXBQYXRoPgogICAgPGZpbHRlciBpZD0id2NCbHVyIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMS41Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CgogIDwhLS0gY3JlYW0gcm91bmRlZCBiYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiByeD0iNDQiIGZpbGw9IiNmOWY1ZWUiLz4KCiAgPCEtLSBXYXRlcmNvbG9yIHdpbmUgd2FzaCAoY2xpcHBlZCB0byBib3dsLCB1bmV2ZW4gcGlnbWVudCBwb29saW5nKSAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjYm93bENsaXApIj4KICAgIDxwYXRoIGQ9Ik0gNTYsNTggUSA3NSw1MyAxMDAsNTYgUSAxMzAsNjAgMTQ0LDU2IEwgMTQ0LDE1NCBMIDU2LDE1NCBaIgogICAgICAgICAgZmlsbD0idXJsKCN3aW5lQmxvdCkiIGZpbHRlcj0idXJsKCN3Y0JsdXIpIi8+CiAgICA8IS0tIHVuZXZlbiBibGVlZCBlZGdlIGF0IHdpbmUgc3VyZmFjZSAtLT4KICAgIDxwYXRoIGQ9Ik0gNTYsNTYgUSA3MCw1MSAxMDAsNTQgUSAxMzAsNTYgMTQ0LDUzIEwgMTQ0LDYyIEwgNTYsNjUgWiIKICAgICAgICAgIGZpbGw9IiM3YTFmMmEiIG9wYWNpdHk9IjAuNSIvPgogICAgPCEtLSBwaWdtZW50IHBvb2xpbmcgLS0+CiAgICA8ZWxsaXBzZSBjeD0iODIiIGN5PSIxMDgiIHJ4PSIyMCIgcnk9IjI2IiBmaWxsPSIjNGEwZjFhIiBvcGFjaXR5PSIwLjMyIiBmaWx0ZXI9InVybCgjd2NCbHVyKSIvPgogICAgPGVsbGlwc2UgY3g9IjEyMiIgY3k9Ijk0IiByeD0iMTYiIHJ5PSIyMiIgZmlsbD0iIzRhMGYxYSIgb3BhY2l0eT0iMC4yOCIgZmlsdGVyPSJ1cmwoI3djQmx1cikiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxNDAiIHJ4PSIyOCIgcnk9IjEyIiBmaWxsPSIjM2EwYTE0IiBvcGFjaXR5PSIwLjM1IiBmaWx0ZXI9InVybCgjd2NCbHVyKSIvPgogIDwvZz4KCiAgPCEtLSBGaW5lLWxpbmUgZ3JhcGUgY2x1c3RlciDigJQgZHJhd24gSU5TSURFIHRoZSBib3dsIG92ZXIgdGhlIHdpbmUgd2FzaCAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjYm93bENsaXApIiBmaWxsPSJub25lIiBzdHJva2U9IiMyYTE4MTAiCiAgICAgc3Ryb2tlLXdpZHRoPSIxLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgb3BhY2l0eT0iMC45NSI+CiAgICA8IS0tIHN0ZW0gZnJvbSByaW0gYXJlYSAtLT4KICAgIDxwYXRoIGQ9Ik0gMTAwLDY2IFEgMTAwLDU2IDEwMiw0OCIvPgogICAgPCEtLSB2aW5lIGxlYWYgKHRvIHJpZ2h0IG9mIHN0ZW0pIC0tPgogICAgPHBhdGggZD0iTSAxMDIsNDggUSAxMTgsNDQgMTI0LDU0IFEgMTIyLDY0IDExMiw2NiBRIDEwNSw2NCAxMDIsNDggWiIvPgogICAgPCEtLSBsZWFmIHZlaW5zIC0tPgogICAgPHBhdGggZD0iTSAxMDgsNTEgUSAxMTEsNTcgMTE0LDY0IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNyIvPgogICAgPHBhdGggZD0iTSAxMTUsNDkgUSAxMTcsNTUgMTIwLDYwIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNyIvPgogICAgPCEtLSB0ZW5kcmlsIGN1cmwgKHRvIGxlZnQgb2Ygc3RlbSkgLS0+CiAgICA8cGF0aCBkPSJNIDEwMCw1OCBRIDg4LDU0IDg0LDYwIFEgODYsNjYgODAsNjYgUSA3Niw3MCA4Miw3MiIgc3Ryb2tlLXdpZHRoPSIxLjMiLz4KCiAgICA8IS0tIEdyYXBlIGNsdXN0ZXI6IFYtc2hhcGUgYnVuY2gsIGZpbmUtbGluZSBjaXJjbGVzIG9ubHkgKG5vIGZpbGwpIC0tPgogICAgPCEtLSByb3cgMSAoNCBncmFwZXMsIHdpZGVzdCkgLS0+CiAgICA8Y2lyY2xlIGN4PSI3OCIgY3k9Ijc4IiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSI5NCIgY3k9Ijc4IiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSI3OCIgcj0iOCIvPgogICAgPGNpcmNsZSBjeD0iMTI2IiBjeT0iNzgiIHI9IjgiLz4KICAgIDwhLS0gcm93IDIgKDMpIC0tPgogICAgPGNpcmNsZSBjeD0iODYiIGN5PSI5NCIgcj0iOCIvPgogICAgPGNpcmNsZSBjeD0iMTAyIiBjeT0iOTQiIHI9IjgiLz4KICAgIDxjaXJjbGUgY3g9IjExOCIgY3k9Ijk0IiByPSI4Ii8+CiAgICA8IS0tIHJvdyAzICgyKSAtLT4KICAgIDxjaXJjbGUgY3g9Ijk0IiBjeT0iMTEwIiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxMTAiIHI9IjgiLz4KICAgIDwhLS0gdGlwIGdyYXBlIC0tPgogICAgPGNpcmNsZSBjeD0iMTAyIiBjeT0iMTI2IiByPSI4Ii8+CgogICAgPCEtLSB0aW55IHNpbmdsZS1saW5lIGhpZ2hsaWdodCBvbiBhIGNvdXBsZSBvZiBncmFwZXMgdG8gc3VnZ2VzdCBsaWdodCAtLT4KICAgIDxwYXRoIGQ9Ik0gNzUsNzQgUSA3Niw3NiA3OCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gOTEsNzQgUSA5Miw3NiA5NCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gMTA3LDc0IFEgMTA4LDc2IDExMCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gODMsOTAgUSA4NCw5MiA4Niw5MiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gOTksOTAgUSAxMDAsOTIgMTAyLDkyIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNiIvPgogICAgPHBhdGggZD0iTSA5MSwxMDYgUSA5MiwxMDggOTQsMTA4IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNiIvPgogICAgPHBhdGggZD0iTSA5OSwxMjIgUSAxMDAsMTI0IDEwMiwxMjQiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC42Ii8+CiAgPC9nPgoKICA8IS0tIEdsYXNzIG91dGxpbmUg4oCUIGxvb3NlciB3YXRlcmNvbG9yIGluayBvbiB0b3AgLS0+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMmExODEwIiBzdHJva2Utd2lkdGg9IjIuOCIKICAgICBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG9wYWNpdHk9IjAuOTUiPgogICAgPHBhdGggZD0iTSA1NiwyOCBRIDQ4LDgwIDU4LDExOCBRIDcyLDE1MCAxMDAsMTU0IFEgMTI4LDE1MCAxNDIsMTE4IFEgMTUyLDgwIDE0NCwyOCIvPgogICAgPHBhdGggZD0iTSA1NCwyOCBRIDEwMCwyMiAxNDYsMjgiIHN0cm9rZS13aWR0aD0iMi4zIi8+CiAgICA8bGluZSB4MT0iMTAwIiB5MT0iMTU0IiB4Mj0iMTAwIiB5Mj0iMTgwIi8+CiAgICA8cGF0aCBkPSJNIDc2LDE4MCBRIDEwMCwxODYgMTI0LDE4MCIvPgogIDwvZz4KPC9zdmc+"/>
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0id2luZUJsb3QiIGN4PSI0MCUiIGN5PSIzNSUiIHI9IjcwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNjNDMwNTAiIHN0b3Atb3BhY2l0eT0iMC45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTUlIiBzdG9wLWNvbG9yPSIjOGExZjJhIiBzdG9wLW9wYWNpdHk9IjAuOTUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNWEwZjFhIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8Y2xpcFBhdGggaWQ9ImJvd2xDbGlwIj4KICAgICAgPHBhdGggZD0iTSA1NiwyOCBRIDQ4LDgwIDU4LDExOCBRIDcyLDE1MCAxMDAsMTU0IFEgMTI4LDE1MCAxNDIsMTE4IFEgMTUyLDgwIDE0NCwyOCBaIi8+CiAgICA8L2NsaXBQYXRoPgogICAgPGZpbHRlciBpZD0id2NCbHVyIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMS41Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CgogIDwhLS0gY3JlYW0gcm91bmRlZCBiYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiByeD0iNDQiIGZpbGw9IiNmOWY1ZWUiLz4KCiAgPCEtLSBXYXRlcmNvbG9yIHdpbmUgd2FzaCAoY2xpcHBlZCB0byBib3dsLCB1bmV2ZW4gcGlnbWVudCBwb29saW5nKSAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjYm93bENsaXApIj4KICAgIDxwYXRoIGQ9Ik0gNTYsNTggUSA3NSw1MyAxMDAsNTYgUSAxMzAsNjAgMTQ0LDU2IEwgMTQ0LDE1NCBMIDU2LDE1NCBaIgogICAgICAgICAgZmlsbD0idXJsKCN3aW5lQmxvdCkiIGZpbHRlcj0idXJsKCN3Y0JsdXIpIi8+CiAgICA8IS0tIHVuZXZlbiBibGVlZCBlZGdlIGF0IHdpbmUgc3VyZmFjZSAtLT4KICAgIDxwYXRoIGQ9Ik0gNTYsNTYgUSA3MCw1MSAxMDAsNTQgUSAxMzAsNTYgMTQ0LDUzIEwgMTQ0LDYyIEwgNTYsNjUgWiIKICAgICAgICAgIGZpbGw9IiM3YTFmMmEiIG9wYWNpdHk9IjAuNSIvPgogICAgPCEtLSBwaWdtZW50IHBvb2xpbmcgLS0+CiAgICA8ZWxsaXBzZSBjeD0iODIiIGN5PSIxMDgiIHJ4PSIyMCIgcnk9IjI2IiBmaWxsPSIjNGEwZjFhIiBvcGFjaXR5PSIwLjMyIiBmaWx0ZXI9InVybCgjd2NCbHVyKSIvPgogICAgPGVsbGlwc2UgY3g9IjEyMiIgY3k9Ijk0IiByeD0iMTYiIHJ5PSIyMiIgZmlsbD0iIzRhMGYxYSIgb3BhY2l0eT0iMC4yOCIgZmlsdGVyPSJ1cmwoI3djQmx1cikiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxNDAiIHJ4PSIyOCIgcnk9IjEyIiBmaWxsPSIjM2EwYTE0IiBvcGFjaXR5PSIwLjM1IiBmaWx0ZXI9InVybCgjd2NCbHVyKSIvPgogIDwvZz4KCiAgPCEtLSBGaW5lLWxpbmUgZ3JhcGUgY2x1c3RlciDigJQgZHJhd24gSU5TSURFIHRoZSBib3dsIG92ZXIgdGhlIHdpbmUgd2FzaCAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjYm93bENsaXApIiBmaWxsPSJub25lIiBzdHJva2U9IiMyYTE4MTAiCiAgICAgc3Ryb2tlLXdpZHRoPSIxLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgb3BhY2l0eT0iMC45NSI+CiAgICA8IS0tIHN0ZW0gZnJvbSByaW0gYXJlYSAtLT4KICAgIDxwYXRoIGQ9Ik0gMTAwLDY2IFEgMTAwLDU2IDEwMiw0OCIvPgogICAgPCEtLSB2aW5lIGxlYWYgKHRvIHJpZ2h0IG9mIHN0ZW0pIC0tPgogICAgPHBhdGggZD0iTSAxMDIsNDggUSAxMTgsNDQgMTI0LDU0IFEgMTIyLDY0IDExMiw2NiBRIDEwNSw2NCAxMDIsNDggWiIvPgogICAgPCEtLSBsZWFmIHZlaW5zIC0tPgogICAgPHBhdGggZD0iTSAxMDgsNTEgUSAxMTEsNTcgMTE0LDY0IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNyIvPgogICAgPHBhdGggZD0iTSAxMTUsNDkgUSAxMTcsNTUgMTIwLDYwIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNyIvPgogICAgPCEtLSB0ZW5kcmlsIGN1cmwgKHRvIGxlZnQgb2Ygc3RlbSkgLS0+CiAgICA8cGF0aCBkPSJNIDEwMCw1OCBRIDg4LDU0IDg0LDYwIFEgODYsNjYgODAsNjYgUSA3Niw3MCA4Miw3MiIgc3Ryb2tlLXdpZHRoPSIxLjMiLz4KCiAgICA8IS0tIEdyYXBlIGNsdXN0ZXI6IFYtc2hhcGUgYnVuY2gsIGZpbmUtbGluZSBjaXJjbGVzIG9ubHkgKG5vIGZpbGwpIC0tPgogICAgPCEtLSByb3cgMSAoNCBncmFwZXMsIHdpZGVzdCkgLS0+CiAgICA8Y2lyY2xlIGN4PSI3OCIgY3k9Ijc4IiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSI5NCIgY3k9Ijc4IiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSI3OCIgcj0iOCIvPgogICAgPGNpcmNsZSBjeD0iMTI2IiBjeT0iNzgiIHI9IjgiLz4KICAgIDwhLS0gcm93IDIgKDMpIC0tPgogICAgPGNpcmNsZSBjeD0iODYiIGN5PSI5NCIgcj0iOCIvPgogICAgPGNpcmNsZSBjeD0iMTAyIiBjeT0iOTQiIHI9IjgiLz4KICAgIDxjaXJjbGUgY3g9IjExOCIgY3k9Ijk0IiByPSI4Ii8+CiAgICA8IS0tIHJvdyAzICgyKSAtLT4KICAgIDxjaXJjbGUgY3g9Ijk0IiBjeT0iMTEwIiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxMTAiIHI9IjgiLz4KICAgIDwhLS0gdGlwIGdyYXBlIC0tPgogICAgPGNpcmNsZSBjeD0iMTAyIiBjeT0iMTI2IiByPSI4Ii8+CgogICAgPCEtLSB0aW55IHNpbmdsZS1saW5lIGhpZ2hsaWdodCBvbiBhIGNvdXBsZSBvZiBncmFwZXMgdG8gc3VnZ2VzdCBsaWdodCAtLT4KICAgIDxwYXRoIGQ9Ik0gNzUsNzQgUSA3Niw3NiA3OCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gOTEsNzQgUSA5Miw3NiA5NCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gMTA3LDc0IFEgMTA4LDc2IDExMCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gODMsOTAgUSA4NCw5MiA4Niw5MiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gOTksOTAgUSAxMDAsOTIgMTAyLDkyIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNiIvPgogICAgPHBhdGggZD0iTSA5MSwxMDYgUSA5MiwxMDggOTQsMTA4IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNiIvPgogICAgPHBhdGggZD0iTSA5OSwxMjIgUSAxMDAsMTI0IDEwMiwxMjQiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC42Ii8+CiAgPC9nPgoKICA8IS0tIEdsYXNzIG91dGxpbmUg4oCUIGxvb3NlciB3YXRlcmNvbG9yIGluayBvbiB0b3AgLS0+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMmExODEwIiBzdHJva2Utd2lkdGg9IjIuOCIKICAgICBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG9wYWNpdHk9IjAuOTUiPgogICAgPHBhdGggZD0iTSA1NiwyOCBRIDQ4LDgwIDU4LDExOCBRIDcyLDE1MCAxMDAsMTU0IFEgMTI4LDE1MCAxNDIsMTE4IFEgMTUyLDgwIDE0NCwyOCIvPgogICAgPHBhdGggZD0iTSA1NCwyOCBRIDEwMCwyMiAxNDYsMjgiIHN0cm9rZS13aWR0aD0iMi4zIi8+CiAgICA8bGluZSB4MT0iMTAwIiB5MT0iMTU0IiB4Mj0iMTAwIiB5Mj0iMTgwIi8+CiAgICA8cGF0aCBkPSJNIDc2LDE4MCBRIDEwMCwxODYgMTI0LDE4MCIvPgogIDwvZz4KPC9zdmc+"/>
+<style>
+  /* ── Apple HIG × Barossa — semantic tokens, light mode defaults ─────────── */
+  :root {
+    /* Barossa surface tokens */
+    --zb-bg:            #f9f5ee;   /* body / primary background (cream) */
+    --zb-bg-2:          #fdfaf3;   /* card / modal surface */
+    --zb-bg-grouped:    #f4ede1;   /* grouped list container */
+    --zb-separator:     #e8ddc8;
+    --zb-hairline:      rgba(90, 64, 48, 0.08);
+    --zb-shadow:        0 1px 2px rgba(60, 40, 20, 0.04), 0 3px 10px rgba(60, 40, 20, 0.06);
+    --zb-shadow-raised: 0 1px 2px rgba(60, 40, 20, 0.06), 0 8px 24px rgba(60, 40, 20, 0.10);
+    /* HIG semantic labels */
+    --zb-label:         #2d1f0f;
+    --zb-label-2:       #6a5040;
+    --zb-label-3:       #9a8070;
+    --zb-label-4:       #b9a794;
+    /* Accent — Barossa warm */
+    --zb-earth:         #9c7a54;
+    --zb-earth-light:   #f0e8dc;
+    --zb-earth-mid:     #d4b896;
+    --zb-sage:          #8aab7a;
+    --zb-sage-light:    #eaf3e4;
+    --zb-sage-mid:      #c5dbb8;
+    --zb-blue:          #7a9bb5;
+    --zb-blue-light:    #deeaf4;
+    --zb-blue-mid:      #b5cfe0;
+    --zb-pink:          #c4889a;
+    --zb-pink-light:    #f5e0e6;
+    --zb-pink-mid:      #e8bbc8;
+    --zb-gold:          #c4a842;
+    --zb-cream:         #f9f5ee;  /* explicit alias for legacy uses */
+    --zb-white:         #ffffff;
+    --zb-border:        #e0d4c8;
+    /* Status */
+    --zb-success:       #2e7d5b;
+    --zb-warn:          #b8892d;
+    --zb-danger:        #b03a48;
+    /* Type — system & serif (Apple HIG stacks) */
+    --zb-font-sans:     -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --zb-font-serif:    "New York", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    /* Radii — HIG-tuned */
+    --zb-radius-sm:     8px;
+    --zb-radius:        12px;
+    --zb-radius-lg:     18px;
+    --zb-radius-xl:     26px;
+    /* Motion */
+    --zb-ease:          cubic-bezier(0.22, 1, 0.36, 1);
+    --zb-ease-snap:     cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ── Dark mode (auto, follows OS setting) — HIG expectation ──────────────── */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --zb-bg:            #1a1613;
+      --zb-bg-2:          #221d17;
+      --zb-bg-grouped:    #2b2419;
+      --zb-separator:     #3a3128;
+      --zb-hairline:      rgba(244, 237, 225, 0.08);
+      --zb-shadow:        0 1px 3px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.30);
+      --zb-shadow-raised: 0 2px 6px rgba(0,0,0,0.4), 0 12px 28px rgba(0,0,0,0.45);
+      --zb-label:         #f2ead8;
+      --zb-label-2:       #cdbba0;
+      --zb-label-3:       #9a886e;
+      --zb-label-4:       #6a5c48;
+      --zb-earth:         #c49c72;
+      --zb-earth-light:   #3a2e22;
+      --zb-earth-mid:     #6a4e36;
+      --zb-sage:          #a8c898;
+      --zb-sage-light:    #273024;
+      --zb-sage-mid:      #4c6848;
+      --zb-blue:          #a0c2d8;
+      --zb-blue-light:    #1e2c36;
+      --zb-blue-mid:      #3e5a6c;
+      --zb-pink:          #dba3b3;
+      --zb-pink-light:    #36242a;
+      --zb-pink-mid:      #6c4650;
+      --zb-gold:          #d8be5c;
+      --zb-cream:         #1a1613;
+      --zb-white:         #272017;
+      --zb-border:        #3a3128;
+    }
+    img { filter: brightness(0.92); }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  html {
+    height: 100%; height: -webkit-fill-available; height: 100dvh;
+    overflow: hidden;
+    background: var(--zb-bg);
+    color-scheme: light dark;
+  }
+  body {
+    height: 100%; height: -webkit-fill-available; height: 100dvh;
+    background: var(--zb-bg);
+    color: var(--zb-label);
+    font-family: var(--zb-font-sans);
+    font-size: 15px;
+    line-height: 1.35;
+    overflow: hidden; position: fixed;
+    width: 100%; left: 0; top: 0;
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  #root {
+    height: 100%; height: -webkit-fill-available; height: 100dvh;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    display: flex; flex-direction: column; overflow: hidden;
+    width: 100%;
+  }
+
+  /* ── HIG button interactions ─ subtle press, standard timing ────────────── */
+  button {
+    font-family: inherit;
+    transition: transform 160ms var(--zb-ease-snap), opacity 160ms var(--zb-ease-snap), background-color 160ms var(--zb-ease), box-shadow 200ms var(--zb-ease);
+  }
+  button:active:not(:disabled) {
+    transform: scale(0.97);
+    opacity: 0.86;
+  }
+
+  /* Range sliders retain Barossa thumb */
+  input[type=range] {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 4px; border-radius: 2px;
+    background: var(--zb-border); outline: none; cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--zb-earth); border: 2px solid var(--zb-white);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25); cursor: pointer;
+  }
+  input, textarea, select { font-family: inherit; outline: none; color: var(--zb-label); background-color: transparent; }
+  input[type=number]:focus, input[type=text]:focus, textarea:focus, select:focus {
+    border-color: var(--zb-earth) !important;
+    box-shadow: 0 0 0 3px rgba(156,122,84,0.18);
+  }
+  select {
+    -webkit-appearance: none; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239a8070' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 8px center;
+    padding-right: 26px !important;
+  }
+  ::-webkit-scrollbar { display: none; }
+  * { scrollbar-width: none; }
+  button, input, select, textarea { touch-action: manipulation; font-family: inherit; }
+
+  /* ── Safe-area insets for fixed chrome (notch / home indicator) ─────────── */
+  @supports (padding-top: env(safe-area-inset-top)) {
+    .zb-header { padding-top: calc(12px + env(safe-area-inset-top)); }
+    .zb-bottom { padding-bottom: calc(4px + env(safe-area-inset-bottom)); }
+  }
+
+  /* Serif accent class (uses New York on iOS, Palatino fallback elsewhere) */
+  .zb-serif { font-family: var(--zb-font-serif); letter-spacing: 0.1px; }
+
+  /* A11y focus ring — visible keyboard, hidden on touch */
+  button:focus-visible, a:focus-visible {
+    outline: 2px solid var(--zb-earth);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* Modal-sheet backdrop blur to match iOS look */
+  .zb-modal-backdrop {
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+  }
+  /* ──────────────────────────────────────────────────────────────────────────
+     Leaflet Map View  (used by <MapView/> on the "Map" tab)
+     Shares the app's --zb-* tokens so it adapts to dark mode with the rest.
+     ─────────────────────────────────────────────────────────────────────── */
+  #zb-leaflet { background: var(--zb-bg-grouped); }
+  .leaflet-tile-pane { filter: sepia(.18) saturate(.82) hue-rotate(-6deg) brightness(1.03) contrast(.95); }
+  @media (prefers-color-scheme: dark) {
+    .leaflet-tile-pane { filter: sepia(.22) saturate(.78) hue-rotate(-4deg) brightness(.76) contrast(1.02); }
+  }
+
+  .leaflet-control-attribution {
+    background: rgba(253,250,243,.82) !important;
+    color: var(--zb-label-3) !important;
+    font-family: var(--zb-font-sans);
+    font-size: 10.5px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 10px 0 0 0;
+    padding: 3px 8px !important;
+    border: 1px solid var(--zb-border);
+    border-right: 0; border-bottom: 0;
+  }
+  .leaflet-control-attribution a { color: var(--zb-earth) !important; }
+
+  .leaflet-bar {
+    border: 1px solid var(--zb-border) !important;
+    box-shadow: var(--zb-shadow-raised) !important;
+    border-radius: 14px !important;
+    overflow: hidden;
+    background: var(--zb-bg-2);
+  }
+  .leaflet-bar a {
+    background: var(--zb-bg-2) !important;
+    color: var(--zb-label) !important;
+    border-color: var(--zb-border) !important;
+    font-family: var(--zb-font-serif);
+    font-weight: 500;
+    font-size: 20px !important;
+    line-height: 30px !important;
+  }
+  .leaflet-bar a:hover { background: var(--zb-earth-light) !important; }
+  .leaflet-top.leaflet-left { top: 90px; left: 14px; }
+
+  /* Title card */
+  .zb-title {
+    position: absolute; top: 12px; left: 14px; z-index: 900;
+    padding: 10px 14px; border-radius: 14px;
+    background: linear-gradient(135deg, rgba(253,250,243,.96), rgba(244,237,225,.92));
+    backdrop-filter: saturate(170%) blur(14px);
+    -webkit-backdrop-filter: saturate(170%) blur(14px);
+    box-shadow: var(--zb-shadow);
+    border: 1px solid var(--zb-border);
+    font-family: var(--zb-font-serif);
+    color: var(--zb-label);
+    display: flex; flex-direction: column; gap: 2px;
+    user-select: none; pointer-events: none;
+    max-width: 60%;
+  }
+  @media (prefers-color-scheme: dark) {
+    .zb-title { background: linear-gradient(135deg, rgba(34,29,23,.92), rgba(43,36,25,.88)); }
+  }
+  .zb-title .k {
+    font-family: var(--zb-font-sans); font-size: 9.5px;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--zb-label-3); font-weight: 500;
+  }
+  .zb-title h1 {
+    font-size: 18px; font-weight: 500; font-style: italic;
+    letter-spacing: .3px; margin: 0;
+  }
+  .zb-title .sub {
+    font-family: var(--zb-font-sans); font-size: 11px;
+    color: var(--zb-label-2); margin-top: 2px;
+  }
+
+  /* Layers panel */
+  .zb-layers {
+    position: absolute; bottom: 14px; left: 14px; z-index: 900;
+    padding: 12px 14px; border-radius: 14px; min-width: 190px;
+    background: linear-gradient(135deg, rgba(253,250,243,.96), rgba(244,237,225,.92));
+    backdrop-filter: saturate(170%) blur(14px);
+    -webkit-backdrop-filter: saturate(170%) blur(14px);
+    box-shadow: var(--zb-shadow);
+    border: 1px solid var(--zb-border);
+  }
+  @media (prefers-color-scheme: dark) {
+    .zb-layers { background: linear-gradient(135deg, rgba(34,29,23,.92), rgba(43,36,25,.88)); }
+  }
+  .zb-layers .hdr {
+    font-family: var(--zb-font-sans); font-size: 9.5px;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--zb-label-3); font-weight: 600; margin-bottom: 8px;
+  }
+  .zb-row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 10px; padding: 5px 0;
+  }
+  .zb-row + .zb-row { border-top: 1px dashed var(--zb-separator); }
+  .zb-row .lbl {
+    font-family: var(--zb-font-serif); font-size: 13.5px;
+    color: var(--zb-label); font-weight: 500;
+  }
+  .zb-row .lbl small {
+    display: block; font-family: var(--zb-font-sans); font-size: 10px;
+    color: var(--zb-label-3); font-weight: 400; letter-spacing: .02em;
+  }
+
+  /* iOS-style toggle */
+  .zb-switch { position: relative; display: inline-block; width: 38px; height: 22px; flex: 0 0 auto; }
+  .zb-switch input { opacity: 0; width: 0; height: 0; }
+  .zb-switch .slider {
+    position: absolute; inset: 0;
+    background: var(--zb-earth-mid);
+    border-radius: 22px;
+    transition: background-color .2s var(--zb-ease-snap);
+    box-shadow: inset 0 0 0 1px rgba(60,40,20,.06);
+    cursor: pointer;
+  }
+  .zb-switch .slider::before {
+    content: ""; position: absolute;
+    height: 18px; width: 18px; left: 2px; top: 2px;
+    background: #fff; border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,.18);
+    transition: transform .22s var(--zb-ease-snap);
+  }
+  .zb-switch input:checked + .slider { background: var(--zb-sage); }
+  .zb-switch input:checked + .slider::before { transform: translateX(16px); }
+
+  /* Legend */
+  .zb-legend {
+    position: absolute; bottom: 14px; right: 14px; z-index: 900;
+    padding: 12px 14px; border-radius: 14px; min-width: 200px;
+    background: linear-gradient(135deg, rgba(253,250,243,.96), rgba(244,237,225,.92));
+    backdrop-filter: saturate(170%) blur(14px);
+    -webkit-backdrop-filter: saturate(170%) blur(14px);
+    box-shadow: var(--zb-shadow);
+    border: 1px solid var(--zb-border);
+    pointer-events: none;
+  }
+  @media (prefers-color-scheme: dark) {
+    .zb-legend { background: linear-gradient(135deg, rgba(34,29,23,.92), rgba(43,36,25,.88)); }
+  }
+  .zb-legend .hdr {
+    font-family: var(--zb-font-sans); font-size: 9.5px;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--zb-label-3); font-weight: 600; margin-bottom: 8px;
+  }
+  .zb-legend .item { display: flex; align-items: center; gap: 10px; padding: 5px 0; }
+  .zb-legend .item + .item { border-top: 1px dashed var(--zb-separator); }
+  .zb-legend .swatch {
+    width: 28px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    flex: 0 0 auto;
+  }
+  .zb-legend .swatch svg { display: block; }
+  .zb-legend .txt {
+    font-family: var(--zb-font-serif); font-size: 13px;
+    color: var(--zb-label); font-weight: 500; line-height: 1.15;
+  }
+  .zb-legend .txt small {
+    display: block; font-family: var(--zb-font-sans); font-size: 10px;
+    color: var(--zb-label-3); font-weight: 400;
+  }
+
+  /* Popups */
+  .leaflet-popup-content-wrapper {
+    background: linear-gradient(180deg, var(--zb-bg-2) 0%, var(--zb-bg-grouped) 100%) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--zb-shadow-raised) !important;
+    border: 1px solid var(--zb-border);
+    padding: 2px;
+  }
+  .leaflet-popup-tip { background: var(--zb-bg-grouped) !important; box-shadow: none !important; }
+  .leaflet-popup-content {
+    margin: 14px 16px 14px !important;
+    font-family: var(--zb-font-sans);
+    color: var(--zb-label);
+    min-width: 220px;
+  }
+  .leaflet-popup-close-button {
+    color: var(--zb-label-3) !important;
+    font-size: 20px !important;
+    padding: 6px 9px 0 0 !important;
+  }
+  .pop-name {
+    font-family: var(--zb-font-serif); font-size: 16.5px;
+    font-weight: 500; letter-spacing: .2px; line-height: 1.2;
+    margin-bottom: 8px; color: var(--zb-label);
+  }
+  .pop-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 9px; border-radius: 999px;
+    font-family: var(--zb-font-sans); font-size: 10px;
+    font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .pop-badge.visited     { background: rgba(138,31,42,.10); color: #6b1a25; border: 1px solid rgba(138,31,42,.22); }
+  .pop-badge.not_visited { background: rgba(154,128,112,.12); color: var(--zb-label-2); border: 1px solid rgba(154,128,112,.22); }
+  .pop-badge.shortlisted { background: rgba(196,168,66,.14); color: #7d6515; border: 1px solid rgba(196,168,66,.35); }
+  .pop-badge .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .pop-badge.visited .dot     { background: #8a1f2a; }
+  .pop-badge.not_visited .dot { background: #b9a794; }
+  .pop-badge.shortlisted .dot { background: #c4a842; box-shadow: 0 0 0 3px rgba(196,168,66,.25); }
+
+  .pop-overall {
+    display: flex; align-items: baseline; gap: 6px;
+    margin: 0 0 8px;
+  }
+  .pop-overall .num {
+    font-family: var(--zb-font-serif); font-size: 22px; font-weight: 600;
+    color: var(--zb-label); letter-spacing: .5px;
+  }
+  .pop-overall .denom { font-size: 11px; color: var(--zb-label-3); }
+
+  .pop-ratings {
+    font-size: 11.5px; color: var(--zb-label-2); margin-bottom: 8px;
+    line-height: 1.45;
+  }
+  .pop-ratings b { color: var(--zb-label); font-weight: 600; }
+  .pop-ratings span { color: var(--zb-label-3); }
+
+  .pop-notes {
+    font-family: var(--zb-font-serif); font-style: italic;
+    font-size: 12.5px; color: var(--zb-label-2);
+    background: rgba(156,122,84,0.06); border-left: 2px solid var(--zb-earth-mid);
+    padding: 6px 10px; border-radius: 4px; margin-bottom: 8px; line-height: 1.4;
+  }
+  .pop-bottles {
+    font-size: 11px; color: var(--zb-label-2);
+    margin-bottom: 8px;
+  }
+  .pop-meta {
+    font-size: 11.5px; color: var(--zb-label-3);
+    margin-bottom: 10px; letter-spacing: .02em;
+  }
+
+  .pop-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+  .pop-btn {
+    appearance: none; border: 0; cursor: pointer;
+    font-family: var(--zb-font-sans); font-weight: 600; font-size: 12.5px;
+    padding: 10px 12px; border-radius: 12px; letter-spacing: .02em;
+    background: linear-gradient(180deg, #ac8a62, #8d6b46);
+    color: #fff4e2;
+    box-shadow: 0 1px 2px rgba(60,40,20,.2), 0 6px 14px rgba(60,40,20,.18);
+    transition: filter .2s var(--zb-ease), transform .15s var(--zb-ease-snap);
+  }
+  .pop-btn:hover { filter: brightness(1.04); }
+  .pop-btn:active { transform: translateY(1px) scale(.985); }
+  .pop-btn.secondary {
+    background: transparent; color: var(--zb-label-2);
+    box-shadow: none; padding: 6px 10px;
+    border: 1px solid var(--zb-border); font-weight: 500;
+  }
+  .pop-btn.secondary:hover { background: var(--zb-earth-light); }
+  .pop-route-picker {
+    display: flex; gap: 6px;
+    background: var(--zb-earth-light); border-radius: 12px; padding: 3px;
+    margin-top: 2px;
+  }
+  .pop-route-picker button {
+    flex: 1; appearance: none; border: 0; cursor: pointer;
+    padding: 7px 10px; border-radius: 9px;
+    font-family: var(--zb-font-sans); font-size: 11.5px; font-weight: 600;
+    letter-spacing: .04em; color: var(--zb-label-2);
+    background: transparent; transition: all .2s var(--zb-ease);
+  }
+  .pop-route-picker button.active {
+    background: var(--zb-bg-2); color: var(--zb-label);
+    box-shadow: 0 1px 3px rgba(60,40,20,.15);
+  }
+
+  /* Town labels */
+  .zb-town-label {
+    pointer-events: none; user-select: none;
+    font-family: var(--zb-font-serif); font-style: italic; font-weight: 500;
+    font-size: 13.5px; letter-spacing: .6px;
+    color: #5a3a24;
+    text-shadow:
+      0 0 6px rgba(253,250,243,.95),
+      0 0 10px rgba(253,250,243,.95),
+      0 1px 0 rgba(253,250,243,.95),
+      0 -1px 0 rgba(253,250,243,.95),
+      1px 0 0 rgba(253,250,243,.95),
+      -1px 0 0 rgba(253,250,243,.95);
+    white-space: nowrap; transform: translate(-50%,-50%);
+  }
+  .zb-town-label.sm {
+    font-size: 11px; color: #6a5040; letter-spacing: .5px;
+    font-style: normal; font-weight: 500;
+  }
+  @media (prefers-color-scheme: dark) {
+    .zb-town-label {
+      color: #f0d9b8;
+      text-shadow:
+        0 0 6px rgba(26,22,19,.95),
+        0 0 10px rgba(26,22,19,.95),
+        0 1px 0 rgba(26,22,19,.95),
+        0 -1px 0 rgba(26,22,19,.95),
+        1px 0 0 rgba(26,22,19,.95),
+        -1px 0 0 rgba(26,22,19,.95);
+    }
+    .zb-town-label.sm { color: #d0b38c; }
+  }
+
+  /* Marker icons (divIcons) */
+  .zb-marker { background: transparent !important; border: 0 !important; }
+  .zb-marker svg { display: block; overflow: visible; }
+  .zb-marker:hover svg { filter: drop-shadow(0 3px 6px rgba(60,20,30,.28)); }
+  .pulse-halo {
+    transform-box: fill-box; transform-origin: center;
+    animation: zb-pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes zb-pulse {
+    0%   { transform: scale(.85); opacity: .55; }
+    50%  { transform: scale(1.18); opacity: .95; }
+    100% { transform: scale(.85); opacity: .55; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pulse-halo { animation: none; opacity: .6; }
+    .leaflet-fade-anim * { transition: none !important; }
+  }
+
+  /* Route status pill (top-center) */
+  .zb-route-pill {
+    position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+    z-index: 950;
+    padding: 8px 14px 8px 10px; border-radius: 999px;
+    background: linear-gradient(135deg, rgba(253,250,243,.98), rgba(244,237,225,.94));
+    border: 1px solid var(--zb-border); box-shadow: var(--zb-shadow);
+    font-family: var(--zb-font-sans); font-size: 12px; color: var(--zb-label-2);
+    display: none; align-items: center; gap: 10px;
+    backdrop-filter: blur(10px);
+    max-width: 82%;
+  }
+  @media (prefers-color-scheme: dark) {
+    .zb-route-pill { background: linear-gradient(135deg, rgba(34,29,23,.94), rgba(43,36,25,.9)); }
+  }
+  .zb-route-pill.show { display: flex; }
+  .zb-route-pill .pip {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--zb-sage);
+    box-shadow: 0 0 0 4px rgba(138,171,122,.22);
+  }
+  .zb-route-pill .close {
+    appearance: none; border: 0; background: transparent;
+    color: var(--zb-label-3); cursor: pointer;
+    font-size: 14px; padding: 2px 6px; border-radius: 8px;
+    margin-left: 4px;
+  }
+  .zb-route-pill .close:hover {
+    background: var(--zb-earth-light); color: var(--zb-label);
+  }
+  .zb-route-pill b { color: var(--zb-label); font-weight: 600; }
+
+  /* When the map tab is not visible make absolutely sure Leaflet isn't
+     intercepting pointer events on other tabs (defensive — MapView unmounts
+     when the tab is inactive, but the animation panes can briefly linger) */
+  .leaflet-container { outline: none; font-family: var(--zb-font-sans); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    const blob=new Blob(['const CACHE="zebarossa-v2";\nconst ASSETS=[location.href];\nself.addEventListener("install",e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()));});\nself.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});\nself.addEventListener("fetch",e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{if(res&&res.status===200&&res.type==="basic"){const clone=res.clone();caches.open(CACHE).then(c=>c.put(e.request,clone));}return res;}).catch(()=>caches.match(e.request))));});'],{type:'application/javascript'});
+    navigator.serviceWorker.register(URL.createObjectURL(blob),{scope:'.'});
+  });
+}
+const manifest={"name":"Ze Barossa","short_name":"Ze Barossa","display":"standalone","background_color":"#f9f5ee","theme_color":"#f9f5ee","orientation":"portrait","icons":[{"src":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0id2luZUJsb3QiIGN4PSI0MCUiIGN5PSIzNSUiIHI9IjcwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNjNDMwNTAiIHN0b3Atb3BhY2l0eT0iMC45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTUlIiBzdG9wLWNvbG9yPSIjOGExZjJhIiBzdG9wLW9wYWNpdHk9IjAuOTUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNWEwZjFhIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8Y2xpcFBhdGggaWQ9ImJvd2xDbGlwIj4KICAgICAgPHBhdGggZD0iTSA1NiwyOCBRIDQ4LDgwIDU4LDExOCBRIDcyLDE1MCAxMDAsMTU0IFEgMTI4LDE1MCAxNDIsMTE4IFEgMTUyLDgwIDE0NCwyOCBaIi8+CiAgICA8L2NsaXBQYXRoPgogICAgPGZpbHRlciBpZD0id2NCbHVyIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMS41Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CgogIDwhLS0gY3JlYW0gcm91bmRlZCBiYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiByeD0iNDQiIGZpbGw9IiNmOWY1ZWUiLz4KCiAgPCEtLSBXYXRlcmNvbG9yIHdpbmUgd2FzaCAoY2xpcHBlZCB0byBib3dsLCB1bmV2ZW4gcGlnbWVudCBwb29saW5nKSAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjYm93bENsaXApIj4KICAgIDxwYXRoIGQ9Ik0gNTYsNTggUSA3NSw1MyAxMDAsNTYgUSAxMzAsNjAgMTQ0LDU2IEwgMTQ0LDE1NCBMIDU2LDE1NCBaIgogICAgICAgICAgZmlsbD0idXJsKCN3aW5lQmxvdCkiIGZpbHRlcj0idXJsKCN3Y0JsdXIpIi8+CiAgICA8IS0tIHVuZXZlbiBibGVlZCBlZGdlIGF0IHdpbmUgc3VyZmFjZSAtLT4KICAgIDxwYXRoIGQ9Ik0gNTYsNTYgUSA3MCw1MSAxMDAsNTQgUSAxMzAsNTYgMTQ0LDUzIEwgMTQ0LDYyIEwgNTYsNjUgWiIKICAgICAgICAgIGZpbGw9IiM3YTFmMmEiIG9wYWNpdHk9IjAuNSIvPgogICAgPCEtLSBwaWdtZW50IHBvb2xpbmcgLS0+CiAgICA8ZWxsaXBzZSBjeD0iODIiIGN5PSIxMDgiIHJ4PSIyMCIgcnk9IjI2IiBmaWxsPSIjNGEwZjFhIiBvcGFjaXR5PSIwLjMyIiBmaWx0ZXI9InVybCgjd2NCbHVyKSIvPgogICAgPGVsbGlwc2UgY3g9IjEyMiIgY3k9Ijk0IiByeD0iMTYiIHJ5PSIyMiIgZmlsbD0iIzRhMGYxYSIgb3BhY2l0eT0iMC4yOCIgZmlsdGVyPSJ1cmwoI3djQmx1cikiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxNDAiIHJ4PSIyOCIgcnk9IjEyIiBmaWxsPSIjM2EwYTE0IiBvcGFjaXR5PSIwLjM1IiBmaWx0ZXI9InVybCgjd2NCbHVyKSIvPgogIDwvZz4KCiAgPCEtLSBGaW5lLWxpbmUgZ3JhcGUgY2x1c3RlciDigJQgZHJhd24gSU5TSURFIHRoZSBib3dsIG92ZXIgdGhlIHdpbmUgd2FzaCAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjYm93bENsaXApIiBmaWxsPSJub25lIiBzdHJva2U9IiMyYTE4MTAiCiAgICAgc3Ryb2tlLXdpZHRoPSIxLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgb3BhY2l0eT0iMC45NSI+CiAgICA8IS0tIHN0ZW0gZnJvbSByaW0gYXJlYSAtLT4KICAgIDxwYXRoIGQ9Ik0gMTAwLDY2IFEgMTAwLDU2IDEwMiw0OCIvPgogICAgPCEtLSB2aW5lIGxlYWYgKHRvIHJpZ2h0IG9mIHN0ZW0pIC0tPgogICAgPHBhdGggZD0iTSAxMDIsNDggUSAxMTgsNDQgMTI0LDU0IFEgMTIyLDY0IDExMiw2NiBRIDEwNSw2NCAxMDIsNDggWiIvPgogICAgPCEtLSBsZWFmIHZlaW5zIC0tPgogICAgPHBhdGggZD0iTSAxMDgsNTEgUSAxMTEsNTcgMTE0LDY0IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNyIvPgogICAgPHBhdGggZD0iTSAxMTUsNDkgUSAxMTcsNTUgMTIwLDYwIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNyIvPgogICAgPCEtLSB0ZW5kcmlsIGN1cmwgKHRvIGxlZnQgb2Ygc3RlbSkgLS0+CiAgICA8cGF0aCBkPSJNIDEwMCw1OCBRIDg4LDU0IDg0LDYwIFEgODYsNjYgODAsNjYgUSA3Niw3MCA4Miw3MiIgc3Ryb2tlLXdpZHRoPSIxLjMiLz4KCiAgICA8IS0tIEdyYXBlIGNsdXN0ZXI6IFYtc2hhcGUgYnVuY2gsIGZpbmUtbGluZSBjaXJjbGVzIG9ubHkgKG5vIGZpbGwpIC0tPgogICAgPCEtLSByb3cgMSAoNCBncmFwZXMsIHdpZGVzdCkgLS0+CiAgICA8Y2lyY2xlIGN4PSI3OCIgY3k9Ijc4IiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSI5NCIgY3k9Ijc4IiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSI3OCIgcj0iOCIvPgogICAgPGNpcmNsZSBjeD0iMTI2IiBjeT0iNzgiIHI9IjgiLz4KICAgIDwhLS0gcm93IDIgKDMpIC0tPgogICAgPGNpcmNsZSBjeD0iODYiIGN5PSI5NCIgcj0iOCIvPgogICAgPGNpcmNsZSBjeD0iMTAyIiBjeT0iOTQiIHI9IjgiLz4KICAgIDxjaXJjbGUgY3g9IjExOCIgY3k9Ijk0IiByPSI4Ii8+CiAgICA8IS0tIHJvdyAzICgyKSAtLT4KICAgIDxjaXJjbGUgY3g9Ijk0IiBjeT0iMTEwIiByPSI4Ii8+CiAgICA8Y2lyY2xlIGN4PSIxMTAiIGN5PSIxMTAiIHI9IjgiLz4KICAgIDwhLS0gdGlwIGdyYXBlIC0tPgogICAgPGNpcmNsZSBjeD0iMTAyIiBjeT0iMTI2IiByPSI4Ii8+CgogICAgPCEtLSB0aW55IHNpbmdsZS1saW5lIGhpZ2hsaWdodCBvbiBhIGNvdXBsZSBvZiBncmFwZXMgdG8gc3VnZ2VzdCBsaWdodCAtLT4KICAgIDxwYXRoIGQ9Ik0gNzUsNzQgUSA3Niw3NiA3OCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gOTEsNzQgUSA5Miw3NiA5NCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gMTA3LDc0IFEgMTA4LDc2IDExMCw3NiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gODMsOTAgUSA4NCw5MiA4Niw5MiIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0gOTksOTAgUSAxMDAsOTIgMTAyLDkyIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNiIvPgogICAgPHBhdGggZD0iTSA5MSwxMDYgUSA5MiwxMDggOTQsMTA4IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNiIvPgogICAgPHBhdGggZD0iTSA5OSwxMjIgUSAxMDAsMTI0IDEwMiwxMjQiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC42Ii8+CiAgPC9nPgoKICA8IS0tIEdsYXNzIG91dGxpbmUg4oCUIGxvb3NlciB3YXRlcmNvbG9yIGluayBvbiB0b3AgLS0+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMmExODEwIiBzdHJva2Utd2lkdGg9IjIuOCIKICAgICBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG9wYWNpdHk9IjAuOTUiPgogICAgPHBhdGggZD0iTSA1NiwyOCBRIDQ4LDgwIDU4LDExOCBRIDcyLDE1MCAxMDAsMTU0IFEgMTI4LDE1MCAxNDIsMTE4IFEgMTUyLDgwIDE0NCwyOCIvPgogICAgPHBhdGggZD0iTSA1NCwyOCBRIDEwMCwyMiAxNDYsMjgiIHN0cm9rZS13aWR0aD0iMi4zIi8+CiAgICA8bGluZSB4MT0iMTAwIiB5MT0iMTU0IiB4Mj0iMTAwIiB5Mj0iMTgwIi8+CiAgICA8cGF0aCBkPSJNIDc2LDE4MCBRIDEwMCwxODYgMTI0LDE4MCIvPgogIDwvZz4KPC9zdmc+","sizes":"512x512","type":"image/svg+xml","purpose":"any maskable"}]};
+const mblob=new Blob([JSON.stringify(manifest)],{type:"application/manifest+json"});
+const ml=document.createElement("link");ml.rel="manifest";ml.href=URL.createObjectURL(mblob);document.head.appendChild(ml);
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel" data-presets="react">
+const { useState, useEffect, useRef, useCallback } = React;
+
+// ─── SVG ICON COMPONENTS (drawn, not emoji) ───────────────────────────────────
+const Icons = {
+  WineGlass: ({ size = 20, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M8 3h8l-2 8a4 4 0 01-4 0L8 3z"/>
+      <path d="M12 11v7M9 21h6"/>
+      <path d="M7 3h10"/>
+    </svg>
+  ),
+  Pin: ({ size = 16, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 13 6 13s6-7.75 6-13c0-3.314-2.686-6-6-6z"/>
+      <circle cx="12" cy="8" r="2.5"/>
+    </svg>
+  ),
+  Star: ({ size = 16, color = "currentColor", filled = false }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill={filled ? color : "none"} stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+    </svg>
+  ),
+  Sparkle: ({ size = 16, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/>
+    </svg>
+  ),
+  Handshake: ({ size = 16, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 11l3-3 3 3"/>
+      <path d="M2 12h4l3 3 4-4 3 3h6"/>
+      <path d="M2 17h4l3-2.5h6l3 2.5h4"/>
+    </svg>
+  ),
+  Bottle: ({ size = 20, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+      {/* cork */}
+      <rect x="10" y="1" width="4" height="2.5" rx="0.5" fill={color} stroke="none" opacity="0.5"/>
+      {/* neck */}
+      <path d="M10.5 3.5h3v3.5"/>
+      <path d="M13.5 3.5v3.5"/>
+      {/* shoulder curve */}
+      <path d="M10.5 7C8.5 7.5 7 9 7 11v9a2 2 0 002 2h6a2 2 0 002-2v-9c0-2-1.5-3.5-3.5-4"/>
+      {/* label area */}
+      <rect x="8" y="13" width="8" height="5" rx="1" opacity="0.15" fill={color} stroke={color} strokeWidth="0.8"/>
+      {/* fill line suggesting wine */}
+      <path d="M7.2 12.5 Q12 11.5 16.8 12.5" strokeWidth="0.8" opacity="0.4"/>
+    </svg>
+  ),
+  Camera: ({ size = 20, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+      <circle cx="12" cy="13" r="4"/>
+    </svg>
+  ),
+  Trophy: ({ size = 20, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M8 21h8M12 17v4M5 3H3v5a4 4 0 004 4h10a4 4 0 004-4V3h-2"/>
+      <path d="M5 3h14v6a7 7 0 01-14 0V3z"/>
+    </svg>
+  ),
+  Clock: ({ size = 16, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 6v6l4 2"/>
+    </svg>
+  ),
+  Grape: ({ size = 24, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="9" cy="8" r="2"/><circle cx="15" cy="8" r="2"/>
+      <circle cx="6" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="12" r="2"/>
+      <circle cx="9" cy="16" r="2"/><circle cx="15" cy="16" r="2"/>
+      <circle cx="12" cy="20" r="2"/>
+      <path d="M12 6V3M12 3c0 0 2-1 3-1"/>
+    </svg>
+  ),
+  Map: ({ size = 20, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="1,6 1,22 8,18 16,22 23,18 23,2 16,6 8,2"/>
+      <line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>
+    </svg>
+  ),
+  Home: ({ size = 20, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+      <polyline points="9,22 9,12 15,12 15,22"/>
+    </svg>
+  ),
+  ChevronUp: ({ size = 20, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="18,15 12,9 6,15"/>
+    </svg>
+  ),
+  Plus: ({ size = 18, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round">
+      <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+    </svg>
+  ),
+  Check: ({ size = 16, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="20,6 9,17 4,12"/>
+    </svg>
+  ),
+  Person: ({ size = 16, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="7" r="4"/>
+      <path d="M4 21v-1a8 8 0 0116 0v1"/>
+    </svg>
+  ),
+  Celebrity: ({ size = 16, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="7" r="4"/>
+      <path d="M4 21v-1a8 8 0 0116 0v1"/>
+      <path d="M17 4l1.5-2 1.5 2-1.5.5z"/>
+    </svg>
+  ),
+  Trash: ({ size = 16, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="3,6 5,6 21,6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/>
+    </svg>
+  ),
+  Download: ({ size = 18, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+  ),
+};
+
+// ─── WINE GLASS FILTER ICON — fills with red wine as fillPct 0-100 ───────────
+const WineGlassFilter = ({ size = 28, fillPct = 0, active = false }) => {
+  // fillPct: 0 = empty, 100 = full. Wine fills from bottom of the bowl upward.
+  // Bowl interior roughly y: 8 (top) to y: 17 (base of bowl)
+  const bowlTop = 8, bowlBottom = 16;
+  const wineY = bowlBottom - ((bowlBottom - bowlTop) * (fillPct / 100));
+  const circleBg = active ? "#f4e3d5" : "#fdf8f0";
+  const circleStroke = active ? "#9c7a54" : "#d8c8b5";
+  return (
+    <svg width={size} height={size} viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+      {/* Circle background */}
+      <circle cx="14" cy="14" r="13" fill={circleBg} stroke={circleStroke} strokeWidth="1"/>
+      <defs>
+        {/* Clip the wine to inside the glass bowl */}
+        <clipPath id="wineClip">
+          <path d="M 9,5 Q 8.3,10.5 9,13.5 Q 9.8,16.3 14,16.5 Q 18.2,16.3 19,13.5 Q 19.7,10.5 19,5 Z"/>
+        </clipPath>
+        {/* Subtle wine gradient */}
+        <linearGradient id="wineGrad" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#a01f2f" stopOpacity="0.95"/>
+          <stop offset="100%" stopColor="#6b0f1f" stopOpacity="0.95"/>
+        </linearGradient>
+      </defs>
+      {/* Wine fill — a rect clipped to the glass bowl */}
+      {fillPct > 0 && (
+        <rect x="7" y={wineY} width="14" height={bowlBottom - wineY + 0.5} fill="url(#wineGrad)" clipPath="url(#wineClip)"/>
+      )}
+      {/* Wine surface highlight */}
+      {fillPct > 0 && fillPct < 100 && (
+        <ellipse cx="14" cy={wineY + 0.2} rx="4.5" ry="0.5" fill="#c44050" clipPath="url(#wineClip)" opacity="0.6"/>
+      )}
+      {/* Glass outline */}
+      <g fill="none" stroke="#5a4030" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round">
+        {/* Bowl */}
+        <path d="M 9,5 Q 8.3,10.5 9,13.5 Q 9.8,16.3 14,16.5 Q 18.2,16.3 19,13.5 Q 19.7,10.5 19,5 Z"/>
+        {/* Rim */}
+        <line x1="9" y1="5" x2="19" y2="5"/>
+        {/* Stem */}
+        <line x1="14" y1="16.5" x2="14" y2="22"/>
+        {/* Base */}
+        <path d="M 10.5,22 Q 14,23 17.5,22"/>
+      </g>
+    </svg>
+  );
+};
+
+// ─── WINE GLASS (bare, fills with wine) ─ for inline use in rating sliders ───
+const WineGlassFill = ({ size = 22, fillPct = 0, color = "#a01f2f", outline = "#5a4030" }) => {
+  const bowlTop = 8, bowlBottom = 16;
+  const wineY = bowlBottom - ((bowlBottom - bowlTop) * Math.max(0, Math.min(100, fillPct)) / 100);
+  const clipId = `wfClip-${Math.random().toString(36).slice(2,9)}`;
+  return (
+    <svg width={size} height={size} viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" style={{flexShrink:0}}>
+      <defs>
+        <clipPath id={clipId}>
+          <path d="M 9,5 Q 8.3,10.5 9,13.5 Q 9.8,16.3 14,16.5 Q 18.2,16.3 19,13.5 Q 19.7,10.5 19,5 Z"/>
+        </clipPath>
+      </defs>
+      {fillPct > 0 && (
+        <rect x="7" y={wineY} width="14" height={bowlBottom - wineY + 0.5} fill={color} clipPath={`url(#${clipId})`} opacity="0.92"/>
+      )}
+      {fillPct > 3 && fillPct < 100 && (
+        <ellipse cx="14" cy={wineY + 0.3} rx="4.5" ry="0.5" fill="#c44050" clipPath={`url(#${clipId})`} opacity="0.55"/>
+      )}
+      <g fill="none" stroke={outline} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M 9,5 Q 8.3,10.5 9,13.5 Q 9.8,16.3 14,16.5 Q 18.2,16.3 19,13.5 Q 19.7,10.5 19,5 Z"/>
+        <line x1="9" y1="5" x2="19" y2="5"/>
+        <line x1="14" y1="16.5" x2="14" y2="22"/>
+        <path d="M 10.5,22 Q 14,23 17.5,22"/>
+      </g>
+    </svg>
+  );
+};
+
+// ─── PALETTE ─────────────────────────────────────────────────────────────────
+// Semantic colour palette — each value is a CSS var that flips in dark mode.
+// Keep the same keys so every inline style in the app continues to work.
+const C = {
+  cream:      "var(--zb-cream)",
+  sage:       "var(--zb-sage)",
+  sageMid:    "var(--zb-sage-mid)",
+  sageLight:  "var(--zb-sage-light)",
+  earth:      "var(--zb-earth)",
+  earthLight: "var(--zb-earth-light)",
+  earthMid:   "var(--zb-earth-mid)",
+  dustyBlue:  "var(--zb-blue)",
+  blueLight:  "var(--zb-blue-light)",
+  blueMid:    "var(--zb-blue-mid)",
+  dustyPink:  "var(--zb-pink)",
+  pinkLight:  "var(--zb-pink-light)",
+  pinkMid:    "var(--zb-pink-mid)",
+  text:       "var(--zb-label)",
+  textMid:    "var(--zb-label-2)",
+  textLight:  "var(--zb-label-3)",
+  border:     "var(--zb-border)",
+  white:      "var(--zb-white)",
+  gold:       "var(--zb-gold)",
+  bgGrouped:  "var(--zb-bg-grouped)",
+  bg2:        "var(--zb-bg-2)",
+  success:    "var(--zb-success)",
+  warn:       "var(--zb-warn)",
+  danger:     "var(--zb-danger)",
+};
+
+// ─── WINERY DATA ─────────────────────────────────────────────────────────────
+const INITIAL_DATA = [
+  { id:1, name:"1837 Barossa", distJohn:15, distRiebe:18, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:2, name:"1847 Wines (Also Chateau Yaldara)", distJohn:12, distRiebe:17, visited:true, ratings:[{who:"Katie",wine:4.5,location:8,vibes:6,service:null},{who:"Jack",wine:4.5,location:8,vibes:6,service:null}], bottles:0, notes:"See Chateau Yaldara notes", photos:[], shortlisted:false },
+  { id:3, name:"Alkina Wine Estate", distJohn:14, distRiebe:6, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:4, name:"Artisians of the Barossa", distJohn:5, distRiebe:4, visited:true, ratings:[{who:"Katie",wine:5,location:7,vibes:7,service:6},{who:"Jack",wine:5,location:7,vibes:7,service:6}], bottles:0, notes:"Nice location, bit spenny, our 60+ year old male server had a massive crush on Jack", photos:[], shortlisted:false },
+  { id:5, name:"Atze's Corner Wines", distJohn:9, distRiebe:8, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:6, name:"Ballycroft Vineyard and Cellars", distJohn:11, distRiebe:13, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:7, name:"Barossa Chateau / Creed Wines", distJohn:14, distRiebe:17, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:8, name:"Barossa Distilling Co", distJohn:8, distRiebe:7, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:9, name:"Barossa Valley Estate", distJohn:10, distRiebe:9, visited:true, ratings:[{who:"Katie",wine:7.5,location:10,vibes:8,service:7},{who:"Jack",wine:7.5,location:10,vibes:8,service:7}], bottles:1, notes:"Didn't get the tasting comped with bottle purchase :( but was an insanely nice location (took mum) what a happy accident", photos:[], shortlisted:false },
+  { id:10, name:"Bethany Wines", distJohn:8, distRiebe:8, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:11, name:"Brothers at War", distJohn:1, distRiebe:2, visited:true, ratings:[{who:"Katie",wine:4,location:9,vibes:7,service:null},{who:"Jack",wine:4,location:9,vibes:7,service:null}], bottles:0, notes:"Mum got drunk, close to John Street", photos:[], shortlisted:false },
+  { id:12, name:"Burge Family Winemakers", distJohn:14, distRiebe:19, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:13, name:"Calabria Family Wines", distJohn:6, distRiebe:5, visited:true, ratings:[{who:"Katie",wine:4.85,location:6,vibes:6,service:6},{who:"Jack",wine:4.85,location:6,vibes:6,service:6}], bottles:7, notes:"", photos:[], shortlisted:false },
+  { id:14, name:"Charles Cimicky Wines", distJohn:13, distRiebe:17, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:15, name:"Charles Melton Wines", distJohn:7, distRiebe:5, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:16, name:"Chateau Dorrien", distJohn:6, distRiebe:5, visited:true, ratings:[{who:"Katie",wine:5,location:5,vibes:4,service:null},{who:"Jack",wine:5,location:5,vibes:4,service:null}], bottles:2, notes:"Only had mead and port so not quite fair to rate on wine but was still good! Looks a bit like a castle", photos:[], shortlisted:false },
+  { id:17, name:"Chateau Tanunda", distJohn:3, distRiebe:2, visited:true, ratings:[{who:"Katie",wine:7,location:9.5,vibes:9,service:null},{who:"Jack",wine:7,location:9.5,vibes:9,service:null}], bottles:2, notes:"Got offered a job", photos:[], shortlisted:false },
+  { id:18, name:"Chateau Yaldara (Also 1847 Wines)", distJohn:13, distRiebe:17, visited:true, ratings:[{who:"Katie",wine:4.5,location:8,vibes:6,service:null},{who:"Jack",wine:4.5,location:8,vibes:6,service:null}], bottles:9, notes:"I got two corked wine bottles from the 2013 & 2014 museum release for $20 each - which was pretty sick, possibly going back tomorrow to buy more. There was a tunnel tour which was awesome", photos:[], shortlisted:false },
+  { id:19, name:"Cooper Burns", distJohn:10, distRiebe:10, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:20, name:"David Franz", distJohn:4, distRiebe:4, visited:true, ratings:[{who:"Katie",wine:8,location:8,vibes:8.5,service:null},{who:"Jack",wine:8,location:8,vibes:8.5,service:null}], bottles:6, notes:"Peter Lehman's son, vibes were good, the view was very nice. Build your own cheese platter was interesting", photos:[], shortlisted:false },
+  { id:21, name:"Edenmae Estate Wines", distJohn:27, distRiebe:24, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:22, name:"Elderton Wines", distJohn:11, distRiebe:8, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:23, name:"Eperosa", distJohn:7, distRiebe:5, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:24, name:"Fernfield Wines", distJohn:23, distRiebe:20, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:25, name:"First Drop Home Of The Brave", distJohn:8, distRiebe:8, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:26, name:"Flaxman Wines", distJohn:14, distRiebe:27, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:27, name:"Gibson Wines", distJohn:15, distRiebe:12, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:28, name:"God's Hill Wines", distJohn:15, distRiebe:13, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:29, name:"Gomersal Wines", distJohn:8, distRiebe:7, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:30, name:"Grant Burge Wines", distJohn:8, distRiebe:6, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:31, name:"Greenock Creek Vineyard", distJohn:8, distRiebe:11, visited:true, ratings:[{who:"Katie",wine:8,location:7,vibes:7.5,service:null},{who:"Jack",wine:8,location:7,vibes:7.5,service:null}], bottles:2, notes:"Had James Halliday ratings which was cool and an Alice Shiraz", photos:[], shortlisted:false },
+  { id:32, name:"Hart of the Barossa", distJohn:7, distRiebe:5, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:33, name:"Hayes Family Wines", distJohn:6, distRiebe:3, visited:true, ratings:[{who:"Katie",wine:6,location:8,vibes:8.5,service:null},{who:"Jack",wine:6,location:8,vibes:8.5,service:null}], bottles:2, notes:"Bought a Sam and an Alice wine - owners name was Brett! Had been to three wineries and hadn't eaten all day so I (Katie) was rolled something shocking - our server was originally from Moree", photos:[], shortlisted:false },
+  { id:34, name:"Hemera Estate", distJohn:11, distRiebe:10, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:35, name:"Henschke", distJohn:24, distRiebe:14, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:36, name:"Hently Farm Cellar Door", distJohn:10, distRiebe:11, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:37, name:"Heritage Wines", distJohn:7, distRiebe:6, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:38, name:"Hewitson", distJohn:7, distRiebe:6, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:39, name:"Jacob's Creek", distJohn:9, distRiebe:8, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:40, name:"John Duval Wines", distJohn:5, distRiebe:3, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:41, name:"Kaesler Wines", distJohn:7, distRiebe:5, visited:true, ratings:[{who:"Katie",wine:7.5,location:6,vibes:7,service:10},{who:"Jack",wine:7.5,location:6,vibes:7,service:10}], bottles:3, notes:"Susie from Vitis V served us - dead set legend", photos:[], shortlisted:false },
+  { id:42, name:"Kalleske Wines", distJohn:12, distRiebe:13, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:43, name:"Kellermeister Wines", distJohn:12, distRiebe:11, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:44, name:"Kies Family Wines", distJohn:14, distRiebe:11, visited:true, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:45, name:"Krondorf Cellar Door", distJohn:2, distRiebe:5, visited:true, ratings:[{who:"Katie",wine:6,location:7,vibes:5,service:null},{who:"Jack",wine:6,location:7,vibes:5,service:null}], bottles:0, notes:"Close but small and quiet", photos:[], shortlisted:false },
+  { id:46, name:"Lambert Estate Wines", distJohn:12, distRiebe:10, visited:true, ratings:[{who:"Katie",wine:7,location:8,vibes:7,service:8},{who:"Jack",wine:7,location:8,vibes:7,service:8}], bottles:1, notes:"Wine tour lunch spot", photos:[], shortlisted:false },
+  { id:47, name:"Langmeil Winery", distJohn:3, distRiebe:3, visited:true, ratings:[{who:"Katie",wine:9.5,location:7.5,vibes:7.5,service:null},{who:"Jack",wine:9.5,location:7.5,vibes:7.5,service:null}], bottles:2, notes:"Good wine, old man with lots of stories. Great service and FREE tastings", photos:[], shortlisted:false },
+  { id:48, name:"Laughing Jack Wines", distJohn:7, distRiebe:5, visited:true, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:49, name:"Levrier Wines", distJohn:14, distRiebe:6, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:50, name:"LiebichWein", distJohn:9, distRiebe:8, visited:true, ratings:[{who:"Katie",wine:8.5,location:6,vibes:7.5,service:null},{who:"Jack",wine:8.5,location:6,vibes:7.5,service:null}], bottles:5, notes:"Generous pours, lovely old lady, cool building. We bought a flagon of port - she also gave us a discount so a $70 bottle was only $40", photos:[], shortlisted:false },
+  { id:51, name:"Lou Miranda Estate", distJohn:8, distRiebe:7, visited:true, ratings:[{who:"Katie",wine:8.5,location:7,vibes:9,service:null},{who:"Jack",wine:8.5,location:7,vibes:9,service:null}], bottles:20, notes:"Yes, Yes, Yes. Good tasty wines, easy to drink + bar man gave me lots and lots of tastings for free", photos:[], shortlisted:false },
+  { id:52, name:"Max & Me Wines", distJohn:24, distRiebe:22, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:53, name:"Michael Hall Wines", distJohn:3, distRiebe:2, visited:true, ratings:[{who:"Katie",wine:7,location:6,vibes:7,service:8},{who:"Jack",wine:7,location:6,vibes:7,service:8}], bottles:2, notes:"Old mate came and sat at our table and had a yarn to us - which was interesting and awkward. But we met Michael", photos:[], shortlisted:false },
+  { id:54, name:"Ministry of Beer", distJohn:12, distRiebe:11, visited:true, ratings:[{who:"Katie",wine:6.5,location:6,vibes:7.5,service:null},{who:"Jack",wine:6.5,location:6,vibes:7.5,service:null}], bottles:1, notes:"Beer, have sours", photos:[], shortlisted:false },
+  { id:55, name:"Moorooroo Park Vineyards", distJohn:9, distRiebe:6, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:56, name:"Murray Street Vineyards", distJohn:11, distRiebe:10, visited:true, ratings:[{who:"Katie",wine:6,location:9,vibes:7,service:null},{who:"Jack",wine:6,location:9,vibes:7,service:null}], bottles:0, notes:"New wine lady, but nice place", photos:[], shortlisted:false },
+  { id:57, name:"New Wave Wines", distJohn:8, distRiebe:7, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:58, name:"Otherness", distJohn:13, distRiebe:11, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:59, name:"Paulmara Estate", distJohn:6, distRiebe:4, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:60, name:"Penfolds Barossa", distJohn:8, distRiebe:7, visited:true, ratings:[{who:"Katie",wine:7,location:4,vibes:6,service:null},{who:"Jack",wine:7,location:4,vibes:6,service:null}], bottles:0, notes:"They're closing the cellar door - was pretty good but not good enough to buy a bottle of wine…", photos:[], shortlisted:false },
+  { id:61, name:"Pepperjack", distJohn:11, distRiebe:10, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:62, name:"Peter Lehmann Wines", distJohn:5, distRiebe:3, visited:true, ratings:[{who:"Katie",wine:9,location:6,vibes:8.5,service:null},{who:"Jack",wine:9,location:6,vibes:8.5,service:null}], bottles:0, notes:"Price limiting, had to stand up for the tasting", photos:[], shortlisted:false },
+  { id:63, name:"Pindarie Wines", distJohn:9, distRiebe:8, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:64, name:"Pirathon Wines", distJohn:5, distRiebe:3, visited:true, ratings:[{who:"Katie",wine:5,location:7,vibes:6,service:null},{who:"Jack",wine:5,location:7,vibes:6,service:null}], bottles:6, notes:"Really nice on a hot summers day, sale on wine, Jack's first case of wine (6 for $60)", photos:[], shortlisted:false },
+  { id:65, name:"Poonawatta", distJohn:19, distRiebe:20, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:66, name:"Red Heads Wine", distJohn:10, distRiebe:5, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:67, name:"Rehn Bier (Now Old Mill Brewing)", distJohn:4, distRiebe:5, visited:true, ratings:[{who:"Katie",wine:5,location:9,vibes:8,service:6},{who:"Jack",wine:5,location:9,vibes:8,service:6}], bottles:0, notes:"Wine rating only due to their nasty shiraz beer - the other beers all tasty yum yum yum", photos:[], shortlisted:false },
+  { id:68, name:"Rielly's II Greenock", distJohn:11, distRiebe:13, visited:true, ratings:[{who:"Katie",wine:7,location:6,vibes:6,service:8},{who:"Jack",wine:7,location:6,vibes:6,service:8}], bottles:26, notes:"", photos:[], shortlisted:false },
+  { id:69, name:"Rieslingfreak", distJohn:6, distRiebe:4, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:70, name:"Rockford Wines", distJohn:6, distRiebe:6, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:71, name:"Rolf Binder", distJohn:5, distRiebe:5, visited:true, ratings:[{who:"Katie",wine:7,location:6,vibes:8,service:null},{who:"Jack",wine:7,location:6,vibes:8,service:null}], bottles:9, notes:"Bulls blood was delicious, staff very friendly and had a big chat - even invited us back. We got pretzel bread and Parmesan infused olive oil. Bought a 6 pack on special", photos:[], shortlisted:false },
+  { id:72, name:"Rosenvale Wines", distJohn:9, distRiebe:9, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:73, name:"Rusden Wines", distJohn:6, distRiebe:4, visited:true, ratings:[{who:"Katie",wine:8,location:6,vibes:6,service:6},{who:"Jack",wine:8,location:6,vibes:6,service:6}], bottles:4, notes:"", photos:[], shortlisted:false },
+  { id:74, name:"Saltram", distJohn:11, distRiebe:6, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:75, name:"Schubert Estate", distJohn:8, distRiebe:7, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:76, name:"Seabrook Wines", distJohn:6, distRiebe:4, visited:true, ratings:[{who:"Katie",wine:6,location:9,vibes:10,service:null},{who:"Jack",wine:6,location:9,vibes:10,service:null}], bottles:1, notes:"Great guy, really good value for money", photos:[], shortlisted:false },
+  { id:77, name:"Seppeltsfield Road Distillers", distJohn:7, distRiebe:6, visited:true, ratings:[{who:"Katie",wine:5,location:7,vibes:7,service:6.5},{who:"Jack",wine:5,location:7,vibes:7,service:6.5}], bottles:0, notes:"Gin place so no wine but still had a tasting - boy oh boy we don't like drinking straight gin but actually not bad", photos:[], shortlisted:false },
+  { id:78, name:"Seppeltsfield Winery", distJohn:11, distRiebe:7, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:79, name:"Sieber Wines", distJohn:10, distRiebe:9, visited:true, ratings:[{who:"Katie",wine:8.5,location:7,vibes:8,service:null},{who:"Jack",wine:8.5,location:7,vibes:8,service:null}], bottles:57, notes:"Val is a deadset legend - didn't want to palm us off to her husband because she liked us. Doing a deal case of 12 for $75 ($70 if in cash) bought two cases for the wedding!! Great place. Been back 3 times now - more bottles each time, Val is still the absolute best", photos:[], shortlisted:false },
+  { id:80, name:"St Hallet Wines", distJohn:6, distRiebe:5, visited:true, ratings:[{who:"Katie",wine:5,location:7,vibes:4,service:null},{who:"Jack",wine:5,location:7,vibes:4,service:null}], bottles:3, notes:"Went during gather round so wasn't a good look at how it actually was, will need to go back", photos:[], shortlisted:false },
+  { id:81, name:"St Hugo", distJohn:9, distRiebe:8, visited:true, ratings:[{who:"Katie",wine:7,location:7,vibes:4,service:null},{who:"Jack",wine:7,location:7,vibes:4,service:null}], bottles:1, notes:"Danny Ric LFG", photos:[], shortlisted:false },
+  { id:82, name:"The Standish Wine Co", distJohn:14, distRiebe:7, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:83, name:"The Willows Vineyard", distJohn:15, distRiebe:12, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:84, name:"The Woodcarvers Haven", distJohn:19, distRiebe:20, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:85, name:"Thorn-Clarke Wines", distJohn:17, distRiebe:14, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:86, name:"Tomfoolery Wines", distJohn:12, distRiebe:11, visited:true, ratings:[{who:"Katie",wine:7,location:5,vibes:6,service:7},{who:"Jack",wine:7,location:5,vibes:6,service:7}], bottles:5, notes:"", photos:[], shortlisted:false },
+  { id:87, name:"Torbreck Wines", distJohn:8, distRiebe:6, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:88, name:"Tscharke Wines", distJohn:7, distRiebe:4, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:89, name:"Turkey Flat Vineyards", distJohn:4, distRiebe:4, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:90, name:"Two Hands Wines", distJohn:9, distRiebe:7, visited:true, ratings:[{who:"Katie",wine:7,location:8,vibes:7.5,service:null},{who:"Jack",wine:7,location:8,vibes:7.5,service:null}], bottles:2, notes:"Cool cellar door, she started the fire for us. Jack got a magnum and they gave us two complimentary wine tastings", photos:[], shortlisted:false },
+  { id:91, name:"Ubertas Wines", distJohn:13, distRiebe:10, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:92, name:"Underground Barossa", distJohn:3, distRiebe:2, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:93, name:"Vineyard Road", distJohn:6, distRiebe:5, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:94, name:"Whistler Wines", distJohn:7, distRiebe:5, visited:true, ratings:[{who:"Katie",wine:6,location:8.5,vibes:7.5,service:null},{who:"Jack",wine:6,location:8.5,vibes:7.5,service:null}], bottles:1, notes:"Really nice grassed area, cricket pitch", photos:[], shortlisted:false },
+  { id:95, name:"Wolf Blass", distJohn:15, distRiebe:9, visited:false, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:96, name:"Wonderground Art Gallery and Cellar Door", distJohn:7, distRiebe:6, visited:true, ratings:[{who:"Katie",wine:6,location:9,vibes:7,service:null},{who:"Jack",wine:6,location:9,vibes:7,service:null}], bottles:0, notes:"Art is the main focus, great people though and nice art, rose was okay", photos:[], shortlisted:false },
+  { id:97, name:"Yalumba", distJohn:15, distRiebe:14, visited:true, ratings:[], bottles:null, notes:"", photos:[], shortlisted:false },
+  { id:98, name:"Z Wines", distJohn:1, distRiebe:2, visited:true, ratings:[{who:"Katie",wine:5,location:7,vibes:6,service:null},{who:"Jack",wine:5,location:7,vibes:6,service:null}], bottles:1, notes:"Location is nice and close but it's just on a street so not as aesthetic. Paul Kelly rip off as music was good", photos:[], shortlisted:false },
+  // Missing wineries found via research
+  { id:99, name:"Hutton Vale Farm", distJohn:20, distRiebe:13, visited:false, ratings:[], bottles:null, notes:"NEW — not in original sheet", photos:[], shortlisted:false },
+  { id:100, name:"Paisley Wines", distJohn:21, distRiebe:13, visited:false, ratings:[], bottles:null, notes:"NEW — not in original sheet", photos:[], shortlisted:false },
+  { id:101, name:"Massena Winery", distJohn:13, distRiebe:12, visited:false, ratings:[], bottles:null, notes:"NEW — not in original sheet (Greenock)", photos:[], shortlisted:false },
+  { id:102, name:"Steinborner Vineyards", distJohn:20, distRiebe:14, visited:false, ratings:[], bottles:null, notes:"NEW — not in original sheet (Angaston)", photos:[], shortlisted:false },
+  { id:103, name:"Heathvale Vineyards", distJohn:26, distRiebe:19, visited:false, ratings:[], bottles:null, notes:"NEW — not in original sheet (Keyneton)", photos:[], shortlisted:false },
+];
+
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
+const getOverall = (winery) => {
+  if (!winery.ratings || winery.ratings.length === 0) return null;
+  const all = winery.ratings.flatMap(r => [r.wine, r.location, r.vibes, r.service].filter(v => v != null));
+  if (all.length === 0) return null;
+  return all.reduce((a, b) => a + b, 0) / all.length;
+};
+const avgRatingField = (winery, field) => {
+  const vals = (winery.ratings || []).map(r => r[field]).filter(v => v != null);
+  if (!vals.length) return null;
+  return vals.reduce((a,b) => a+b, 0) / vals.length;
+};
+const exportCSV = (wineries) => {
+  const rows = [["ID","Name","Dist John St (min)","Dist Riebe St (min)","Visited","Avg Wine","Avg Location","Avg Vibes","Avg Service","Bottles","Notes","Raters"]];
+  wineries.forEach(w => {
+    rows.push([w.id, w.name, w.distJohn, w.distRiebe, w.visited?"Yes":"No",
+      avgRatingField(w,"wine")||"", avgRatingField(w,"location")||"",
+      avgRatingField(w,"vibes")||"", avgRatingField(w,"service")||"",
+      w.bottles||"", (w.notes||"").replace(/,/g,";"),
+      (w.ratings||[]).map(r=>r.who).join("/")
+    ]);
+  });
+  const csv = rows.map(r => r.map(v => `"${v}"`).join(",")).join("\n");
+  const blob = new Blob([csv], {type:"text/csv"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a"); a.href=url; a.download="Ze_Barossa_export.csv"; a.click();
+  URL.revokeObjectURL(url);
+};
+
+// ─── IMPORT CSV — merge external CSV back into the local winery list ─────────
+// Matches rows by ID (preferred) or by Name (fallback). Updates visited flag,
+// bottles, notes, and adds a lightweight "imported" rater record with the avg
+// scores so imported data appears in the averages and Leaderboard.
+const parseCSVLine = (line) => {
+  // Minimal CSV parser that handles quoted cells with commas inside
+  const out = []; let cur = ""; let inQ = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (c === '"') {
+      if (inQ && line[i+1] === '"') { cur += '"'; i++; }
+      else inQ = !inQ;
+    } else if (c === "," && !inQ) {
+      out.push(cur); cur = "";
+    } else {
+      cur += c;
+    }
+  }
+  out.push(cur);
+  return out;
+};
+const importCSV = (csvText, existing) => {
+  const lines = csvText.replace(/\r/g,"").split("\n").filter(l => l.trim().length);
+  if (lines.length < 2) return { wineries: existing, summary: "CSV is empty." };
+  const header = parseCSVLine(lines[0]).map(h => h.replace(/^"|"$/g,"").trim().toLowerCase());
+  const col = (name) => header.findIndex(h => h === name.toLowerCase());
+  const iId = col("id"), iName = col("name");
+  const iVisited = col("visited");
+  const iWine = col("avg wine"), iLoc = col("avg location"), iVibes = col("avg vibes"), iServ = col("avg service");
+  const iBottles = col("bottles"), iNotes = col("notes");
+  if (iId < 0 && iName < 0) return { wineries: existing, summary: "CSV needs an ID or Name column." };
+  // Build a clone of existing
+  const out = existing.map(w => ({...w, ratings:[...(w.ratings||[])], photos:[...(w.photos||[])], visits:[...(w.visits||[])]}));
+  let updated = 0, added = 0, skipped = 0;
+  for (let li = 1; li < lines.length; li++) {
+    const cells = parseCSVLine(lines[li]).map(c => c.replace(/^"|"$/g,""));
+    const id = iId >= 0 ? parseInt(cells[iId],10) : null;
+    const name = iName >= 0 ? cells[iName] : null;
+    let idx = -1;
+    if (id != null && !isNaN(id)) idx = out.findIndex(w => w.id === id);
+    if (idx < 0 && name) idx = out.findIndex(w => (w.name||"").toLowerCase() === name.toLowerCase());
+    if (idx < 0) { skipped++; continue; }
+    const w = out[idx];
+    if (iVisited >= 0) {
+      const v = (cells[iVisited]||"").trim().toLowerCase();
+      w.visited = (v === "yes" || v === "true" || v === "1");
+    }
+    if (iBottles >= 0 && cells[iBottles]) {
+      const b = parseInt(cells[iBottles], 10);
+      if (!isNaN(b)) w.bottles = b;
+    }
+    if (iNotes >= 0 && cells[iNotes]) w.notes = cells[iNotes];
+    // Avg rating fields: only set if non-empty AND no existing ratings (don't overwrite real data)
+    const avgs = {
+      wine: iWine >= 0 ? parseFloat(cells[iWine]) : NaN,
+      location: iLoc >= 0 ? parseFloat(cells[iLoc]) : NaN,
+      vibes: iVibes >= 0 ? parseFloat(cells[iVibes]) : NaN,
+      service: iServ >= 0 ? parseFloat(cells[iServ]) : NaN,
+    };
+    const hasAvg = Object.values(avgs).some(v => !isNaN(v));
+    if (hasAvg && (!w.ratings || w.ratings.length === 0)) {
+      w.ratings = [{
+        who: "imported",
+        wine: isNaN(avgs.wine) ? null : avgs.wine,
+        location: isNaN(avgs.location) ? null : avgs.location,
+        vibes: isNaN(avgs.vibes) ? null : avgs.vibes,
+        service: isNaN(avgs.service) ? null : avgs.service,
+      }];
+    }
+    updated++;
+  }
+  return { wineries: out, summary: `Updated ${updated}, skipped ${skipped} (no match).` };
+};
+
+// ─── MINI COMPONENTS ─────────────────────────────────────────────────────────
+const RatingBar = ({ value, max = 10, color }) => {
+  if (value == null) return <span style={{color:C.textLight,fontSize:12}}>—</span>;
+  const pct = (value/max)*100;
+  const c = color || (pct>=80?C.sage:pct>=60?C.earth:C.dustyPink);
+  return (
+    <div style={{display:"flex",alignItems:"center",gap:6}}>
+      <div style={{flex:1,height:5,borderRadius:3,background:C.border,overflow:"hidden"}}>
+        <div style={{width:`${pct}%`,height:"100%",borderRadius:3,background:c,transition:"width 0.4s ease"}}/>
+      </div>
+      <span style={{fontSize:12,color:C.textMid,minWidth:24,fontWeight:600}}>{Number(value).toFixed(1)}</span>
+    </div>
+  );
+};
+
+const BottleViz = ({ count }) => {
+  if (!count || count === 0) return <div style={{color:C.textLight,fontSize:13,textAlign:"center",padding:"8px 0"}}>No bottles purchased yet</div>;
+  const display = Math.min(count, 30);
+  return (
+    <div>
+      <div style={{display:"flex",flexWrap:"wrap",gap:4,alignItems:"flex-end",padding:"8px 0"}}>
+        {Array.from({length:display}).map((_,i) => (
+          <div key={i} title={`Bottle ${i+1}`}>
+            <Icons.Bottle size={18} color={C.dustyBlue}/>
+          </div>
+        ))}
+        {count > 30 && <span style={{fontSize:12,color:C.textMid,alignSelf:"center"}}>+{count-30} more</span>}
+      </div>
+      <div style={{fontSize:13,color:C.textMid,fontWeight:600,marginTop:2}}>
+        {count} bottle{count!==1?"s":""} total
+      </div>
+    </div>
+  );
+};
+
+// ─── RATING INPUT — slider with wine-glass thumb that fills up ────────────────
+const RatingSlider = ({ label, value, onChange }) => {
+  const v = value == null ? 0 : value;
+  const pct = (v / 10) * 100;
+  return (
+    <div style={{marginBottom:14}}>
+      <div style={{display:"flex",justifyContent:"space-between",marginBottom:6,alignItems:"center"}}>
+        <span style={{fontSize:12,color:C.textMid,fontWeight:600}}>{label}</span>
+        <span style={{fontSize:12,color:C.earth,background:C.earthLight,padding:"2px 10px",borderRadius:10,fontWeight:700}}>{value!=null?Number(value).toFixed(1):"—"}/10</span>
+      </div>
+      <div style={{position:"relative",height:36}}>
+        {/* background track */}
+        <div style={{position:"absolute",left:14,right:14,top:"50%",marginTop:-3,height:6,background:C.cream,borderRadius:3,border:`1px solid ${C.border}`}}/>
+        {/* filled track */}
+        <div style={{position:"absolute",left:14,top:"50%",marginTop:-3,width:`calc((100% - 28px) * ${pct/100})`,height:6,background:C.earth,borderRadius:3,transition:"width 0.08s linear"}}/>
+        {/* wine-glass thumb — fills proportionally to pct */}
+        <div style={{position:"absolute",left:`calc((100% - 28px) * ${pct/100})`,top:"50%",marginTop:-14,width:28,height:28,pointerEvents:"none",filter:"drop-shadow(0 1px 2px rgba(90,60,30,0.35))",transition:"left 0.08s linear"}}>
+          <WineGlassFill size={28} fillPct={pct}/>
+        </div>
+        {/* invisible range overlay */}
+        <input type="range" min="0" max="10" step="0.5" value={v}
+          onChange={e=>onChange(parseFloat(e.target.value))}
+          aria-label={label}
+          style={{position:"absolute",left:0,right:0,top:0,bottom:0,width:"100%",height:"100%",opacity:0,margin:0,padding:0,cursor:"pointer",WebkitAppearance:"none"}}/>
+      </div>
+    </div>
+  );
+};
+
+// ─── PHOTO SECTION ────────────────────────────────────────────────────────────
+const PhotoSection = ({ photos, onAdd, onDelete, editable }) => {
+  const fileRef = useRef();
+  const handleFile = (e) => {
+    const files = Array.from(e.target.files);
+    files.forEach(f => {
+      const reader = new FileReader();
+      reader.onload = ev => onAdd(ev.target.result);
+      reader.readAsDataURL(f);
+    });
+    e.target.value = "";
+  };
+  return (
+    <div>
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+        {(photos||[]).map((src,i) => (
+          <div key={i} style={{position:"relative",aspectRatio:"4/3",borderRadius:10,overflow:"hidden",border:`1px solid ${C.border}`}}>
+            <img src={src} alt="" style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+            {editable && (
+              <button onClick={()=>onDelete(i)} style={{position:"absolute",top:4,right:4,background:"rgba(50,20,10,0.6)",border:"none",borderRadius:"50%",width:24,height:24,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",color:"white"}}>
+                <Icons.Trash size={11} color="white"/>
+              </button>
+            )}
+          </div>
+        ))}
+        {editable && (
+          <button onClick={()=>fileRef.current.click()} style={{aspectRatio:"4/3",borderRadius:10,border:`2px dashed ${C.blueMid}`,background:C.blueLight,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:6,cursor:"pointer",color:C.dustyBlue}}>
+            <Icons.Camera size={22} color={C.dustyBlue}/>
+            <span style={{fontSize:11,fontWeight:600}}>Add Photo</span>
+          </button>
+        )}
+      </div>
+      <input ref={fileRef} type="file" accept="image/*" multiple capture="environment" style={{display:"none"}} onChange={handleFile}/>
+    </div>
+  );
+};
+
+// ─── REVIEWER AVATAR ─────────────────────────────────────────────────────────
+const ReviewerAvatar = ({ rating, onChange, editable, size = 44 }) => {
+  const fileRef = useRef();
+  const initials = (rating.who === "Celebrity Reviewer" ? (rating.guestName || "CR") : rating.who).slice(0,2).toUpperCase();
+  const color = rating.who === "Katie" ? C.dustyPink : rating.who === "Jack" ? C.dustyBlue : C.gold;
+  const bg = rating.who === "Katie" ? C.pinkLight : rating.who === "Jack" ? C.blueLight : "#fff9e6";
+  const handleFile = (e) => {
+    const f = e.target.files[0]; if (!f) return;
+    const reader = new FileReader();
+    reader.onload = ev => onChange({...rating, photo: ev.target.result});
+    reader.readAsDataURL(f);
+    e.target.value = "";
+  };
+  return (
+    <div style={{position:"relative", width:size, height:size, flexShrink:0}}>
+      {rating.photo
+        ? <img src={rating.photo} alt="" style={{width:size,height:size,borderRadius:"50%",objectFit:"cover",border:`2px solid ${color}`}}/>
+        : <div style={{width:size,height:size,borderRadius:"50%",background:bg,border:`2px solid ${color}`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:size*0.3,fontWeight:700,color}}>{initials}</div>
+      }
+      {editable && (
+        <button onClick={()=>fileRef.current.click()} style={{position:"absolute",bottom:-2,right:-2,width:18,height:18,borderRadius:"50%",background:C.earth,border:"2px solid white",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}>
+          <Icons.Camera size={9} color="white"/>
+        </button>
+      )}
+      <input ref={fileRef} type="file" accept="image/*" capture="user" style={{display:"none"}} onChange={handleFile}/>
+    </div>
+  );
+};
+
+// ─── INDIVIDUAL RATER BLOCK ───────────────────────────────────────────────────
+const RaterBlock = ({ rating, onChange, onDelete, isOnly }) => (
+  <div style={{background:C.cream,border:`1px solid ${C.border}`,borderRadius:12,padding:"12px 14px",marginBottom:10}}>
+    <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:10}}>
+      <div style={{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap"}}>
+        <ReviewerAvatar rating={rating} onChange={onChange} editable size={40}/>
+        <div style={{display:"flex",flexDirection:"column",gap:5}}>
+          <div style={{display:"flex",gap:5,flexWrap:"wrap"}}>
+            {["Katie","Jack"].map(n=>(
+              <button key={n} onClick={()=>onChange({...rating,who:n})}
+                style={{padding:"3px 10px",borderRadius:20,border:`1px solid ${rating.who===n?C.dustyPink:C.border}`,background:rating.who===n?C.pinkLight:"white",color:rating.who===n?C.dustyPink:C.textLight,fontSize:12,fontWeight:600,cursor:"pointer"}}>
+                {n}
+              </button>
+            ))}
+            <button onClick={()=>onChange({...rating,who:"Celebrity Reviewer"})}
+              style={{padding:"3px 10px",borderRadius:20,border:`1px solid ${rating.who==="Celebrity Reviewer"?C.gold:C.border}`,background:rating.who==="Celebrity Reviewer"?"#fff9e6":"white",color:rating.who==="Celebrity Reviewer"?C.gold:C.textLight,fontSize:12,fontWeight:600,cursor:"pointer",display:"flex",alignItems:"center",gap:3}}>
+              <Icons.Star size={10} color={rating.who==="Celebrity Reviewer"?C.gold:C.textLight} filled={rating.who==="Celebrity Reviewer"}/>
+              Celebrity
+            </button>
+          </div>
+          {rating.who==="Celebrity Reviewer" && (
+            <input placeholder="Reviewer name..." value={rating.guestName||""} onChange={e=>onChange({...rating,guestName:e.target.value})}
+              style={{padding:"3px 10px",borderRadius:20,border:`1px solid ${C.border}`,fontSize:12,background:"white",width:150}}/>
+          )}
+        </div>
+      </div>
+      {!isOnly && <button onClick={onDelete} style={{background:"none",border:"none",cursor:"pointer",color:C.textLight,padding:2,flexShrink:0}}><Icons.Trash size={14} color={C.textLight}/></button>}
+    </div>
+    <RatingSlider label="Wine" value={rating.wine} onChange={v=>onChange({...rating,wine:v})}/>
+    <RatingSlider label="Location" value={rating.location} onChange={v=>onChange({...rating,location:v})}/>
+    <RatingSlider label="Vibes" value={rating.vibes} onChange={v=>onChange({...rating,vibes:v})}/>
+    <RatingSlider label="Service" value={rating.service} onChange={v=>onChange({...rating,service:v})}/>
+  </div>
+);
+
+// ─── WINERY CARD ─────────────────────────────────────────────────────────────
+const WineryCard = ({ winery, onOpen, onToggleShortlist }) => {
+  const overall = getOverall(winery);
+  const pct = overall ? (overall/10)*100 : 0;
+  return (
+    <div onClick={()=>onOpen(winery)} style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:16,padding:"14px 16px",cursor:"pointer",marginBottom:10,transition:"box-shadow 0.15s"}}
+      onMouseEnter={e=>e.currentTarget.style.boxShadow=`0 4px 18px rgba(140,100,60,0.12)`}
+      onMouseLeave={e=>e.currentTarget.style.boxShadow=""}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:8}}>
+        <div style={{flex:1,minWidth:0}}>
+          <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:5}}>
+            {winery.visited && <span style={{background:C.sageLight,color:C.sage,fontSize:10,fontWeight:700,padding:"2px 8px",borderRadius:20,letterSpacing:0.3,display:"flex",alignItems:"center",gap:3}}><Icons.Check size={9} color={C.sage}/> VISITED{(winery.visitCount||1)>1?` ×${winery.visitCount||1}`:""}</span>}
+            {winery.shortlisted && <span style={{background:C.pinkLight,color:C.dustyPink,fontSize:10,fontWeight:700,padding:"2px 8px",borderRadius:20,letterSpacing:0.3,display:"flex",alignItems:"center",gap:3}}><Icons.Star size={9} color={C.dustyPink} filled/> SHORTLIST</span>}
+            {winery.notes?.startsWith("NEW") && <span style={{background:"#fff3e0",color:"#c47a00",fontSize:10,fontWeight:700,padding:"2px 8px",borderRadius:20}}>NEW</span>}
+          </div>
+          <div style={{fontFamily:"'Palatino Linotype',Palatino,Georgia,serif",fontSize:14,fontWeight:700,color:C.text,lineHeight:1.3,marginBottom:5}}>{winery.name}</div>
+          <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
+            <span style={{fontSize:11,color:C.textLight,display:"flex",alignItems:"center",gap:3}}><Icons.Clock size={11} color={C.textLight}/>{winery.distJohn}m John St</span>
+            <span style={{fontSize:11,color:C.dustyBlue,display:"flex",alignItems:"center",gap:3}}><Icons.Pin size={11} color={C.dustyBlue}/>{winery.distRiebe}m Riebe St</span>
+          </div>
+        </div>
+        <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:6,flexShrink:0}}>
+          {overall != null && (
+            <div style={{background:C.sageLight,borderRadius:12,padding:"5px 12px",textAlign:"center",minWidth:52}}>
+              <div style={{fontSize:9,color:C.sage,letterSpacing:0.5,fontWeight:700}}>OVERALL</div>
+              <div style={{fontSize:20,fontWeight:700,color:C.sage,lineHeight:1}}>{overall.toFixed(1)}</div>
+            </div>
+          )}
+          <button onClick={e=>{e.stopPropagation();onToggleShortlist(winery.id);}} style={{background:winery.shortlisted?C.pinkLight:"transparent",border:`1px solid ${winery.shortlisted?C.dustyPink:C.border}`,borderRadius:20,padding:"3px 10px",fontSize:11,cursor:"pointer",color:winery.shortlisted?C.dustyPink:C.textLight,fontWeight:600,display:"flex",alignItems:"center",gap:4}}>
+            <Icons.Star size={10} color={winery.shortlisted?C.dustyPink:C.textLight} filled={winery.shortlisted}/>
+            {winery.shortlisted?"Listed":"Shortlist"}
+          </button>
+        </div>
+      </div>
+      {winery.visited && overall != null && (
+        <div style={{marginTop:10,paddingTop:10,borderTop:`1px solid ${C.border}`}}>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"4px 16px"}}>
+            {[["Wine",avgRatingField(winery,"wine"),C.dustyPink],["Location",avgRatingField(winery,"location"),C.dustyBlue],["Vibes",avgRatingField(winery,"vibes"),C.sage],["Service",avgRatingField(winery,"service"),C.earth]].map(([lbl,val,col])=>(
+              <div key={lbl} style={{display:"flex",alignItems:"center",gap:6}}>
+                <span style={{fontSize:10,color:C.textLight,width:50,flexShrink:0}}>{lbl}</span>
+                <div style={{flex:1}}><RatingBar value={val} color={col}/></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ─── DETAIL MODAL ─────────────────────────────────────────────────────────────
+const DetailModal = ({ winery, onClose, onSave, onToggleShortlist }) => {
+  const [form, setForm] = useState({...winery, ratings:[...(winery.ratings||[])], photos:[...(winery.photos||[])], visitCount: winery.visitCount||0, visits: winery.visits||[]});
+  const [editing, setEditing] = useState(!winery.visited);
+  const [tab, setTab] = useState("ratings");
+  const overall = getOverall(form);
+
+  // ESC closes the modal
+  useEffect(()=>{
+    const handler = e => { if(e.key==="Escape") onClose(); };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  },[onClose]);
+
+  const addRater = () => setForm(f=>({...f,ratings:[...f.ratings,{who:"Celebrity Reviewer",guestName:"",wine:7,location:7,vibes:7,service:null}]}));
+  const updateRater = (i,r) => setForm(f=>({...f,ratings:f.ratings.map((x,j)=>j===i?r:x)}));
+  const deleteRater = (i) => setForm(f=>({...f,ratings:f.ratings.filter((_,j)=>j!==i)}));
+
+  const logReturnVisit = () => {
+    const dateStr = new Date().toLocaleDateString("en-AU",{day:"numeric",month:"short",year:"numeric"});
+    setForm(f=>({
+      ...f,
+      visitCount: (f.visitCount||1)+1,
+      visits: [...(f.visits||[]), {date: dateStr, notes:"", bottles:0}]
+    }));
+  };
+
+  return (
+    <div onClick={onClose} style={{position:"fixed",inset:0,background:"rgba(30,15,5,0.5)",zIndex:200,display:"flex",alignItems:"flex-end",justifyContent:"center"}}>
+      <div onClick={e=>e.stopPropagation()} style={{background:C.cream,borderRadius:"22px 22px 0 0",width:"100%",maxWidth:480,maxHeight:"93vh",overflowY:"auto"}}>
+        {/* Header */}
+        <div style={{position:"sticky",top:0,background:C.cream,padding:"14px 18px 10px",borderBottom:`1px solid ${C.border}`,zIndex:2}}>
+          {/* Close button — top-right, always visible */}
+          <button onClick={onClose} aria-label="Close" style={{position:"absolute",top:8,right:10,width:32,height:32,borderRadius:"50%",background:"rgba(255,255,255,0.9)",border:`1px solid ${C.border}`,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",color:C.textMid,zIndex:3,boxShadow:"0 1px 4px rgba(0,0,0,0.08)"}}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+          </button>
+          {/* Drag handle — taps it to close too */}
+          <button onClick={onClose} aria-label="Close" style={{width:44,height:20,display:"block",margin:"0 auto 6px",background:"none",border:"none",cursor:"pointer",padding:0}}>
+            <div style={{width:36,height:4,background:C.border,borderRadius:2,margin:"0 auto"}}/>
+          </button>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start"}}>
+            <div style={{flex:1,paddingRight:10}}>
+              <div style={{fontFamily:"'Palatino Linotype',Palatino,Georgia,serif",fontSize:17,fontWeight:700,color:C.text,lineHeight:1.3}}>{winery.name}</div>
+              <div style={{display:"flex",gap:12,marginTop:4}}>
+                <span style={{fontSize:11,color:C.textLight,display:"flex",alignItems:"center",gap:3}}><Icons.Clock size={11} color={C.textLight}/>{winery.distJohn} min (John St)</span>
+                <span style={{fontSize:11,color:C.dustyBlue,display:"flex",alignItems:"center",gap:3}}><Icons.Pin size={11} color={C.dustyBlue}/>{winery.distRiebe} min (Riebe St)</span>
+              </div>
+            </div>
+            {overall!=null&&(
+              <div style={{background:C.sageLight,borderRadius:14,padding:"6px 14px",textAlign:"center",flexShrink:0}}>
+                <div style={{fontSize:9,color:C.sage,letterSpacing:0.5,fontWeight:700}}>OVERALL</div>
+                <div style={{fontSize:24,fontWeight:700,color:C.sage,lineHeight:1}}>{overall.toFixed(1)}</div>
+              </div>
+            )}
+          </div>
+          {/* Visit count badge */}
+          {form.visited && (
+            <div style={{display:"flex",alignItems:"center",gap:8,margin:"8px 0 4px"}}>
+              <div style={{display:"flex",gap:5,alignItems:"center"}}>
+                {Array.from({length: Math.min(form.visitCount||1, 8)}).map((_,i)=>(
+                  <div key={i} style={{width:10,height:10,borderRadius:"50%",background:i===0?C.sage:C.dustyPink,opacity: i<(form.visitCount||1)?1:0.2}}/>
+                ))}
+                {(form.visitCount||1) > 8 && <span style={{fontSize:10,color:C.textMid}}>+{(form.visitCount||1)-8}</span>}
+              </div>
+              <span style={{fontSize:11,color:C.textMid,fontWeight:600}}>
+                {form.visitCount===1||!form.visitCount?"1st visit":`Visited ${form.visitCount} times`}
+              </span>
+              {form.visited && !editing && (
+                <button onClick={logReturnVisit} style={{marginLeft:"auto",padding:"2px 10px",borderRadius:20,border:`1px solid ${C.dustyPink}`,background:C.pinkLight,color:C.dustyPink,fontSize:11,fontWeight:600,cursor:"pointer"}}>
+                  + Return Visit
+                </button>
+              )}
+            </div>
+          )}
+          {/* Action row */}
+          <div style={{display:"flex",gap:8,marginTop:10}}>
+            <button onClick={()=>{
+              if(form.visited) {
+                // Already visited — offer to undo
+                if(confirm("Mark this winery as not visited? This will keep your ratings & notes but remove it from 'Visited'.")) {
+                  setForm(f=>({...f,visited:false}));
+                }
+              } else {
+                setForm(f=>({...f,visited:true}));
+                setEditing(true);
+              }
+            }}
+              title={form.visited?"Tap to un-visit (keeps ratings)":"Mark as visited"}
+              style={{flex:1,padding:"9px",borderRadius:10,border:`1.5px solid ${form.visited?C.sage:C.border}`,background:form.visited?C.sageLight:"white",color:form.visited?C.sage:C.textMid,fontSize:13,fontWeight:600,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",gap:5}}>
+              <Icons.Check size={14} color={form.visited?C.sage:C.textMid}/>{form.visited?"Visited ✓":"Mark Visited"}
+            </button>
+            <button onClick={()=>onToggleShortlist(winery.id)}
+              style={{flex:1,padding:"9px",borderRadius:10,border:`1.5px solid ${winery.shortlisted?C.dustyPink:C.border}`,background:winery.shortlisted?C.pinkLight:"white",color:winery.shortlisted?C.dustyPink:C.textMid,fontSize:13,fontWeight:600,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",gap:5}}>
+              <Icons.Star size={13} color={winery.shortlisted?C.dustyPink:C.textMid} filled={winery.shortlisted}/>{winery.shortlisted?"On List":"Shortlist"}
+            </button>
+            {editing?
+              <button onClick={()=>{onSave(form);setEditing(false);}} style={{flex:1,padding:"9px",borderRadius:10,border:"none",background:C.sage,color:"white",fontSize:13,fontWeight:600,cursor:"pointer"}}>Save</button>:
+              <button onClick={()=>setEditing(true)} style={{flex:1,padding:"9px",borderRadius:10,border:`1.5px solid ${C.border}`,background:"white",color:C.textMid,fontSize:13,fontWeight:600,cursor:"pointer"}}>Edit</button>
+            }
+          </div>
+        </div>
+
+        {/* Content Tabs — not sticky, they scroll with content so all tabs render correctly */}
+        <div style={{display:"flex",borderBottom:`1px solid ${C.border}`,background:C.cream}}>
+          {["ratings","photos","notes","visits"].map(t=>(
+            <button key={t} onClick={()=>setTab(t)} style={{flex:1,padding:"10px 4px",border:"none",background:"transparent",cursor:"pointer",fontSize:11,fontWeight:tab===t?700:400,color:tab===t?C.earth:C.textLight,borderBottom:`2px solid ${tab===t?C.earth:"transparent"}`,textTransform:"capitalize"}}>{t}</button>
+          ))}
+        </div>
+
+        <div style={{padding:"16px 18px 40px"}}>
+          {/* RATINGS TAB */}
+          {tab==="ratings" && (form.visited||editing) && (
+            <>
+              {editing?(
+                <>
+                  {(form.ratings||[]).map((r,i)=>(
+                    <RaterBlock key={i} rating={r} onChange={nr=>updateRater(i,nr)} onDelete={()=>deleteRater(i)} isOnly={form.ratings.length===1}/>
+                  ))}
+                  <button onClick={addRater} style={{width:"100%",padding:"10px",borderRadius:10,border:`1.5px dashed ${C.dustyBlue}`,background:C.blueLight,color:C.dustyBlue,fontSize:13,fontWeight:600,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",gap:6,marginBottom:12}}>
+                    <Icons.Plus size={16} color={C.dustyBlue}/>Add Rater
+                  </button>
+                  <div style={{marginBottom:14}}>
+                    <label style={{fontSize:13,color:C.textMid,fontWeight:600,display:"block",marginBottom:6,display:"flex",alignItems:"center",gap:6}}><Icons.Bottle size={14} color={C.earth}/>Bottles Purchased</label>
+                    <input type="number" min="0" value={form.bottles??""} placeholder="0"
+                      onChange={e=>setForm(f=>({...f,bottles:parseInt(e.target.value)||0}))}
+                      style={{width:"100%",padding:"10px 12px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:15,background:"white",boxSizing:"border-box"}}/>
+                  </div>
+                </>
+              ):(
+                <>
+                  {/* Ratings breakdown by person */}
+                  {(form.ratings||[]).length>0?(
+                    <>
+                      {(form.ratings||[]).map((r,i)=>(
+                        <div key={i} style={{background:"white",border:`1px solid ${C.border}`,borderRadius:12,padding:"12px 14px",marginBottom:10}}>
+                          <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
+                            <ReviewerAvatar rating={r} onChange={()=>{}} editable={false} size={36}/>
+                            <div style={{fontSize:12,fontWeight:700,color:r.who==="Katie"?C.dustyPink:r.who==="Jack"?C.dustyBlue:C.gold}}>
+                              {r.who==="Celebrity Reviewer"&&r.guestName?r.guestName:r.who==="Celebrity Reviewer"?"Celebrity Reviewer":r.who}
+                            </div>
+                          </div>
+                          {[["Wine",r.wine,C.dustyPink],["Location",r.location,C.dustyBlue],["Vibes",r.vibes,C.sage],["Service",r.service,C.earth]].map(([lbl,val,col])=>(
+                            <div key={lbl} style={{display:"flex",alignItems:"center",gap:8,marginBottom:6}}>
+                              <span style={{fontSize:11,color:C.textLight,width:60}}>{lbl}</span>
+                              <div style={{flex:1}}><RatingBar value={val} color={col}/></div>
+                            </div>
+                          ))}
+                        </div>
+                      ))}
+                      {/* Average summary */}
+                      <div style={{background:C.sageLight,borderRadius:12,padding:"12px 14px",marginTop:4}}>
+                        <div style={{fontSize:11,fontWeight:700,color:C.sage,marginBottom:8,letterSpacing:0.3}}>GROUP AVERAGE</div>
+                        {[["Wine",avgRatingField(form,"wine"),C.dustyPink],["Location",avgRatingField(form,"location"),C.dustyBlue],["Vibes",avgRatingField(form,"vibes"),C.sage],["Service",avgRatingField(form,"service"),C.earth]].map(([lbl,val,col])=>(
+                          <div key={lbl} style={{display:"flex",alignItems:"center",gap:8,marginBottom:6}}>
+                            <span style={{fontSize:11,color:C.textMid,width:60}}>{lbl}</span>
+                            <div style={{flex:1}}><RatingBar value={val} color={col}/></div>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  ):(
+                    <div style={{textAlign:"center",padding:"20px 0",color:C.textLight,fontSize:13}}>No ratings yet — tap Edit to add</div>
+                  )}
+                  {/* Bottle viz */}
+                  <div style={{marginTop:14,padding:"12px 14px",background:"white",border:`1px solid ${C.border}`,borderRadius:12}}>
+                    <div style={{fontSize:11,fontWeight:700,color:C.textMid,marginBottom:6,display:"flex",alignItems:"center",gap:5}}>
+                      <Icons.Bottle size={13} color={C.dustyBlue}/>BOTTLES
+                    </div>
+                    <BottleViz count={form.bottles||0}/>
+                  </div>
+                </>
+              )}
+            </>
+          )}
+          {tab==="ratings" && !form.visited && !editing && (
+            <div style={{textAlign:"center",padding:"30px 0",color:C.textLight}}>
+              <div style={{marginBottom:8}}><Icons.WineGlass size={36} color={C.border}/></div>
+              <div>Haven't been here yet</div>
+            </div>
+          )}
+
+          {/* PHOTOS TAB */}
+          {tab==="photos" && (
+            <PhotoSection photos={form.photos||[]} onAdd={src=>setForm(f=>({...f,photos:[...(f.photos||[]),src]}))} onDelete={i=>setForm(f=>({...f,photos:f.photos.filter((_,j)=>j!==i)}))} editable={editing}/>
+          )}
+
+          {/* NOTES TAB */}
+          {tab==="notes" && (
+            editing ? (
+              <textarea value={form.notes} onChange={e=>setForm(f=>({...f,notes:e.target.value}))}
+                placeholder="Tasting notes, memorable moments, must-buys, who you met..." rows={8}
+                style={{width:"100%",padding:"12px",borderRadius:12,border:`1px solid ${C.border}`,fontSize:14,background:"white",resize:"none",boxSizing:"border-box",fontFamily:"inherit",lineHeight:1.6}}/>
+            ):(
+              form.notes?(
+                <div style={{background:"white",border:`1px solid ${C.border}`,borderRadius:12,padding:"14px 16px",fontSize:14,color:C.text,lineHeight:1.7,fontStyle:"italic"}}>"{form.notes}"</div>
+              ):(
+                <div style={{textAlign:"center",padding:"30px 0",color:C.textLight,fontSize:13}}>No notes yet</div>
+              )
+            )
+          )}
+
+          {/* VISITS TAB */}
+          {tab==="visits" && (
+            <div>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12}}>
+                <div style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:15,fontWeight:700,color:C.text}}>Visit History</div>
+                {form.visited && (
+                  <button onClick={logReturnVisit} style={{padding:"5px 14px",borderRadius:20,border:`1px solid ${C.dustyPink}`,background:C.pinkLight,color:C.dustyPink,fontSize:12,fontWeight:600,cursor:"pointer",display:"flex",alignItems:"center",gap:5}}>
+                    <Icons.Plus size={12} color={C.dustyPink}/>Log Return Visit
+                  </button>
+                )}
+              </div>
+              {(!form.visits || form.visits.length === 0) ? (
+                <div style={{background:"white",border:`1px solid ${C.border}`,borderRadius:12,padding:"14px 16px"}}>
+                  <div style={{display:"flex",alignItems:"center",gap:10}}>
+                    <div style={{width:32,height:32,borderRadius:"50%",background:C.sageLight,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+                      <span style={{fontSize:14,fontWeight:700,color:C.sage}}>1</span>
+                    </div>
+                    <div>
+                      <div style={{fontSize:13,fontWeight:600,color:C.text}}>First visit</div>
+                      <div style={{fontSize:11,color:C.textLight}}>See ratings & notes tabs</div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <div style={{background:"white",border:`1px solid ${C.border}`,borderRadius:12,padding:"14px 16px",marginBottom:8}}>
+                    <div style={{display:"flex",alignItems:"center",gap:10}}>
+                      <div style={{width:32,height:32,borderRadius:"50%",background:C.sageLight,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+                        <span style={{fontSize:14,fontWeight:700,color:C.sage}}>1</span>
+                      </div>
+                      <div style={{flex:1}}>
+                        <div style={{fontSize:13,fontWeight:600,color:C.text}}>First visit</div>
+                        <div style={{fontSize:11,color:C.textLight}}>Original ratings & notes</div>
+                      </div>
+                    </div>
+                  </div>
+                  {form.visits.map((v,i)=>(
+                    <div key={i} style={{background:"white",border:`1px solid ${C.dustyPink}`,borderRadius:12,padding:"14px 16px",marginBottom:8}}>
+                      <div style={{display:"flex",alignItems:"flex-start",gap:10}}>
+                        <div style={{width:32,height:32,borderRadius:"50%",background:C.pinkLight,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+                          <span style={{fontSize:14,fontWeight:700,color:C.dustyPink}}>{i+2}</span>
+                        </div>
+                        <div style={{flex:1}}>
+                          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}>
+                            <div style={{fontSize:13,fontWeight:600,color:C.text}}>Return visit {i+2 > 2 ? `#${i+2}`:""}</div>
+                            <div style={{display:"flex",alignItems:"center",gap:6}}>
+                              <div style={{fontSize:11,color:C.textLight}}>{v.date}</div>
+                              <button onClick={()=>{ if(confirm("Remove this return visit?")) setForm(f=>({...f,visitCount:Math.max(1,(f.visitCount||2)-1),visits:f.visits.filter((_,j)=>j!==i)})); }}
+                                title="Remove this visit" style={{background:"none",border:"none",cursor:"pointer",color:C.textLight,padding:2,display:"flex",alignItems:"center"}}>
+                                <Icons.Trash size={13} color={C.textLight}/>
+                              </button>
+                            </div>
+                          </div>
+                          {editing ? (
+                            <>
+                              <input type="number" min="0" value={v.bottles||0}
+                                onChange={e=>setForm(f=>({...f,visits:f.visits.map((x,j)=>j===i?{...x,bottles:parseInt(e.target.value)||0}:x)}))}
+                                placeholder="Bottles bought"
+                                style={{width:"100%",padding:"6px 10px",borderRadius:8,border:`1px solid ${C.border}`,fontSize:13,marginBottom:6,boxSizing:"border-box"}}/>
+                              <textarea rows={2} value={v.notes||""} placeholder="Notes for this visit..."
+                                onChange={e=>setForm(f=>({...f,visits:f.visits.map((x,j)=>j===i?{...x,notes:e.target.value}:x)}))}
+                                style={{width:"100%",padding:"6px 10px",borderRadius:8,border:`1px solid ${C.border}`,fontSize:13,resize:"none",boxSizing:"border-box",fontFamily:"inherit"}}/>
+                            </>
+                          ):(
+                            <>
+                              {v.bottles > 0 && <div style={{fontSize:12,color:C.dustyBlue,display:"flex",alignItems:"center",gap:4}}><Icons.Bottle size={12} color={C.dustyBlue}/>{v.bottles} bottles</div>}
+                              {v.notes && <div style={{fontSize:12,color:C.textMid,fontStyle:"italic",marginTop:3}}>"{v.notes}"</div>}
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ─── ADD MODAL ────────────────────────────────────────────────────────────────
+const AddModal = ({ onClose, onAdd }) => {
+  const [form, setForm] = useState({name:"",distJohn:"",distRiebe:"",visited:false,ratings:[{who:"Katie",wine:7,location:7,vibes:7,service:null}],bottles:0,notes:"",photos:[]});
+  const go = () => { if(!form.name.trim()) return; onAdd({...form,distJohn:parseInt(form.distJohn)||0,distRiebe:parseInt(form.distRiebe)||0,id:Date.now(),shortlisted:false}); onClose(); };
+  return (
+    <div onClick={onClose} style={{position:"fixed",inset:0,background:"rgba(30,15,5,0.5)",zIndex:200,display:"flex",alignItems:"flex-end",justifyContent:"center"}}>
+      <div onClick={e=>e.stopPropagation()} style={{background:C.cream,borderRadius:"22px 22px 0 0",width:"100%",maxWidth:480,maxHeight:"90vh",overflowY:"auto",padding:"0 0 40px"}}>
+        <div style={{padding:"14px 18px 10px",borderBottom:`1px solid ${C.border}`}}>
+          <div style={{width:36,height:4,background:C.border,borderRadius:2,margin:"0 auto 12px"}}/>
+          <div style={{fontFamily:"'Palatino Linotype',Palatino,Georgia,serif",fontSize:18,fontWeight:700,color:C.text}}>Add Winery</div>
+        </div>
+        <div style={{padding:"16px 18px"}}>
+          <div style={{marginBottom:12}}>
+            <label style={{fontSize:13,color:C.textMid,fontWeight:600,display:"block",marginBottom:6}}>Winery Name *</label>
+            <input type="text" value={form.name} onChange={e=>setForm(f=>({...f,name:e.target.value}))} placeholder="e.g. Chateau Barossa"
+              style={{width:"100%",padding:"12px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:15,background:"white",boxSizing:"border-box"}} autoFocus/>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:12}}>
+            <div>
+              <label style={{fontSize:12,color:C.textMid,fontWeight:600,display:"block",marginBottom:5}}>John St (mins)</label>
+              <input type="number" value={form.distJohn} onChange={e=>setForm(f=>({...f,distJohn:e.target.value}))} placeholder="0"
+                style={{width:"100%",padding:"10px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:14,background:"white",boxSizing:"border-box"}}/>
+            </div>
+            <div>
+              <label style={{fontSize:12,color:C.textMid,fontWeight:600,display:"block",marginBottom:5}}>Riebe St (mins)</label>
+              <input type="number" value={form.distRiebe} onChange={e=>setForm(f=>({...f,distRiebe:e.target.value}))} placeholder="0"
+                style={{width:"100%",padding:"10px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:14,background:"white",boxSizing:"border-box"}}/>
+            </div>
+          </div>
+          <button onClick={()=>setForm(f=>({...f,visited:!f.visited}))} style={{width:"100%",padding:"10px",borderRadius:10,border:`1.5px solid ${form.visited?C.sage:C.border}`,background:form.visited?C.sageLight:"white",color:form.visited?C.sage:C.textMid,fontSize:13,fontWeight:600,cursor:"pointer",marginBottom:14,display:"flex",alignItems:"center",justifyContent:"center",gap:6}}>
+            <Icons.Check size={14} color={form.visited?C.sage:C.textMid}/>{form.visited?"Already Visited":"Not Visited Yet"}
+          </button>
+          {form.visited && (
+            <>
+              <div style={{fontSize:13,color:C.textMid,fontWeight:700,marginBottom:8,fontFamily:"'Palatino Linotype',Georgia,serif"}}>Ratings</div>
+              <RaterBlock rating={form.ratings[0]} onChange={r=>setForm(f=>({...f,ratings:[r]}))} onDelete={()=>{}} isOnly/>
+              <div style={{marginBottom:12}}>
+                <label style={{fontSize:13,color:C.textMid,fontWeight:600,display:"flex",alignItems:"center",gap:5,marginBottom:6}}><Icons.Bottle size={13} color={C.earth}/>Bottles Purchased</label>
+                <input type="number" min="0" value={form.bottles} onChange={e=>setForm(f=>({...f,bottles:parseInt(e.target.value)||0}))}
+                  style={{width:"100%",padding:"10px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:14,background:"white",boxSizing:"border-box"}}/>
+              </div>
+            </>
+          )}
+          <div style={{marginBottom:16}}>
+            <label style={{fontSize:13,color:C.textMid,fontWeight:600,display:"block",marginBottom:6}}>Notes</label>
+            <textarea value={form.notes} onChange={e=>setForm(f=>({...f,notes:e.target.value}))} rows={3} placeholder="First impressions..."
+              style={{width:"100%",padding:"10px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:14,background:"white",resize:"none",boxSizing:"border-box",fontFamily:"inherit"}}/>
+          </div>
+          <button onClick={go} style={{width:"100%",padding:14,borderRadius:12,background:C.earth,color:"white",border:"none",fontSize:15,fontWeight:700,cursor:"pointer"}}>Add Winery</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ─── LEADERBOARD ─────────────────────────────────────────────────────────────
+const Stats = ({ wineries, onSelect }) => {
+  const visited = wineries.filter(w=>w.visited);
+  const rated = visited.filter(w=>getOverall(w)!=null);
+  const totalBottles = visited.reduce((s,w)=>s+(w.bottles||0),0);
+  const sorted = [...rated].sort((a,b)=>getOverall(b)-getOverall(a));
+  const topWine = [...rated].filter(w=>avgRatingField(w,"wine")!=null).sort((a,b)=>avgRatingField(b,"wine")-avgRatingField(a,"wine"))[0];
+  const topLocation = [...rated].filter(w=>avgRatingField(w,"location")!=null).sort((a,b)=>avgRatingField(b,"location")-avgRatingField(a,"location"))[0];
+  const topVibes = [...rated].filter(w=>avgRatingField(w,"vibes")!=null).sort((a,b)=>avgRatingField(b,"vibes")-avgRatingField(a,"vibes"))[0];
+  const topService = [...rated].filter(w=>avgRatingField(w,"service")!=null).sort((a,b)=>avgRatingField(b,"service")-avgRatingField(a,"service"))[0];
+  const bigSpender = visited.filter(w=>w.bottles).sort((a,b)=>(b.bottles||0)-(a.bottles||0))[0];
+
+  return (
+    <div>
+      {/* Stats row */}
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:16}}>
+        {[[visited.length,"Visited",C.sageLight,C.sage],[wineries.length-visited.length,"To Visit",C.blueLight,C.dustyBlue],[totalBottles,"Bottles",C.earthLight,C.earth],[wineries.length,"Total",C.pinkLight,C.dustyPink]].map(([val,lbl,bg,col])=>(
+          <div key={lbl} style={{background:bg,borderRadius:14,padding:"14px 16px",textAlign:"center"}}>
+            <div style={{fontSize:26,fontWeight:700,color:col}}>{val}</div>
+            <div style={{fontSize:11,color:col,opacity:0.8}}>{lbl}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Category winners */}
+      <div style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:15,fontWeight:700,color:C.text,marginBottom:10}}>Category Bests</div>
+      {[[<Icons.Trophy size={16} color={C.gold}/>, "Overall Champion", sorted[0], getOverall(sorted[0])?.toFixed(1)],
+        [<Icons.WineGlass size={15} color={C.dustyPink}/>, "Best Wine", topWine, avgRatingField(topWine,"wine")?.toFixed(1)],
+        [<Icons.Pin size={15} color={C.dustyBlue}/>, "Best Location", topLocation, avgRatingField(topLocation,"location")?.toFixed(1)],
+        [<Icons.Sparkle size={15} color={C.sage}/>, "Best Vibes", topVibes, avgRatingField(topVibes,"vibes")?.toFixed(1)],
+        [<Icons.Handshake size={15} color={C.earth}/>, "Best Service", topService, avgRatingField(topService,"service")?.toFixed(1)],
+        [<Icons.Bottle size={15} color={C.dustyBlue}/>, "Most Bottles", bigSpender, bigSpender?`${bigSpender.bottles} btl`:null],
+      ].map(([icon, label, winner, score], i) => winner && score && (
+        <button key={i} onClick={()=>onSelect && onSelect(winner)}
+          style={{width:"100%",textAlign:"left",background:"white",border:`1px solid ${C.border}`,borderRadius:12,padding:"10px 14px",marginBottom:8,display:"flex",alignItems:"center",gap:10,cursor:"pointer",fontFamily:"inherit",transition:"transform 0.08s, box-shadow 0.15s"}}
+          onMouseEnter={e=>e.currentTarget.style.boxShadow=`0 3px 12px rgba(100,70,30,0.12)`}
+          onMouseLeave={e=>e.currentTarget.style.boxShadow=""}
+          onMouseDown={e=>e.currentTarget.style.transform="scale(0.99)"}
+          onMouseUp={e=>e.currentTarget.style.transform=""}>
+          <div style={{width:32,height:32,borderRadius:10,background:C.earthLight,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>{icon}</div>
+          <div style={{flex:1,minWidth:0}}>
+            <div style={{fontSize:10,color:C.textLight,fontWeight:600,letterSpacing:0.3,marginBottom:1}}>{label}</div>
+            <div style={{fontSize:13,fontWeight:700,color:C.text,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{winner?.name}</div>
+          </div>
+          <div style={{background:C.sageLight,borderRadius:10,padding:"4px 10px",fontSize:13,fontWeight:700,color:C.sage,flexShrink:0}}>{score}</div>
+          <span style={{fontSize:16,color:C.textLight,marginLeft:2}}>›</span>
+        </button>
+      ))}
+
+      {/* Top 10 list */}
+      <div style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:15,fontWeight:700,color:C.text,marginTop:16,marginBottom:10}}>Top 10 Overall</div>
+      {sorted.slice(0,10).map((w,i)=>(
+        <button key={w.id} onClick={()=>onSelect && onSelect(w)}
+          style={{width:"100%",textAlign:"left",display:"flex",alignItems:"center",gap:10,padding:"8px 12px",background:"white",border:`1px solid ${C.border}`,borderRadius:10,marginBottom:6,cursor:"pointer",fontFamily:"inherit",transition:"transform 0.08s, box-shadow 0.15s"}}
+          onMouseEnter={e=>e.currentTarget.style.boxShadow=`0 3px 10px rgba(100,70,30,0.10)`}
+          onMouseLeave={e=>e.currentTarget.style.boxShadow=""}
+          onMouseDown={e=>e.currentTarget.style.transform="scale(0.99)"}
+          onMouseUp={e=>e.currentTarget.style.transform=""}>
+          <div style={{width:24,height:24,borderRadius:"50%",background:i===0?"#ffd700":i===1?"#c0c0c0":i===2?"#cd7f32":C.earthLight,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:i<3?"#3a2a1a":C.textMid,flexShrink:0}}>{i+1}</div>
+          <div style={{flex:1,fontSize:13,fontWeight:600,color:C.text,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{w.name}</div>
+          <div style={{fontSize:13,fontWeight:700,color:C.sage}}>{getOverall(w).toFixed(1)}</div>
+          <span style={{fontSize:14,color:C.textLight}}>›</span>
+        </button>
+      ))}
+    </div>
+  );
+};
+
+
+// ─── MAP VIEW ─────────────────────────────────────────────────────────────────
+// Real Barossa Valley geography — wineries placed by actual GPS coordinates
+// Home: -34.5208, 138.9736 (25 Riebe St, Tanunda)
+// Map bounds: lat -34.40 to -34.62, lon 138.87 to 139.14
+const MAP_BOUNDS = { latMin:-34.62, latMax:-34.40, lonMin:138.87, lonMax:139.14 };
+const W = 380, H = 420;
+
+// Pre-computed SVG positions from GPS coords
+const toXY = (lat, lon) => ({
+  x: ((lon - MAP_BOUNDS.lonMin) / (MAP_BOUNDS.lonMax - MAP_BOUNDS.lonMin)) * W,
+  y: ((lat - MAP_BOUNDS.latMin) / (MAP_BOUNDS.latMax - MAP_BOUNDS.latMin)) * H,
+});
+
+// Winery GPS lookup for map pins (id → [lat, lon])
+const WINERY_COORDS = {
+  1:[-34.589,139.051],2:[-34.6,139.025],3:[-34.51,139.005],4:[-34.5078,138.99],
+  5:[-34.522,138.93],6:[-34.49,138.898],7:[-34.602,139.027],8:[-34.525,138.934],
+  9:[-34.4895,138.958],10:[-34.541,138.963],11:[-34.5156,138.96],12:[-34.605,139.035],
+  13:[-34.4725,138.976],14:[-34.6028,138.881],15:[-34.5398,138.96],16:[-34.5022,138.959],
+  17:[-34.5262,138.958],18:[-34.6047,138.889],19:[-34.53,138.921],20:[-34.5452,138.948],
+  21:[-34.42,139.1],22:[-34.4712,138.989],23:[-34.524,138.95],24:[-34.438,139.078],
+  25:[-34.527,138.933],26:[-34.42,139.13],27:[-34.493,138.903],28:[-34.51,138.89],
+  29:[-34.5422,138.883],30:[-34.5932,138.921],31:[-34.4765,138.893],32:[-34.528,138.948],
+  33:[-34.4855,138.933],34:[-34.519,138.92],35:[-34.6157,139.139],36:[-34.5035,138.888],
+  37:[-34.529,138.946],38:[-34.53,138.945],39:[-34.5942,138.919],40:[-34.534,138.97],
+  41:[-34.4808,138.98],42:[-34.452,138.895],43:[-34.57,139.01],44:[-34.6062,138.888],
+  45:[-34.53,138.954],46:[-34.485,139.005],47:[-34.5212,138.955],48:[-34.527,138.949],
+  49:[-34.511,139.005],50:[-34.523,138.929],51:[-34.515,138.938],52:[-34.429,139.085],
+  53:[-34.527,138.962],54:[-34.572,139.009],55:[-34.543,138.988],56:[-34.4503,138.896],
+  57:[-34.532,138.938],58:[-34.565,139],59:[-34.536,138.975],60:[-34.4775,138.99],
+  61:[-34.5015,139.032],62:[-34.5138,138.962],63:[-34.5358,138.848],64:[-34.533,138.966],
+  65:[-34.439,139.079],66:[-34.503,138.985],67:[-34.524,138.95],68:[-34.491,138.9],
+  69:[-34.5265,138.961],70:[-34.5382,138.95],71:[-34.518,138.969],72:[-34.52,138.926],
+  73:[-34.538,138.976],74:[-34.5028,139.034],75:[-34.535,138.937],76:[-34.537,138.976],
+  77:[-34.488,138.917],78:[-34.4973,138.905],79:[-34.522,138.924],80:[-34.5253,138.942],
+  81:[-34.592,138.917],82:[-34.55,138.99],83:[-34.493,138.903],84:[-34.439,139.079],
+  85:[-34.4938,139.04],86:[-34.572,139.01],87:[-34.484,138.912],88:[-34.4865,138.92],
+  89:[-34.5382,138.958],90:[-34.4892,138.919],91:[-34.562,138.998],92:[-34.527,138.961],
+  93:[-34.54,138.979],94:[-34.4975,138.918],95:[-34.4645,139.012],96:[-34.527,138.946],
+  97:[-34.5028,139.054],98:[-34.5175,138.952],99:[-34.468,139.025],100:[-34.472,139.03],
+  101:[-34.497,138.904],102:[-34.47,139.035],103:[-34.452,139.065],
+
+};
+
+// Barossa road/geography paths for context (approximate SVG paths)
+const BAROSSA_ROADS = [
+  // Para River (north-south spine)
+  "M 152,30 C 148,80 145,130 143,180 C 141,230 140,280 138,330 C 136,370 134,400 132,420",
+  // Barossa Valley Way (main artery N-S)  
+  "M 158,20 C 155,70 152,120 150,175 C 148,220 147,270 146,315 C 145,355 144,385 143,410",
+  // Seppeltsfield Rd (E-W)
+  "M 80,185 C 100,183 120,181 143,180 C 165,179 185,180 205,182",
+  // Krondorf Rd
+  "M 108,245 C 125,242 140,240 155,240 C 170,240 185,241 198,243",
+  // Research Rd (Nuriootpa area)
+  "M 95,165 C 115,163 135,162 155,162 C 170,162 185,163 198,165",
+];
+
+// ─── LEAFLET MAP VIEW ──────────────────────────────────────────────────────
+// Home base — 25 Riebe Street, Tanunda (new Gembrook Estate subdivision)
+const HOME_BASE = { name: '25 Riebe Street, Tanunda', lat: -34.5203, lng: 138.9728 };
+
+// Towns rendered as editorial labels over the tile map
+const MAP_TOWNS = [
+  { name:'Tanunda',       lat:-34.5271, lng:138.9619, size:'lg' },
+  { name:'Nuriootpa',     lat:-34.4720, lng:138.9961, size:'lg' },
+  { name:'Angaston',      lat:-34.4960, lng:139.0478, size:'lg' },
+  { name:'Rowland Flat',  lat:-34.5985, lng:138.9188, size:'sm' },
+  { name:'Lyndoch',       lat:-34.6077, lng:138.8866, size:'lg' },
+  { name:'Seppeltsfield', lat:-34.5120, lng:138.9156, size:'sm' },
+  { name:'Marananga',     lat:-34.4960, lng:138.9310, size:'sm' },
+  { name:'Bethany',       lat:-34.5380, lng:138.9490, size:'sm' },
+  { name:'Greenock',      lat:-34.4432, lng:138.9115, size:'sm' },
+  { name:'Stockwell',     lat:-34.4330, lng:139.0390, size:'sm' },
+  { name:'Gomersal',      lat:-34.5390, lng:138.8790, size:'sm' },
+  { name:'Vine Vale',     lat:-34.5060, lng:138.9890, size:'sm' },
+  { name:'Eden Valley',   lat:-34.6500, lng:139.1030, size:'sm' },
+];
+
+// Status → z-index + display label
+const MAP_STATUS = {
+  visited:     { label:'Visited',     z: 20 },
+  not_visited: { label:'Not yet',     z: 10 },
+  shortlisted: { label:'Shortlisted', z: 30 },
+};
+
+// Derive a winery's map status from live app state
+const deriveStatus = (w) => w.shortlisted ? 'shortlisted' : (w.visited ? 'visited' : 'not_visited');
+
+// ─── Icon-generating SVG functions (strings, injected into divIcons) ───────
+let __mapUid = 0;
+function svgHome(size){
+  size = size || 58;
+  const w = size, h = Math.round(size * 0.88), uid = 'hb' + (++__mapUid);
+  return [
+    '<svg width="',w,'" height="',h,'" viewBox="0 0 80 66" xmlns="http://www.w3.org/2000/svg">',
+      '<defs>',
+        '<filter id="',uid,'-sh" x="-20%" y="-20%" width="140%" height="140%">',
+          '<feDropShadow dx="0" dy="2.2" stdDeviation="2" flood-color="#2a1810" flood-opacity=".34"/>',
+        '</filter>',
+        '<linearGradient id="',uid,'-roof" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#868a90"/><stop offset="55%" stop-color="#6a6e74"/><stop offset="100%" stop-color="#4c4f54"/>',
+        '</linearGradient>',
+        '<linearGradient id="',uid,'-roof2" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#6e7278"/><stop offset="100%" stop-color="#474a4f"/>',
+        '</linearGradient>',
+        '<linearGradient id="',uid,'-render" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#959ba2"/><stop offset="100%" stop-color="#72777e"/>',
+        '</linearGradient>',
+        '<linearGradient id="',uid,'-shade" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#5c6066"/><stop offset="100%" stop-color="#3d4045"/>',
+        '</linearGradient>',
+        '<linearGradient id="',uid,'-garage" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#f6f4ef"/><stop offset="100%" stop-color="#e2ddd2"/>',
+        '</linearGradient>',
+        '<linearGradient id="',uid,'-door" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#f6c6d3"/><stop offset="100%" stop-color="#dca3b7"/>',
+        '</linearGradient>',
+        '<linearGradient id="',uid,'-win" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#5e7c94"/><stop offset="55%" stop-color="#3d5770"/><stop offset="100%" stop-color="#29415a"/>',
+        '</linearGradient>',
+        '<pattern id="',uid,'-brick" width="4.2" height="2.2" patternUnits="userSpaceOnUse">',
+          '<rect width="4.2" height="2.2" fill="#a76a53"/>',
+          '<rect y="1.1" width="4.2" height="1.1" fill="#965c47"/>',
+          '<line x1="0" y1="1.1" x2="4.2" y2="1.1" stroke="#6b4232" stroke-width=".25"/>',
+          '<line x1="0" y1="2.2" x2="4.2" y2="2.2" stroke="#6b4232" stroke-width=".25"/>',
+          '<line x1="2.1" y1="0" x2="2.1" y2="1.1" stroke="#6b4232" stroke-width=".25"/>',
+          '<line x1="0" y1="1.1" x2="0" y2="2.2" stroke="#6b4232" stroke-width=".25"/>',
+        '</pattern>',
+      '</defs>',
+      '<ellipse cx="40" cy="63.4" rx="32" ry="2.2" fill="#2a1810" opacity=".22"/>',
+      '<g filter="url(#',uid,'-sh)">',
+        '<rect x="4" y="56" width="72" height="2.6" fill="#d4d0c4"/>',
+        '<rect x="4" y="58.4" width="72" height=".8" fill="#b6b1a4"/>',
+        '<rect x="5" y="30" width="18" height="26" fill="url(#',uid,'-garage)"/>',
+        '<rect x="23" y="30" width="11" height="26" fill="url(#',uid,'-brick)"/>',
+        '<rect x="34" y="30" width="41" height="26" fill="url(#',uid,'-render)"/>',
+        '<rect x="38" y="33" width="16" height="23" fill="url(#',uid,'-shade)"/>',
+        '<rect x="7" y="35.5" width="14" height="20.5" rx=".4" fill="#ecebe4" stroke="#bcb6a7" stroke-width=".45"/>',
+        '<line x1="7" y1="40.5" x2="21" y2="40.5" stroke="#cac4b4" stroke-width=".3"/>',
+        '<line x1="7" y1="45.5" x2="21" y2="45.5" stroke="#cac4b4" stroke-width=".3"/>',
+        '<line x1="7" y1="50.5" x2="21" y2="50.5" stroke="#cac4b4" stroke-width=".3"/>',
+        '<rect x="43" y="37.5" width="6.2" height="18.5" rx=".4" fill="url(#',uid,'-door)" stroke="#a66377" stroke-width=".45"/>',
+        '<rect x="43.7" y="39" width="4.8" height="3.5" fill="none" stroke="#c88ba2" stroke-width=".22" rx=".3"/>',
+        '<rect x="43.7" y="43.2" width="4.8" height="3.5" fill="none" stroke="#c88ba2" stroke-width=".22" rx=".3"/>',
+        '<rect x="43.7" y="47.4" width="4.8" height="3.5" fill="none" stroke="#c88ba2" stroke-width=".22" rx=".3"/>',
+        '<rect x="43.7" y="51.6" width="4.8" height="3.5" fill="none" stroke="#c88ba2" stroke-width=".22" rx=".3"/>',
+        '<circle cx="48.1" cy="47" r=".45" fill="#2a1f18"/>',
+        '<rect x="37" y="30" width="2.6" height="26" fill="#f8f6f1"/>',
+        '<rect x="52.4" y="30" width="2.6" height="26" fill="#f8f6f1"/>',
+        '<rect x="36.6" y="54.6" width="3.4" height="1.6" fill="#e7e2d4"/>',
+        '<rect x="52" y="54.6" width="3.4" height="1.6" fill="#e7e2d4"/>',
+        '<rect x="39.1" y="30" width=".5" height="26" fill="#c9c3b3" opacity=".65"/>',
+        '<rect x="54.5" y="30" width=".5" height="26" fill="#c9c3b3" opacity=".65"/>',
+        '<rect x="58.5" y="36" width="14" height="14" rx=".35" fill="url(#',uid,'-win)" stroke="#f8f6f1" stroke-width="1.1"/>',
+        '<line x1="65.5" y1="36" x2="65.5" y2="50" stroke="#f8f6f1" stroke-width=".6"/>',
+        '<line x1="58.5" y1="43" x2="72.5" y2="43" stroke="#f8f6f1" stroke-width=".45" opacity=".7"/>',
+        '<path d="M59.2 37 L64.5 37 L59.2 42.6 Z" fill="#ffffff" opacity=".12"/>',
+        '<polygon points="2.5,30 77.5,30 70,16.5 10,16.5" fill="url(#',uid,'-roof)" stroke="#2d3034" stroke-width=".75" stroke-linejoin="round"/>',
+        '<line x1="10" y1="16.5" x2="70" y2="16.5" stroke="#2d3034" stroke-width=".5"/>',
+        '<line x1="2.5" y1="30" x2="10" y2="16.5" stroke="#b4b7bc" stroke-width=".35" opacity=".65"/>',
+        '<line x1="77.5" y1="30" x2="70" y2="16.5" stroke="#b4b7bc" stroke-width=".35" opacity=".65"/>',
+        '<g stroke="#5a5d62" stroke-width=".25" opacity=".55">',
+          '<line x1="6" y1="25" x2="74" y2="25"/>',
+          '<line x1="8" y1="22" x2="72" y2="22"/>',
+          '<line x1="10" y1="19" x2="70" y2="19"/>',
+        '</g>',
+        '<polygon points="35,30 57,30 54.2,24 37.8,24" fill="url(#',uid,'-roof2)" stroke="#2d3034" stroke-width=".55" stroke-linejoin="round"/>',
+        '<rect x="2.5" y="29.5" width="75" height="1.1" fill="#f8f6f1"/>',
+        '<rect x="35" y="29.6" width="22" height=".9" fill="#f8f6f1"/>',
+        '<rect x="38.4" y="14.2" width="2.4" height="2.3" fill="#d4d1c8"/>',
+        '<ellipse cx="39.6" cy="13.2" rx="1.3" ry=".7" fill="#7a7e84" stroke="#2d3034" stroke-width=".25"/>',
+        '<ellipse cx="39.6" cy="12.8" rx="1.1" ry=".55" fill="#b8bbc0"/>',
+      '</g>',
+    '</svg>'
+  ].join('');
+}
+
+function svgVisited(size){
+  size = size || 36;
+  const uid = 'vv' + (++__mapUid);
+  return [
+    '<svg width="',size,'" height="',Math.round(size*1.35),'" viewBox="0 0 40 54" xmlns="http://www.w3.org/2000/svg">',
+      '<defs>',
+        '<radialGradient id="',uid,'f" cx="42%" cy="28%" r="72%">',
+          '<stop offset="0%" stop-color="#c43250"/><stop offset="55%" stop-color="#8a1f2a"/><stop offset="100%" stop-color="#560d18"/>',
+        '</radialGradient>',
+        '<filter id="',uid,'s" x="-30%" y="-15%" width="160%" height="140%">',
+          '<feDropShadow dx="0" dy="1.6" stdDeviation="1.4" flood-color="#2a0f14" flood-opacity=".4"/>',
+        '</filter>',
+      '</defs>',
+      '<g filter="url(#',uid,'s)">',
+        '<path d="M 8,5 Q 6.2,21 11.6,30 Q 15.6,36 20,37 Q 24.4,36 28.4,30 Q 33.8,21 32,5 Z" fill="url(#',uid,'f)" stroke="#3a0f16" stroke-width="1.4" stroke-linejoin="round"/>',
+        '<path d="M 9.2,5 Q 20,2.2 30.8,5" fill="none" stroke="#3a0f16" stroke-width="1.25" stroke-linecap="round"/>',
+        '<path d="M 10.5,8 Q 20,6 29.5,8" fill="none" stroke="#ffc9cf" stroke-opacity=".35" stroke-width="1"/>',
+        '<path d="M 11,11 Q 10,22 13.4,28" fill="none" stroke="#ffd6d6" stroke-opacity=".28" stroke-width="1.6" stroke-linecap="round"/>',
+        '<line x1="20" y1="37" x2="20" y2="47.2" stroke="#3a0f16" stroke-width="1.9" stroke-linecap="round"/>',
+        '<path d="M 12,47.6 Q 20,51 28,47.6" fill="none" stroke="#3a0f16" stroke-width="1.9" stroke-linecap="round"/>',
+        '<path d="M 12.5,48.4 Q 20,50.8 27.5,48.4" fill="none" stroke="#3a0f16" stroke-width=".9" stroke-opacity=".55"/>',
+      '</g>',
+    '</svg>'
+  ].join('');
+}
+
+function svgEmpty(size){
+  size = size || 32;
+  const uid = 'nv' + (++__mapUid);
+  return [
+    '<svg width="',size,'" height="',Math.round(size*1.35),'" viewBox="0 0 40 54" xmlns="http://www.w3.org/2000/svg">',
+      '<defs>',
+        '<linearGradient id="',uid,'f" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#fffaf0"/><stop offset="100%" stop-color="#f2e6cf"/>',
+        '</linearGradient>',
+        '<filter id="',uid,'s" x="-30%" y="-15%" width="160%" height="140%">',
+          '<feDropShadow dx="0" dy="1.2" stdDeviation="1.1" flood-color="#3b2410" flood-opacity=".28"/>',
+        '</filter>',
+      '</defs>',
+      '<g filter="url(#',uid,'s)">',
+        '<path d="M 8,5 Q 6.2,21 11.6,30 Q 15.6,36 20,37 Q 24.4,36 28.4,30 Q 33.8,21 32,5 Z" fill="url(#',uid,'f)" stroke="#5a3a24" stroke-width="1.6" stroke-linejoin="round"/>',
+        '<path d="M 9.2,5 Q 20,2.2 30.8,5" fill="none" stroke="#5a3a24" stroke-width="1.4" stroke-linecap="round"/>',
+        '<path d="M 11.2,9 Q 10,22 13.6,28" fill="none" stroke="#5a3a24" stroke-opacity=".22" stroke-width="1"/>',
+        '<line x1="20" y1="37" x2="20" y2="47.2" stroke="#5a3a24" stroke-width="1.7" stroke-linecap="round"/>',
+        '<path d="M 12,47.6 Q 20,51 28,47.6" fill="none" stroke="#5a3a24" stroke-width="1.7" stroke-linecap="round"/>',
+      '</g>',
+    '</svg>'
+  ].join('');
+}
+
+function svgShortlisted(size){
+  size = size || 36;
+  const uid = 'sl' + (++__mapUid);
+  return [
+    '<svg width="',Math.round(size*1.35),'" height="',Math.round(size*1.55),'" viewBox="0 0 54 62" xmlns="http://www.w3.org/2000/svg">',
+      '<defs>',
+        '<radialGradient id="',uid,'h" cx="50%" cy="50%" r="50%">',
+          '<stop offset="0%" stop-color="#f6d58a" stop-opacity=".9"/><stop offset="55%" stop-color="#e2b65b" stop-opacity=".35"/><stop offset="100%" stop-color="#c4a842" stop-opacity="0"/>',
+        '</radialGradient>',
+        '<linearGradient id="',uid,'w" x1="0" x2="0" y1="0" y2="1">',
+          '<stop offset="0%" stop-color="#f2d58d" stop-opacity=".55"/><stop offset="100%" stop-color="#b07a2c" stop-opacity=".55"/>',
+        '</linearGradient>',
+        '<filter id="',uid,'s" x="-30%" y="-15%" width="160%" height="140%">',
+          '<feDropShadow dx="0" dy="1.2" stdDeviation="1.1" flood-color="#3b2410" flood-opacity=".3"/>',
+        '</filter>',
+      '</defs>',
+      '<circle class="pulse-halo" cx="27" cy="31" r="22" fill="url(#',uid,'h)"/>',
+      '<g filter="url(#',uid,'s)">',
+        '<path d="M 20,8 Q 19.6,22 22.2,32 Q 24.4,38 27,38 Q 29.6,38 31.8,32 Q 34.4,22 34,8 Z" fill="url(#',uid,'w)" stroke="#5a3a24" stroke-width="1.35" stroke-linejoin="round"/>',
+        '<ellipse cx="27" cy="8" rx="7.2" ry="1.3" fill="#fff6dc" stroke="#5a3a24" stroke-width="1.2"/>',
+        '<path d="M 22,12 Q 21.2,24 23.4,31" fill="none" stroke="#f6d58a" stroke-opacity=".8" stroke-width="1.1" stroke-linecap="round"/>',
+        '<line x1="27" y1="38" x2="27" y2="52" stroke="#5a3a24" stroke-width="1.6" stroke-linecap="round"/>',
+        '<path d="M 20,52.4 Q 27,56 34,52.4" fill="none" stroke="#5a3a24" stroke-width="1.6" stroke-linecap="round"/>',
+        '<path d="M 37,10 l 1.1,2.4 l 2.4,1.1 l-2.4,1.1 l-1.1,2.4 l-1.1,-2.4 l-2.4,-1.1 l 2.4,-1.1 z" fill="#f6d58a" opacity=".95"/>',
+      '</g>',
+    '</svg>'
+  ].join('');
+}
+
+// Pure utility helpers
+function mapHaversineKm(a, b){
+  const toRad = d => d * Math.PI / 180, R = 6371;
+  const dLat = toRad(b.lat - a.lat), dLng = toRad(b.lng - a.lng);
+  const la1 = toRad(a.lat), la2 = toRad(b.lat);
+  const h = Math.sin(dLat/2)**2 + Math.cos(la1) * Math.cos(la2) * Math.sin(dLng/2)**2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+function mapEscapeHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+}
+// Greedy pixel-space deconflict so overlapping pins separate gracefully
+function deconflictPoints(map, items, minPx){
+  minPx = minPx || 36;
+  const zRef = 13;
+  const pts = items.map(it => ({ it, p: map.project([it.lat, it.lng], zRef) }));
+  for (let iter = 0; iter < 24; iter++) {
+    let moved = false;
+    for (let i = 0; i < pts.length; i++) {
+      for (let j = i + 1; j < pts.length; j++) {
+        const a = pts[i], b = pts[j];
+        const dx = b.p.x - a.p.x, dy = b.p.y - a.p.y;
+        const d = Math.hypot(dx, dy) || 0.01;
+        if (d < minPx) {
+          const push = (minPx - d) / 2 + 0.1;
+          const ux = dx / d, uy = dy / d;
+          a.p.x -= ux * push; a.p.y -= uy * push;
+          b.p.x += ux * push; b.p.y += uy * push;
+          moved = true;
+        }
+      }
+    }
+    if (!moved) break;
+  }
+  return pts.map(({ it, p }) => { const ll = map.unproject(p, zRef); return Object.assign({}, it, { lat: ll.lat, lng: ll.lng }); });
+}
+
+// ─── The React component ─────────────────────────────────────────────────
+const MapView = ({ wineries, onSelect }) => {
+  const mapContainerRef = useRef(null);
+  const mapRef = useRef(null);
+  const markersRef = useRef(new Map());
+  const overlaysRef = useRef({});
+  const routeRef = useRef({ line:null, glow:null, home:null, dest:null });
+  const driveCacheRef = useRef(new Map());
+  const onSelectRef = useRef(onSelect);
+  useEffect(() => { onSelectRef.current = onSelect; }, [onSelect]);
+
+  const [roadsOn, setRoadsOn] = useState(true);
+  const [bikeOn, setBikeOn]   = useState(false);
+
+  // Popup HTML builder — closes over driveCacheRef for cached ETAs
+  const popupHtml = useCallback((w) => {
+    const status = deriveStatus(w);
+    const overall = getOverall(w);
+    const cached = driveCacheRef.current.get(w.id);
+    const metaInner = cached
+      ? etaMarkup(cached.min, cached.km, cached.estimated)
+      : '<span class="eta-loading">Calculating drive time…</span>';
+    const ratingsHtml = (w.ratings && w.ratings.length)
+      ? '<div class="pop-ratings">' + w.ratings.map(r => {
+          const parts = [
+            r.wine     != null ? 'Wine ' + r.wine        : null,
+            r.location != null ? 'Loc ' + r.location     : null,
+            r.vibes    != null ? 'Vibes ' + r.vibes      : null,
+            r.service  != null ? 'Service ' + r.service  : null,
+          ].filter(Boolean).join(' · ');
+          return '<div><b>' + mapEscapeHtml(r.who) + '</b> <span>' + parts + '</span></div>';
+        }).join('') + '</div>'
+      : '';
+    const notesHtml = (w.notes && w.notes.trim())
+      ? '<div class="pop-notes">&ldquo;' + mapEscapeHtml(w.notes) + '&rdquo;</div>'
+      : '';
+    const bottlesHtml = (w.bottles && w.bottles > 0)
+      ? '<div class="pop-bottles">' + w.bottles + ' ' + (w.bottles === 1 ? 'bottle' : 'bottles') + ' bought</div>'
+      : '';
+    const overallHtml = overall != null
+      ? '<div class="pop-overall"><span class="num">' + overall.toFixed(1) + '</span><span class="denom">/10 overall</span></div>'
+      : '';
+    const badgeLabel = MAP_STATUS[status].label;
+    return [
+      '<div class="pop-name">', mapEscapeHtml(w.name), '</div>',
+      '<span class="pop-badge ', status, '"><span class="dot"></span>', badgeLabel, '</span>',
+      overallHtml, ratingsHtml, notesHtml, bottlesHtml,
+      '<div class="pop-meta" data-eta-for="', w.id, '">', metaInner, '</div>',
+      '<div class="pop-actions">',
+        '<div class="pop-route-picker" data-id="', w.id, '">',
+          '<button class="active" data-mode="car">Drive</button>',
+          '<button data-mode="bike">Cycle</button>',
+        '</div>',
+        '<button class="pop-btn" data-directions="', w.id, '">Get directions from home</button>',
+        '<button class="pop-btn secondary" data-details="', w.id, '">Open details</button>',
+        '<button class="pop-btn secondary" data-clear="1">Clear route</button>',
+      '</div>'
+    ].join('');
+  }, []);
+
+  function etaMarkup(min, km, estimated){
+    const qualifier = estimated ? ' <span style="color:var(--zb-label-3)">(est.)</span>' : '';
+    return '<strong style="color:var(--zb-label);font-weight:600">' + min + ' min</strong> drive from home · ' + km.toFixed(1) + ' km' + qualifier;
+  }
+
+  async function fetchDriveTime(w){
+    const coords = WINERY_COORDS[w.id];
+    if (!coords) return { min:0, km:0, estimated:true };
+    const lat = coords[0], lng = coords[1];
+    const urls = [
+      'https://routing.openstreetmap.de/routed-car/route/v1/driving/' + HOME_BASE.lng + ',' + HOME_BASE.lat + ';' + lng + ',' + lat + '?overview=false&alternatives=false&steps=false',
+      'https://router.project-osrm.org/route/v1/driving/' + HOME_BASE.lng + ',' + HOME_BASE.lat + ';' + lng + ',' + lat + '?overview=false&alternatives=false&steps=false',
+    ];
+    for (const u of urls) {
+      try {
+        const r = await fetch(u, { headers: { Accept:'application/json' } });
+        if (!r.ok) continue;
+        const j = await r.json();
+        const rt = j && j.routes && j.routes[0];
+        if (rt && isFinite(rt.duration)) return { min: Math.max(1, Math.round(rt.duration/60)), km: rt.distance/1000, estimated:false };
+      } catch(e) {}
+    }
+    const km = mapHaversineKm({ lat:HOME_BASE.lat, lng:HOME_BASE.lng }, { lat, lng });
+    const roadKm = km * 1.32;
+    return { min: Math.max(1, Math.round((roadKm / 55) * 60)), km: roadKm, estimated:true };
+  }
+
+  const clearRoute = useCallback(() => {
+    const m = mapRef.current; if (!m) return;
+    const R = routeRef.current;
+    if (R.line) m.removeLayer(R.line);
+    if (R.glow) m.removeLayer(R.glow);
+    if (R.home) m.removeLayer(R.home);
+    if (R.dest) m.removeLayer(R.dest);
+    routeRef.current = { line:null, glow:null, home:null, dest:null };
+    const pill = document.getElementById('zb-route-pill');
+    if (pill) pill.classList.remove('show');
+  }, []);
+
+  async function fetchAndDrawRoute(w, mode){
+    const coords = WINERY_COORDS[w.id]; if (!coords) return;
+    const lat = coords[0], lng = coords[1];
+    const map = mapRef.current; if (!map || !window.L) return;
+    const L = window.L;
+    const profile = mode === 'bike' ? 'routed-bike' : 'routed-car';
+    const urls = [
+      'https://routing.openstreetmap.de/' + profile + '/route/v1/driving/' + HOME_BASE.lng + ',' + HOME_BASE.lat + ';' + lng + ',' + lat + '?overview=full&geometries=geojson&steps=false',
+      mode === 'car' ? 'https://router.project-osrm.org/route/v1/driving/' + HOME_BASE.lng + ',' + HOME_BASE.lat + ';' + lng + ',' + lat + '?overview=full&geometries=geojson' : null,
+    ].filter(Boolean);
+
+    const pill = document.getElementById('zb-route-pill');
+    const pillText = document.getElementById('zb-route-pill-text');
+    if (pill && pillText) { pill.classList.add('show'); pillText.innerHTML = '<b>Plotting…</b> ' + (mode === 'bike' ? 'cycling' : 'driving') + ' to ' + mapEscapeHtml(w.name); }
+
+    let data = null;
+    for (const u of urls) {
+      try {
+        const r = await fetch(u, { headers: { Accept:'application/json' } });
+        if (!r.ok) continue;
+        const j = await r.json();
+        if (j && j.routes && j.routes[0]) { data = j; break; }
+      } catch(e) {}
+    }
+
+    if (!data) {
+      clearRoute();
+      const colour = mode === 'bike' ? '#6b8a4e' : '#9c3f55';
+      const line = L.polyline([[HOME_BASE.lat,HOME_BASE.lng],[lat,lng]], { color:colour, weight:3, opacity:.85, dashArray:'4 8' }).addTo(map);
+      routeRef.current = { line, glow:null, home:null, dest:null };
+      const km = mapHaversineKm({ lat:HOME_BASE.lat, lng:HOME_BASE.lng }, { lat, lng }).toFixed(1);
+      if (pill && pillText) { pillText.innerHTML = '<b>Routing offline</b> · straight-line ' + km + ' km · ' + mapEscapeHtml(w.name); }
+      return;
+    }
+
+    const rt = data.routes[0];
+    const coordsLL = rt.geometry.coordinates.map(xy => [xy[1], xy[0]]);
+    clearRoute();
+    const colour = mode === 'bike' ? '#6b8a4e' : '#9c3f55';
+    const glow = L.polyline(coordsLL, { color:colour, weight:9, opacity:.18, lineCap:'round', lineJoin:'round' }).addTo(map);
+    const line = L.polyline(coordsLL, { color:colour, weight:4.2, opacity:.95, lineCap:'round', lineJoin:'round', dashArray: mode === 'bike' ? '2 6' : null }).addTo(map);
+    const endpoint = (c, size) => L.divIcon({
+      className:'zb-marker',
+      html: '<svg width="' + size + '" height="' + size + '"><circle cx="' + (size/2) + '" cy="' + (size/2) + '" r="' + (size/2 - 1) + '" fill="#fff" stroke="' + c + '" stroke-width="2"/></svg>',
+      iconSize:[size,size], iconAnchor:[size/2, size/2],
+    });
+    const home = L.marker([HOME_BASE.lat, HOME_BASE.lng], { icon: endpoint(colour, 10), interactive:false, zIndexOffset:1200 }).addTo(map);
+    const dest = L.marker([lat, lng], { icon: endpoint(colour, 10), interactive:false, zIndexOffset:1200 }).addTo(map);
+    routeRef.current = { line, glow, home, dest };
+    map.fitBounds(L.latLngBounds(coordsLL).extend([HOME_BASE.lat, HOME_BASE.lng]), { paddingTopLeft:[40,60], paddingBottomRight:[200, 120], maxZoom:14 });
+    const km = (rt.distance/1000).toFixed(1);
+    const min = Math.round(rt.duration/60);
+    if (pill && pillText) { pillText.innerHTML = '<b>' + (mode === 'bike' ? 'Cycle' : 'Drive') + '</b> · ' + km + ' km · ' + min + ' min · <span style="color:var(--zb-label-3)">' + mapEscapeHtml(w.name) + '</span>'; }
+  }
+
+  const wirePopup = useCallback((w) => {
+    const root = document.querySelector('.leaflet-popup-content .pop-route-picker[data-id="' + w.id + '"]');
+    if (!root) return;
+    const popup = root.closest('.leaflet-popup-content');
+    let mode = 'car';
+    root.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        root.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        mode = btn.dataset.mode;
+      });
+    });
+    const dirBtn = popup.querySelector('[data-directions="' + w.id + '"]');
+    if (dirBtn) dirBtn.addEventListener('click', () => fetchAndDrawRoute(w, mode));
+    const detailBtn = popup.querySelector('[data-details="' + w.id + '"]');
+    if (detailBtn) detailBtn.addEventListener('click', () => {
+      if (onSelectRef.current) onSelectRef.current(w);
+      if (mapRef.current) mapRef.current.closePopup();
+    });
+    const clearBtn = popup.querySelector('[data-clear="1"]');
+    if (clearBtn) clearBtn.addEventListener('click', clearRoute);
+
+    if (!driveCacheRef.current.has(w.id)) {
+      fetchDriveTime(w).then(eta => {
+        driveCacheRef.current.set(w.id, eta);
+        const slot = document.querySelector('.pop-meta[data-eta-for="' + w.id + '"]');
+        if (slot) slot.innerHTML = etaMarkup(eta.min, eta.km, eta.estimated);
+      });
+    }
+  }, [clearRoute]);
+
+  // Mount Leaflet once
+  useEffect(() => {
+    if (!window.L || !mapContainerRef.current || mapRef.current) return;
+    const L = window.L;
+    const BOUNDS = L.latLngBounds([-34.70, 138.80],[-34.38, 139.14]);
+    const map = L.map(mapContainerRef.current, {
+      center:[-34.522, 138.960], zoom:12, minZoom:11, maxZoom:17,
+      maxBounds: BOUNDS.pad(0.4), maxBoundsViscosity:0.8,
+      zoomControl:true, attributionControl:true,
+      zoomAnimation:true, fadeAnimation:true, scrollWheelZoom:true,
+    });
+
+    const basemap = L.tileLayer(
+      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+      { subdomains:'abcd', maxZoom:19,
+        attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> · &copy; <a href="https://carto.com/attributions">CARTO</a>' }
+    ).addTo(map);
+    const roadsOverlay = L.tileLayer(
+      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png',
+      { subdomains:'abcd', maxZoom:19, opacity:0.9, pane:'overlayPane' }
+    ).addTo(map);
+    const bikeOverlay = L.tileLayer(
+      'https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png',
+      { subdomains:'abc', maxZoom:20, opacity:0.6,
+        attribution:'Cycle layer © <a href="https://www.cyclosm.org">CyclOSM</a>' }
+    );
+    overlaysRef.current = { basemap, roadsOverlay, bikeOverlay };
+    mapRef.current = map;
+
+    // Town labels
+    MAP_TOWNS.forEach(t => {
+      const el = L.divIcon({
+        className: 'zb-town-label' + (t.size === 'sm' ? ' sm' : ''),
+        html: t.name, iconSize:[1,1], iconAnchor:[0,0],
+      });
+      L.marker([t.lat, t.lng], { icon: el, interactive:false, keyboard:false, pane:'markerPane' }).addTo(map);
+    });
+
+    // Home marker
+    const homeSize = 58, homeH = Math.round(homeSize * 0.88);
+    const homeMarker = L.marker([HOME_BASE.lat, HOME_BASE.lng], {
+      icon: L.divIcon({
+        className:'zb-marker', html: svgHome(homeSize),
+        iconSize:[homeSize, homeH], iconAnchor:[homeSize/2, homeH-4],
+        popupAnchor:[0, -homeH+6],
+      }),
+      zIndexOffset:1000, riseOnHover:true,
+      title:'Home base · ' + HOME_BASE.name, alt:'Home base',
+    }).addTo(map);
+    homeMarker.bindPopup(
+      '<div class="pop-name">Home base</div>' +
+      '<span class="pop-badge" style="background:rgba(122,155,181,.14);color:#355370;border:1px solid rgba(122,155,181,.28)">' +
+        '<span class="dot" style="background:#7a9bb5"></span>Our place</span>' +
+      '<div class="pop-meta">' + HOME_BASE.name + '</div>',
+      { offset:[0,-4] }
+    );
+
+    // Ensure the map sizes correctly in the flex container after paint
+    setTimeout(() => { try { map.invalidateSize(); } catch(e) {} }, 60);
+
+    return () => {
+      try {
+        if (mapRef.current) { mapRef.current.remove(); mapRef.current = null; }
+      } catch(e) {}
+      markersRef.current.clear();
+      overlaysRef.current = {};
+      routeRef.current = { line:null, glow:null, home:null, dest:null };
+    };
+    // eslint-disable-next-line
+  }, []);
+
+  // Rebuild winery markers whenever the live wineries list changes
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !window.L) return;
+    const L = window.L;
+
+    // Remove previous winery markers
+    markersRef.current.forEach(m => map.removeLayer(m));
+    markersRef.current.clear();
+
+    const items = wineries
+      .map(w => {
+        const coords = WINERY_COORDS[w.id];
+        if (!coords) return null;
+        return { id:w.id, name:w.name, lat:coords[0], lng:coords[1], status:deriveStatus(w), winery:w };
+      })
+      .filter(Boolean);
+
+    const placed = deconflictPoints(map, items, 34);
+
+    placed.forEach(it => {
+      const status = it.status;
+      const svg = status === 'visited' ? svgVisited(34)
+                : status === 'shortlisted' ? svgShortlisted(32)
+                : svgEmpty(30);
+      const w = status === 'shortlisted' ? 48 : 34;
+      const h = status === 'shortlisted' ? 56 : 46;
+      const anchor = status === 'shortlisted' ? [24,54] : [17,44];
+      const icon = L.divIcon({
+        className:'zb-marker', html:svg,
+        iconSize:[w,h], iconAnchor:anchor,
+        popupAnchor:[0, -anchor[1] + 10],
+      });
+      const marker = L.marker([it.lat, it.lng], {
+        icon, riseOnHover:true,
+        zIndexOffset: MAP_STATUS[status].z * 10,
+        title:it.name, alt:it.name,
+      }).addTo(map);
+
+      marker.bindPopup(popupHtml(it.winery), {
+        offset:[0,-4], closeButton:true, autoPan:true,
+        autoPanPadding:[40,80], maxWidth:300, minWidth:240,
+      });
+      marker.on('popupopen', () => wirePopup(it.winery));
+      markersRef.current.set(it.id, marker);
+    });
+
+    // Fit to content on first build
+    if (!map.__zbFitted) {
+      map.__zbFitted = true;
+      const all = [[HOME_BASE.lat, HOME_BASE.lng]].concat(placed.map(p => [p.lat, p.lng]));
+      try {
+        map.fitBounds(L.latLngBounds(all).pad(0.12), { paddingTopLeft:[30, 90], paddingBottomRight:[30, 120] });
+      } catch(e) {}
+    }
+  }, [wineries, popupHtml, wirePopup]);
+
+  // Layer toggles
+  useEffect(() => {
+    const map = mapRef.current, o = overlaysRef.current;
+    if (!map || !o.roadsOverlay) return;
+    if (roadsOn) map.addLayer(o.roadsOverlay); else map.removeLayer(o.roadsOverlay);
+  }, [roadsOn]);
+  useEffect(() => {
+    const map = mapRef.current, o = overlaysRef.current;
+    if (!map || !o.bikeOverlay) return;
+    if (bikeOn) map.addLayer(o.bikeOverlay); else map.removeLayer(o.bikeOverlay);
+  }, [bikeOn]);
+
+  return (
+    <div style={{position:"relative",width:"100%",height:"100%",minHeight:"60vh",background:"var(--zb-bg)"}}>
+      <div ref={mapContainerRef} id="zb-leaflet" style={{position:"absolute",inset:0}}/>
+
+      <div className="zb-title">
+        <div className="k">Ze Barossa</div>
+        <h1>The Valley</h1>
+        <div className="sub">Home base · 25 Riebe Street, Tanunda</div>
+      </div>
+
+      <div className="zb-layers">
+        <div className="hdr">Layers</div>
+        <div className="zb-row">
+          <div className="lbl">Roads<small>Sealed &amp; scenic</small></div>
+          <label className="zb-switch">
+            <input type="checkbox" checked={roadsOn} onChange={e=>setRoadsOn(e.target.checked)}/>
+            <span className="slider"/>
+          </label>
+        </div>
+        <div className="zb-row">
+          <div className="lbl">Bike trails<small>Barossa Trail &amp; loops</small></div>
+          <label className="zb-switch">
+            <input type="checkbox" checked={bikeOn} onChange={e=>setBikeOn(e.target.checked)}/>
+            <span className="slider"/>
+          </label>
+        </div>
+      </div>
+
+      <div className="zb-legend">
+        <div className="hdr">Wineries</div>
+        <div className="item"><div className="swatch" dangerouslySetInnerHTML={{__html:svgHome(26)}}/><div className="txt">Home base<small>Where we stay</small></div></div>
+        <div className="item"><div className="swatch" dangerouslySetInnerHTML={{__html:svgVisited(20)}}/><div className="txt">Visited<small>Tasted &amp; reviewed</small></div></div>
+        <div className="item"><div className="swatch" dangerouslySetInnerHTML={{__html:svgEmpty(18)}}/><div className="txt">Not yet<small>On the longlist</small></div></div>
+        <div className="item"><div className="swatch" dangerouslySetInnerHTML={{__html:svgShortlisted(18)}}/><div className="txt">Shortlisted<small>Priority pours</small></div></div>
+      </div>
+
+      <div className="zb-route-pill" id="zb-route-pill" role="status" aria-live="polite">
+        <span className="pip"/>
+        <span id="zb-route-pill-text"><b>Route ready</b> · — km · — min</span>
+        <button className="close" onClick={clearRoute} aria-label="Clear route">✕</button>
+      </div>
+    </div>
+  );
+};
+
+
+// ─── MINI MAP — simplified preview for the home page ─────────────────────────
+const MiniMap = ({ wineries, onNavigate }) => {
+  const visited = wineries.filter(w=>w.visited).length;
+  return (
+    <button onClick={()=>onNavigate("map")} style={{
+      width:"100%",textAlign:"left",padding:0,border:"none",background:"transparent",cursor:"pointer",
+      borderRadius:16,overflow:"hidden",boxShadow:"0 2px 12px rgba(100,70,30,0.08)",
+      transition:"transform 0.15s, box-shadow 0.15s",
+    }}
+      onMouseEnter={e=>e.currentTarget.style.boxShadow=`0 6px 20px rgba(100,70,30,0.18)`}
+      onMouseLeave={e=>e.currentTarget.style.boxShadow="0 2px 12px rgba(100,70,30,0.08)"}>
+      <div style={{background:"#faf3e3",padding:"14px 16px 10px",borderBottom:`1px solid #e4d5b5`,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+        <div>
+          <div style={{fontSize:11,color:"#9c7a54",letterSpacing:1.5,fontWeight:700}}>THE VALLEY</div>
+          <div style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:16,fontWeight:700,color:"#2d1f0f",marginTop:2}}>Map of Ze Barossa</div>
+        </div>
+        <div style={{fontSize:12,color:"#9c7a54",fontWeight:600,display:"flex",alignItems:"center",gap:4}}>Explore ›</div>
+      </div>
+      <div style={{background:"#faf3e3",padding:"0 0 8px"}}>
+        <svg viewBox={`0 0 ${W} ${H}`} style={{width:"100%",height:"auto",display:"block",maxHeight:220}}>
+          {/* Abbreviated mini version of the full map */}
+          <rect width={W} height={H} fill="#faf3e3"/>
+          {/* Hills */}
+          <path d="M 285,0 L 380,0 L 380,200 Q 355,180 330,155 Q 308,128 293,85 Z" fill="#d4c09c" opacity="0.55"/>
+          <path d="M 0,0 L 82,0 L 72,110 Q 58,150 42,185 L 0,190 Z" fill="#d4c09c" opacity="0.5"/>
+          {/* Central vineyard */}
+          <path d="M 80,155 Q 110,150 140,148 Q 175,147 205,150 Q 235,154 255,162 Q 258,195 250,230 Q 240,265 215,280 Q 180,290 145,285 Q 110,278 85,260 Q 70,230 72,195 Q 74,170 80,155 Z" fill="#b8c89c" opacity="0.7"/>
+          <path d="M 100,320 Q 130,315 160,318 Q 195,322 220,330 Q 215,355 195,368 Q 165,375 135,370 Q 105,362 95,345 Q 95,330 100,320 Z" fill="#b8c89c" opacity="0.6"/>
+          {/* River */}
+          <path d="M 152,14 C 150,45 147,78 144,112 C 141,145 138,175 135,205 C 132,230 129,255 126,278 C 123,300 121,320 119,345 C 117,362 115,380 113,406"
+            fill="none" stroke="#6d94a8" strokeWidth="2" opacity="0.7"/>
+          {/* Main road */}
+          <path d="M 158,14 C 156,50 154,88 152,126 C 150,165 149,198 148,232 C 147,265 146,295 145,320 C 144,345 143,368 142,406"
+            fill="none" stroke="#e8d8b8" strokeWidth="4"/>
+          <path d="M 158,14 C 156,50 154,88 152,126 C 150,165 149,198 148,232 C 147,265 146,295 145,320 C 144,345 143,368 142,406"
+            fill="none" stroke="#9a7850" strokeWidth="1" opacity="0.6"/>
+          {/* Towns */}
+          {[[205,244,"Tanunda"],[148,162,"Nuriootpa"],[258,297,"Angaston"]].map(([x,y,name],i)=>(
+            <g key={i}>
+              <circle cx={x} cy={y} r="2.5" fill="#ffffff" stroke="#4a3826" strokeWidth="0.7"/>
+              <circle cx={x} cy={y} r="1" fill="#7a1f2a"/>
+            </g>
+          ))}
+          {/* All winery pins — simplified */}
+          {wineries.map(w => {
+            const coords = WINERY_COORDS[w.id];
+            if(!coords) return null;
+            const {x,y} = toXY(coords[0],coords[1]);
+            if(w.visited) {
+              const r = getOverall(w);
+              const col = r && r>=8.5 ? "#6b1f2a" : "#9c5030";
+              return <circle key={w.id} cx={x} cy={y} r="2.5" fill={col} opacity="0.95"/>;
+            } else if(w.shortlisted) {
+              return <polygon key={w.id} points={`${x},${y-3} ${x+2.5},${y} ${x},${y+3} ${x-2.5},${y}`} fill="#d4a848"/>;
+            } else {
+              return <circle key={w.id} cx={x} cy={y} r="1.5" fill="#fffaed" stroke="#a8b7a0" strokeWidth="0.7"/>;
+            }
+          })}
+          {/* Home marker */}
+          <g>
+            <circle cx="148" cy="237" r="5" fill="#ffffff" stroke="#7a1f2a" strokeWidth="1"/>
+            <path d="M 145,236 L 148,233 L 151,236 L 151,239 L 145,239 Z" fill="#7a1f2a"/>
+          </g>
+        </svg>
+      </div>
+      <div style={{background:"#f0e4cc",padding:"8px 14px",display:"flex",justifyContent:"space-between",alignItems:"center",fontSize:11,color:"#7a5c38",fontFamily:"'Palatino Linotype',Georgia,serif",fontStyle:"italic"}}>
+        <span>{visited} of {wineries.length} visited</span>
+        <span>Tap to explore the full map</span>
+      </div>
+    </button>
+  );
+};
+
+// ─── HOME PAGE ────────────────────────────────────────────────────────────────
+const HomePage = ({ wineries, onNavigate }) => {
+  const visited = wineries.filter(w=>w.visited).length;
+  const pct = Math.round((visited/wineries.length)*100);
+  const totalBottles = wineries.reduce((s,w)=>s+(w.bottles||0),0);
+  const shortlisted = wineries.filter(w=>w.shortlisted).length;
+
+  return (
+    <div style={{padding:"20px 16px",minHeight:"100%",overflowY:"auto",WebkitOverflowScrolling:"touch",background:`linear-gradient(160deg, ${C.cream} 0%, #ede8de 100%)`}}>
+      {/* Hero */}
+      <div style={{textAlign:"center",padding:"30px 0 24px"}}>
+        <div style={{marginBottom:12,display:"flex",justifyContent:"center"}}><Icons.Grape size={52} color={C.sage}/></div>
+        <div style={{fontFamily:"'Palatino Linotype',Palatino,Georgia,serif",fontSize:30,fontWeight:700,color:C.text,lineHeight:1.1}}>Ze Barossa</div>
+        <div style={{fontSize:13,color:C.textLight,marginTop:4,letterSpacing:1}}>WINERY TRACKER</div>
+      </div>
+      {/* Progress bar — clickable, jumps to Not Yet */}
+      <button onClick={()=>onNavigate("notyet")} style={{width:"100%",textAlign:"left",background:"white",borderRadius:16,padding:"16px 18px",marginBottom:16,border:`1px solid ${C.border}`,cursor:"pointer",fontFamily:"inherit",transition:"box-shadow 0.15s, transform 0.1s"}}
+        onMouseEnter={e=>e.currentTarget.style.boxShadow=`0 4px 14px rgba(100,70,30,0.12)`}
+        onMouseLeave={e=>e.currentTarget.style.boxShadow=""}
+        onMouseDown={e=>e.currentTarget.style.transform="scale(0.995)"}
+        onMouseUp={e=>e.currentTarget.style.transform=""}>
+        <div style={{display:"flex",justifyContent:"space-between",marginBottom:8,alignItems:"center"}}>
+          <span style={{fontSize:13,fontWeight:600,color:C.text}}>Mission Progress</span>
+          <div style={{display:"flex",alignItems:"center",gap:8}}>
+            <span style={{fontSize:13,fontWeight:700,color:C.sage}}>{visited}/{wineries.length}</span>
+            <span style={{fontSize:16,color:C.border,fontWeight:400}}>›</span>
+          </div>
+        </div>
+        <div style={{height:10,background:C.border,borderRadius:5,overflow:"hidden"}}>
+          <div style={{width:`${pct}%`,height:"100%",background:`linear-gradient(90deg, ${C.sage}, ${C.dustyBlue})`,borderRadius:5,transition:"width 0.6s ease"}}/>
+        </div>
+        <div style={{fontSize:11,color:C.textLight,marginTop:6}}>{pct}% of Barossa conquered · tap to see {wineries.length-visited} remaining</div>
+      </button>
+      {/* Quick stats */}
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:20}}>
+        {[[totalBottles,"Bottles",C.dustyBlue,C.blueLight],[visited,"Visited",C.sage,C.sageLight],[shortlisted,"Shortlisted",C.dustyPink,C.pinkLight]].map(([v,l,c,bg])=>(
+          <div key={l} style={{background:bg,borderRadius:12,padding:"12px 10px",textAlign:"center"}}>
+            <div style={{fontSize:22,fontWeight:700,color:c}}>{v}</div>
+            <div style={{fontSize:10,color:c,opacity:0.8}}>{l}</div>
+          </div>
+        ))}
+      </div>
+      {/* Nav buttons */}
+      <div style={{display:"flex",flexDirection:"column",gap:10}}>
+        {[
+          ["leaderboard","Stats","Rankings & leaderboard",<Icons.Trophy size={20} color={C.gold}/>,`#fff9e6`,C.gold],
+          ["all","All Wineries","The complete Barossa list",<Icons.Map size={20} color={C.earth}/>,C.earthLight,C.earth],
+          ["visited","Visited","Wineries you've been to",<Icons.Check size={20} color={C.sage}/>,C.sageLight,C.sage],
+          ["notyet","Not Yet Visited","Your hit list",<Icons.WineGlass size={20} color={C.dustyBlue}/>,C.blueLight,C.dustyBlue],
+          ["shortlist","Shortlist","Curated picks for next time",<Icons.Star size={20} color={C.dustyPink} filled/>,C.pinkLight,C.dustyPink],
+        ].map(([tab,title,sub,icon,bg,col])=>(
+          <button key={tab} onClick={()=>onNavigate(tab)} style={{background:"white",border:`1px solid ${C.border}`,borderRadius:16,padding:"14px 16px",cursor:"pointer",display:"flex",alignItems:"center",gap:14,textAlign:"left",transition:"box-shadow 0.15s"}}
+            onMouseEnter={e=>e.currentTarget.style.boxShadow="0 4px 16px rgba(100,70,30,0.1)"}
+            onMouseLeave={e=>e.currentTarget.style.boxShadow=""}>
+            <div style={{width:44,height:44,borderRadius:12,background:bg,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>{icon}</div>
+            <div>
+              <div style={{fontSize:15,fontWeight:700,color:C.text,fontFamily:"'Palatino Linotype',Georgia,serif"}}>{title}</div>
+              <div style={{fontSize:12,color:C.textLight,marginTop:1}}>{sub}</div>
+            </div>
+            <div style={{marginLeft:"auto",color:C.border,fontSize:18}}>›</div>
+          </button>
+        ))}
+      </div>
+      {/* Mini map preview at the bottom */}
+      <div style={{marginTop:20,marginBottom:20}}>
+        <MiniMap wineries={wineries} onNavigate={onNavigate}/>
+      </div>
+    </div>
+  );
+};
+
+// ─── MAIN APP ─────────────────────────────────────────────────────────────────
+function App() {
+  const [wineries, setWineries] = useState(() => {
+    try { const s=localStorage.getItem("barossa_v3"); return s?JSON.parse(s):INITIAL_DATA; } catch { return INITIAL_DATA; }
+  });
+  const [view, setView] = useState("home");
+  const [search, setSearch] = useState("");
+  const [sortBy, setSortBy] = useState("name");
+  const [ratingFilter, setRatingFilter] = useState("overall"); // overall|wine|location|vibes|service
+  const [minRating, setMinRating] = useState(0);
+  const [showFilters, setShowFilters] = useState(false);
+  const [selected, setSelected] = useState(null);
+  const [showAdd, setShowAdd] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const listRef = useRef(null);
+
+  useEffect(()=>{ try{localStorage.setItem("barossa_v3",JSON.stringify(wineries));}catch{} },[wineries]);
+
+  const handleScroll = useCallback((e) => {
+    setShowScrollTop(e.target.scrollTop > 300);
+  }, []);
+
+  const tabs = [
+    {id:"home",label:"Home",icon:<Icons.Home size={16}/>},
+    {id:"leaderboard",label:"Stats",icon:<Icons.Trophy size={16}/>},
+    {id:"all",label:"All",icon:<Icons.Map size={16}/>},
+    {id:"visited",label:"Visited",icon:<Icons.Check size={16}/>},
+    {id:"notyet",label:"Not Yet",icon:<Icons.WineGlass size={16}/>},
+    {id:"shortlist",label:"Shortlist",icon:<Icons.Star size={16}/>},
+    {id:"map",label:"Map",icon:<Icons.Pin size={16}/>},
+  ];
+
+  const getRatingValue = (w, field) => field === "overall" ? getOverall(w) : avgRatingField(w, field);
+
+  const filtered = wineries.filter(w => {
+    if (search && !w.name.toLowerCase().includes(search.toLowerCase())) return false;
+    if (view==="visited") return w.visited;
+    if (view==="notyet") return !w.visited;
+    if (view==="shortlist") return w.shortlisted;
+    if (minRating > 0) {
+      const val = getRatingValue(w, ratingFilter);
+      if (val == null || val < minRating) return false;
+    }
+    return true;
+  }).sort((a,b)=>{
+    if (sortBy==="name") return a.name.localeCompare(b.name);
+    if (sortBy==="distJohn") return a.distJohn-b.distJohn;
+    if (sortBy==="distRiebe") return a.distRiebe-b.distRiebe;
+    if (sortBy==="rating") return (getRatingValue(b, ratingFilter)??-1)-(getRatingValue(a, ratingFilter)??-1);
+    return 0;
+  });
+
+  const handleSave = (updated) => {
+    setWineries(ws=>ws.map(w=>w.id===updated.id?updated:w));
+    setSelected(updated);
+  };
+  const handleToggle = (id) => {
+    setWineries(ws=>ws.map(w=>w.id===id?{...w,shortlisted:!w.shortlisted}:w));
+    if(selected?.id===id) setSelected(s=>({...s,shortlisted:!s.shortlisted}));
+  };
+  const handleAdd = (w) => setWineries(ws=>[...ws,w]);
+
+  const selectedLive = selected ? wineries.find(w=>w.id===selected.id)||selected : null;
+  const showList = ["all","visited","notyet","shortlist"].includes(view);
+
+  return (
+    <div style={{height:"100%",background:C.cream,width:"100%",maxWidth:"100%",fontFamily:"'Helvetica Neue',Arial,sans-serif",display:"flex",flexDirection:"column",overflow:"hidden"}}>
+      {/* Header */}
+      <div className="zb-header" style={{background:C.cream,borderBottom:`1px solid ${C.border}`,padding:"14px 16px 0",position:"sticky",top:0,zIndex:50}}>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
+          <div style={{display:"flex",alignItems:"center",gap:8}}>
+            <Icons.Grape size={26} color={C.sage}/>
+            <div>
+              <div style={{fontFamily:"'Palatino Linotype',Palatino,Georgia,serif",fontSize:18,fontWeight:700,color:C.text,lineHeight:1}}>Ze Barossa</div>
+              <div style={{fontSize:9,color:C.textLight,letterSpacing:1}}>WINERY TRACKER</div>
+            </div>
+          </div>
+          <div style={{display:"flex",gap:8}}>
+            <button onClick={()=>exportCSV(wineries)} title="Export CSV" style={{background:"white",border:`1px solid ${C.border}`,borderRadius:10,padding:"8px 12px",minHeight:36,cursor:"pointer",display:"flex",alignItems:"center",gap:4,fontSize:12,color:C.textMid,fontWeight:600}}>
+              <Icons.Download size={14} color={C.textMid}/>Export
+            </button>
+            <button onClick={()=>document.getElementById("zb-csv-input").click()} title="Import CSV (merge by ID or Name)" style={{background:"white",border:`1px solid ${C.border}`,borderRadius:10,padding:"8px 12px",minHeight:36,cursor:"pointer",display:"flex",alignItems:"center",gap:4,fontSize:12,color:C.textMid,fontWeight:600}}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Import
+            </button>
+            <input id="zb-csv-input" type="file" accept=".csv,text/csv" style={{display:"none"}} onChange={e=>{
+              const file = e.target.files && e.target.files[0];
+              if(!file) return;
+              const reader = new FileReader();
+              reader.onload = () => {
+                const { wineries: merged, summary } = importCSV(String(reader.result), wineries);
+                if (confirm(`Import preview: ${summary}\n\nApply changes?`)) {
+                  setWineries(merged);
+                }
+              };
+              reader.readAsText(file);
+              e.target.value = ""; // allow re-import of same file
+            }}/>
+            <button onClick={()=>setShowAdd(true)} style={{background:C.earth,color:"white",border:"none",borderRadius:10,padding:"8px 14px",minHeight:36,fontSize:13,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",gap:4}}>
+              <Icons.Plus size={15} color="white"/>Add
+            </button>
+          </div>
+        </div>
+        {/* Tab bar */}
+        <div style={{display:"flex",gap:0,overflowX:"auto",scrollbarWidth:"none",marginLeft:-16,paddingLeft:16,marginRight:-16,paddingRight:16}}>
+          {tabs.map(t=>(
+            <button key={t.id} onClick={()=>setView(t.id)} style={{padding:"8px 10px",border:"none",background:"transparent",cursor:"pointer",fontSize:11,fontWeight:view===t.id?700:400,color:view===t.id?C.earth:C.textLight,borderBottom:`2px solid ${view===t.id?C.earth:"transparent"}`,whiteSpace:"nowrap",display:"flex",alignItems:"center",gap:3,flexShrink:0}}>
+              {t.icon}{t.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Search + Filter bar for list views */}
+      {showList && (
+        <div style={{background:C.cream,borderBottom:`1px solid ${C.border}`}}>
+          <div style={{padding:"10px 16px",display:"flex",gap:8}}>
+            <input type="text" value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search wineries…" style={{flex:1,padding:"8px 12px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:14,background:"white"}}/>
+            <select value={sortBy} onChange={e=>setSortBy(e.target.value)} style={{padding:"8px 6px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:12,background:"white",color:C.textMid}}>
+              <option value="name">A–Z</option>
+              <option value="distJohn">John St</option>
+              <option value="distRiebe">Riebe St</option>
+              <option value="rating">Rating ↓</option>
+            </select>
+            <button onClick={()=>setShowFilters(f=>!f)} aria-label="Filter" style={{padding:"4px 8px 4px 4px",borderRadius:22,border:`1px solid ${showFilters||minRating>0?C.earth:C.border}`,background:showFilters||minRating>0?C.earthLight:"white",fontSize:12,color:showFilters||minRating>0?C.earth:C.textMid,fontWeight:600,cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center",gap:5}}>
+              <WineGlassFilter size={30} fillPct={(minRating/9)*100} active={showFilters||minRating>0}/>
+              {minRating>0?`≥${minRating}`:"Filter"}
+            </button>
+          </div>
+          {showFilters && (
+            <div style={{padding:"0 16px 12px"}}>
+              <div style={{background:"white",border:`1px solid ${C.border}`,borderRadius:12,padding:"12px 14px"}}>
+                <div style={{fontSize:11,color:C.textMid,fontWeight:700,marginBottom:8,letterSpacing:0.3}}>FILTER BY RATING CATEGORY</div>
+                <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:12}}>
+                  {[["overall","Overall"],["wine","Wine"],["location","Location"],["vibes","Vibes"],["service","Service"]].map(([key,lbl])=>(
+                    <button key={key} onClick={()=>setRatingFilter(key)} style={{padding:"4px 12px",borderRadius:20,border:`1px solid ${ratingFilter===key?C.earth:C.border}`,background:ratingFilter===key?C.earthLight:"transparent",color:ratingFilter===key?C.earth:C.textLight,fontSize:12,fontWeight:ratingFilter===key?700:400,cursor:"pointer"}}>
+                      {lbl}
+                    </button>
+                  ))}
+                </div>
+                <div style={{fontSize:11,color:C.textMid,fontWeight:700,marginBottom:6,letterSpacing:0.3}}>MINIMUM SCORE: <span style={{color:C.earth}}>{minRating===0?"Any":minRating+"/10"}</span></div>
+                <div style={{position:"relative",height:40}}>
+                  <div style={{position:"absolute",left:14,right:14,top:"50%",marginTop:-3,height:6,background:"white",borderRadius:3,border:`1px solid ${C.border}`}}/>
+                  <div style={{position:"absolute",left:14,top:"50%",marginTop:-3,width:`calc((100% - 28px) * ${(minRating/9)*100/100})`,height:6,background:C.earth,borderRadius:3,transition:"width 0.08s linear"}}/>
+                  <div style={{position:"absolute",left:`calc((100% - 28px) * ${(minRating/9)})`,top:"50%",marginTop:-15,width:30,height:30,pointerEvents:"none",filter:"drop-shadow(0 1px 2px rgba(90,60,30,0.35))",transition:"left 0.08s linear"}}>
+                    <WineGlassFill size={30} fillPct={(minRating/9)*100}/>
+                  </div>
+                  <input type="range" min="0" max="9" step="0.5" value={minRating} onChange={e=>setMinRating(parseFloat(e.target.value))}
+                    aria-label="Minimum rating"
+                    style={{position:"absolute",left:0,right:0,top:0,bottom:0,width:"100%",height:"100%",opacity:0,margin:0,padding:0,cursor:"pointer",WebkitAppearance:"none"}}/>
+                </div>
+                <div style={{display:"flex",justifyContent:"space-between",fontSize:10,color:C.textLight,marginTop:4,padding:"0 14px"}}>
+                  <span>Any</span><span>5</span><span>9/10</span>
+                </div>
+                {minRating>0&&<button onClick={()=>{setMinRating(0);setRatingFilter("overall");}} style={{marginTop:8,fontSize:11,color:C.dustyPink,background:"none",border:"none",cursor:"pointer",padding:0,fontWeight:600}}>✕ Clear filter</button>}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Content */}
+      <div ref={listRef} onScroll={handleScroll} style={{flex:1,minHeight:0,overflowY:"auto",WebkitOverflowScrolling:"touch",overscrollBehavior:"contain",width:"100%",padding:showList?"12px 16px 80px":0}}>
+        {view==="home" && <HomePage wineries={wineries} onNavigate={setView}/>}
+        {view==="leaderboard" && <div style={{padding:"16px 16px 80px",overflowY:"auto",WebkitOverflowScrolling:"touch",flex:1,minHeight:0}}><Stats wineries={wineries} onSelect={setSelected}/></div>}
+        {view==="map" && <MapView wineries={wineries} onSelect={setSelected}/>}
+        {showList && (
+          filtered.length===0?(
+            <div style={{textAlign:"center",padding:"40px 20px",color:C.textLight}}>
+              <div style={{marginBottom:12}}><Icons.Grape size={40} color={C.border}/></div>
+              <div style={{fontFamily:"Georgia,serif",fontSize:15,color:C.textMid}}>{view==="shortlist"?"No wineries on your shortlist yet":"No wineries found"}</div>
+            </div>
+          ):filtered.map(w=>(
+            <WineryCard key={w.id} winery={w} onOpen={setSelected} onToggleShortlist={handleToggle}/>
+          ))
+        )}
+      </div>
+
+      {/* Scroll to top */}
+      {showScrollTop && (
+        <button onClick={()=>listRef.current?.scrollTo({top:0,behavior:"smooth"})} style={{position:"fixed",bottom:20,right:20,width:44,height:44,borderRadius:"50%",background:C.earth,color:"white",border:"none",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 4px 14px rgba(100,60,20,0.3)",zIndex:100}}>
+          <Icons.ChevronUp size={20} color="white"/>
+        </button>
+      )}
+
+      {/* Detail Modal */}
+      {selectedLive && <DetailModal winery={selectedLive} onClose={()=>setSelected(null)} onSave={handleSave} onToggleShortlist={handleToggle}/>}
+
+      {/* Add Modal */}
+      {showAdd && <AddModal onClose={()=>setShowAdd(false)} onAdd={handleAdd}/>}
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(App));
+</script>
+</body>
+</html>

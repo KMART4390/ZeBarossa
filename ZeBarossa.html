@@ -823,8 +823,11 @@
   }
   .zb-bb-chips-row {
     display: flex; align-items: center; gap: 5px;
-    overflow-x: auto; scrollbar-width: none;
+    overflow-x: scroll; scrollbar-width: none;
     flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
   }
   .zb-bb-chips-row::-webkit-scrollbar { display: none; }
   .leaflet-bottom { bottom: 96px !important; }
@@ -843,9 +846,10 @@
     backdrop-filter: saturate(180%) blur(14px);
     -webkit-backdrop-filter: saturate(180%) blur(14px);
     box-shadow: var(--zb-shadow);
-    font-family: var(--zb-font-sans); font-size: 12px;
+    font-family: var(--zb-font-sans); font-size: 16px;
     color: var(--zb-label); outline: none;
     box-sizing: border-box; transition: border-color .15s;
+    touch-action: manipulation;
   }
   .zb-map-search-input:focus { border-color: var(--zb-earth-mid); }
   .zb-map-search-input::placeholder { color: var(--zb-label-3); }

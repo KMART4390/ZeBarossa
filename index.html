@@ -191,7 +191,7 @@
   #zb-leaflet { background: var(--zb-bg-grouped); }
   .leaflet-tile-pane { filter: sepia(.18) saturate(.82) hue-rotate(-6deg) brightness(1.03) contrast(.95); }
   @media (prefers-color-scheme: dark) {
-    .leaflet-tile-pane { filter: sepia(.22) saturate(.78) hue-rotate(-4deg) brightness(.76) contrast(1.02); }
+    .leaflet-tile-pane { filter: sepia(.14) saturate(.85) hue-rotate(-4deg) brightness(.90) contrast(1.0); }
   }
 
   .leaflet-control-attribution {
@@ -225,12 +225,12 @@
     line-height: 30px !important;
   }
   .leaflet-bar a:hover { background: var(--zb-earth-light) !important; }
-  .leaflet-top.leaflet-left { top: 90px; left: 14px; }
+  .leaflet-top.leaflet-left { top: 52px; left: 14px; }
 
-  /* Title card */
+  /* Title card — compact wordmark badge */
   .zb-title {
     position: absolute; top: 12px; left: 14px; z-index: 900;
-    padding: 10px 14px; border-radius: 14px;
+    padding: 5px 10px; border-radius: 10px;
     background: linear-gradient(135deg, rgba(254,247,244,.97), rgba(244,226,220,.94));
     backdrop-filter: saturate(170%) blur(14px);
     -webkit-backdrop-filter: saturate(170%) blur(14px);
@@ -238,9 +238,8 @@
     border: 1px solid var(--zb-border);
     font-family: var(--zb-font-serif);
     color: var(--zb-label);
-    display: flex; flex-direction: column; gap: 2px;
+    display: flex; flex-direction: column; gap: 0;
     user-select: none; pointer-events: none;
-    max-width: 60%;
   }
   @media (prefers-color-scheme: dark) {
     .zb-title { background: linear-gradient(135deg, rgba(18,10,12,.92), rgba(34,20,24,.88)); }
@@ -248,21 +247,15 @@
   .zb-title .k {
     font-family: var(--zb-font-sans); font-size: 9.5px;
     letter-spacing: .22em; text-transform: uppercase;
-    color: var(--zb-label-3); font-weight: 500;
+    color: var(--zb-label-2); font-weight: 500;
   }
-  .zb-title h1 {
-    font-size: 18px; font-weight: 500; font-style: italic;
-    letter-spacing: .3px; margin: 0;
-  }
-  .zb-title .sub {
-    font-family: var(--zb-font-sans); font-size: 11px;
-    color: var(--zb-label-2); margin-top: 2px;
-  }
+  .zb-title h1 { display: none; }
+  .zb-title .sub { display: none; }
 
   /* Layers panel */
   /* ── Settings button + sliding tray (replaces separate layers & legend panels) ── */
   .zb-settings-btn {
-    position: absolute; bottom: 14px; left: 14px; z-index: 900;
+    position: absolute; bottom: 106px; left: 14px; z-index: 900;
     width: 42px; height: 42px; border-radius: 50%;
     background: linear-gradient(135deg, rgba(254,248,246,.97), rgba(246,230,224,.94));
     backdrop-filter: saturate(170%) blur(14px); -webkit-backdrop-filter: saturate(170%) blur(14px);
@@ -279,7 +272,7 @@
     .zb-settings-btn:hover, .zb-settings-btn.open { background: var(--zb-earth-light); }
   }
   .zb-settings-tray {
-    position: absolute; bottom: 64px; left: 14px; z-index: 900;
+    position: absolute; bottom: 156px; left: 14px; z-index: 900;
     padding: 14px 16px; border-radius: 14px; min-width: 212px;
     background: linear-gradient(135deg, rgba(254,248,246,.97), rgba(246,230,224,.94));
     backdrop-filter: saturate(170%) blur(14px); -webkit-backdrop-filter: saturate(170%) blur(14px);
@@ -317,7 +310,7 @@
   }
   /* ── Geolocation button ── */
   .zb-geo-btn {
-    position: absolute; bottom: 64px; right: 14px; z-index: 900;
+    position: absolute; bottom: 106px; right: 14px; z-index: 900;
     width: 42px; height: 42px; border-radius: 50%;
     background: linear-gradient(135deg, rgba(254,248,246,.97), rgba(246,230,224,.94));
     backdrop-filter: saturate(170%) blur(14px); -webkit-backdrop-filter: saturate(170%) blur(14px);
@@ -338,7 +331,7 @@
   .zb-focus .zb-settings-btn,
   .zb-focus .zb-settings-tray,
   .zb-focus .zb-route-builder,
-  .zb-focus .zb-map-search,
+  .zb-focus .zb-bottom-bar,
   .zb-focus .zb-route-pill,
   .zb-focus .zb-geo-btn { display: none; }
   /* ── Legacy .zb-layers .hdr kept for safety ── */
@@ -549,12 +542,9 @@
   /* Marker icons (divIcons) */
   .zb-marker { background: transparent !important; border: 0 !important; position: relative; }
   .zb-appt-badge {
-    position: absolute; top: 0; right: 0;
-    width: 13px; height: 13px; border-radius: 50%;
-    background: #c47a00; border: 1.5px solid #fff;
-    color: #fff; font-size: 8px; font-weight: 900;
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--zb-font-sans); line-height: 1; z-index: 2;
+    position: absolute; top: -3px; right: -3px;
+    width: 11px; height: 11px;
+    display: block; z-index: 2;
     pointer-events: none; user-select: none;
   }
   .zb-marker svg { display: block; overflow: visible; }
@@ -573,9 +563,9 @@
     .leaflet-fade-anim * { transition: none !important; }
   }
 
-  /* Route status pill (top-center) */
+  /* Route status pill — sits just above the bottom bar */
   .zb-route-pill {
-    position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+    position: absolute; bottom: 110px; left: 50%; transform: translateX(-50%);
     z-index: 950;
     padding: 8px 14px 8px 10px; border-radius: 999px;
     background: linear-gradient(135deg, rgba(254,247,244,.98), rgba(244,226,220,.96));
@@ -819,11 +809,30 @@
     letter-spacing: .03em;
   }
   .zb-rb-gmaps:hover { background: var(--zb-blue-light); color: var(--zb-blue); }
-  /* Map search — sits below the title card (top-left) */
-  .zb-map-search {
-    position: absolute; top: 102px; left: 14px; z-index: 900;
-    width: 220px;
+  /* ── Bottom control bar ── */
+  .zb-bottom-bar {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 900;
+    padding: 10px 14px 18px;
+    display: flex; flex-direction: column; gap: 6px;
+    background: linear-gradient(to top, rgba(254,247,244,.98) 0%, rgba(254,247,244,.92) 55%, transparent 100%);
+    pointer-events: none;
   }
+  .zb-bottom-bar > * { pointer-events: auto; }
+  @media (prefers-color-scheme: dark) {
+    .zb-bottom-bar { background: linear-gradient(to top, rgba(18,10,12,.98) 0%, rgba(18,10,12,.88) 55%, transparent 100%); }
+  }
+  .zb-bb-chips-row {
+    display: flex; align-items: center; gap: 5px;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .zb-bb-chips-row::-webkit-scrollbar { display: none; }
+  .zb-bb-chip-sep {
+    width: 1px; height: 14px; background: var(--zb-separator);
+    flex-shrink: 0; margin: 0 2px;
+  }
+  .zb-bb-search-row { position: relative; }
+
+  /* Map search — now lives inside .zb-bottom-bar */
   .zb-map-search-wrap { position: relative; }
   .zb-map-search-input {
     width: 100%; padding: 8px 12px 8px 32px; border-radius: 10px;
@@ -887,7 +896,7 @@
   .zb-map-filter-btn.shortlisted.active { background: var(--zb-sage); border-color: var(--zb-sage); }
   .zb-map-filter-btn.not_visited.active { background: var(--zb-blue); border-color: var(--zb-blue); }
   @media (prefers-color-scheme: dark) {
-    .zb-map-filter-btn { background: linear-gradient(135deg, rgba(28,15,22,.94), rgba(46,26,36,.9)); }
+    .zb-map-filter-btn { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.15); color: var(--zb-label-2); }
   }
 
   /* Popup tag chips */
@@ -936,7 +945,7 @@
   .zb-map-tag-btn.iconic.active   { background: #6e1c2c; border-color: #6e1c2c; }
   .zb-map-tag-btn.views.active    { background: #3c5e82; border-color: #3c5e82; }
   @media (prefers-color-scheme: dark) {
-    .zb-map-tag-btn { background: linear-gradient(135deg, rgba(28,15,22,.94), rgba(46,26,36,.9)); }
+    .zb-map-tag-btn { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.15); color: var(--zb-label-2); }
   }
   /* Day plan share/print button */
   .zb-dayplan-actions {
@@ -2441,6 +2450,34 @@ function svgShortlisted(size){
   ].join('');
 }
 
+// Simple circle marker — replaces the tall wine-bottle SVGs
+function svgDot(size, fill, pulse){
+  const uid = 'dt' + (++__mapUid);
+  const r = size / 2;
+  const pulseEl = pulse
+    ? '<circle class="pulse-halo" cx="' + r + '" cy="' + r + '" r="' + (r + 4) + '" fill="' + fill + '" fill-opacity="0.28"/>'
+    : '';
+  return [
+    '<svg width="', size + 10, '" height="', size + 10,
+      '" viewBox="0 0 ', size + 10, ' ', size + 10, '" xmlns="http://www.w3.org/2000/svg">',
+      '<defs><filter id="', uid, 'sh" x="-40%" y="-40%" width="180%" height="180%">',
+        '<feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-color="#2a1810" flood-opacity=".25"/>',
+      '</filter></defs>',
+      pulseEl,
+      '<circle cx="', r + 5, '" cy="', r + 5, '" r="', r - 1, '" fill="', fill,
+        '" stroke="white" stroke-width="1.8" filter="url(#', uid, 'sh)"/>',
+    '</svg>'
+  ].join('');
+}
+
+// Star SVG for appointment badge
+function svgStar(){
+  return '<svg class="zb-appt-badge" width="11" height="11" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">' +
+    '<polygon points="6,0.5 7.6,4.4 11.8,4.4 8.5,7 9.8,11.5 6,8.8 2.2,11.5 3.5,7 0.2,4.4 4.4,4.4"' +
+    ' fill="#c47a00" stroke="white" stroke-width="1" stroke-linejoin="round"/>' +
+    '</svg>';
+}
+
 // Pure utility helpers
 function mapHaversineKm(a, b){
   const toRad = d => d * Math.PI / 180, R = 6371;
@@ -3081,21 +3118,22 @@ const MapView = ({ wineries, onSelect }) => {
       .filter(it => !mapFilter || it.status === mapFilter)
       .filter(it => !tagFilter || (WINERY_TAGS[it.id] || []).includes(tagFilter));
 
-    const placed = deconflictPoints(map, items, 34);
+    const placed = deconflictPoints(map, items, 16);
 
     placed.forEach(it => {
       const status = it.status;
-      const svg = status === 'visited' ? svgVisited(34)
-                : status === 'shortlisted' ? svgShortlisted(32)
-                : svgEmpty(30);
-      const isAppt = (WINERY_TAGS[it.id] || []).includes('appt');
-      const w = status === 'shortlisted' ? 48 : 34;
-      const h = status === 'shortlisted' ? 56 : 46;
-      const anchor = status === 'shortlisted' ? [24,54] : [17,44];
+      const dotSize  = status === 'visited' ? 14 : status === 'shortlisted' ? 14 : 11;
+      const dotFill  = status === 'visited' ? '#6e1c2c' : status === 'shortlisted' ? '#c4a842' : '#b49090';
+      const doPulse  = status === 'shortlisted';
+      const svg      = svgDot(dotSize, dotFill, doPulse);
+      const isAppt   = (WINERY_TAGS[it.id] || []).includes('appt');
+      const w        = dotSize + 10;
+      const h        = dotSize + 10;
+      const anchor   = [w / 2, h / 2];
       const icon = L.divIcon({
-        className:'zb-marker', html: svg + (isAppt ? '<div class="zb-appt-badge">!</div>' : ''),
+        className:'zb-marker', html: svg + (isAppt ? svgStar() : ''),
         iconSize:[w,h], iconAnchor:anchor,
-        popupAnchor:[0, -anchor[1] + 10],
+        popupAnchor:[0, -anchor[1] - 4],
       });
       const marker = L.marker([it.lat, it.lng], {
         icon, riseOnHover:true,
@@ -3155,9 +3193,7 @@ const MapView = ({ wineries, onSelect }) => {
       <div ref={mapContainerRef} id="zb-leaflet" style={{position:"absolute",inset:0}}/>
 
       <div className="zb-title">
-        <div className="k"><span style={{fontFamily:"'Great Vibes',cursive",fontSize:"1.15em",color:"var(--zb-earth)",letterSpacing:0}}>Ze</span> <span style={{letterSpacing:"0.15em"}}>BAROSSA</span></div>
-        <h1>The Valley</h1>
-        <div className="sub">Home base · 25 Riebe Street, Tanunda</div>
+        <div className="k"><span style={{fontFamily:"'Great Vibes',cursive",fontSize:"1.3em",color:"var(--zb-earth)",letterSpacing:0,verticalAlign:"middle"}}>Ze</span> <span style={{letterSpacing:"0.18em"}}>BAROSSA</span></div>
       </div>
 
       <button className={`zb-settings-btn${settingsOpen ? ' open' : ''}`}
@@ -3191,9 +3227,9 @@ const MapView = ({ wineries, onSelect }) => {
           <div className="hdr" style={{marginTop:'2px'}}>Legend</div>
           <div className="zb-legend">
             <div className="item"><div className="swatch" dangerouslySetInnerHTML={{__html:svgHome(26)}}/><div className="txt">Home base<small>Where we stay</small></div></div>
-            <div className="item"><div className="swatch" dangerouslySetInnerHTML={{__html:svgVisited(20)}}/><div className="txt">Visited<small>Tasted &amp; reviewed</small></div></div>
-            <div className="item"><div className="swatch" dangerouslySetInnerHTML={{__html:svgEmpty(18)}}/><div className="txt">Not yet<small>On the longlist</small></div></div>
-            <div className="item"><div className="swatch" dangerouslySetInnerHTML={{__html:svgShortlisted(18)}}/><div className="txt">Shortlisted<small>Priority pours</small></div></div>
+            <div className="item"><div className="swatch" dangerouslySetInnerHTML={{__html:svgDot(14,'#6e1c2c',false)}}/><div className="txt">Visited<small>Tasted &amp; reviewed</small></div></div>
+            <div className="item"><div className="swatch" dangerouslySetInnerHTML={{__html:svgDot(11,'#b49090',false)}}/><div className="txt">Not yet<small>On the longlist</small></div></div>
+            <div className="item"><div className="swatch" dangerouslySetInnerHTML={{__html:svgDot(14,'#c4a842',true)}}/><div className="txt">Shortlisted<small>Priority pours</small></div></div>
           </div>
         </div>
       )}
@@ -3284,21 +3320,33 @@ const MapView = ({ wineries, onSelect }) => {
         )}
       </div>
 
-      {/* Winery Search + Filter */}
-      <div className="zb-map-search">
-        <div className="zb-map-search-wrap">
-          <span className="zb-map-search-icon">&#x1F50D;</span>
-          <input
-            className="zb-map-search-input"
-            type="text"
-            placeholder="Find a winery…"
-            value={mapSearch}
-            onChange={e=>setMapSearch(e.target.value)}
-            onBlur={()=>setTimeout(()=>setMapSearch(''), 200)}
-            aria-label="Search wineries"
-          />
+      {/* Bottom control bar — search + filters */}
+      <div className="zb-bottom-bar">
+        {searchResults.length > 0 && (
+          <div className="zb-map-search-results" style={{marginBottom:'4px'}}>
+            {searchResults.map(w => (
+              <div key={w.id} className="zb-map-search-result" onMouseDown={()=>{ flyToWinery(w); setMapSearch(''); }}>
+                {w.name}
+                <small>{deriveStatus(w) === 'visited' ? 'Visited' : deriveStatus(w) === 'shortlisted' ? 'Shortlisted' : 'Not yet visited'}</small>
+              </div>
+            ))}
+          </div>
+        )}
+        <div className="zb-bb-search-row">
+          <div className="zb-map-search-wrap" style={{width:'100%'}}>
+            <span className="zb-map-search-icon">&#x1F50D;</span>
+            <input
+              className="zb-map-search-input"
+              type="text"
+              placeholder="Find a winery…"
+              value={mapSearch}
+              onChange={e=>setMapSearch(e.target.value)}
+              onBlur={()=>setTimeout(()=>setMapSearch(''), 200)}
+              aria-label="Search wineries"
+            />
+          </div>
         </div>
-        <div className="zb-map-filters">
+        <div className="zb-bb-chips-row">
           {[
             { key: 'visited',     label: 'Visited' },
             { key: 'shortlisted', label: 'Shortlisted' },
@@ -3308,24 +3356,13 @@ const MapView = ({ wineries, onSelect }) => {
               onClick={()=>setMapFilter(prev => prev===f.key ? null : f.key)} aria-pressed={mapFilter===f.key}
             >{f.label}</button>
           ))}
-        </div>
-        <div className="zb-map-tag-filters">
+          <div className="zb-bb-chip-sep"/>
           {Object.entries(TAG_META).map(([key, m]) => (
             <button key={key} className={`zb-map-tag-btn ${key}${tagFilter===key?' active':''}`}
               onClick={()=>setTagFilter(prev => prev===key ? null : key)} aria-pressed={tagFilter===key}
             >{m.label}</button>
           ))}
         </div>
-        {searchResults.length > 0 && (
-          <div className="zb-map-search-results">
-            {searchResults.map(w => (
-              <div key={w.id} className="zb-map-search-result" onMouseDown={()=>{ flyToWinery(w); setMapSearch(''); }}>
-                {w.name}
-                <small>{deriveStatus(w) === 'visited' ? 'Visited' : deriveStatus(w) === 'shortlisted' ? 'Shortlisted' : 'Not yet visited'}</small>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
 
 

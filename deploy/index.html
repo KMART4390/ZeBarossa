@@ -644,6 +644,15 @@
       rgba(249,234,231,.0) 70%
     );
   }
+  @media (prefers-color-scheme: dark) {
+    .zb-hero-wash {
+      background: radial-gradient(
+        ellipse 90% 60% at 50% 0%,
+        rgba(180,80,100,.18) 0%,
+        rgba(19,8,16,.0) 70%
+      );
+    }
+  }
 
   /* ── Route Builder Panel ──────────────────────────────────────────────────── */
   .zb-route-builder {
@@ -1751,7 +1760,7 @@ const RaterBlock = ({ rating, onChange, onDelete, isOnly }) => {
             </div>
             {isGuest && (
               <input placeholder="Reviewer name…" value={rating.guestName||""} onChange={e=>onChange({...rating,guestName:e.target.value})}
-                style={{marginTop:5,padding:"3px 10px",borderRadius:14,border:`1px solid var(--zb-border)`,fontSize:11,background:"white",width:145,color:C.text}}/>
+                style={{marginTop:5,padding:"3px 10px",borderRadius:14,border:`1px solid var(--zb-border)`,fontSize:11,background:C.white,width:145,color:C.text}}/>
             )}
           </div>
         </div>
@@ -1940,7 +1949,7 @@ const DetailModal = ({ winery, onClose, onSave, onToggleShortlist }) => {
             </button>
             {editing?
               <button onClick={()=>{onSave(form);setEditing(false);}} style={{flex:1,padding:"9px",borderRadius:10,border:"none",background:C.sage,color:"white",fontSize:13,fontWeight:600,cursor:"pointer"}}>Save</button>:
-              <button onClick={()=>setEditing(true)} style={{flex:1,padding:"9px",borderRadius:10,border:`1.5px solid ${C.border}`,background:"white",color:C.textMid,fontSize:13,fontWeight:600,cursor:"pointer"}}>Edit</button>
+              <button onClick={()=>setEditing(true)} style={{flex:1,padding:"9px",borderRadius:10,border:`1.5px solid ${C.border}`,background:C.white,color:C.textMid,fontSize:13,fontWeight:600,cursor:"pointer"}}>Edit</button>
             }
           </div>
         </div>
@@ -1968,7 +1977,7 @@ const DetailModal = ({ winery, onClose, onSave, onToggleShortlist }) => {
                     <label style={{fontSize:13,color:C.text,fontWeight:700,display:"flex",alignItems:"center",gap:6,marginBottom:6}}><Icons.Bottle size={14} color={C.earth}/>Bottles Purchased</label>
                     <input type="number" min="0" value={form.bottles??""} placeholder="0"
                       onChange={e=>setForm(f=>({...f,bottles:parseInt(e.target.value)||0}))}
-                      style={{width:"100%",padding:"10px 12px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:15,background:"white",boxSizing:"border-box"}}/>
+                      style={{width:"100%",padding:"10px 12px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:15,background:C.white,boxSizing:"border-box"}}/>
                   </div>
                 </>
               ):(
@@ -1977,7 +1986,7 @@ const DetailModal = ({ winery, onClose, onSave, onToggleShortlist }) => {
                   {(form.ratings||[]).length>0?(
                     <>
                       {(form.ratings||[]).map((r,i)=>(
-                        <div key={i} style={{background:"white",border:`1px solid ${C.border}`,borderRadius:12,padding:"12px 14px",marginBottom:10}}>
+                        <div key={i} style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:12,padding:"12px 14px",marginBottom:10}}>
                           <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
                             <ReviewerAvatar rating={r} onChange={()=>{}} editable={false} size={36}/>
                             <div style={{fontSize:12,fontWeight:700,color:r.who==="Katie"?C.dustyPink:r.who==="Jack"?C.dustyBlue:C.gold}}>
@@ -2007,7 +2016,7 @@ const DetailModal = ({ winery, onClose, onSave, onToggleShortlist }) => {
                     <div style={{textAlign:"center",padding:"20px 0",color:C.textLight,fontSize:13}}>No ratings yet — tap Edit to add</div>
                   )}
                   {/* Bottle viz */}
-                  <div style={{marginTop:14,padding:"12px 14px",background:"white",border:`1px solid ${C.border}`,borderRadius:12}}>
+                  <div style={{marginTop:14,padding:"12px 14px",background:C.white,border:`1px solid ${C.border}`,borderRadius:12}}>
                     <div style={{fontSize:11,fontWeight:700,color:C.textMid,marginBottom:6,display:"flex",alignItems:"center",gap:5}}>
                       <Icons.Bottle size={13} color={C.dustyBlue}/>BOTTLES
                     </div>
@@ -2034,10 +2043,10 @@ const DetailModal = ({ winery, onClose, onSave, onToggleShortlist }) => {
             editing ? (
               <textarea value={form.notes} onChange={e=>setForm(f=>({...f,notes:e.target.value}))}
                 placeholder="Tasting notes, memorable moments, must-buys, who you met..." rows={8}
-                style={{width:"100%",padding:"12px",borderRadius:12,border:`1px solid ${C.border}`,fontSize:14,background:"white",resize:"none",boxSizing:"border-box",fontFamily:"inherit",lineHeight:1.6}}/>
+                style={{width:"100%",padding:"12px",borderRadius:12,border:`1px solid ${C.border}`,fontSize:14,background:C.white,resize:"none",boxSizing:"border-box",fontFamily:"inherit",lineHeight:1.6}}/>
             ):(
               form.notes?(
-                <div style={{background:"white",border:`1px solid ${C.border}`,borderRadius:12,padding:"14px 16px",fontSize:14,color:C.text,lineHeight:1.7,fontStyle:"italic"}}>"{form.notes}"</div>
+                <div style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:12,padding:"14px 16px",fontSize:14,color:C.text,lineHeight:1.7,fontStyle:"italic"}}>"{form.notes}"</div>
               ):(
                 <div style={{textAlign:"center",padding:"30px 0",color:C.textLight,fontSize:13}}>No notes yet</div>
               )
@@ -2056,7 +2065,7 @@ const DetailModal = ({ winery, onClose, onSave, onToggleShortlist }) => {
                 )}
               </div>
               {(!form.visits || form.visits.length === 0) ? (
-                <div style={{background:"white",border:`1px solid ${C.border}`,borderRadius:12,padding:"14px 16px"}}>
+                <div style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:12,padding:"14px 16px"}}>
                   <div style={{display:"flex",alignItems:"center",gap:10}}>
                     <div style={{width:32,height:32,borderRadius:"50%",background:C.sageLight,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
                       <span style={{fontSize:14,fontWeight:700,color:C.sage}}>1</span>
@@ -2069,7 +2078,7 @@ const DetailModal = ({ winery, onClose, onSave, onToggleShortlist }) => {
                 </div>
               ) : (
                 <>
-                  <div style={{background:"white",border:`1px solid ${C.border}`,borderRadius:12,padding:"14px 16px",marginBottom:8}}>
+                  <div style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:12,padding:"14px 16px",marginBottom:8}}>
                     <div style={{display:"flex",alignItems:"center",gap:10}}>
                       <div style={{width:32,height:32,borderRadius:"50%",background:C.sageLight,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
                         <span style={{fontSize:14,fontWeight:700,color:C.sage}}>1</span>
@@ -2081,7 +2090,7 @@ const DetailModal = ({ winery, onClose, onSave, onToggleShortlist }) => {
                     </div>
                   </div>
                   {form.visits.map((v,i)=>(
-                    <div key={i} style={{background:"white",border:`1px solid ${C.dustyPink}`,borderRadius:12,padding:"14px 16px",marginBottom:8}}>
+                    <div key={i} style={{background:C.white,border:`1px solid ${C.dustyPink}`,borderRadius:12,padding:"14px 16px",marginBottom:8}}>
                       <div style={{display:"flex",alignItems:"flex-start",gap:10}}>
                         <div style={{width:32,height:32,borderRadius:"50%",background:C.pinkLight,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
                           <span style={{fontSize:14,fontWeight:700,color:C.dustyPink}}>{i+2}</span>
@@ -2142,12 +2151,12 @@ const AddModal = ({ onClose, onAdd }) => {
           <div style={{marginBottom:12}}>
             <label style={{fontSize:13,color:C.textMid,fontWeight:600,display:"block",marginBottom:6}}>Winery Name *</label>
             <input type="text" value={form.name} onChange={e=>setForm(f=>({...f,name:e.target.value}))} placeholder="e.g. Chateau Barossa"
-              style={{width:"100%",padding:"12px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:15,background:"white",boxSizing:"border-box"}} autoFocus/>
+              style={{width:"100%",padding:"12px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:15,background:C.white,boxSizing:"border-box"}} autoFocus/>
           </div>
           <div style={{marginBottom:12}}>
             <label style={{fontSize:12,color:C.textMid,fontWeight:600,display:"block",marginBottom:5}}>Riebe St (mins)</label>
             <input type="number" value={form.distRiebe} onChange={e=>setForm(f=>({...f,distRiebe:e.target.value}))} placeholder="0"
-              style={{width:"100%",padding:"10px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:14,background:"white",boxSizing:"border-box"}}/>
+              style={{width:"100%",padding:"10px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:14,background:C.white,boxSizing:"border-box"}}/>
           </div>
           <button onClick={()=>setForm(f=>({...f,visited:!f.visited}))} style={{width:"100%",padding:"10px",borderRadius:10,border:`1.5px solid ${form.visited?C.sage:C.border}`,background:form.visited?C.sageLight:"white",color:form.visited?C.sage:C.textMid,fontSize:13,fontWeight:600,cursor:"pointer",marginBottom:14,display:"flex",alignItems:"center",justifyContent:"center",gap:6}}>
             <Icons.Check size={14} color={form.visited?C.sage:C.textMid}/>{form.visited?"Already Visited":"Not Visited Yet"}
@@ -2159,14 +2168,14 @@ const AddModal = ({ onClose, onAdd }) => {
               <div style={{marginBottom:12}}>
                 <label style={{fontSize:13,color:C.text,fontWeight:700,display:"flex",alignItems:"center",gap:5,marginBottom:6}}><Icons.Bottle size={13} color={C.earth}/>Bottles Purchased</label>
                 <input type="number" min="0" value={form.bottles} onChange={e=>setForm(f=>({...f,bottles:parseInt(e.target.value)||0}))}
-                  style={{width:"100%",padding:"10px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:14,background:"white",boxSizing:"border-box"}}/>
+                  style={{width:"100%",padding:"10px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:14,background:C.white,boxSizing:"border-box"}}/>
               </div>
             </>
           )}
           <div style={{marginBottom:16}}>
             <label style={{fontSize:13,color:C.textMid,fontWeight:600,display:"block",marginBottom:6}}>Notes</label>
             <textarea value={form.notes} onChange={e=>setForm(f=>({...f,notes:e.target.value}))} rows={3} placeholder="First impressions..."
-              style={{width:"100%",padding:"10px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:14,background:"white",resize:"none",boxSizing:"border-box",fontFamily:"inherit"}}/>
+              style={{width:"100%",padding:"10px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:14,background:C.white,resize:"none",boxSizing:"border-box",fontFamily:"inherit"}}/>
           </div>
           <button onClick={go} style={{width:"100%",padding:14,borderRadius:12,background:C.earth,color:"white",border:"none",fontSize:15,fontWeight:700,cursor:"pointer"}}>Add Winery</button>
         </div>
@@ -2209,7 +2218,7 @@ const Stats = ({ wineries, onSelect }) => {
         [<Icons.Bottle size={15} color={C.dustyBlue}/>, "Most Bottles", bigSpender, bigSpender?`${bigSpender.bottles} btl`:null],
       ].map(([icon, label, winner, score], i) => winner && score && (
         <button key={i} onClick={()=>onSelect && onSelect(winner)}
-          style={{width:"100%",textAlign:"left",background:"white",border:`1px solid ${C.border}`,borderRadius:12,padding:"10px 14px",marginBottom:8,display:"flex",alignItems:"center",gap:10,cursor:"pointer",fontFamily:"inherit",transition:"transform 0.08s, box-shadow 0.15s"}}
+          style={{width:"100%",textAlign:"left",background:C.white,border:`1px solid ${C.border}`,borderRadius:12,padding:"10px 14px",marginBottom:8,display:"flex",alignItems:"center",gap:10,cursor:"pointer",fontFamily:"inherit",transition:"transform 0.08s, box-shadow 0.15s"}}
           onMouseEnter={e=>e.currentTarget.style.boxShadow=`0 3px 12px rgba(126,30,48,0.12)`}
           onMouseLeave={e=>e.currentTarget.style.boxShadow=""}
           onMouseDown={e=>e.currentTarget.style.transform="scale(0.99)"}
@@ -2228,7 +2237,7 @@ const Stats = ({ wineries, onSelect }) => {
       <div style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:15,fontWeight:700,color:C.text,marginTop:16,marginBottom:10}}>Top 10 Overall</div>
       {sorted.slice(0,10).map((w,i)=>(
         <button key={w.id} onClick={()=>onSelect && onSelect(w)}
-          style={{width:"100%",textAlign:"left",display:"flex",alignItems:"center",gap:10,padding:"8px 12px",background:"white",border:`1px solid ${C.border}`,borderRadius:10,marginBottom:6,cursor:"pointer",fontFamily:"inherit",transition:"transform 0.08s, box-shadow 0.15s"}}
+          style={{width:"100%",textAlign:"left",display:"flex",alignItems:"center",gap:10,padding:"8px 12px",background:C.white,border:`1px solid ${C.border}`,borderRadius:10,marginBottom:6,cursor:"pointer",fontFamily:"inherit",transition:"transform 0.08s, box-shadow 0.15s"}}
           onMouseEnter={e=>e.currentTarget.style.boxShadow=`0 3px 10px rgba(126,30,48,0.10)`}
           onMouseLeave={e=>e.currentTarget.style.boxShadow=""}
           onMouseDown={e=>e.currentTarget.style.transform="scale(0.99)"}
@@ -3583,24 +3592,31 @@ const MiniMap = ({ wineries, onNavigate }) => {
 };
 
 // ─── HOME PAGE ────────────────────────────────────────────────────────────────
-const HomePage = ({ wineries, onNavigate }) => {
+const HomePage = ({ wineries, onNavigate, onSearch }) => {
   const visited = wineries.filter(w=>w.visited).length;
   const pct = Math.round((visited/wineries.length)*100);
   const totalBottles = wineries.reduce((s,w)=>s+(w.bottles||0),0);
   const shortlisted = wineries.filter(w=>w.shortlisted).length;
 
   return (
-    <div style={{padding:"20px 16px",minHeight:"100%",overflowY:"auto",WebkitOverflowScrolling:"touch",background:`linear-gradient(170deg, #f9eae7 0%, #f2dbd5 100%)`}}>
+    <div style={{padding:"20px 16px",minHeight:"100%",overflowY:"auto",WebkitOverflowScrolling:"touch",background:"linear-gradient(170deg, var(--zb-bg) 0%, var(--zb-bg-grouped) 100%)"}}>
+      {/* Search bar */}
+      <div style={{marginBottom:16}}>
+        <input type="text" placeholder="Search wineries…" defaultValue=""
+          onFocus={e=>{onSearch(""); e.target.value="";}}
+          onChange={e=>onSearch(e.target.value)}
+          style={{width:"100%",padding:"12px 16px",borderRadius:14,border:`1.5px solid ${C.border}`,fontSize:15,background:C.white,color:C.text,boxSizing:"border-box",fontFamily:"inherit"}}/>
+      </div>
       {/* Hero — icon-style watercolour wash */}
       <div className="zb-hero-wash" style={{textAlign:"center",padding:"36px 0 28px",borderRadius:20,marginBottom:4}}>
-        <div style={{marginBottom:4,display:"flex",justifyContent:"center"}}><Icons.Grape size={42} color={C.sage}/></div>
-        <div style={{fontFamily:"'Great Vibes',cursive",fontSize:54,color:C.earth,lineHeight:0.85,marginBottom:2}}>Ze</div>
-        <div style={{fontFamily:"'Cormorant Garamond',Georgia,serif",fontSize:20,fontWeight:600,letterSpacing:"0.22em",textTransform:"uppercase",color:C.text}}>Barossa</div>
+        <div style={{marginBottom:6,display:"flex",justifyContent:"center"}}><Icons.Grape size={48} color={C.sage}/></div>
+        <div style={{fontFamily:"'Great Vibes',cursive",fontSize:72,color:C.earth,lineHeight:0.85,marginBottom:4}}>Ze</div>
+        <div style={{fontFamily:"'Cormorant Garamond',Georgia,serif",fontSize:26,fontWeight:600,letterSpacing:"0.22em",textTransform:"uppercase",color:C.text}}>Barossa</div>
         <div className="zb-kj">· K + J ·</div>
         <div className="zb-vine-heart" style={{marginTop:8}}/>
       </div>
       {/* Progress bar — clickable, jumps to Not Yet */}
-      <button onClick={()=>onNavigate("notyet")} style={{width:"100%",textAlign:"left",background:"white",borderRadius:16,padding:"16px 18px",marginBottom:16,border:`1px solid ${C.border}`,cursor:"pointer",fontFamily:"inherit",transition:"box-shadow 0.15s, transform 0.1s"}}
+      <button onClick={()=>onNavigate("notyet")} style={{width:"100%",textAlign:"left",background:C.white,borderRadius:16,padding:"16px 18px",marginBottom:16,border:`1px solid ${C.border}`,cursor:"pointer",fontFamily:"inherit",transition:"box-shadow 0.15s, transform 0.1s"}}
         onMouseEnter={e=>e.currentTarget.style.boxShadow=`0 4px 14px rgba(126,30,48,0.12)`}
         onMouseLeave={e=>e.currentTarget.style.boxShadow=""}
         onMouseDown={e=>e.currentTarget.style.transform="scale(0.995)"}
@@ -3620,9 +3636,9 @@ const HomePage = ({ wineries, onNavigate }) => {
       {/* Quick stats */}
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:20}}>
         {[[totalBottles,"Bottles",C.dustyBlue,C.blueLight],[visited,"Visited",C.sage,C.sageLight],[shortlisted,"Shortlisted",C.dustyPink,C.pinkLight]].map(([v,l,c,bg])=>(
-          <div key={l} style={{background:bg,borderRadius:12,padding:"12px 10px",textAlign:"center"}}>
-            <div style={{fontSize:22,fontWeight:700,color:c}}>{v}</div>
-            <div style={{fontSize:10,color:c,opacity:0.8}}>{l}</div>
+          <div key={l} style={{background:bg,borderRadius:14,padding:"14px 10px",textAlign:"center"}}>
+            <div style={{fontSize:28,fontWeight:700,color:c,lineHeight:1}}>{v}</div>
+            <div style={{fontSize:11,color:c,opacity:0.8,marginTop:4,fontWeight:600,letterSpacing:"0.05em"}}>{l.toUpperCase()}</div>
           </div>
         ))}
       </div>
@@ -3635,13 +3651,13 @@ const HomePage = ({ wineries, onNavigate }) => {
           ["notyet","Not Yet Visited","Your hit list",<Icons.WineGlass size={20} color={C.dustyBlue}/>,C.blueLight,C.dustyBlue],
           ["shortlist","Shortlist","Curated picks for next time",<Icons.Star size={20} color={C.dustyPink} filled/>,C.pinkLight,C.dustyPink],
         ].map(([tab,title,sub,icon,bg,col])=>(
-          <button key={tab} onClick={()=>onNavigate(tab)} style={{background:"white",border:`1px solid ${C.border}`,borderRadius:16,padding:"14px 16px",cursor:"pointer",display:"flex",alignItems:"center",gap:14,textAlign:"left",transition:"box-shadow 0.15s"}}
+          <button key={tab} onClick={()=>onNavigate(tab)} style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:16,padding:"14px 16px",cursor:"pointer",display:"flex",alignItems:"center",gap:14,textAlign:"left",transition:"box-shadow 0.15s"}}
             onMouseEnter={e=>e.currentTarget.style.boxShadow="0 4px 16px rgba(126,30,48,0.10)"}
             onMouseLeave={e=>e.currentTarget.style.boxShadow=""}>
             <div style={{width:44,height:44,borderRadius:12,background:bg,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>{icon}</div>
             <div>
-              <div style={{fontSize:15,fontWeight:700,color:C.text,fontFamily:"'Cormorant Garamond','Palatino Linotype',Georgia,serif"}}>{title}</div>
-              <div style={{fontSize:12,color:C.textLight,marginTop:1}}>{sub}</div>
+              <div style={{fontSize:17,fontWeight:700,color:C.text,fontFamily:"'Cormorant Garamond','Palatino Linotype',Georgia,serif"}}>{title}</div>
+              <div style={{fontSize:13,color:C.textLight,marginTop:2}}>{sub}</div>
             </div>
             <div style={{marginLeft:"auto",color:C.border,fontSize:18}}>›</div>
           </button>
@@ -3799,7 +3815,7 @@ function App() {
         {/* Tab bar */}
         <div style={{display:"flex",gap:0,overflowX:"auto",scrollbarWidth:"none",marginLeft:-16,paddingLeft:16,marginRight:-16,paddingRight:16}}>
           {tabs.map(t=>(
-            <button key={t.id} onClick={()=>setView(t.id)} style={{padding:"8px 10px",border:"none",background:"transparent",cursor:"pointer",fontSize:11,fontWeight:view===t.id?700:400,color:view===t.id?C.earth:C.textLight,borderBottom:`2px solid ${view===t.id?C.earth:"transparent"}`,whiteSpace:"nowrap",display:"flex",alignItems:"center",gap:3,flexShrink:0}}>
+            <button key={t.id} onClick={()=>setView(t.id)} style={{padding:"10px 12px",border:"none",background:"transparent",cursor:"pointer",fontSize:13,fontWeight:view===t.id?700:400,color:view===t.id?C.earth:C.textLight,borderBottom:`2px solid ${view===t.id?C.earth:"transparent"}`,whiteSpace:"nowrap",display:"flex",alignItems:"center",gap:4,flexShrink:0}}>
               {t.icon}{t.label}
             </button>
           ))}
@@ -3810,8 +3826,8 @@ function App() {
       {showList && (
         <div style={{background:C.cream,borderBottom:`1px solid ${C.border}`}}>
           <div style={{padding:"10px 16px",display:"flex",gap:8}}>
-            <input type="text" value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search wineries…" style={{flex:1,padding:"8px 12px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:14,background:"white"}}/>
-            <select value={sortBy} onChange={e=>setSortBy(e.target.value)} style={{padding:"8px 6px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:12,background:"white",color:C.textMid}}>
+            <input type="text" value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search wineries…" style={{flex:1,padding:"8px 12px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:14,background:C.white}}/>
+            <select value={sortBy} onChange={e=>setSortBy(e.target.value)} style={{padding:"8px 6px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:12,background:C.white,color:C.textMid}}>
               <option value="name">A–Z</option>
               <option value="distRiebe">Riebe St</option>
               <option value="rating">Rating ↓</option>
@@ -3823,7 +3839,7 @@ function App() {
           </div>
           {showFilters && (
             <div style={{padding:"0 16px 12px"}}>
-              <div style={{background:"white",border:`1px solid ${C.border}`,borderRadius:12,padding:"12px 14px"}}>
+              <div style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:12,padding:"12px 14px"}}>
                 <div style={{fontSize:11,color:C.textMid,fontWeight:700,marginBottom:8,letterSpacing:0.3}}>FILTER BY RATING CATEGORY</div>
                 <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:12}}>
                   {[["overall","Overall"],["wine","Wine"],["location","Location"],["vibes","Vibes"],["service","Service"]].map(([key,lbl])=>(
@@ -3834,7 +3850,7 @@ function App() {
                 </div>
                 <div style={{fontSize:11,color:C.textMid,fontWeight:700,marginBottom:6,letterSpacing:0.3}}>MINIMUM SCORE: <span style={{color:C.earth}}>{minRating===0?"Any":minRating+"/10"}</span></div>
                 <div style={{position:"relative",height:40}}>
-                  <div style={{position:"absolute",left:14,right:14,top:"50%",marginTop:-3,height:6,background:"white",borderRadius:3,border:`1px solid ${C.border}`}}/>
+                  <div style={{position:"absolute",left:14,right:14,top:"50%",marginTop:-3,height:6,background:C.white,borderRadius:3,border:`1px solid ${C.border}`}}/>
                   <div style={{position:"absolute",left:14,top:"50%",marginTop:-3,width:`calc((100% - 28px) * ${(minRating/9)*100/100})`,height:6,background:C.earth,borderRadius:3,transition:"width 0.08s linear"}}/>
                   <div style={{position:"absolute",left:`calc((100% - 28px) * ${(minRating/9)})`,top:"50%",marginTop:-15,width:30,height:30,pointerEvents:"none",filter:"drop-shadow(0 1px 2px rgba(90,60,30,0.35))",transition:"left 0.08s linear"}}>
                     <WineGlassFill size={30} fillPct={(minRating/9)*100}/>
@@ -3848,7 +3864,7 @@ function App() {
                 </div>
                 {minRating>0&&<button onClick={()=>{setMinRating(0);setRatingFilter("overall");}} style={{marginTop:8,fontSize:11,color:C.dustyPink,background:"none",border:"none",cursor:"pointer",padding:0,fontWeight:600}}>✕ Clear filter</button>}
               </div>
-              <div style={{background:"white",border:`1px solid ${C.border}`,borderRadius:12,padding:"12px 14px",marginTop:8}}>
+              <div style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:12,padding:"12px 14px",marginTop:8}}>
                 <div style={{fontSize:11,color:C.textMid,fontWeight:700,marginBottom:8,letterSpacing:0.3}}>FILTER BY CATEGORY</div>
                 <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
                   {Object.entries(TAG_META).map(([key,meta])=>{
@@ -3870,7 +3886,7 @@ function App() {
 
       {/* Content */}
       <div ref={listRef} onScroll={handleScroll} style={{flex:1,minHeight:0,overflowY:"auto",WebkitOverflowScrolling:"touch",overscrollBehavior:"contain",width:"100%",padding:showList?"12px 16px 80px":0}}>
-        {view==="home" && <HomePage wineries={wineries} onNavigate={setView}/>}
+        {view==="home" && <HomePage wineries={wineries} onNavigate={setView} onSearch={q=>{setSearch(q);setView("all");}}/>}
         {view==="leaderboard" && <div style={{padding:"16px 16px 80px",overflowY:"auto",WebkitOverflowScrolling:"touch",flex:1,minHeight:0}}><Stats wineries={wineries} onSelect={setSelected}/></div>}
         {view==="map" && <MapView wineries={wineries} onSelect={setSelected}/>}
         {showList && (

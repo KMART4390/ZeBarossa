@@ -1078,6 +1078,54 @@ const ml=document.createElement("link");ml.rel="manifest";ml.href=URL.createObje
 <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+// ─── SUPABASE CONFIG ──────────────────────────────────────────────────────────
+// Fill in your project URL and anon key: supabase.com → Project Settings → API
+const SUPABASE_URL      = 'https://klselrdijdstumjysiul.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_tMHEwAA79ee_-6Ddgu9g-g_iwyqYrsU';
+
+const _sb = (SUPABASE_URL !== 'YOUR_SUPABASE_URL')
+  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+  : null;
+
+function rowToWinery(r) {
+  return { id:r.id, name:r.name, distRiebe:r.dist_riebe??0, distJohn:r.dist_john??0,
+    visited:r.visited??false, ratings:r.ratings??[], bottles:r.bottles??0,
+    notes:r.notes??'', photos:r.photos??[], shortlisted:r.shortlisted??false,
+    visitCount:r.visit_count??0, visits:r.visits??[] };
+}
+function wineryToRow(w) {
+  return { id:w.id, name:w.name, dist_riebe:w.distRiebe??0, dist_john:w.distJohn??0,
+    visited:w.visited??false, ratings:w.ratings??[], bottles:w.bottles??0,
+    notes:w.notes??'', photos:w.photos??[], shortlisted:w.shortlisted??false,
+    visit_count:w.visitCount??0, visits:w.visits??[] };
+}
+async function dbLoad() {
+  if (!_sb) return null;
+  const { data, error } = await _sb.from('wineries').select('*');
+  if (error) throw error;
+  return data.map(rowToWinery);
+}
+async function dbUpsert(w) {
+  if (!_sb) return;
+  const { error } = await _sb.from('wineries').upsert(wineryToRow(w), { onConflict:'id' });
+  if (error) throw error;
+}
+async function dbUpsertMany(ws) {
+  if (!_sb) return;
+  const { error } = await _sb.from('wineries').upsert(ws.map(wineryToRow), { onConflict:'id' });
+  if (error) throw error;
+}
+function dbSubscribe(onChange) {
+  if (!_sb) return () => {};
+  const ch = _sb.channel('wineries-sync')
+    .on('postgres_changes', { event:'*', schema:'public', table:'wineries' },
+      p => { if (p.new && p.new.id) onChange(rowToWinery(p.new)); })
+    .subscribe();
+  return () => _sb.removeChannel(ch);
+}
+</script>
 <script type="text/babel" data-presets="react">
 const { useState, useEffect, useRef, useCallback } = React;
 
@@ -3612,10 +3660,11 @@ function App() {
   const [wineries, setWineries] = useState(() => {
     try { const s=localStorage.getItem("barossa_v3"); return s?JSON.parse(s):INITIAL_DATA; } catch { return INITIAL_DATA; }
   });
+  const [syncStatus, setSyncStatus] = useState(_sb ? 'loading' : 'local');
   const [view, setView] = useState("home");
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("name");
-  const [ratingFilter, setRatingFilter] = useState("overall"); // overall|wine|location|vibes|service
+  const [ratingFilter, setRatingFilter] = useState("overall");
   const [minRating, setMinRating] = useState(0);
   const [activeTagFilters, setActiveTagFilters] = useState(new Set());
   const [showFilters, setShowFilters] = useState(false);
@@ -3623,7 +3672,38 @@ function App() {
   const [showAdd, setShowAdd] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const listRef = useRef(null);
+  const skipRealtimeRef = useRef(false);
 
+  // ── Supabase: initial load + seed ──
+  useEffect(() => {
+    if (!_sb) return;
+    dbLoad().then(rows => {
+      if (!rows) return;
+      if (rows.length === 0) {
+        // First time: seed DB from localStorage / INITIAL_DATA
+        const seed = (() => { try { const s=localStorage.getItem("barossa_v3"); return s?JSON.parse(s):INITIAL_DATA; } catch { return INITIAL_DATA; } })();
+        dbUpsertMany(seed).catch(console.error);
+        setWineries(seed);
+      } else {
+        setWineries(rows);
+      }
+      setSyncStatus('synced');
+    }).catch(e => {
+      console.warn('Supabase unavailable, using local data', e);
+      setSyncStatus('offline');
+    });
+  }, []);
+
+  // ── Supabase: realtime subscription ──
+  useEffect(() => {
+    if (!_sb) return;
+    return dbSubscribe(updated => {
+      if (skipRealtimeRef.current) return;
+      setWineries(ws => ws.map(w => w.id === updated.id ? updated : w));
+    });
+  }, []);
+
+  // ── Keep localStorage in sync as a backup ──
   useEffect(()=>{ try{localStorage.setItem("barossa_v3",JSON.stringify(wineries));}catch{} },[wineries]);
 
   const handleScroll = useCallback((e) => {
@@ -3663,15 +3743,29 @@ function App() {
     return 0;
   });
 
+  const syncWinery = async (w) => {
+    skipRealtimeRef.current = true;
+    setSyncStatus('saving');
+    try { await dbUpsert(w); setSyncStatus('synced'); }
+    catch { setSyncStatus('offline'); }
+    finally { setTimeout(() => { skipRealtimeRef.current = false; }, 500); }
+  };
+
   const handleSave = (updated) => {
     setWineries(ws=>ws.map(w=>w.id===updated.id?updated:w));
     setSelected(updated);
+    syncWinery(updated);
   };
   const handleToggle = (id) => {
-    setWineries(ws=>ws.map(w=>w.id===id?{...w,shortlisted:!w.shortlisted}:w));
+    setWineries(ws=>ws.map(w=>{
+      if (w.id!==id) return w;
+      const updated = {...w,shortlisted:!w.shortlisted};
+      syncWinery(updated);
+      return updated;
+    }));
     if(selected?.id===id) setSelected(s=>({...s,shortlisted:!s.shortlisted}));
   };
-  const handleAdd = (w) => setWineries(ws=>[...ws,w]);
+  const handleAdd = (w) => { setWineries(ws=>[...ws,w]); syncWinery(w); };
 
   const selectedLive = selected ? wineries.find(w=>w.id===selected.id)||selected : null;
   const showList = ["all","visited","notyet","shortlist"].includes(view);
@@ -3688,6 +3782,12 @@ function App() {
                 <span className="zb-wordmark-script">Ze</span>
                 <span className="zb-wordmark-name">Barossa</span>
               </div>
+              {_sb && (
+                <div style={{fontSize:9,fontWeight:700,letterSpacing:0.4,marginTop:1,
+                  color: syncStatus==='synced'?C.sage : syncStatus==='saving'?C.earth : syncStatus==='loading'?C.textLight : C.dustyPink}}>
+                  {syncStatus==='synced'?'● SYNCED' : syncStatus==='saving'?'↑ SAVING…' : syncStatus==='loading'?'◌ LOADING…' : '⚠ OFFLINE'}
+                </div>
+              )}
             </div>
           </div>
           <div style={{display:"flex",gap:8}}>

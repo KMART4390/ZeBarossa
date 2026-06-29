@@ -1202,6 +1202,12 @@ const Icons = {
       <circle cx="12" cy="13" r="4"/>
     </svg>
   ),
+  Photo: ({ size = 20, color = "currentColor" }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+      <polyline points="21 15 16 10 5 21"/>
+    </svg>
+  ),
   Trophy: ({ size = 20, color = "currentColor" }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M8 21h8M12 17v4M5 3H3v5a4 4 0 004 4h10a4 4 0 004-4V3h-2"/>
@@ -1668,7 +1674,8 @@ const RatingSlider = ({ label, value, onChange, color }) => {
 
 // ─── PHOTO SECTION ────────────────────────────────────────────────────────────
 const PhotoSection = ({ photos, onAdd, onDelete, editable }) => {
-  const fileRef = useRef();
+  const cameraRef = useRef();
+  const galleryRef = useRef();
   const handleFile = (e) => {
     const files = Array.from(e.target.files);
     files.forEach(f => {
@@ -1691,14 +1698,19 @@ const PhotoSection = ({ photos, onAdd, onDelete, editable }) => {
             )}
           </div>
         ))}
-        {editable && (
-          <button onClick={()=>fileRef.current.click()} style={{aspectRatio:"4/3",borderRadius:10,border:`2px dashed ${C.blueMid}`,background:C.blueLight,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:6,cursor:"pointer",color:C.dustyBlue}}>
-            <Icons.Camera size={22} color={C.dustyBlue}/>
-            <span style={{fontSize:11,fontWeight:600}}>Add Photo</span>
-          </button>
-        )}
       </div>
-      <input ref={fileRef} type="file" accept="image/*" multiple capture="environment" style={{display:"none"}} onChange={handleFile}/>
+      {editable && (
+        <div style={{display:"flex",gap:8,marginTop:8}}>
+          <button onClick={()=>cameraRef.current.click()} style={{flex:1,padding:"10px",borderRadius:10,border:`1.5px dashed ${C.dustyBlue}`,background:C.blueLight,display:"flex",alignItems:"center",justifyContent:"center",gap:6,cursor:"pointer",color:C.dustyBlue,fontSize:12,fontWeight:600}}>
+            <Icons.Camera size={16} color={C.dustyBlue}/>Take Photo
+          </button>
+          <button onClick={()=>galleryRef.current.click()} style={{flex:1,padding:"10px",borderRadius:10,border:`1.5px dashed ${C.dustyBlue}`,background:C.blueLight,display:"flex",alignItems:"center",justifyContent:"center",gap:6,cursor:"pointer",color:C.dustyBlue,fontSize:12,fontWeight:600}}>
+            <Icons.Photo size={16} color={C.dustyBlue}/>Upload
+          </button>
+        </div>
+      )}
+      <input ref={cameraRef} type="file" accept="image/*" capture="environment" style={{display:"none"}} onChange={handleFile}/>
+      <input ref={galleryRef} type="file" accept="image/*" multiple style={{display:"none"}} onChange={handleFile}/>
     </div>
   );
 };

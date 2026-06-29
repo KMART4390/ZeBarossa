@@ -1123,7 +1123,13 @@ async function dbLoad() {
 }
 async function dbUpsert(w) {
   if (!_sb) return;
-  const { error } = await _sb.from('wineries').upsert(wineryToRow(w), { onConflict:'id' });
+  // Fetch current DB ratings and merge — prevents one user's save from wiping another's ratings
+  const { data: cur } = await _sb.from('wineries').select('ratings').eq('id', w.id).single();
+  const dbRatings = cur?.ratings ?? [];
+  const ratingKey = r => r.who === 'Celebrity Reviewer' ? `${r.who}:${r.guestName||''}` : r.who;
+  const myKeys = new Set(w.ratings.map(ratingKey));
+  const merged = [...dbRatings.filter(r => !myKeys.has(ratingKey(r))), ...w.ratings];
+  const { error } = await _sb.from('wineries').upsert(wineryToRow({...w, ratings: merged}), { onConflict:'id' });
   if (error) throw error;
 }
 async function dbUpsertMany(ws) {
@@ -1828,24 +1834,54 @@ const WineryCard = ({ winery, onOpen, onToggleShortlist }) => {
           </button>
         </div>
       </div>
-      {winery.visited && overall != null && (
+      {winery.visited && (winery.ratings||[]).length > 0 && (
         <div style={{marginTop:10,paddingTop:10,borderTop:`1px dashed var(--zb-separator)`}}>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"6px 18px"}}>
-            {[
-              ["Wine",    avgRatingField(winery,"wine"),    C.earth,    "🍷"],
-              ["Location",avgRatingField(winery,"location"),C.dustyBlue,"📍"],
-              ["Vibes",   avgRatingField(winery,"vibes"),   C.sage,     "✨"],
-              ["Service", avgRatingField(winery,"service"), C.dustyPink,"🤝"],
-            ].map(([lbl,val,col,icon])=>(
-              <div key={lbl}>
-                <div style={{display:"flex",alignItems:"center",gap:3,marginBottom:3}}>
-                  <span style={{fontSize:9.5}}>{icon}</span>
-                  <span style={{fontSize:9.5,color:C.textLight,fontWeight:600,letterSpacing:0.3,textTransform:"uppercase"}}>{lbl}</span>
+          {(winery.ratings||[]).map((r,i)=>{
+            const nameColor = r.who==="Katie"?C.dustyPink:r.who==="Jack"?C.dustyBlue:C.gold;
+            const name = r.who==="Celebrity Reviewer"?(r.guestName||"Guest"):r.who;
+            return (
+              <div key={i} style={{marginBottom:8}}>
+                <div style={{fontSize:10,fontWeight:700,color:nameColor,letterSpacing:0.4,marginBottom:4}}>{name.toUpperCase()}</div>
+                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"4px 18px"}}>
+                  {[
+                    ["Wine",    r.wine,     C.earth,    "🍷"],
+                    ["Location",r.location, C.dustyBlue,"📍"],
+                    ["Vibes",   r.vibes,    C.sage,     "✨"],
+                    ["Service", r.service,  C.dustyPink,"🤝"],
+                  ].map(([lbl,val,col,icon])=>(
+                    <div key={lbl}>
+                      <div style={{display:"flex",alignItems:"center",gap:3,marginBottom:3}}>
+                        <span style={{fontSize:9.5}}>{icon}</span>
+                        <span style={{fontSize:9.5,color:C.textLight,fontWeight:600,letterSpacing:0.3,textTransform:"uppercase"}}>{lbl}</span>
+                      </div>
+                      <RatingBar value={val} color={col}/>
+                    </div>
+                  ))}
                 </div>
-                <RatingBar value={val} color={col}/>
               </div>
-            ))}
-          </div>
+            );
+          })}
+          {(winery.ratings||[]).length > 1 && (
+            <div style={{marginTop:4,paddingTop:8,borderTop:`1px dashed var(--zb-separator)`}}>
+              <div style={{fontSize:10,fontWeight:700,color:C.sage,letterSpacing:0.4,marginBottom:4}}>GROUP AVERAGE</div>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"4px 18px"}}>
+                {[
+                  ["Wine",    avgRatingField(winery,"wine"),    C.earth,    "🍷"],
+                  ["Location",avgRatingField(winery,"location"),C.dustyBlue,"📍"],
+                  ["Vibes",   avgRatingField(winery,"vibes"),   C.sage,     "✨"],
+                  ["Service", avgRatingField(winery,"service"), C.dustyPink,"🤝"],
+                ].map(([lbl,val,col,icon])=>(
+                  <div key={lbl}>
+                    <div style={{display:"flex",alignItems:"center",gap:3,marginBottom:3}}>
+                      <span style={{fontSize:9.5}}>{icon}</span>
+                      <span style={{fontSize:9.5,color:C.textLight,fontWeight:600,letterSpacing:0.3,textTransform:"uppercase"}}>{lbl}</span>
+                    </div>
+                    <RatingBar value={val} color={col}/>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -2006,8 +2042,12 @@ const DetailModal = ({ winery, onClose, onSave, onToggleShortlist }) => {
                           ))}
                         </div>
                       ))}
-                      {/* Average summary */}
-                      <div style={{background:C.sageLight,borderRadius:12,padding:"12px 14px",marginTop:4}}>
+                      {/* Add rating button */}
+                      <button onClick={()=>{addRater();setEditing(true);}} style={{width:"100%",padding:"10px",borderRadius:10,border:`1.5px dashed ${C.dustyBlue}`,background:C.blueLight,color:C.dustyBlue,fontSize:13,fontWeight:600,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",gap:6,marginBottom:10}}>
+                        <Icons.Plus size={16} color={C.dustyBlue}/>Add My Rating
+                      </button>
+                      {/* Average summary — only when 2+ raters */}
+                      {(form.ratings||[]).length > 1 && <div style={{background:C.sageLight,borderRadius:12,padding:"12px 14px",marginTop:4}}>
                         <div style={{fontSize:11,fontWeight:700,color:C.sage,marginBottom:8,letterSpacing:0.3}}>GROUP AVERAGE</div>
                         {[["Wine",avgRatingField(form,"wine"),C.dustyPink],["Location",avgRatingField(form,"location"),C.dustyBlue],["Vibes",avgRatingField(form,"vibes"),C.sage],["Service",avgRatingField(form,"service"),C.earth]].map(([lbl,val,col])=>(
                           <div key={lbl} style={{display:"flex",alignItems:"center",gap:8,marginBottom:6}}>
@@ -2015,7 +2055,7 @@ const DetailModal = ({ winery, onClose, onSave, onToggleShortlist }) => {
                             <div style={{flex:1}}><RatingBar value={val} color={col}/></div>
                           </div>
                         ))}
-                      </div>
+                      </div>}
                     </>
                   ):(
                     <div style={{textAlign:"center",padding:"20px 0",color:C.textLight,fontSize:13}}>No ratings yet — tap Edit to add</div>

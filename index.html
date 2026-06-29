@@ -1107,13 +1107,13 @@ function rowToWinery(r) {
   return { id:r.id, name:r.name, distRiebe:r.dist_riebe??0, distJohn:r.dist_john??0,
     visited:r.visited??false, ratings:r.ratings??[], bottles:r.bottles??0,
     notes:r.notes??'', photos:r.photos??[], shortlisted:r.shortlisted??false,
-    visitCount:r.visit_count??0, visits:r.visits??[] };
+    visitCount:r.visit_count??0, visits:r.visits??[], tastingFee:r.tasting_fee??null };
 }
 function wineryToRow(w) {
   return { id:w.id, name:w.name, dist_riebe:w.distRiebe??0, dist_john:w.distJohn??0,
     visited:w.visited??false, ratings:w.ratings??[], bottles:w.bottles??0,
     notes:w.notes??'', photos:w.photos??[], shortlisted:w.shortlisted??false,
-    visit_count:w.visitCount??0, visits:w.visits??[] };
+    visit_count:w.visitCount??0, visits:w.visits??[], tasting_fee:w.tastingFee??null };
 }
 async function dbLoad() {
   if (!_sb) return null;
@@ -2020,6 +2020,17 @@ const DetailModal = ({ winery, onClose, onSave, onToggleShortlist }) => {
                       onChange={e=>setForm(f=>({...f,bottles:parseInt(e.target.value)||0}))}
                       style={{width:"100%",padding:"10px 12px",borderRadius:10,border:`1px solid ${C.border}`,fontSize:15,background:C.white,boxSizing:"border-box"}}/>
                   </div>
+                  <div style={{marginBottom:14}}>
+                    <label style={{fontSize:13,color:C.text,fontWeight:700,display:"flex",alignItems:"center",gap:6,marginBottom:8}}>🎟 Tasting Fee?</label>
+                    <div style={{display:"flex",gap:8}}>
+                      {[["Yes",true,C.dustyPink],["No",false,C.sage]].map(([lbl,val,col])=>(
+                        <button key={lbl} onClick={()=>setForm(f=>({...f,tastingFee:f.tastingFee===val?null:val}))}
+                          style={{flex:1,padding:"9px",borderRadius:10,border:`1.5px solid ${form.tastingFee===val?col:C.border}`,background:form.tastingFee===val?`${col}22`:"white",color:form.tastingFee===val?col:C.textMid,fontSize:13,fontWeight:700,cursor:"pointer"}}>
+                          {lbl}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </>
               ):(
                 <>
@@ -2067,6 +2078,15 @@ const DetailModal = ({ winery, onClose, onSave, onToggleShortlist }) => {
                     </div>
                     <BottleViz count={form.bottles||0}/>
                   </div>
+                  {/* Tasting fee */}
+                  {form.tastingFee !== null && form.tastingFee !== undefined && (
+                    <div style={{marginTop:10,padding:"10px 14px",background:C.white,border:`1px solid ${C.border}`,borderRadius:12,display:"flex",alignItems:"center",gap:8}}>
+                      <span style={{fontSize:14}}>🎟</span>
+                      <span style={{fontSize:13,fontWeight:600,color:form.tastingFee?C.dustyPink:C.sage}}>
+                        Tasting fee: <b>{form.tastingFee?"Yes":"No"}</b>
+                      </span>
+                    </div>
+                  )}
                 </>
               )}
             </>
